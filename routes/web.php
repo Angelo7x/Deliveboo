@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 // routes/web.php
 
 // Rotte pubbliche
-Route::get('/', 'PageController@index');
+// Route::get('/', 'PageController@index');
 
 // Rotte Autenticazione
 Auth::routes();
@@ -25,3 +25,5 @@ Auth::routes();
 Route::middleware('auth')->namespace('Admin')->name('admin.')->prefix('admin')->group(function() {
     Route::get('/', 'HomeController@index')->name('home');
 });
+
+Route::get('/{any}', 'PageController@index')->where('any', '.*');

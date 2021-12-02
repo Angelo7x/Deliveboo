@@ -2,8 +2,8 @@
   <header>
       <nav>
           <ul>
-              <li></li>
-              <li></li>
+              <li><a href="/login">Speranza</a></li>
+              <li><a href="/register">Speranza2</a></li>
               <li></li>
               <li></li>
               <li></li>
