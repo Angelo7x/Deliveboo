@@ -8,8 +8,15 @@
         <title>Deliveboo</title>
     </head>
     <body>
-        <div id="app"></div>
-        <h1>Ciao a tutti</h1>
+        <div id="app">
+            
+        </div>
+        <script>
+            window.AppSettings = {
+                csrfToken: "{{ csrf_token() }}"
+            }
+        </script>
+
         <script src="{{asset('js/front.js')}}"></script>
     </body>
 </html>
