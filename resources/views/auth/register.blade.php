@@ -133,13 +133,15 @@
 
                         <div class="form-group row">
                             <p class="col-md-4 text-md-right">
-                                gsdfgfd
+                                Cucine
                             </p>
                                 <div class="col-md-6">
+                                    @foreach ($cuisines as $cuisine)
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                        <label class="custom-control-label" for="customCheck1">Check this custom checkbox</label>
+                                        <input {{in_array($cuisine['id'], old('cuisines', [])) ? 'checked' : null}} type="checkbox" value="{{$cuisine["id"]}}" class="custom-control-input" name="cuisines[]" id="{{$cuisine["id"]}}">
+                                        <label class="custom-control-label" for="{{$cuisine["id"]}}">{{$cuisine["name"]}}</label>
                                     </div>
+                                    @endforeach
                                 </div>
                         </div>
                             

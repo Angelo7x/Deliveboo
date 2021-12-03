@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'vat_numb', 'business_name', 'business_address', 'business_logo', 'business_cover'
+        'name', 'email', 'password', 'vat_numb', 'business_name', 'slug', 'business_address', 'business_logo', 'business_cover'
     ];
 
     /**
@@ -41,6 +41,16 @@ class User extends Authenticatable
 
     public function cousines ()
     {
-        return $this -> belongsToMany("App\cousine");
+        return $this -> belongsToMany("App\Cousine");
+    }
+
+    public function orders ()
+    {
+        return $this -> hasMany("App\Order");
+    }
+
+    public function foods ()
+    {
+        return $this-> hasMany("App\Food");
     }
 }

@@ -57,8 +57,8 @@ class RegisterController extends Controller
             'vat_numb' => ['required', 'digits:11', 'unique:users'],
             'business_name' => ['required', 'string', 'max:30'],
             'business_address' => ['required', 'string', 'max:100'],
-            'business_logo' => ['string', 'url', 'max:255'],
-            'business_cover' => ['string', 'url', 'max:255']
+            'business_logo' => ['string', 'url', 'max:255', 'nullable'],
+            'business_cover' => ['string', 'url', 'max:255', 'nullable']
         ]);
     }
 

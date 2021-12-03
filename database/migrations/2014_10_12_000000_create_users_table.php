@@ -23,8 +23,8 @@ class CreateUsersTable extends Migration
             $table->string('business_name', 30);
             $table->string('slug', 30)->unique();
             $table->string('business_address', 100);
-            $table->string('business_logo');
-            $table->string('business_cover');
+            $table->string('business_logo')->nullable();
+            $table->string('business_cover')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
