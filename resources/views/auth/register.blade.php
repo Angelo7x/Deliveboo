@@ -27,18 +27,18 @@
 
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
+                            
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
+                                
                                 @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
                         </div>
-
+                        
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
@@ -61,6 +61,88 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="vat_numb" class="col-md-4 col-form-label text-md-right">{{ __('Partita Iva') }}</label>
+                            
+                            <div class="col-md-6">
+                                <input id="vat_numb" type="text" class="form-control @error('vat_numb') is-invalid @enderror" name="vat_numb" value="{{ old('vat_numb') }}" required autocomplete="vat_numb">
+                                
+                                @error('vat_numb')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="business_name" class="col-md-4 col-form-label text-md-right">{{ __('Nome attività') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="business_name" type="text" class="form-control @error('business_name') is-invalid @enderror" name="business_name" value="{{ old('business_name') }}" required autocomplete="business_name">
+
+                                @error('business_name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="business_address" class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo attività') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="business_address" type="text" class="form-control @error('business_address') is-invalid @enderror" name="business_address" value="{{ old('business_address') }}" required autocomplete="business_address">
+
+                                @error('business_address')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="business_logo" class="col-md-4 col-form-label text-md-right">{{ __('Logo attività') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="business_logo" type="text" class="form-control @error('business_logo') is-invalid @enderror" name="business_logo" value="{{ old('business_logo') }}" autocomplete="business_logo">
+
+                                @error('business_logo')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="business_cover" class="col-md-4 col-form-label text-md-right">{{ __('Cover attività') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="business_cover" type="text" class="form-control @error('business_cover') is-invalid @enderror" name="business_cover" value="{{ old('business_cover') }}" autocomplete="business_cover">
+
+                                @error('business_cover')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <p class="col-md-4 text-md-right">
+                                gsdfgfd
+                            </p>
+                                <div class="col-md-6">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                        <label class="custom-control-label" for="customCheck1">Check this custom checkbox</label>
+                                    </div>
+                                </div>
+                        </div>
+                            
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
