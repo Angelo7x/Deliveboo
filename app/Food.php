@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Food extends Model
 {
-
-    protected $fillable = ['user_id', 'name', 'image', 'description', 'allergens', 'price', 'visible', 'weight'];
+    protected $table = "foods";
+    
+    protected $fillable = ['name', 'image', 'description', 'allergens', 'price', 'visible', 'weight'];
 
     public function user() 
     {

@@ -24,6 +24,7 @@ Auth::routes();
 // Rotte area Admin
 Route::middleware('auth')->namespace('Admin')->name('admin.')->prefix('admin')->group(function() {
     Route::get('/', 'HomeController@index')->name('home');
+    Route::resource('foods', 'FoodController');
 });
 
 Route::get('/{any}', 'PageController@index')->where('any', '.*');
