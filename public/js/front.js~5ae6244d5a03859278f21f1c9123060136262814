@@ -18273,11 +18273,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
-module.exports = __webpack_require__(/*! C:\Users\Maria\Desktop\Boolean\Deliveboo\Deliveboo\resources\js\guest\front.js */"./resources/js/guest/front.js");
-=======
-module.exports = __webpack_require__(/*! /opt/lampp/htdocs/p/Deliveboo/resources/js/guest/front.js */"./resources/js/guest/front.js");
->>>>>>> origin/main
+module.exports = __webpack_require__(/*! C:\Users\abenn\Desktop\Boolean\esercizi\Deliveboo\resources\js\guest\front.js */"./resources/js/guest/front.js");
 
 
 /***/ })
