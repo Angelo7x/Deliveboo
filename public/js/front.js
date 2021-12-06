@@ -2516,12 +2516,10 @@ var staticRenderFns = [
     return _c("header", [
       _c("nav", [
         _c("ul", [
-          _c("li", [
-            _c("a", { attrs: { href: "/login" } }, [_vm._v("Speranza")]),
-          ]),
+          _c("li", [_c("a", { attrs: { href: "/login" } }, [_vm._v("Login")])]),
           _vm._v(" "),
           _c("li", [
-            _c("a", { attrs: { href: "/register" } }, [_vm._v("Speranza2")]),
+            _c("a", { attrs: { href: "/register" } }, [_vm._v("Register")]),
           ]),
           _vm._v(" "),
           _c("li"),

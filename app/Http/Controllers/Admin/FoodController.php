@@ -17,7 +17,7 @@ class FoodController extends Controller
         'description' => 'string |nullable | max:255',
         'allergens' => 'string |nullable | max:100',
         'price' => 'required|numeric|between: 0, 999.99',
-        'weight' => 'string|numeric| nullable|max:30',
+        'weight' => 'string|numeric| nullable|max:999',
         'visible' => 'required|boolean'
 
     ];
@@ -124,9 +124,9 @@ class FoodController extends Controller
     public function destroy(Food $food)
     {
 
-        // if( $food->user_id != Auth::id() ) {
-        //     abort("403");
-        // }
+        if( $food->user_id != Auth::id() ) {
+            abort("403");
+        }
 
         $food->delete();
 
