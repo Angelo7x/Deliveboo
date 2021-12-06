@@ -70,9 +70,13 @@ class FoodController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Food $food)
     {
-        //
+        if( $food->user_id != Auth::id() ) {
+            abort("403");
+        }
+
+        return view("admin.foods.show", compact("food"));
     }
 
     /**
@@ -81,9 +85,12 @@ class FoodController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Food $food)
     {
-        //
+        if( $food->user_id != Auth::id() ) {
+            abort("403");
+        }
+        return view('admin.foods.edit', compact("food"));
     }
 
     /**
@@ -93,9 +100,19 @@ class FoodController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Food $food)
     {
-        //
+
+        if( $food->user_id != Auth::id() ) {
+            abort("403");
+        }
+
+        // validations
+        $request->validate($this->validationRules);
+
+        $food->fill($request->all());
+        $food->save();
+        return redirect(route('admin.home'));
     }
 
     /**

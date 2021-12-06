@@ -7,13 +7,17 @@
             <ul>
                 @foreach ($foods as $food)
                 <li>{{$food["name"]}}</li>
-                <form action="{{route('admin.foods.destroy', $food["id"])}}" method="POST" class="ml-1">
+                <a href="{{route('admin.foods.show', $food["id"])}}"><button class="btn btn-primary">Visualizza</button></a>
+                <form action="{{route('admin.foods.destroy', $food["id"])}}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger ml-1 btn-delete">
+                    <button type="submit" class="btn btn-danger btn-delete">
                         Delete
                     </button>
                 </form>
+                <a href="{{route('admin.foods.edit', $food["id"])}}">
+                    <button type="button" class="btn btn-warning">Modifica</button>
+                </a>
                 @endforeach
             </ul>
             <a href="{{route('admin.foods.create')}}" class="mt-10">
