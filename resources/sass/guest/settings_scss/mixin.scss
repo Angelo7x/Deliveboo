@@ -1,0 +1,37 @@
+// flex properties
+@mixin space-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+//centered X
+@mixin align-center {
+    display: flex;
+    align-items: center;
+}
+//centered XY
+@mixin align-justify-center{
+    @include align-center;
+    justify-content: center;
+}
+
+//
+@mixin align-center-between {
+    @include align-center;
+    justify-content: space-between;
+}
+
+// lists
+@mixin list-style-none {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+@mixin inline-block-list {
+    @include list-style-none;
+    display: inline-block;
+    li {
+        display: inline-block;
+    }
+}
