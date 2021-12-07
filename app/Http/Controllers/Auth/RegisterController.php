@@ -9,7 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
-
+use Illuminate\Support\Facades\Storage;
 class RegisterController extends Controller
 {
     /*
@@ -57,8 +57,8 @@ class RegisterController extends Controller
             'vat_numb' => ['required', 'digits:11', 'unique:users'],
             'business_name' => ['required', 'string', 'max:30'],
             'business_address' => ['required', 'string', 'max:100'],
-            'business_logo' => ['string', 'url', 'max:255', 'nullable'],
-            'business_cover' => ['string', 'url', 'max:255', 'nullable']
+            'business_logo' => [ 'mimes:jpeg,png,jpg,gif,svg',' max:1000', 'nullable'],
+            'business_cover' => ['mimes:jpeg,png,jpg,gif,svg',' max:1000', 'nullable']
         ]);
     }
 
@@ -70,6 +70,15 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $business_logo = null;
+        $business_cover = null;
+
+        if(array_key_exists('business_logo', $data)) {
+            $business_logo = Storage::put('image_register', $data['business_logo']);
+        }
+        if(array_key_exists('business_cover', $data)) {
+            $business_cover = Storage::put('image_register', $data['business_cover']);
+        }
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -77,11 +86,9 @@ class RegisterController extends Controller
             'vat_numb' => $data['vat_numb'],
             'business_name' => $data['business_name'],
             'slug' => Str::of($data['business_name'])->slug('-'),
+            'business_logo' => $business_logo,
+            'business_cover' => $business_cover,
             'business_address' => $data['business_address'],
-            'business_logo' => $data['business_logo'],
-            'business_cover' => $data['business_cover'],
-
-
         ]);
     }
 }

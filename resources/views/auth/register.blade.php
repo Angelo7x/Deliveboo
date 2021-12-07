@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group row">
@@ -107,7 +107,7 @@
                             <label for="business_logo" class="col-md-4 col-form-label text-md-right">{{ __('Logo attività') }}</label>
 
                             <div class="col-md-6">
-                                <input id="business_logo" type="text" class="form-control @error('business_logo') is-invalid @enderror" name="business_logo" value="{{ old('business_logo') }}" autocomplete="business_logo">
+                                <input id="business_logo" type="file" class="form-control @error('business_logo') is-invalid @enderror" name="business_logo" value="{{ old('business_logo') }}" autocomplete="business_logo">
 
                                 @error('business_logo')
                                     <span class="invalid-feedback" role="alert">
@@ -121,7 +121,7 @@
                             <label for="business_cover" class="col-md-4 col-form-label text-md-right">{{ __('Cover attività') }}</label>
 
                             <div class="col-md-6">
-                                <input id="business_cover" type="text" class="form-control @error('business_cover') is-invalid @enderror" name="business_cover" value="{{ old('business_cover') }}" autocomplete="business_cover">
+                                <input id="business_cover" type="file" class="form-control @error('business_cover') is-invalid @enderror" name="business_cover" value="{{ old('business_cover') }}" autocomplete="business_cover">
 
                                 @error('business_cover')
                                     <span class="invalid-feedback" role="alert">
