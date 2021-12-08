@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">Aggiungi il piatto</div>
                   <div class="card-body">
-                    <form action="{{route("admin.foods.store")}}" method="POST">
+                    <form action="{{route("admin.foods.store")}}" method="POST" enctype="multipart/form-data">
                       @csrf
                       {{-- Inserisci il nome --}}
                       <div class="form-group">
@@ -19,10 +19,13 @@
                       </div>
                       {{-- Inserisci l'immagine --}}
                       <div class="form-group">
-                        <label for="image">Inserisci l'url l'immagine</label>
-                        <input type="text" class="form-control @error('image') is-invalid @enderror" name="image" id="image" placeholder="Inserisci l'url dell'immagine" value="{{old("image")}}">
+                        <label for="image" >Inserisci l'immagine</label>
+                        <div>
+                          <img id="foodCreatePreview" style="max-height: 100px;"  class="mb-2"/>
+                        </div>
+                        <input type="file" class="@error('image') is-invalid @enderror" name="image" id="image" value="{{old("image")}}">
                         @error('image')
-                          <div class="alert alert-danger">{{ $message }}</div>
+                        <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                       </div>
                       {{-- Inserisci la descrizione --}}

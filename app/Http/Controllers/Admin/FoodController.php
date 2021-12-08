@@ -7,19 +7,19 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Food;
+use Illuminate\Support\Facades\Storage;
 
 class FoodController extends Controller
 {
 
     protected $validationRules = [
         'name' => 'string |required | max:50',
-        'image' => 'string|url|required | max:255',
+        'image' => 'mimes:jpeg,png,jpg,gif,svg | max:1000 ',
         'description' => 'string |nullable | max:255',
         'allergens' => 'string |nullable | max:100',
         'price' => 'required|numeric|between: 0, 999.99',
         'weight' => 'string|numeric| nullable|max:999',
         'visible' => 'required|boolean'
-
     ];
 
 
@@ -52,12 +52,19 @@ class FoodController extends Controller
     public function store(Request $request)
     {
         $request->validate($this->validationRules);
-
+        $form_data=$request->all();
+        
+        // image
+        if(array_key_exists('image', $form_data)) {
+            $image_path = Storage::put('foods', $form_data['image']);
+            $form_data['image'] = $image_path;
+        }
+        
         $newFood = new Food ();
-        $newFood->fill($request->all());
-
+        $newFood->fill($form_data);
+        
         $newFood->user_id = Auth::id();
-
+        
         $newFood->save();
 
         return redirect()->route("admin.home");
@@ -109,8 +116,18 @@ class FoodController extends Controller
 
         // validations
         $request->validate($this->validationRules);
+        $form_data=$request->all();
+        
+        // image
+        if(array_key_exists('image', $form_data)) {
+            if($food->image) {
+                Storage::delete($food->image);
+            }
+            $image_path = Storage::put('foods', $form_data['image']);
+            $form_data['image'] = $image_path;
+        }
 
-        $food->fill($request->all());
+        $food->fill($form_data);
         $food->save();
         return redirect(route('admin.home'));
     }

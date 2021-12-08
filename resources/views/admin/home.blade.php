@@ -7,6 +7,11 @@
             <ul>
                 @foreach ($foods as $food)
                 <li>{{$food["name"]}}</li>
+                {{-- test-image --}}
+                <div>
+                    <img src="{{  asset('storage/' .  $food['image'])}}" alt="">
+                </div>
+                {{-- /test-image --}}
                 <a href="{{route('admin.foods.show', $food["id"])}}"><button class="btn btn-primary">Visualizza</button></a>
                 <form action="{{route('admin.foods.destroy', $food["id"])}}" method="POST">
                     @csrf
