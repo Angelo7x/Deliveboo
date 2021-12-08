@@ -1,3 +1,17 @@
+// containers
+@mixin container-90 {
+    width: 90%;
+    margin: 0 auto;
+}
+// buttons style
+@mixin btn($btnColor, $btnBG) {
+    border: 1px solid $btnColor;
+    color: $btnColor;
+    background: $btnBG;
+    border-radius: 8px;
+    @include align-center;
+}
+
 // flex properties
 @mixin space-between {
     display: flex;
