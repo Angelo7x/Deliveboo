@@ -3,6 +3,11 @@
     width: 90%;
     margin: 0 auto;
 }
+
+@mixin container-75 {
+    width: 75%;
+    margin: 0 auto;
+}
 // buttons style
 @mixin btn($btnColor, $btnBG) {
     border: 1px solid $btnColor;
@@ -13,6 +18,8 @@
 }
 
 // flex properties
+
+
 @mixin space-between {
     display: flex;
     justify-content: space-between;
@@ -48,4 +55,9 @@
     li {
         display: inline-block;
     }
+}
+
+//spaces
+@mixin padding-top-bottom-20px {
+    padding: 20px 0;
 }

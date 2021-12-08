@@ -5,18 +5,21 @@
         <main>
             <router-view></router-view>
         </main>
+          <Footer/>
     </div>
 </template>
 
 <script>
 import Header from './components/Header.vue';
 import Hero  from './components/Hero.vue';
+import Footer  from './components/Footer.vue';
 
 export default {
 	name: 'App',
 	components: {
         Header,
-        Hero
+        Hero,
+        Footer
 	}	    
 }
 </script>
@@ -35,11 +38,6 @@ body {
 
 a {
     text-decoration: none;
-}
-
-@font-face {
-  font-family: 'Bogam Regular';
-  src: local("Bogam Regular"), url('../../fonts/Bogam.ttf');
 }
 
 </style>
