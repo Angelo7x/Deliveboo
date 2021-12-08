@@ -4,8 +4,14 @@
     margin: 0 auto;
 }
 
+
 @mixin container-75 {
     width: 75%;
+    margin: 0 auto;
+}
+
+@mixin container-50 {
+    width: 50%;
     margin: 0 auto;
 }
 // buttons style

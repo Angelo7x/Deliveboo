@@ -2,6 +2,7 @@
     <div>
         <Header/>
          <Hero/>
+        <AppDeliveboo/>
         <main>
             <router-view></router-view>
         </main>
@@ -13,13 +14,15 @@
 import Header from './components/Header.vue';
 import Hero  from './components/Hero.vue';
 import Footer  from './components/Footer.vue';
+import AppDeliveboo  from './components/AppDeliveboo.vue';
 
 export default {
 	name: 'App',
 	components: {
         Header,
         Hero,
-        Footer
+        Footer,
+        AppDeliveboo,
 	}	    
 }
 </script>
@@ -34,6 +37,8 @@ export default {
 
 body {
     font-family: 'Work Sans', sans-serif;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 a {

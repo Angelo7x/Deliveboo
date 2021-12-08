@@ -125,9 +125,6 @@
               </span>
               </div>
           </div>
-
-
-      </div>
   </footer>
 </template>
 
