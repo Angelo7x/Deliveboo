@@ -2164,6 +2164,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Hero'
 });
@@ -2240,7 +2243,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;900&display=swap);", ""]);
 
 // module
-exports.push([module.i, "@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n}\nsection.appDeliveboo[data-v-8effd970] {\n  width: 50%;\n  margin: 0 auto;\n  padding: 20px 0;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\nsection.appDeliveboo img[data-v-8effd970] {\n  width: 600px;\n}", ""]);
+exports.push([module.i, "@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\nsection.appDeliveboo[data-v-8effd970] {\n  width: 50%;\n  margin: 0 auto;\n  padding: 20px 0;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\nsection.appDeliveboo img[data-v-8effd970] {\n  width: 600px;\n}", ""]);
 
 // exports
 
@@ -2260,7 +2263,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;900&display=swap);", ""]);
 
 // module
-exports.push([module.i, "@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n}\nfooter[data-v-4a9fdc62] {\n  background-image: linear-gradient(170deg, rgba(35, 33, 37, 0.828) 0%, rgba(35, 33, 37, 0.8) 100%), url(" + escape(__webpack_require__(/*! ../../../images/bg_footer.jpg */ "./resources/images/bg_footer.jpg")) + ");\n  background-size: cover;\n  color: white;\n}\nfooter a[data-v-4a9fdc62] {\n  color: white;\n}\nfooter .container[data-v-4a9fdc62] {\n  width: 75%;\n  margin: 0 auto;\n  padding: 20px 0;\n}\nfooter .container .footer_top[data-v-4a9fdc62] {\n  display: flex;\n}\nfooter .container .footer_top ul[data-v-4a9fdc62] {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n  width: 20%;\n}\nfooter .container .footer_top ul h3[data-v-4a9fdc62] {\n  text-transform: uppercase;\n}\nfooter .container .footer_top ul a[data-v-4a9fdc62] {\n  color: rgba(255, 255, 255, 0.787);\n}\nfooter .footer_middle[data-v-4a9fdc62] {\n  background-color: rgba(255, 255, 255, 0.315);\n}\nfooter .footer_middle .footer_middle_container[data-v-4a9fdc62] {\n  display: flex;\n}\nfooter .footer_middle .footer_middle_container .col[data-v-4a9fdc62] {\n  width: 33.3333333333%;\n}\nfooter .footer_middle .footer_middle_container .col h2[data-v-4a9fdc62] {\n  font-size: 20px;\n  margin-bottom: 10px;\n}\nfooter .footer_middle .footer_middle_container .apps img[data-v-4a9fdc62] {\n  width: 120px;\n}\nfooter .footer_middle .footer_middle_container .feedback[data-v-4a9fdc62] {\n  text-decoration: underline;\n  font-weight: 600;\n  padding: 10px 0;\n}\nfooter .footer_middle .footer_middle_container ul.social[data-v-4a9fdc62] {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n  display: inline-block;\n}\nfooter .footer_middle .footer_middle_container ul.social li[data-v-4a9fdc62] {\n  display: inline-block;\n}\nfooter .footer_middle .footer_middle_container .social img[data-v-4a9fdc62] {\n  width: 40px;\n  margin-right: 10px;\n}\nfooter .copyright[data-v-4a9fdc62] {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  color: rgba(255, 255, 255, 0.787);\n}\nfooter .copyright .cards[data-v-4a9fdc62] {\n  display: flex;\n  align-items: center;\n}\nfooter .copyright .cards img[data-v-4a9fdc62] {\n  width: 70px;\n  padding: 5px;\n}", ""]);
+exports.push([module.i, "@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\nfooter[data-v-4a9fdc62] {\n  background-image: linear-gradient(170deg, rgba(35, 33, 37, 0.828) 0%, rgba(35, 33, 37, 0.8) 100%), url(" + escape(__webpack_require__(/*! ../../../images/bg_footer.jpg */ "./resources/images/bg_footer.jpg")) + ");\n  background-size: cover;\n  color: white;\n}\nfooter a[data-v-4a9fdc62] {\n  color: white;\n}\nfooter .container[data-v-4a9fdc62] {\n  width: 75%;\n  margin: 0 auto;\n  padding: 20px 0;\n}\nfooter .container .footer_top[data-v-4a9fdc62] {\n  display: flex;\n}\nfooter .container .footer_top ul[data-v-4a9fdc62] {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n  width: 20%;\n}\nfooter .container .footer_top ul h3[data-v-4a9fdc62] {\n  text-transform: uppercase;\n}\nfooter .container .footer_top ul a[data-v-4a9fdc62] {\n  color: rgba(255, 255, 255, 0.787);\n}\nfooter .footer_middle[data-v-4a9fdc62] {\n  background-color: rgba(255, 255, 255, 0.315);\n}\nfooter .footer_middle .footer_middle_container[data-v-4a9fdc62] {\n  display: flex;\n}\nfooter .footer_middle .footer_middle_container .col[data-v-4a9fdc62] {\n  width: 33.3333333333%;\n}\nfooter .footer_middle .footer_middle_container .col h2[data-v-4a9fdc62] {\n  font-size: 20px;\n  margin-bottom: 10px;\n}\nfooter .footer_middle .footer_middle_container .apps img[data-v-4a9fdc62] {\n  width: 120px;\n}\nfooter .footer_middle .footer_middle_container .feedback[data-v-4a9fdc62] {\n  text-decoration: underline;\n  font-weight: 600;\n  padding: 10px 0;\n}\nfooter .footer_middle .footer_middle_container ul.social[data-v-4a9fdc62] {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n  display: inline-block;\n}\nfooter .footer_middle .footer_middle_container ul.social li[data-v-4a9fdc62] {\n  display: inline-block;\n}\nfooter .footer_middle .footer_middle_container .social img[data-v-4a9fdc62] {\n  width: 40px;\n  margin-right: 10px;\n}\nfooter .copyright[data-v-4a9fdc62] {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  color: rgba(255, 255, 255, 0.787);\n}\nfooter .copyright .cards[data-v-4a9fdc62] {\n  display: flex;\n  align-items: center;\n}\nfooter .copyright .cards img[data-v-4a9fdc62] {\n  width: 70px;\n  padding: 5px;\n}", ""]);
 
 // exports
 
@@ -2280,7 +2283,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;900&display=swap);", ""]);
 
 // module
-exports.push([module.i, "@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n}\nheader[data-v-083b147e] {\n  width: 100%;\n  height: 100px;\n  position: fixed;\n  top: 0;\n  left: 0;\n  z-index: 1;\n  display: flex;\n  align-items: center;\n}\nheader .container[data-v-083b147e] {\n  width: 90%;\n  margin: 0 auto;\n}\nheader .container nav[data-v-083b147e] {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\nheader .container nav .nav-left .logo[data-v-083b147e] {\n  width: 150px;\n}\nheader .container nav .nav-left .logo img[data-v-083b147e] {\n  width: 100%;\n}\nheader .container nav .nav-right ul[data-v-083b147e] {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n  display: inline-block;\n}\nheader .container nav .nav-right ul li[data-v-083b147e] {\n  display: inline-block;\n}\nheader .container nav .nav-right ul li[data-v-083b147e] {\n  padding: 0 10px;\n}\nheader .container nav .nav-right ul li a[data-v-083b147e] {\n  text-transform: uppercase;\n  color: white;\n  font-weight: 500;\n  font-size: 20px;\n}\nheader .container nav .nav-right ul li a.cart[data-v-083b147e] {\n  border: 1px solid white;\n  color: white;\n  background: transparent;\n  border-radius: 8px;\n  display: flex;\n  align-items: center;\n  font-size: 16px;\n  padding: 10px;\n}\nheader .container nav .nav-right ul li a.cart img[data-v-083b147e] {\n  width: 30px;\n  margin-left: 8px;\n}", ""]);
+exports.push([module.i, "@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\nheader[data-v-083b147e] {\n  width: 100%;\n  height: 100px;\n  position: fixed;\n  top: 0;\n  left: 0;\n  z-index: 1;\n  display: flex;\n  align-items: center;\n}\nheader .container[data-v-083b147e] {\n  width: 90%;\n  margin: 0 auto;\n}\nheader .container nav[data-v-083b147e] {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\nheader .container nav .nav-left .logo[data-v-083b147e] {\n  width: 200px;\n}\nheader .container nav .nav-left .logo img[data-v-083b147e] {\n  width: 100%;\n}\nheader .container nav .nav-right ul[data-v-083b147e] {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n  display: inline-block;\n}\nheader .container nav .nav-right ul li[data-v-083b147e] {\n  display: inline-block;\n}\nheader .container nav .nav-right ul li[data-v-083b147e] {\n  padding: 0 10px;\n}\nheader .container nav .nav-right ul li a[data-v-083b147e] {\n  text-transform: uppercase;\n  color: white;\n  font-weight: 500;\n  font-size: 20px;\n}\nheader .container nav .nav-right ul li a.cart[data-v-083b147e] {\n  border: 1px solid white;\n  color: white;\n  background: transparent;\n  border-radius: 8px;\n  display: flex;\n  align-items: center;\n  font-size: 16px;\n  padding: 12px;\n}\nheader .container nav .nav-right ul li a.cart img[data-v-083b147e] {\n  width: 30px;\n  margin-left: 8px;\n}", ""]);
 
 // exports
 
@@ -2300,7 +2303,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;900&display=swap);", ""]);
 
 // module
-exports.push([module.i, "@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n}\n.hero[data-v-6eee08a4] {\n  height: 600px;\n  background-image: url(" + escape(__webpack_require__(/*! ../../../images/hero_bg.jpg */ "./resources/images/hero_bg.jpg")) + ");\n  background-size: cover;\n  padding-top: 150px;\n}\n.hero .container[data-v-6eee08a4] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.hero .CTA[data-v-6eee08a4] {\n  border: 1px solid #e80800;\n  color: #e80800;\n  background: white;\n  border-radius: 8px;\n  display: flex;\n  align-items: center;\n  font-size: 16px;\n  padding: 10px;\n  display: inline-block;\n  font-weight: 600;\n  font-size: 20px;\n}", ""]);
+exports.push([module.i, "@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n.hero[data-v-6eee08a4] {\n  height: 780px;\n  background-image: url(" + escape(__webpack_require__(/*! ../../../images/hero_bg.jpg */ "./resources/images/hero_bg.jpg")) + ");\n  background-size: 110%;\n  padding-top: 180px;\n}\n.hero .container[data-v-6eee08a4] {\n  text-align: center;\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n}\n.hero .container .CTA[data-v-6eee08a4] {\n  border: 1px solid #e80800;\n  color: #e80800;\n  background: white;\n  border-radius: 8px;\n  display: flex;\n  align-items: center;\n  padding: 10px 20px;\n  display: inline-block;\n  font-weight: 600;\n  font-size: 30px;\n  border: none;\n  box-shadow: 1px 1px 7px 0px rgba(0, 0, 0, 0.75);\n  margin: 0 auto;\n}\n.hero .container .logo-text[data-v-6eee08a4] {\n  color: #ebdf00;\n  font-size: 370px;\n  font-family: \"Bogam Regular\";\n}\n.hero .container .logo-text .logo-letter[data-v-6eee08a4] {\n  display: inline-block;\n}\n.hero .container .logo-text .logo-letter[data-v-6eee08a4]:first-child {\n  transform: translateY(14%);\n}\n.hero .container .logo-text .logo-letter[data-v-6eee08a4]:nth-child(2) {\n  transform: translateY(-15%);\n}\n.hero .container .logo-text .logo-letter[data-v-6eee08a4]:nth-child(3) {\n  transform: translateY(-15%);\n}\n.hero .container .logo-text .logo-letter[data-v-6eee08a4]:nth-child(4) {\n  transform: translateY(-15%);\n}\n.hero .container .logo-text .logo-letter[data-v-6eee08a4]:nth-child(5) {\n  transform: translateY(-33%);\n}\n.hero .container .logo-text .logo-letter[data-v-6eee08a4]:nth-child(6) {\n  transform: translateY(-15%);\n}\n.hero .container .logo-text .logo-letter[data-v-6eee08a4]:nth-child(7) {\n  transform: translateY(-15%);\n}\n.hero .container .logo-text .logo-letter[data-v-6eee08a4]:nth-child(8) {\n  transform: translateY(5%);\n}\n.hero .container .logo-text .logo-letter[data-v-6eee08a4]:nth-child(9) {\n  transform: translateY(-15%);\n}\n.hero .hero-chess-decoration[data-v-6eee08a4] {\n  position: absolute;\n  height: 450px;\n  right: -17%;\n  top: 6%;\n}", ""]);
 
 // exports
 
@@ -3953,7 +3956,27 @@ var staticRenderFns = [
         _c("a", { staticClass: "CTA", attrs: { href: "#" } }, [
           _vm._v("Trova i ristoranti!"),
         ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "logo-text" }, [
+          _c("div", { staticClass: "logo-letter" }, [_vm._v("D")]),
+          _c("div", { staticClass: "logo-letter" }, [_vm._v("e")]),
+          _c("div", { staticClass: "logo-letter" }, [_vm._v("l")]),
+          _c("div", { staticClass: "logo-letter" }, [_vm._v("i")]),
+          _c("div", { staticClass: "logo-letter" }, [_vm._v("v")]),
+          _c("div", { staticClass: "logo-letter" }, [_vm._v("e")]),
+          _c("div", { staticClass: "logo-letter" }, [_vm._v("b")]),
+          _c("div", { staticClass: "logo-letter" }, [_vm._v("o")]),
+          _c("div", { staticClass: "logo-letter" }, [_vm._v("o")]),
+        ]),
       ]),
+      _vm._v(" "),
+      _c("img", {
+        staticClass: "hero-chess-decoration",
+        attrs: {
+          src: __webpack_require__(/*! ../../../images/chessboard.png */ "./resources/images/chessboard.png"),
+          alt: "red chess decoration",
+        },
+      }),
     ])
   },
 ]
@@ -19431,6 +19454,17 @@ module.exports = "/images/cart_icon_white.png?87da1d7e9f234c9408ac730c9f615c5c";
 
 /***/ }),
 
+/***/ "./resources/images/chessboard.png":
+/*!*****************************************!*\
+  !*** ./resources/images/chessboard.png ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/chessboard.png?f31a0a9ba8ec2cfcdd2c3373a753bdfc";
+
+/***/ }),
+
 /***/ "./resources/images/facebook.svg":
 /*!***************************************!*\
   !*** ./resources/images/facebook.svg ***!
@@ -19438,7 +19472,7 @@ module.exports = "/images/cart_icon_white.png?87da1d7e9f234c9408ac730c9f615c5c";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/facebook.svg?c509a4c46008514b5a5084d2596c99e4";
+module.exports = "/images/facebook.svg?20caac44e56a1dea6bff143991397f98";
 
 /***/ }),
 
@@ -19471,7 +19505,7 @@ module.exports = "/images/hero_bg.jpg?a18a8bf12f745674fa998ee1814d48f4";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/instagram.svg?453685fbdc2f9491f26dd5ded0863c10";
+module.exports = "/images/instagram.svg?c6a0f2413df9e03f4f22152a39df5c58";
 
 /***/ }),
 
@@ -19504,7 +19538,7 @@ module.exports = "/images/phone_test.png?cd42ca35d2d019d563fbc953802d514b";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/tweet.svg?a57ea219084451288a1f02aabba16f1b";
+module.exports = "/images/tweet.svg?bfb3b141dbbf46194e42c3c6cccde733";
 
 /***/ }),
 
@@ -20149,7 +20183,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Maria\Desktop\Boolean\Deliveboo\Deliveboo\resources\js\guest\front.js */"./resources/js/guest/front.js");
+module.exports = __webpack_require__(/*! /opt/lampp/htdocs/p/Deliveboo/resources/js/guest/front.js */"./resources/js/guest/front.js");
 
 
 /***/ })

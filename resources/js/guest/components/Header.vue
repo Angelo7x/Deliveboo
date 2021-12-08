@@ -45,7 +45,7 @@ header {
             @include align-center-between;
             .nav-left {
                 .logo {
-                    width: 150px;
+                    width: 200px;
                     img {
                         width: 100%;
                     }
@@ -65,7 +65,7 @@ header {
                         a.cart {
                             @include btn($btnColor: $lightColor, $btnBG: transparent);
                             font-size: 16px;
-                            padding: 10px;
+                            padding: 12px;
                             img {
                                 width: 30px;
                                 margin-left: 8px;

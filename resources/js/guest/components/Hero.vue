@@ -1,10 +1,13 @@
 <template>
-  <section class="hero">
-      <div class="container">
-          <a class="CTA" href="#">Trova i ristoranti!</a>
-      </div>
-
-  </section>
+    <section class="hero">
+        <div class="container">
+            <a class="CTA" href="#">Trova i ristoranti!</a>
+            <div class="logo-text">
+                <div class="logo-letter">D</div><div class="logo-letter">e</div><div class="logo-letter">l</div><div class="logo-letter">i</div><div class="logo-letter">v</div><div class="logo-letter">e</div><div class="logo-letter">b</div><div class="logo-letter">o</div><div class="logo-letter">o</div>
+            </div>
+        </div>
+        <img src="../../../images/chessboard.png" alt="red chess decoration" class="hero-chess-decoration">
+    </section>
 </template>
 
 <script>
@@ -17,21 +20,68 @@ export default {
 <style scoped lang="scss">
 @import '../../../sass/guest/front.scss';
 .hero{
-    height: 600px;
+    height: 780px;
     background-image: url("../../../images/hero_bg.jpg");
-    background-size: cover;
-    padding-top:150px;
+    background-size: 110%;
+    padding-top: 180px;
     .container{
-        @include align-justify-center;
-    }
-      .CTA{
-           @include btn($btnColor: $secondColor, $btnBG: $lightColor);
-            font-size: 16px;
-            padding: 10px;
+        text-align: center;
+        height: 100%;
+        @include justify-between-column;
+        .CTA {
+            @include btn($btnColor: $secondColor, $btnBG: $lightColor);
+            padding: 10px 20px;
             display:inline-block;
-            font-weight:600;
-            font-size:20px;
-      }
+            font-weight: 600;
+            font-size: 30px;
+            border: none;
+            -webkit-box-shadow: 1px 1px 7px 0px rgba(0,0,0,0.75);
+            -moz-box-shadow: 1px 1px 7px 0px rgba(0,0,0,0.75);
+            box-shadow: 1px 1px 7px 0px rgba(0,0,0,0.75);
+            margin: 0 auto;
+        }
+        .logo-text {
+            color: $mainColor;
+            font-size: 370px;
+            font-family: 'Bogam Regular';
+            .logo-letter {
+                display: inline-block;
+            }
+            .logo-letter:first-child {
+                transform: translateY(14%);
+            }
+            .logo-letter:nth-child(2) {
+                transform: translateY(-15%);
+            }
+            .logo-letter:nth-child(3) {
+                transform: translateY(-15%);
+            }
+            .logo-letter:nth-child(4) {
+                transform: translateY(-15%);
+            }
+            .logo-letter:nth-child(5) {
+                transform: translateY(-33%);
+            }
+            .logo-letter:nth-child(6) {
+                transform: translateY(-15%);
+            }
+            .logo-letter:nth-child(7) {
+                transform: translateY(-15%);
+            }
+            .logo-letter:nth-child(8) {
+                transform: translateY(5%);
+            }
+            .logo-letter:nth-child(9) {
+                transform: translateY(-15%);
+            }
+        }
+    }
+    .hero-chess-decoration {
+        position: absolute;
+        height: 450px;
+        right: -17%;
+        top: 6%;
+    }
 }
 
 </style>

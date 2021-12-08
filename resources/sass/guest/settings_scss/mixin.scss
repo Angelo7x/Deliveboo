@@ -24,13 +24,17 @@
 }
 
 // flex properties
-
-
-@mixin space-between {
+// spaced X
+@mixin justify-between {
     display: flex;
     justify-content: space-between;
 }
-
+// spaced Y
+@mixin justify-between-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 //centered X
 @mixin align-center {
     display: flex;
@@ -41,12 +45,12 @@
     @include align-center;
     justify-content: center;
 }
-
-//
+//centered Y + spaced X
 @mixin align-center-between {
     @include align-center;
     justify-content: space-between;
 }
+// 
 
 // lists
 @mixin list-style-none {
