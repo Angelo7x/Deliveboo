@@ -1,6 +1,7 @@
 <template>
     <div>
         <Header/>
+         <Hero/>
         <main>
             <router-view></router-view>
         </main>
@@ -9,11 +10,13 @@
 
 <script>
 import Header from './components/Header.vue';
+import Hero  from './components/Hero.vue';
 
 export default {
 	name: 'App',
 	components: {
         Header,
+        Hero
 	}	    
 }
 </script>
@@ -32,6 +35,11 @@ body {
 
 a {
     text-decoration: none;
+}
+
+@font-face {
+  font-family: 'Bogam Regular';
+  src: local("Bogam Regular"), url('../../fonts/Bogam.ttf');
 }
 
 </style>

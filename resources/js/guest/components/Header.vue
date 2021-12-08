@@ -32,9 +32,13 @@ export default {
 @import '../../../sass/guest/front.scss';
 
 header {
+    width:100%;
     height: 100px;
+    position: fixed;
+    top: 0;
+    left:0;
+    z-index: 1;
     @include align-center;
-    background-color: aquamarine;
     .container {
         @include container-90;
         nav {
