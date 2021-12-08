@@ -45,7 +45,8 @@ header {
             @include align-center-between;
             .nav-left {
                 .logo {
-                    width: 200px;
+                    width: 220px;
+                    transform: translateY(6%);
                     img {
                         width: 100%;
                     }
