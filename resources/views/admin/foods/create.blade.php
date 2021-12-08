@@ -63,7 +63,7 @@
                       {{-- Prezzo --}}
                       <div class="form-group">
                         <label for="price">Inserisci il prezzo</label>
-                        <input type="text" class="form-control @error('price') is-invalid @enderror" name="price" id="price" placeholder="Inserisci il prezzo" value="{{old("price")}}">
+                        <input lang="it" type="number" class="form-control @error('price') is-invalid @enderror" name="price" id="price" placeholder="Inserisci il prezzo" value="{{old("price")}}">
                         @error('price')
                           <div class="alert alert-danger">{{ $message }}</div>
                         @enderror

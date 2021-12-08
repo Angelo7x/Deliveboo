@@ -58,7 +58,8 @@ class RegisterController extends Controller
             'business_name' => ['required', 'string', 'max:30'],
             'business_address' => ['required', 'string', 'max:100'],
             'business_logo' => [ 'mimes:jpeg,png,jpg,gif,svg',' max:1000', 'nullable'],
-            'business_cover' => ['mimes:jpeg,png,jpg,gif,svg',' max:1000', 'nullable']
+            'business_cover' => ['mimes:jpeg,png,jpg,gif,svg',' max:1000', 'nullable'],
+            'cuisines' => ['required']
         ]);
     }
 
@@ -79,6 +80,7 @@ class RegisterController extends Controller
         if(array_key_exists('business_cover', $data)) {
             $business_cover = Storage::put('image_register', $data['business_cover']);
         }
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -88,7 +90,7 @@ class RegisterController extends Controller
             'slug' => Str::of($data['business_name'])->slug('-'),
             'business_logo' => $business_logo,
             'business_cover' => $business_cover,
-            'business_address' => $data['business_address'],
+            'business_address' => $data['business_address']
         ]);
     }
 }

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Food;
 use Illuminate\Support\Facades\Storage;
+use \NumberFormatter;
 
 class FoodController extends Controller
 {
@@ -17,7 +18,7 @@ class FoodController extends Controller
         'image' => 'mimes:jpeg,png,jpg,gif,svg | max:1000 ',
         'description' => 'string |nullable | max:255',
         'allergens' => 'string |nullable | max:100',
-        'price' => 'required|numeric|between: 0, 999.99',
+        'price' => 'required|regex:/^[0-9]{1,3}(.[0-9]{3})*(\,[0-9]+)*$/',
         'weight' => 'string|numeric| nullable|max:999',
         'visible' => 'required|boolean'
     ];
@@ -59,7 +60,7 @@ class FoodController extends Controller
             $image_path = Storage::put('foods', $form_data['image']);
             $form_data['image'] = $image_path;
         }
-        
+        // $form_data['price'] = $this->formatPriceIt($form_data['price']);
         $newFood = new Food ();
         $newFood->fill($form_data);
         
@@ -149,5 +150,14 @@ class FoodController extends Controller
 
         return redirect()->route("admin.home");
         // ->with('success',"Il post {$post->id} è stato eliminato") da aggiungere 
+    }
+
+    // private function formatPriceIt($numb) {
+    //     $fmt = numfmt_create( 'it_IT', NumberFormatter::CURRENCY );
+    //     return $fmt->formatCurrency($numb, "EUR")."\n";
+    // }
+
+    private function formatPriceIt($numb) {
+        return number_format($numb,2,",",".");
     }
 }

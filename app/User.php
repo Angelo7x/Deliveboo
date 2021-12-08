@@ -39,9 +39,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function cousines ()
+    public function cuisines ()
     {
-        return $this -> belongsToMany("App\Cousine");
+        return $this -> belongsToMany("App\Cuisine");
     }
 
     public function orders ()

@@ -146,6 +146,9 @@
                                         <label class="custom-control-label" for="{{$cuisine["id"]}}">{{$cuisine["name"]}}</label>
                                     </div>
                                     @endforeach
+                                    @error('cuisines')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                         </div>
                             
