@@ -30,9 +30,9 @@ export default {
         @include justify-between-column;
         .CTA {
             @include btn($btnColor: $secondColor, $btnBG: $lightColor);
-            padding: 10px 20px;
+            padding: 13px 28px;
             display:inline-block;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 30px;
             border: none;
             -webkit-box-shadow: 1px 1px 7px 0px rgba(0,0,0,0.75);
@@ -42,13 +42,13 @@ export default {
         }
         .logo-text {
             color: $mainColor;
-            font-size: 370px;
+            font-size: 375px;
             font-family: 'Bogam Regular';
             .logo-letter {
                 display: inline-block;
             }
             .logo-letter:first-child {
-                transform: translateY(14%);
+                transform: translateY(15%);
             }
             .logo-letter:nth-child(2) {
                 transform: translateY(-15%);
@@ -78,9 +78,9 @@ export default {
     }
     .hero-chess-decoration {
         position: absolute;
-        height: 450px;
+        height: 440px;
         right: -17%;
-        top: 6%;
+        top: 7%;
     }
 }
 
