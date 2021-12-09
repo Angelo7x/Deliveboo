@@ -1,8 +1,9 @@
 <template>
     <div>
         <Header/>
-         <Hero/>
-         <FloatingSlogan/>
+        <Hero/>
+        <FloatingSlogan/>
+        <CarouselCuisines/>
         <AppDeliveboo/>
         <main>
             <router-view></router-view>
@@ -27,6 +28,7 @@ export default {
         FloatingSlogan,
         Footer,
         AppDeliveboo,
+        CarouselCuisines
 	},
 }
 </script>
