@@ -33,6 +33,12 @@
     flex-direction: column;
     justify-content: space-between;
 }
+//centered Y column
+@mixin justify-center-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 //centered X
 @mixin align-center {
     display: flex;
@@ -61,6 +67,14 @@
     li {
         display: inline-block;
     }
+}
+
+// positions
+@mixin center-absolute {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 //spaces

@@ -30,6 +30,11 @@ section.appDeliveboo{
     }
     .caption {
         position: absolute;
+        font-size: 36px;
+        width: 485px;
+        right: 20%;
+        top: 43%;
+        color: $secondColor;
     }
 }
 </style>
