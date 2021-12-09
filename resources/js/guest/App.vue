@@ -4,6 +4,7 @@
          <Hero/>
          <FloatingSlogan/>
         <AppDeliveboo/>
+         <CarouselCuisines/>
         <main>
             <router-view></router-view>
         </main>
@@ -18,15 +19,18 @@ import Footer  from './components/Footer.vue';
 import AppDeliveboo  from './components/AppDeliveboo.vue';
 import CarouselCuisines  from './components/CarouselCuisines.vue';
 import FloatingSlogan from './components/FloatingSlogan.vue';
-
+import VueHorizontal from 'vue-horizontal';
 export default {
 	name: 'App',
-	components: {
+    	components: {
         Header,
         Hero,
         FloatingSlogan,
         Footer,
         AppDeliveboo,
+        VueHorizontal,
+        CarouselCuisines
+
 	},
 }
 </script>
