@@ -20,9 +20,9 @@ export default {
 <style scoped lang="scss">
 @import '../../../sass/guest/front.scss';
 .hero{
-    height: 780px;
+    height: 1300px;
     background-image: url("../../../images/hero_bg.jpg");
-    background-size: 110%;
+    background-size: 128%;
     padding-top: 180px;
     .container{
         text-align: center;
@@ -44,43 +44,44 @@ export default {
             color: $mainColor;
             font-size: 375px;
             font-family: 'Bogam Regular';
+            transform: scale(1, 2);
             .logo-letter {
                 display: inline-block;
             }
             .logo-letter:first-child {
-                transform: translateY(15%);
+                transform: translateY(-6%);
             }
             .logo-letter:nth-child(2) {
-                transform: translateY(-15%);
+                transform: translateY(-36%);
             }
             .logo-letter:nth-child(3) {
-                transform: translateY(-15%);
+                transform: translateY(-36%);
             }
             .logo-letter:nth-child(4) {
-                transform: translateY(-15%);
+                transform: translateY(-36%);
             }
             .logo-letter:nth-child(5) {
-                transform: translateY(-33%);
+                transform: translateY(-50%);
             }
             .logo-letter:nth-child(6) {
-                transform: translateY(-15%);
+                transform: translate(-2%, -36%);
             }
             .logo-letter:nth-child(7) {
-                transform: translateY(-15%);
+                transform: translateY(-36%);
             }
             .logo-letter:nth-child(8) {
-                transform: translateY(5%);
+                transform: translateY(-13%);
             }
             .logo-letter:nth-child(9) {
-                transform: translateY(-15%);
+                transform: translateY(-36%);
             }
         }
     }
     .hero-chess-decoration {
         position: absolute;
-        height: 440px;
-        right: -17%;
-        top: 7%;
+        height: 554px;
+        right: -18%;
+        top: 18%;
     }
 }
 
