@@ -78,6 +78,6 @@
             @yield('content')
         </main>
     </div>
-    {{-- <script type="text/javascript" src="{{  asset('js/admin.js')  }}"></script> --}}
+    <script type="text/javascript" src="{{  asset('js/custom.js')  }}"></script>
 </body>
 </html>

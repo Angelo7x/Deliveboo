@@ -8,14 +8,14 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data" name="registerForm" onsubmit="return validateRegister()">
                         @csrf
-
+                        {{-- name --}}
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" autocomplete="name" autofocus/>
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -23,8 +23,9 @@
                                     </span>
                                 @enderror
                             </div>
+                            <div id="err_name" class="message col-md-8 ml-auto"></div>
                         </div>
-
+                        {{-- email --}}
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
                             
@@ -37,8 +38,10 @@
                                 </span>
                                 @enderror
                             </div>
+                            <div id="err_email" class="message col-md-8"></div>
+
                         </div>
-                        
+                        {{-- password --}}
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
@@ -51,16 +54,17 @@
                                     </span>
                                 @enderror
                             </div>
+                            <div id="err_password" class="message col-md-8 ml-auto"></div>
                         </div>
-
                         <div class="form-group row">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
+                            
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
-
+                        
+                        {{-- vat_numb --}}
                         <div class="form-group row">
                             <label for="vat_numb" class="col-md-4 col-form-label text-md-right">{{ __('Partita Iva') }}</label>
                             
@@ -73,8 +77,10 @@
                                     </span>
                                 @enderror
                             </div>
-                        </div>
+                            <div id="err_vat_numb" class="message col-md-8 ml-auto"></div>
 
+                        </div>
+                        {{-- business_name --}}
                         <div class="form-group row">
                             <label for="business_name" class="col-md-4 col-form-label text-md-right">{{ __('Nome attività') }}</label>
 
@@ -87,8 +93,9 @@
                                     </span>
                                 @enderror
                             </div>
+                            <div id="err_business_name" class="message col-md-8 ml-auto"></div>
                         </div>
-
+                        {{-- business_address --}}
                         <div class="form-group row">
                             <label for="business_address" class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo attività') }}</label>
 
@@ -101,8 +108,10 @@
                                     </span>
                                 @enderror
                             </div>
-                        </div>
+                            <div id="err_business_address" class="message col-md-8 ml-auto"></div>
 
+                        </div>
+                        {{-- business_logo --}}
                         <div class="form-group row">
                             <label for="business_logo" class="col-md-4 col-form-label text-md-right">{{ __('Logo attività') }}</label>
                             <div class="col-md-6">
@@ -118,7 +127,7 @@
                                 </div>
                             </div>
                         </div>
-
+                        {{-- business_cover --}}
                         <div class="form-group row">
                             <label for="business_cover" class="col-md-4 col-form-label text-md-right">{{ __('Cover attività') }}</label>
                             <div class="col-md-6">
@@ -134,7 +143,7 @@
                                 </div>
                             </div>
                         </div>
-
+                        {{-- cuisines --}}
                         <div class="form-group row">
                             <p class="col-md-4 text-md-right">
                                 Cucine
@@ -151,7 +160,7 @@
                                     @enderror
                                 </div>
                         </div>
-                            
+                        {{-- submit --}}
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
