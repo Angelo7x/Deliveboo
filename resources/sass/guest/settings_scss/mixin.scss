@@ -3,17 +3,15 @@
     width: 90%;
     margin: 0 auto;
 }
-
-
 @mixin container-75 {
     width: 75%;
     margin: 0 auto;
 }
-
 @mixin container-50 {
     width: 50%;
     margin: 0 auto;
 }
+
 // buttons style
 @mixin btn($btnColor, $btnBG) {
     border: 1px solid $btnColor;
@@ -50,7 +48,6 @@
     @include align-center;
     justify-content: space-between;
 }
-// 
 
 // lists
 @mixin list-style-none {
@@ -58,7 +55,6 @@
     margin: 0;
     padding: 0;
 }
-
 @mixin inline-block-list {
     @include list-style-none;
     display: inline-block;

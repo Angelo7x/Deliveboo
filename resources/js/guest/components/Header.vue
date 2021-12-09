@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header :class="{change_color: scrollPosition > 50}">
       <div class="container">
         <nav>
             <div class="nav-left">
@@ -25,6 +25,19 @@
 <script>
 export default {
     name: 'Header',
+    data() {
+        return {
+            scrollPosition: null,
+        };
+    },
+    methods: {
+        updateScroll() {
+        this.scrollPosition = window.scrollY
+        }
+    },
+    mounted() {
+        window.addEventListener('scroll', this.updateScroll);
+    }
 }
 </script>
 
@@ -78,6 +91,9 @@ header {
         }
     }
 }
+.change_color {
+       background-color: $footerDarkColor;
+    }
 
 
 </style>
