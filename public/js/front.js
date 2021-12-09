@@ -1929,6 +1929,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -2350,7 +2351,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;900&display=swap);", ""]);
 
 // module
-exports.push([module.i, "@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n.floatingSlogan[data-v-b8dc0d90] {\n  height: 800px;\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n}\n.floatingSlogan .slogan[data-v-b8dc0d90] {\n  font-size: 109px;\n  text-transform: uppercase;\n}\n.floatingSlogan .slogan.stroke[data-v-b8dc0d90] {\n  text-shadow: 2px 0 0 #e80800, -2px 0 0 #e80800, 0 2px 0 #e80800, 0 -2px 0 #e80800, 2px 2px #e80800, -2px -2px 0 #e80800, 2px -2px 0 #e80800, -2px 2px 0 #e80800;\n  color: white;\n  -webkit-animation: floatTextRight-data-v-b8dc0d90 12s infinite;\n          animation: floatTextRight-data-v-b8dc0d90 12s infinite;\n  -webkit-animation-timing-function: linear;\n          animation-timing-function: linear;\n}\n@-webkit-keyframes floatTextRight-data-v-b8dc0d90 {\nfrom {\n    transform: translateX(-100%);\n}\nto {\n    transform: translateX(100%);\n}\n}\n@keyframes floatTextRight-data-v-b8dc0d90 {\nfrom {\n    transform: translateX(-100%);\n}\nto {\n    transform: translateX(100%);\n}\n}\n.floatingSlogan .slogan.full[data-v-b8dc0d90] {\n  color: #e80800;\n  -webkit-animation: floatTextLeft-data-v-b8dc0d90 12s infinite;\n          animation: floatTextLeft-data-v-b8dc0d90 12s infinite;\n  -webkit-animation-timing-function: linear;\n          animation-timing-function: linear;\n}\n@-webkit-keyframes floatTextLeft-data-v-b8dc0d90 {\nfrom {\n    transform: translateX(100%);\n}\nto {\n    transform: translateX(-100%);\n}\n}\n@keyframes floatTextLeft-data-v-b8dc0d90 {\nfrom {\n    transform: translateX(100%);\n}\nto {\n    transform: translateX(-100%);\n}\n}\n.floatingSlogan img[data-v-b8dc0d90] {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  z-index: -1;\n  height: 460px;\n}", ""]);
+exports.push([module.i, "@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n.floatingSlogan[data-v-b8dc0d90] {\n  height: 1000px;\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n}\n.floatingSlogan .slogan[data-v-b8dc0d90] {\n  font-size: 109px;\n  text-transform: uppercase;\n}\n.floatingSlogan .slogan.stroke[data-v-b8dc0d90] {\n  text-shadow: 2px 0 0 #e80800, -2px 0 0 #e80800, 0 2px 0 #e80800, 0 -2px 0 #e80800, 2px 2px #e80800, -2px -2px 0 #e80800, 2px -2px 0 #e80800, -2px 2px 0 #e80800;\n  color: white;\n  -webkit-animation: floatTextRight-data-v-b8dc0d90 12s infinite;\n          animation: floatTextRight-data-v-b8dc0d90 12s infinite;\n  -webkit-animation-timing-function: linear;\n          animation-timing-function: linear;\n}\n@-webkit-keyframes floatTextRight-data-v-b8dc0d90 {\nfrom {\n    transform: translateX(-100%);\n}\nto {\n    transform: translateX(100%);\n}\n}\n@keyframes floatTextRight-data-v-b8dc0d90 {\nfrom {\n    transform: translateX(-100%);\n}\nto {\n    transform: translateX(100%);\n}\n}\n.floatingSlogan .slogan.full[data-v-b8dc0d90] {\n  color: #e80800;\n  -webkit-animation: floatTextLeft-data-v-b8dc0d90 12s infinite;\n          animation: floatTextLeft-data-v-b8dc0d90 12s infinite;\n  -webkit-animation-timing-function: linear;\n          animation-timing-function: linear;\n}\n@-webkit-keyframes floatTextLeft-data-v-b8dc0d90 {\nfrom {\n    transform: translateX(100%);\n}\nto {\n    transform: translateX(-100%);\n}\n}\n@keyframes floatTextLeft-data-v-b8dc0d90 {\nfrom {\n    transform: translateX(100%);\n}\nto {\n    transform: translateX(-100%);\n}\n}\n.floatingSlogan img[data-v-b8dc0d90] {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  z-index: -1;\n  height: 460px;\n}", ""]);
 
 // exports
 
@@ -4245,6 +4246,8 @@ var render = function () {
       _c("Hero"),
       _vm._v(" "),
       _c("FloatingSlogan"),
+      _vm._v(" "),
+      _c("CarouselCuisines"),
       _vm._v(" "),
       _c("AppDeliveboo"),
       _vm._v(" "),

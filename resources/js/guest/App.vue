@@ -1,8 +1,9 @@
 <template>
     <div>
         <Header/>
-         <Hero/>
-         <FloatingSlogan/>
+        <Hero/>
+        <FloatingSlogan/>
+        <CarouselCuisines/>
         <AppDeliveboo/>
          <CarouselCuisines/>
         <main>

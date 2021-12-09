@@ -17,7 +17,7 @@ export default {
 @import "../../../sass/guest/front.scss";
 
 .floatingSlogan {
-    height: 800px;
+    height: 1000px;
     position: relative;
     @include justify-center-column;
     .slogan {
