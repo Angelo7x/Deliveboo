@@ -13,7 +13,6 @@
 <script>
 export default {
     name: 'Hero',
-
 }
 </script>
 
@@ -53,6 +52,18 @@ export default {
             }
             .logo-letter:nth-child(2) {
                 transform: translateY(-36%);
+                position: relative;
+                z-index: 1;  
+            }
+            .logo-letter:nth-child(2)::after {
+                content: url('../../../images/fame_sticker.svg');
+                display: block;
+                position:absolute;
+                width: 173px;
+                transform: scale(2, 1);
+                top: -132px;
+                left: -16px;
+                z-index: -1;
             }
             .logo-letter:nth-child(3) {
                 transform: translateY(-36%);
