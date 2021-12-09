@@ -3,6 +3,7 @@
         <Header/>
          <Hero/>
         <AppDeliveboo/>
+        <CarouselCuisines/>
         <main>
             <router-view></router-view>
         </main>
@@ -15,6 +16,7 @@ import Header from './components/Header.vue';
 import Hero  from './components/Hero.vue';
 import Footer  from './components/Footer.vue';
 import AppDeliveboo  from './components/AppDeliveboo.vue';
+import CarouselCuisines  from './components/CarouselCuisines.vue';
 
 export default {
 	name: 'App',
@@ -23,6 +25,7 @@ export default {
         Hero,
         Footer,
         AppDeliveboo,
+        CarouselCuisines,
 	}	    
 }
 </script>
