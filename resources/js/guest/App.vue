@@ -4,7 +4,6 @@
          <Hero/>
          <FloatingSlogan/>
         <AppDeliveboo/>
-        <CarouselCuisines/>
         <main>
             <router-view></router-view>
         </main>
@@ -28,8 +27,7 @@ export default {
         FloatingSlogan,
         Footer,
         AppDeliveboo,
-        CarouselCuisines,
-	}	    
+	},
 }
 </script>
 

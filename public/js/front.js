@@ -1927,7 +1927,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 
@@ -1941,8 +1940,7 @@ __webpack_require__.r(__webpack_exports__);
     Hero: _components_Hero_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
     FloatingSlogan: _components_FloatingSlogan_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
     Footer: _components_Footer_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
-    AppDeliveboo: _components_AppDeliveboo_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
-    CarouselCuisines: _components_CarouselCuisines_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
+    AppDeliveboo: _components_AppDeliveboo_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
   }
 });
 
@@ -3694,8 +3692,6 @@ var render = function () {
       _c("FloatingSlogan"),
       _vm._v(" "),
       _c("AppDeliveboo"),
-      _vm._v(" "),
-      _c("CarouselCuisines"),
       _vm._v(" "),
       _c("main", [_c("router-view")], 1),
       _vm._v(" "),
