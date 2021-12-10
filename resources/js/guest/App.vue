@@ -2,6 +2,7 @@
     <div>
         <Header/>
         <Hero/>
+        <Slider/>
         <FloatingSlogan/>
         <AppDeliveboo/>
         <main>
@@ -17,6 +18,8 @@ import Hero  from './components/Hero.vue';
 import Footer  from './components/Footer.vue';
 import AppDeliveboo  from './components/AppDeliveboo.vue';
 import FloatingSlogan from './components/FloatingSlogan.vue';
+import Slider from './components/Slider.vue';
+
 import VueHorizontal from 'vue-horizontal';
 export default {
 	name: 'App',
@@ -27,10 +30,7 @@ export default {
         Footer,
         AppDeliveboo,
         VueHorizontal,
-<<<<<<< HEAD
-=======
-        CarouselCuisines
->>>>>>> fd37fc9ac73bf2d10f13232e5e1e19d8ff6e8013
+        Slider
 	},
 }
 </script>
