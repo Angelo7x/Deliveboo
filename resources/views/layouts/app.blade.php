@@ -51,6 +51,9 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{-- esempio immagine utente --}}
+                                    <img src="{{  asset('storage/' .  Auth::user()->business_logo)}}" alt="" height="50px">
+                                    {{-- /esempio immagine utente --}}
                                     {{ Auth::user()->name }}
                                 </a>
 
@@ -71,10 +74,10 @@
                 </div>
             </div>
         </nav>
-
         <main class="py-4">
             @yield('content')
         </main>
     </div>
+    <script type="text/javascript" src="{{  asset('js/custom.js')  }}"></script>
 </body>
 </html>

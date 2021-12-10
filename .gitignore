@@ -4,7 +4,10 @@
 /storage/*.key
 /vendor
 /public/css
-/public/js
+<<<<<<< HEAD
+=======
+# /public/js
+>>>>>>> 6f67c3b58a4ac4452cf1e84a72734d5472250409
 .env
 .env.backup
 .phpunit.result.cache
