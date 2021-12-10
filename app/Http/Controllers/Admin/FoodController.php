@@ -139,25 +139,18 @@ class FoodController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Food $food)
+    public function destroy(Request $request)
     {
+        $food = Food::find($request->id);
+        // if( $food->user_id != Auth::id() ) {
+        //     abort("403");
+        // }
 
-        if( $food->user_id != Auth::id() ) {
-            abort("403");
+        if (!is_null($food)) {
+            $food->delete();
         }
-
-        $food->delete();
 
         return redirect()->route("admin.home");
         // ->with('success',"Il post {$post->id} è stato eliminato") da aggiungere 
-    }
-
-    // private function formatPriceIt($numb) {
-    //     $fmt = numfmt_create( 'it_IT', NumberFormatter::CURRENCY );
-    //     return $fmt->formatCurrency($numb, "EUR")."\n";
-    // }
-
-    private function formatPriceIt($numb) {
-        return number_format($numb,2,",",".");
     }
 }
