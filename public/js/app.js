@@ -37261,6 +37261,29 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./resources/js/admin.js":
+/*!*******************************!*\
+  !*** ./resources/js/admin.js ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// mostra l'immagine caricata
+var uploadedImage = function uploadedImage(idInput, idImage) {
+  document.getElementById(idInput).addEventListener('change', function () {
+    var src = URL.createObjectURL(this.files[0]);
+    document.getElementById(idImage).src = src;
+  });
+}; // call della funzione uploadedImage
+
+
+uploadedImage('image', 'foodEditPreview');
+uploadedImage('image', 'foodCreatePreview');
+uploadedImage('image', 'businessLogo');
+uploadedImage('image1', 'businessCover');
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -37274,6 +37297,8 @@ module.exports = function(module) {
  * building robust, powerful web applications using Vue and Laravel.
  */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+
+__webpack_require__(/*! ./admin */ "./resources/js/admin.js");
 
 /***/ }),
 
