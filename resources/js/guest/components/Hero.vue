@@ -19,7 +19,7 @@ export default {
 <style scoped lang="scss">
 @import '../../../sass/guest/front.scss';
 .hero{
-    height: 1300px;
+    height: 900px;
     background-image: url("../../../images/hero_bg.jpg");
     background-size: 128%;
     padding-top: 180px;
@@ -41,7 +41,7 @@ export default {
         }
         .logo-text {
             color: $mainColor;
-            font-size: 375px;
+            font-size: 330px;
             font-family: 'Bogam Regular';
             transform: scale(1, 2);
             .logo-letter {
@@ -59,10 +59,10 @@ export default {
                 content: url('../../../images/fame_sticker.svg');
                 display: block;
                 position:absolute;
-                width: 173px;
+                width: 138px;
                 transform: scale(2, 1);
-                top: -132px;
-                left: -16px;
+                top: -124px;
+                left: 2px;
                 z-index: -1;
             }
             .logo-letter:nth-child(3) {
@@ -90,9 +90,9 @@ export default {
     }
     .hero-chess-decoration {
         position: absolute;
-        height: 554px;
+        height: 460px;
         right: -18%;
-        top: 18%;
+        top: 5%;
     }
 }
 
