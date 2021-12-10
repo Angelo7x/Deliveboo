@@ -1,10 +1,6 @@
 <template>
     <div>
         <Header/>
-        <Hero/>
-        <Slider/>
-        <FloatingSlogan/>
-        <AppDeliveboo/>
         <main>
             <router-view></router-view>
         </main>
@@ -14,23 +10,13 @@
 
 <script>
 import Header from './components/Header.vue';
-import Hero  from './components/Hero.vue';
 import Footer  from './components/Footer.vue';
-import AppDeliveboo  from './components/AppDeliveboo.vue';
-import FloatingSlogan from './components/FloatingSlogan.vue';
-import Slider from './components/Slider.vue';
 
-import VueHorizontal from 'vue-horizontal';
 export default {
 	name: 'App',
     	components: {
         Header,
-        Hero,
-        FloatingSlogan,
         Footer,
-        AppDeliveboo,
-        VueHorizontal,
-        Slider
 	},
 }
 </script>

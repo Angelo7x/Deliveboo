@@ -34,10 +34,10 @@ export default {
     }
     @keyframes floatTextRight {
         from {
-            transform: translateX(-100%);
+            transform: translateX(100%);
         }
         to {
-            transform: translateX(100%);
+            transform: translateX(-100%);
         }
     }
     .slogan.full {
@@ -47,10 +47,10 @@ export default {
     }
     @keyframes floatTextLeft {
         from {
-            transform: translateX(100%);
+            transform: translateX(-100%);
         }
         to {
-            transform: translateX(-100%);
+            transform: translateX(100%);
         }
     }
     img {

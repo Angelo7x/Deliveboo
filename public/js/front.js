@@ -1909,12 +1909,7 @@ module.exports = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Header_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/Header.vue */ "./resources/js/guest/components/Header.vue");
-/* harmony import */ var _components_Hero_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/Hero.vue */ "./resources/js/guest/components/Hero.vue");
-/* harmony import */ var _components_Footer_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Footer.vue */ "./resources/js/guest/components/Footer.vue");
-/* harmony import */ var _components_AppDeliveboo_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/AppDeliveboo.vue */ "./resources/js/guest/components/AppDeliveboo.vue");
-/* harmony import */ var _components_FloatingSlogan_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/FloatingSlogan.vue */ "./resources/js/guest/components/FloatingSlogan.vue");
-/* harmony import */ var _components_Slider_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/Slider.vue */ "./resources/js/guest/components/Slider.vue");
-/* harmony import */ var vue_horizontal__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-horizontal */ "./node_modules/vue-horizontal/dist/vue-horizontal.esm.js");
+/* harmony import */ var _components_Footer_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/Footer.vue */ "./resources/js/guest/components/Footer.vue");
 //
 //
 //
@@ -1925,27 +1920,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-
-
-
-
-
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'App',
   components: {
     Header: _components_Header_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    Hero: _components_Hero_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    FloatingSlogan: _components_FloatingSlogan_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
-    Footer: _components_Footer_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
-    AppDeliveboo: _components_AppDeliveboo_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
-    VueHorizontal: vue_horizontal__WEBPACK_IMPORTED_MODULE_6__["default"],
-    Slider: _components_Slider_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
+    Footer: _components_Footer_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   }
 });
 
@@ -2270,12 +2251,31 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_Hero_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/Hero.vue */ "./resources/js/guest/components/Hero.vue");
+/* harmony import */ var _components_AppDeliveboo_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/AppDeliveboo.vue */ "./resources/js/guest/components/AppDeliveboo.vue");
+/* harmony import */ var _components_FloatingSlogan_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/FloatingSlogan.vue */ "./resources/js/guest/components/FloatingSlogan.vue");
+/* harmony import */ var _components_Slider_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Slider.vue */ "./resources/js/guest/components/Slider.vue");
 //
 //
 //
 //
+//
+//
+//
+//
+//
+
+
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Home'
+  name: 'Home',
+  components: {
+    Hero: _components_Hero_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+    FloatingSlogan: _components_FloatingSlogan_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    AppDeliveboo: _components_AppDeliveboo_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    Slider: _components_Slider_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+  }
 });
 
 /***/ }),
@@ -2351,7 +2351,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;900&display=swap);", ""]);
 
 // module
-exports.push([module.i, "@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n.floatingSlogan[data-v-b8dc0d90] {\n  height: 1000px;\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n}\n.floatingSlogan .slogan[data-v-b8dc0d90] {\n  font-size: 109px;\n  text-transform: uppercase;\n}\n.floatingSlogan .slogan.stroke[data-v-b8dc0d90] {\n  text-shadow: 2px 0 0 #e80800, -2px 0 0 #e80800, 0 2px 0 #e80800, 0 -2px 0 #e80800, 2px 2px #e80800, -2px -2px 0 #e80800, 2px -2px 0 #e80800, -2px 2px 0 #e80800;\n  color: white;\n  -webkit-animation: floatTextRight-data-v-b8dc0d90 12s infinite;\n          animation: floatTextRight-data-v-b8dc0d90 12s infinite;\n  -webkit-animation-timing-function: linear;\n          animation-timing-function: linear;\n}\n@-webkit-keyframes floatTextRight-data-v-b8dc0d90 {\nfrom {\n    transform: translateX(-100%);\n}\nto {\n    transform: translateX(100%);\n}\n}\n@keyframes floatTextRight-data-v-b8dc0d90 {\nfrom {\n    transform: translateX(-100%);\n}\nto {\n    transform: translateX(100%);\n}\n}\n.floatingSlogan .slogan.full[data-v-b8dc0d90] {\n  color: #e80800;\n  -webkit-animation: floatTextLeft-data-v-b8dc0d90 12s infinite;\n          animation: floatTextLeft-data-v-b8dc0d90 12s infinite;\n  -webkit-animation-timing-function: linear;\n          animation-timing-function: linear;\n}\n@-webkit-keyframes floatTextLeft-data-v-b8dc0d90 {\nfrom {\n    transform: translateX(100%);\n}\nto {\n    transform: translateX(-100%);\n}\n}\n@keyframes floatTextLeft-data-v-b8dc0d90 {\nfrom {\n    transform: translateX(100%);\n}\nto {\n    transform: translateX(-100%);\n}\n}\n.floatingSlogan img[data-v-b8dc0d90] {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  z-index: -1;\n  height: 460px;\n}", ""]);
+exports.push([module.i, "@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n.floatingSlogan[data-v-b8dc0d90] {\n  height: 1000px;\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n}\n.floatingSlogan .slogan[data-v-b8dc0d90] {\n  font-size: 109px;\n  text-transform: uppercase;\n}\n.floatingSlogan .slogan.stroke[data-v-b8dc0d90] {\n  text-shadow: 2px 0 0 #e80800, -2px 0 0 #e80800, 0 2px 0 #e80800, 0 -2px 0 #e80800, 2px 2px #e80800, -2px -2px 0 #e80800, 2px -2px 0 #e80800, -2px 2px 0 #e80800;\n  color: white;\n  -webkit-animation: floatTextRight-data-v-b8dc0d90 12s infinite;\n          animation: floatTextRight-data-v-b8dc0d90 12s infinite;\n  -webkit-animation-timing-function: linear;\n          animation-timing-function: linear;\n}\n@-webkit-keyframes floatTextRight-data-v-b8dc0d90 {\nfrom {\n    transform: translateX(100%);\n}\nto {\n    transform: translateX(-100%);\n}\n}\n@keyframes floatTextRight-data-v-b8dc0d90 {\nfrom {\n    transform: translateX(100%);\n}\nto {\n    transform: translateX(-100%);\n}\n}\n.floatingSlogan .slogan.full[data-v-b8dc0d90] {\n  color: #e80800;\n  -webkit-animation: floatTextLeft-data-v-b8dc0d90 12s infinite;\n          animation: floatTextLeft-data-v-b8dc0d90 12s infinite;\n  -webkit-animation-timing-function: linear;\n          animation-timing-function: linear;\n}\n@-webkit-keyframes floatTextLeft-data-v-b8dc0d90 {\nfrom {\n    transform: translateX(-100%);\n}\nto {\n    transform: translateX(100%);\n}\n}\n@keyframes floatTextLeft-data-v-b8dc0d90 {\nfrom {\n    transform: translateX(-100%);\n}\nto {\n    transform: translateX(100%);\n}\n}\n.floatingSlogan img[data-v-b8dc0d90] {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  z-index: -1;\n  height: 460px;\n}", ""]);
 
 // exports
 
@@ -4293,14 +4293,6 @@ var render = function () {
     [
       _c("Header"),
       _vm._v(" "),
-      _c("Hero"),
-      _vm._v(" "),
-      _c("Slider"),
-      _vm._v(" "),
-      _c("FloatingSlogan"),
-      _vm._v(" "),
-      _c("AppDeliveboo"),
-      _vm._v(" "),
       _c("main", [_c("router-view")], 1),
       _vm._v(" "),
       _c("Footer"),
@@ -4832,7 +4824,19 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c(
+    "div",
+    [
+      _c("Hero"),
+      _vm._v(" "),
+      _c("Slider"),
+      _vm._v(" "),
+      _c("FloatingSlogan"),
+      _vm._v(" "),
+      _c("AppDeliveboo"),
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -20325,7 +20329,7 @@ module.exports = "/images/pizza.jpg?2d0e8808393ed3b84cbd683b565eca13";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/facebook.svg?c509a4c46008514b5a5084d2596c99e4";
+module.exports = "/images/facebook.svg?20caac44e56a1dea6bff143991397f98";
 
 /***/ }),
 
@@ -20336,7 +20340,7 @@ module.exports = "/images/facebook.svg?c509a4c46008514b5a5084d2596c99e4";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/fame_sticker.svg?d2ce4d81f7dc5bd5006b7bdf5c99e980";
+module.exports = "/images/fame_sticker.svg?4d9c55b7a4f03fea6901c57aef2dee65";
 
 /***/ }),
 
@@ -20369,7 +20373,7 @@ module.exports = "/images/hero_bg.jpg?a18a8bf12f745674fa998ee1814d48f4";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/instagram.svg?453685fbdc2f9491f26dd5ded0863c10";
+module.exports = "/images/instagram.svg?c6a0f2413df9e03f4f22152a39df5c58";
 
 /***/ }),
 
@@ -20402,7 +20406,7 @@ module.exports = "/images/phone_test.png?cd42ca35d2d019d563fbc953802d514b";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/tweet.svg?a57ea219084451288a1f02aabba16f1b";
+module.exports = "/images/tweet.svg?bfb3b141dbbf46194e42c3c6cccde733";
 
 /***/ }),
 
@@ -21221,7 +21225,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Maria\Desktop\Boolean\Deliveboo\Deliveboo\resources\js\guest\front.js */"./resources/js/guest/front.js");
+module.exports = __webpack_require__(/*! /opt/lampp/htdocs/p/Deliveboo/resources/js/guest/front.js */"./resources/js/guest/front.js");
 
 
 /***/ })
