@@ -2242,11 +2242,21 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Home',
+  name: "Home",
   components: {
     Hero: _components_Hero_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
     AppDeliveboo: _components_AppDeliveboo_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
     Slider: _components_Slider_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  mounted: function mounted() {
+    // Make a request for a user with a given ID
+    axios.get("/api/cuisines").then(function (response) {
+      // handle success
+      console.log(response);
+    })["catch"](function (error) {
+      // handle error
+      console.log(error);
+    });
   }
 });
 
