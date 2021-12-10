@@ -21,8 +21,9 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                                <small></small>
                             </div>
-                            <div id="err_name" class="message col-md-8 ml-auto"></div>
+                            
                         </div>
                         {{-- email --}}
                         <div class="form-group row">
@@ -36,8 +37,8 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
+                                <small></small>
                             </div>
-                            <div id="err_email" class="message col-md-8"></div>
 
                         </div>
                         {{-- password --}}
@@ -45,15 +46,15 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                <input id="userPassword" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
+                                <small></small>
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
-                            <div id="err_password" class="message col-md-8 ml-auto"></div>
                         </div>
                         <div class="form-group row">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
@@ -75,9 +76,8 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                                <small></small>
                             </div>
-                            <div id="err_vat_numb" class="message col-md-8 ml-auto"></div>
-
                         </div>
                         {{-- business_name --}}
                         <div class="form-group row">
@@ -91,8 +91,8 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                                <small></small>
                             </div>
-                            <div id="err_business_name" class="message col-md-8 ml-auto"></div>
                         </div>
                         {{-- business_address --}}
                         <div class="form-group row">
@@ -106,9 +106,8 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                                <small></small>
                             </div>
-                            <div id="err_business_address" class="message col-md-8 ml-auto"></div>
-
                         </div>
                         {{-- business_logo --}}
                         <div class="form-group row">
@@ -121,6 +120,7 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
+                                <small></small>
                                 <div class="mt-2">
                                     <img id="businessLogo" style="max-height: 50px;" class="mb-2"/>
                                 </div>
@@ -137,6 +137,7 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
+                                <small></small>
                                 <div class="mt-2">
                                     <img id="businessCover" style="max-height: 50px;" class="mb-2"/>
                                 </div>
