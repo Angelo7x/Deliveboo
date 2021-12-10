@@ -5,7 +5,6 @@
         <FloatingSlogan/>
         <CarouselCuisines/>
         <AppDeliveboo/>
-         <CarouselCuisines/>
         <main>
             <router-view></router-view>
         </main>
@@ -31,7 +30,6 @@ export default {
         AppDeliveboo,
         VueHorizontal,
         CarouselCuisines
-
 	},
 }
 </script>
