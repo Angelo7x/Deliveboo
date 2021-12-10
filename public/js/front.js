@@ -2203,6 +2203,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Slider",
@@ -2210,10 +2211,9 @@ __webpack_require__.r(__webpack_exports__);
     VueHorizontal: vue_horizontal__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
-    return {
-      items: [1, 2, 3, 4, 5, 6, 7]
-    };
-  }
+    return {};
+  },
+  props: ['cuisines']
 });
 
 /***/ }),
@@ -2230,6 +2230,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Hero_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/Hero.vue */ "./resources/js/guest/components/Hero.vue");
 /* harmony import */ var _components_Slider_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Slider.vue */ "./resources/js/guest/components/Slider.vue");
 /* harmony import */ var _components_AppDeliveboo_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/AppDeliveboo.vue */ "./resources/js/guest/components/AppDeliveboo.vue");
+//
 //
 //
 //
@@ -4678,19 +4679,14 @@ var render = function () {
       _c(
         "vue-horizontal",
         { attrs: { responsive: "" } },
-        _vm._l(_vm.items, function (item) {
-          return _c("div", { key: item, staticClass: "item" }, [
+        _vm._l(_vm.cuisines, function (cuisine) {
+          return _c("div", { key: cuisine.id, staticClass: "item" }, [
             _c("div", { staticClass: "card" }, [
-              _c("img", {
-                attrs: {
-                  src: __webpack_require__(/*! ../../../images/cuisines_images/pizza.jpg */ "./resources/images/cuisines_images/pizza.jpg"),
-                  alt: "pizza",
-                },
-              }),
+              _c("img", { attrs: { src: cuisine.image, alt: cuisine.name } }),
             ]),
             _vm._v(" "),
             _c("a", { attrs: { href: "#" } }, [
-              _c("h3", [_vm._v("Item " + _vm._s(item))]),
+              _c("h3", [_vm._v(_vm._s(cuisine.name))]),
             ]),
           ])
         }),
@@ -4727,19 +4723,9 @@ var render = function () {
     [
       _c("Hero"),
       _vm._v(" "),
-      _c("Slider"),
+      _c("Slider", { attrs: { cuisines: _vm.cuisines } }),
       _vm._v(" "),
       _c("AppDeliveboo"),
-      _vm._v(" "),
-      _c(
-        "ul",
-        _vm._l(_vm.cuisines, function (cuisin) {
-          return _c("li", { key: cuisin.id }, [
-            _c("h3", [_vm._v(" " + _vm._s(cuisin.name))]),
-          ])
-        }),
-        0
-      ),
     ],
     1
   )
@@ -20203,17 +20189,6 @@ module.exports = "/images/cart_icon_white.png?87da1d7e9f234c9408ac730c9f615c5c";
 /***/ (function(module, exports) {
 
 module.exports = "/images/chessboard.png?f31a0a9ba8ec2cfcdd2c3373a753bdfc";
-
-/***/ }),
-
-/***/ "./resources/images/cuisines_images/pizza.jpg":
-/*!****************************************************!*\
-  !*** ./resources/images/cuisines_images/pizza.jpg ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/pizza.jpg?2d0e8808393ed3b84cbd683b565eca13";
 
 /***/ }),
 

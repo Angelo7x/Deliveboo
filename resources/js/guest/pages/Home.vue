@@ -1,13 +1,14 @@
 <template>
   <div>
     <Hero />
-    <Slider />
+    <Slider :cuisines="cuisines"
+    />
     <AppDeliveboo/>
-    <ul>
+    <!-- <ul>
         <li v-for="cuisin in cuisines" :key="cuisin.id">
             <h3> {{cuisin.name}}</h3>
         </li>
-    </ul>
+    </ul> -->
   </div>
 </template>
 
