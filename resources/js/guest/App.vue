@@ -3,9 +3,7 @@
         <Header/>
         <Hero/>
         <FloatingSlogan/>
-        <CarouselCuisines/>
         <AppDeliveboo/>
-         <CarouselCuisines/>
         <main>
             <router-view></router-view>
         </main>
@@ -18,7 +16,6 @@ import Header from './components/Header.vue';
 import Hero  from './components/Hero.vue';
 import Footer  from './components/Footer.vue';
 import AppDeliveboo  from './components/AppDeliveboo.vue';
-import CarouselCuisines  from './components/CarouselCuisines.vue';
 import FloatingSlogan from './components/FloatingSlogan.vue';
 import VueHorizontal from 'vue-horizontal';
 export default {
@@ -30,8 +27,6 @@ export default {
         Footer,
         AppDeliveboo,
         VueHorizontal,
-        CarouselCuisines
-
 	},
 }
 </script>
