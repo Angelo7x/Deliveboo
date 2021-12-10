@@ -2,7 +2,12 @@
   <div>
     <Hero />
     <Slider />
-    <AppDeliveboo />
+    <AppDeliveboo/>
+    <ul>
+        <li v-for="cuisin in cuisines" :key="cuisin.id">
+            <h3> {{cuisin.name}}</h3>
+        </li>
+    </ul>
   </div>
 </template>
 
@@ -18,15 +23,20 @@ export default {
     AppDeliveboo,
     Slider,
   },
+  data(){
+      return{
+          cuisines:[],
+      }
+  },
   mounted() {
     // Make a request for a user with a given ID
     axios
       .get("/api/cuisines")
-      .then(function (response) {
-        // handle success
+      .then((response) =>{
+        this.cuisines = response.data.data
         console.log(response);
       })
-      .catch(function (error) {
+      .catch((error) =>{
         // handle error
         console.log(error);
       })

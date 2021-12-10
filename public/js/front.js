@@ -2238,6 +2238,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -2248,10 +2253,17 @@ __webpack_require__.r(__webpack_exports__);
     AppDeliveboo: _components_AppDeliveboo_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
     Slider: _components_Slider_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
+  data: function data() {
+    return {
+      cuisines: []
+    };
+  },
   mounted: function mounted() {
+    var _this = this;
+
     // Make a request for a user with a given ID
     axios.get("/api/cuisines").then(function (response) {
-      // handle success
+      _this.cuisines = response.data.data;
       console.log(response);
     })["catch"](function (error) {
       // handle error
@@ -4712,7 +4724,23 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    [_c("Hero"), _vm._v(" "), _c("Slider"), _vm._v(" "), _c("AppDeliveboo")],
+    [
+      _c("Hero"),
+      _vm._v(" "),
+      _c("Slider"),
+      _vm._v(" "),
+      _c("AppDeliveboo"),
+      _vm._v(" "),
+      _c(
+        "ul",
+        _vm._l(_vm.cuisines, function (cuisin) {
+          return _c("li", { key: cuisin.id }, [
+            _c("h3", [_vm._v(" " + _vm._s(cuisin.name))]),
+          ])
+        }),
+        0
+      ),
+    ],
     1
   )
 }
