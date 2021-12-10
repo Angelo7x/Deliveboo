@@ -34,32 +34,18 @@ const password = document.getElementById("userPassword");
 const vat_numb = document.getElementById("vat_numb");
 const business_name = document.getElementById("business_name");
 const business_address = document.getElementById("business_address");
-const business_logo = document.getElementById("business_logo");
-const business_cover = document.getElementById("business_cover");
+const business_logo = document.getElementById("image");
+const business_cover = document.getElementById("image1");
 const cuisines = document.getElementById("cuisines");
 
 
-function isValidType(file) {
-
-    let acceptedMimes = "jpg,jpeg,png,svg"
-        .trim()
-        .split(",")
-        .map(type => `image/${type}`);
-	let maxUploadSizeInBytes = 1000;
-    
-	if (!acceptedMimes.includes(file.type)) {
-        valid = false;
+function isNotValidType(file) {
+	var fileName = file.value;
+	var ext = file.value.substring(fileName.lastIndexOf('.') + 1);
+	if(ext != "jpg" && ext != "jpeg" && ext != "png" && ext != "svg")
+	{
 		setErrorFor(file, 'Il file deve essere di tipo jpg, jpeg, png, svg');
-    } else if (file.size > maxUploadSizeInBytes) {
-
-        let sizeInKb = maxUploadSizeInBytes / 1024;
-        let sizeForHumans = sizeInKb < 1024
-            ? `${sizeInKb} KB`
-            : `${sizeInKb / 1024} MB`;
-		
-		setErrorFor(file, `Il file è superiore a ${sizeForHumans}`);
-	} else {
-		setSuccessFor(file);
+		return false;
 	}
 }
 
@@ -70,7 +56,7 @@ function validateRegister() {
 	let vat_numbValue = vat_numb.value;
 	let business_nameValue = business_name.value;
 	let business_addressValue = business_address.value;
-	let business_logoValue = business_logo.value;
+	// let business_logoValue = business_logo.value;
 	// let business_coverValue = business_cover.value;
 	// let cuisinesValue = cuisines.value;
 	// userName
@@ -130,7 +116,7 @@ function validateRegister() {
 	if (business_addressValue == "" || business_addressValue == null) {
 		setErrorFor(business_address, 'Inserisci l\'indirizzo dell\'attività')
 		return false;
-	} else if (business_addressValue.match("\d{1,}$") == null) {
+	} else if (business_addressValue.match(/^[\w\s.-]+\d+$/) == null) {
 		setErrorFor(business_address, 'Inserire il numero della via')
 		return false;
 	} else if (business_addressValue.length > 100) {
@@ -140,7 +126,15 @@ function validateRegister() {
 		setSuccessFor(business_address);
 	}
 	//business_address
-	isValidType(business_logo);
-
+	// if(isNotValidType(business_logo) = false) {
+	// 	return false;
+	// }
+	var fileName = business_logo.value;
+	var ext = fileName.value.substring(fileName.lastIndexOf('.') + 1);
+	if(ext != "jpg" && ext != "jpeg" && ext != "png" && ext != "svg")
+	{
+		setErrorFor(file, 'Il file deve essere di tipo jpg, jpeg, png, svg');
+		return false;
+	}
 	return true;
 }
