@@ -27,6 +27,10 @@ export default {
         Footer,
         AppDeliveboo,
         VueHorizontal,
+<<<<<<< HEAD
+=======
+        CarouselCuisines
+>>>>>>> fd37fc9ac73bf2d10f13232e5e1e19d8ff6e8013
 	},
 }
 </script>
