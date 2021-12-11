@@ -1,17 +1,9 @@
-//modal delete
-const deleteButtons = document.querySelectorAll(".btn-delete");
-const inputDeleteID = document.getElementById("delete-id")
-
-deleteButtons.forEach(
-	(elm) => {
-		elm.addEventListener("click", function () {
-			inputDeleteID.value = this.getAttribute("data-id");
-		});
-	}
-);
 //
-// validazione form register
 //
+// Funzioni
+//
+//
+// {-- mostra l'errore associato all'input --}
 function setErrorFor(input, message) {
 	var formControl = input.parentElement; //.form-control
 	var small = formControl.querySelector('small');
@@ -20,46 +12,87 @@ function setErrorFor(input, message) {
 	//add error class
 	small.className = 'error';
 }
+// {-- creare la classe success associato all'input --}
 function setSuccessFor(input) {
 	var formControl = input.parentElement; //.form-control
 	var small = formControl.querySelector('small');
 	small.innerHTML = "";
 	small.className = 'success';
 }
-
-const registerForm = document.getElementById("registerForm");
-const userName = document.getElementById("name");
-const email = document.getElementById("email");
-const password = document.getElementById("userPassword");
-const vat_numb = document.getElementById("vat_numb");
-const business_name = document.getElementById("business_name");
-const business_address = document.getElementById("business_address");
-const business_logo = document.getElementById("image");
-const business_cover = document.getElementById("image1");
-const cuisines = document.getElementById("cuisines");
-
-
-function isNotValidType(file) {
-	var fileName = file.value;
-	var ext = file.value.substring(fileName.lastIndexOf('.') + 1);
-	if(ext != "jpg" && ext != "jpeg" && ext != "png" && ext != "svg")
-	{
-		setErrorFor(file, 'Il file deve essere di tipo jpg, jpeg, png, svg');
-		return false;
-	}
+// {-- estensione del file --}
+function fileType(file) {
+	return file.value.substring(file.value.lastIndexOf('.') + 1);
 }
-
+function fileSize(file) {
+	return file.files[0].size;
+}
+function fileExists(file) {
+	if(file.files.length > 0) {
+		return true;
+	}
+	return false;
+}
+//
+//
+// Generale
+//
+//
+const allowedExtension = ["jpg", "jpeg", "png", "svg"];
+const maxfilesize = 1024 * 1024;
+//
+//
+// Modale delete
+//
+//
+const deleteButtons = document.querySelectorAll(".btn-delete");
+const inputDeleteID = document.getElementById("delete-id")
+// {-- assegna all'input nascosto l'id del piatto --}
+deleteButtons.forEach(
+	(elm) => {
+		elm.addEventListener("click", function () {
+			inputDeleteID.value = this.getAttribute("data-id");
+		});
+	}
+);
+//
+//
+//
+// Validazione form register
+//
+//
+// {-- validazione register --}
 function validateRegister() {
+	// {-- form register --}
+	const registerForm = document.forms["registerForm"];
+	// {-- input register --}
+	const userName = registerForm.elements["name"];
+	const email = registerForm.elements["email"];
+	const password = registerForm.elements["userPassword"];
+	const passwordConfirm = registerForm.elements["password-confirm"];
+	const vat_numb = registerForm.elements["vat_numb"];
+	const business_name = registerForm.elements["business_name"];
+	const business_address = registerForm.elements["business_address"];
+	const business_logo = registerForm.elements["image"];
+	const business_cover = registerForm.elements["image1"];
+	const cuisines = document.getElementsByName("cuisines[]");
+	const cuisinesError = registerForm.elements["cuisines_error"];
+	// {-- validazione confir password --}
+	passwordConfirm.addEventListener('input', function () {
+		if (password.value != passwordConfirm.value) {
+			setErrorFor(passwordConfirm, 'La password non coincide')
+		} else if (password.value == passwordConfirm.value) {
+			setErrorFor(passwordConfirm, '')
+		}
+	})
+
 	let userNameValue = userName.value;
 	let emailValue = email.value;
 	let passwordValue = password.value;
 	let vat_numbValue = vat_numb.value;
 	let business_nameValue = business_name.value;
 	let business_addressValue = business_address.value;
-	// let business_logoValue = business_logo.value;
-	// let business_coverValue = business_cover.value;
-	// let cuisinesValue = cuisines.value;
-	// userName
+	let passwordConfirmValue = passwordConfirm.value;
+	// {--  userName --}
 	if (userNameValue == "" || userNameValue == null) {
 		setErrorFor(userName, 'Inserisci il nome')
 		return false;
@@ -69,7 +102,7 @@ function validateRegister() {
 	} else {
 		setSuccessFor(userName);
 	}
-	// email
+	// {--  email --}
 	if (emailValue == "" || emailValue == null) {
 		setErrorFor(email, 'Inserisci l\'email');
 		return false;
@@ -79,17 +112,20 @@ function validateRegister() {
 	} else {
 		setSuccessFor(email);
 	}
-	// password
+	// {--  password --}
 	if (passwordValue == "" || passwordValue == null) {
 		setErrorFor(password, 'Inserisci la password')
 		return false;
 	} else if (passwordValue.length < 8) {
 		setErrorFor(password, 'La password deve avere un minimo di 8 caratteri')
 		return false;
+	} else if (passwordValue != passwordConfirmValue) {
+		setErrorFor(passwordConfirm, 'La password non coincide')
 	} else {
 		setSuccessFor(password);
+		setSuccessFor(passwordConfirm);
 	}
-	//vat_numb
+	// {-- vat_numb --}
 	if (vat_numbValue == "" || vat_numbValue == null) {
 		setErrorFor(vat_numb, 'Inserisci la partita iva')
 		return false;
@@ -102,7 +138,7 @@ function validateRegister() {
 	} else {
 		setSuccessFor(vat_numb);
 	}
-	//business_name
+	// {-- business_name --}
 	if (business_nameValue == "" || business_nameValue == null) {
 		setErrorFor(business_name, 'Inserisci il nome dell\'attività')
 		return false;
@@ -112,7 +148,7 @@ function validateRegister() {
 	} else {
 		setSuccessFor(business_name);
 	}
-	//business_address
+	// {-- business_address --}
 	if (business_addressValue == "" || business_addressValue == null) {
 		setErrorFor(business_address, 'Inserisci l\'indirizzo dell\'attività')
 		return false;
@@ -125,16 +161,102 @@ function validateRegister() {
 	} else {
 		setSuccessFor(business_address);
 	}
-	//business_address
-	// if(isNotValidType(business_logo) = false) {
-	// 	return false;
-	// }
-	var fileName = business_logo.value;
-	var ext = fileName.value.substring(fileName.lastIndexOf('.') + 1);
-	if(ext != "jpg" && ext != "jpeg" && ext != "png" && ext != "svg")
-	{
-		setErrorFor(file, 'Il file deve essere di tipo jpg, jpeg, png, svg');
+	// {-- business_logo --}
+	if (fileExists(business_logo)) {
+		if (allowedExtension.includes(fileType(business_logo)) == false) {
+			setErrorFor(business_logo, 'Il file deve essere di tipo jpg, jpeg, png, svg');
+			return false;
+		} else if (fileSize(business_logo) > maxfilesize) {
+			setErrorFor(business_logo, 'Il file supera 1MB');
+			return false;
+		} else {
+			setSuccessFor(business_logo);
+		}
+	}
+	// {-- business_cover --}
+	if (fileExists(business_cover)) {
+		if (allowedExtension.includes(fileType(business_cover)) == false) {
+			setErrorFor(business_cover, 'Il file deve essere di tipo jpg, jpeg, png, svg');
+			return false;
+		} else if (fileSize(business_cover) > maxfilesize) {
+			setErrorFor(business_cover, 'Il file supera 1MB');
+			return false;
+		} else {
+			setSuccessFor(business_cover);
+		}
+	}
+	// {-- cuisines --}
+	let i = 0;
+	let cuisinesIsValid = false;
+	for (let i = 0; i < cuisines.length; i++) {
+		if (cuisines[i].checked) {
+			cuisinesIsValid = true;
+			break;
+		}
+	}
+	if (cuisinesIsValid == false) {
+		cuisinesError.innerHTML = 'Aggiungere almeno una tipologia di cucina';
+		cuisinesError.className = 'error';
 		return false;
+	} else {
+		cuisinesError.className = 'success';
 	}
 	return true;
+}
+//
+//
+// Validazione food 
+//
+//
+// {-- validazione register --}
+function validateFood() {
+	// {-- input register --}
+	const foodName = document.getElementById("name");
+	const foodImage = document.getElementById("image");
+	// const foodDescription = document.getElementById("description");
+	// const foodAllergens = document.getElementById("allergens");
+	// const foodWeight = document.getElementById("weight");
+	// const foodVisible = document.getElementById("visible");
+	// const foodPrice = document.getElementById("price");
+
+	let foodNameValue = foodName.value;
+	// let foodDescriptionValue = foodDescription.value;
+	// let foodAllergensValue = foodAllergens.value;
+	// let foodWeightValue = foodWeight.value;
+	// let foodVisibleValue = foodVisible.value;
+	// let foodPriceValue = foodPrice.value;
+	// {--  foodName --}
+	if (foodNameValue == "" || foodNameValue == null) {
+		setErrorFor(foodName, 'Inserisci il nome')
+		return false;
+	} else if (foodNameValue.length > 50) {
+		setErrorFor(foodName, 'Il nome accetta un massimo di 255 caratteri')
+		return false;
+	} else {
+		setSuccessFor(foodName);
+	}
+	// {--  foodImage --}
+	console.log(fileExists(foodImage));
+	if (fileExists(foodImage)) {
+		if (allowedExtension.includes(fileType(foodImage)) == false) {
+			setErrorFor(foodImage, 'Il file deve essere di tipo jpg, jpeg, png, svg');
+			return false;
+		} else if (fileSize(foodImage) > maxfilesize) {
+			setErrorFor(foodImage, 'Il file supera 1MB');
+			return false;
+		} else {
+			setSuccessFor(foodImage);
+		}
+	}
+	// {--  foodDescription --}
+	// if (foodDescription !== 'undefined') {
+	// 	if (foodDescription.length > 255) {
+	// 		setErrorFor(foodImage, 'La descrizione accetta un massimo di 255 caratteri');
+	// 		return false;
+	// 	} else {
+	// 		setSuccessFor(foodImage);
+	// 	}
+	// }
+
+	return true
 }

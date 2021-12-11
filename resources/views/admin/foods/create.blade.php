@@ -7,15 +7,16 @@
             <div class="card">
                 <div class="card-header">Aggiungi il piatto</div>
                   <div class="card-body">
-                    <form action="{{route("admin.foods.store")}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{route("admin.foods.store")}}" method="POST" enctype="multipart/form-data" name="createFoodForm" onsubmit="return validateFood()">
                       @csrf
                       {{-- Inserisci il nome --}}
                       <div class="form-group">
                         <label for="name">Nome</label>
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" placeholder="Inserisci il nome" value="{{old("name")}}">
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" placeholder="Inserisci il nome" value="{{old("name")}}" required>
                         @error('name')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
+                        <small></small>
                       </div>
                       {{-- Inserisci l'immagine --}}
                       <div class="form-group">
@@ -27,6 +28,7 @@
                         @error('image')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
+                        <small></small>
                       </div>
                       {{-- Inserisci la descrizione --}}
                       <div class="form-group">
@@ -35,6 +37,7 @@
                         @error('description')
                           <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
+                        <small></small>
                       </div>
                       {{-- Allergeni --}}
                       <div class="form-group">
@@ -43,6 +46,7 @@
                         @error('allergens')
                           <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
+                        <small></small>
                       </div>
                       {{-- Peso --}}
                       <div class="form-group">
@@ -51,6 +55,7 @@
                         @error('weight')
                           <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
+                        <small></small>
                       </div>
                       {{-- Visibilità --}}
                       <div class="form-group">
@@ -63,10 +68,11 @@
                       {{-- Prezzo --}}
                       <div class="form-group">
                         <label for="price">Inserisci il prezzo</label>
-                        <input lang="it" type="number" class="form-control @error('price') is-invalid @enderror" name="price" id="price" placeholder="Inserisci il prezzo" value="{{old("price")}}">
+                        <input lang="it" type="number" class="form-control @error('price') is-invalid @enderror" name="price" id="price" placeholder="Inserisci il prezzo" value="{{old("price")}}" required>
                         @error('price')
                           <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
+                        <small></small>
                       </div>
                       <button type="submit" class="btn btn-primary">Crea</button>
                     </form>
