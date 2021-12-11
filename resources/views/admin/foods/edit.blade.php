@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">Aggiungi il piatto</div>
                 <div class="card-body">
-					<form action="{{route("admin.foods.update", $food["id"])}}" method="POST" enctype="multipart/form-data">
+					<form action="{{route("admin.foods.update", $food["id"])}}" method="POST" enctype="multipart/form-data" onsubmit="return validateFood()">
 						@csrf
             @method("PUT")
             {{-- Inserisci il nome --}}
@@ -17,6 +17,7 @@
 						  @error('name')
 							<div class="alert alert-danger">{{ $message }}</div>
 						  @enderror
+              <small></small>
 						</div>
             {{-- Inserisci l'immagine --}}
             <div class="form-group">
@@ -28,6 +29,7 @@
               @error('image')
               <div class="alert alert-danger">{{ $message }}</div>
               @enderror
+              <small></small>
             </div>
             <div id="prova"></div>
             {{-- Inserisci la descrizione --}}
@@ -37,6 +39,7 @@
 							@error('description')
 								<div class="alert alert-danger">{{ $message }}</div>
 						    @enderror
+                <small></small>
 						</div>
             {{-- Allergeni --}}
 						<div class="form-group">
@@ -45,6 +48,7 @@
 							@error('allergens')
 								<div class="alert alert-danger">{{ $message }}</div>
 						    @enderror
+                <small></small>
 						</div>
             {{-- Peso --}}
             <div class="form-group">
@@ -53,6 +57,7 @@
                 @error('weight')
                   <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
+                <small></small>
             </div>
             {{-- Visibilità --}}
             <div class="form-group">
@@ -69,6 +74,7 @@
                 @error('price')
                   <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
+                <small></small>
             </div>
 
 						<button type="submit" class="btn btn-warning">Salva modifiche</button>

@@ -61,29 +61,29 @@ deleteButtons.forEach(
 //
 //
 // {-- validazione register --}
+var cuisinesError = registerForm.elements["cuisines_error"];
+// {-- form register --}
+var registerForm = document.forms["registerForm"];
+// {-- validazione confir password --}
+var password = registerForm.elements["userPassword"];
+var passwordConfirm = registerForm.elements["password-confirm"];
+passwordConfirm.addEventListener('input', function () {
+	if (password.value != passwordConfirm.value) {
+		setErrorFor(passwordConfirm, 'La password non coincide')
+	} else if (password.value == passwordConfirm.value) {
+		setErrorFor(passwordConfirm, '')
+	}
+})
 function validateRegister() {
-	// {-- form register --}
-	const registerForm = document.forms["registerForm"];
 	// {-- input register --}
 	const userName = registerForm.elements["name"];
 	const email = registerForm.elements["email"];
-	const password = registerForm.elements["userPassword"];
-	const passwordConfirm = registerForm.elements["password-confirm"];
 	const vat_numb = registerForm.elements["vat_numb"];
 	const business_name = registerForm.elements["business_name"];
 	const business_address = registerForm.elements["business_address"];
 	const business_logo = registerForm.elements["image"];
 	const business_cover = registerForm.elements["image1"];
 	const cuisines = document.getElementsByName("cuisines[]");
-	const cuisinesError = registerForm.elements["cuisines_error"];
-	// {-- validazione confir password --}
-	passwordConfirm.addEventListener('input', function () {
-		if (password.value != passwordConfirm.value) {
-			setErrorFor(passwordConfirm, 'La password non coincide')
-		} else if (password.value == passwordConfirm.value) {
-			setErrorFor(passwordConfirm, '')
-		}
-	})
 
 	let userNameValue = userName.value;
 	let emailValue = email.value;
@@ -208,23 +208,29 @@ function validateRegister() {
 // Validazione food 
 //
 //
-// {-- validazione register --}
+// const foodWeight = document.getElementById("weight");
+// const foodVisible = document.getElementById("visible");
+// {-- validazione food --}
+// function submitFood() {
+	// 	return validateFood()
+	// }
 function validateFood() {
+		
+	let price = document.getElementById("price");
+	price.value = parseInt(price.value.replace(/,/g, '.'));
 	// {-- input register --}
 	const foodName = document.getElementById("name");
 	const foodImage = document.getElementById("image");
-	// const foodDescription = document.getElementById("description");
-	// const foodAllergens = document.getElementById("allergens");
-	// const foodWeight = document.getElementById("weight");
-	// const foodVisible = document.getElementById("visible");
-	// const foodPrice = document.getElementById("price");
-
+	const foodDescription = document.getElementById("description");
+	const foodAllergens = document.getElementById("allergens");
+    const foodWeight = document.getElementById("weight");
+	let foodPrice = document.getElementById("price");
 	let foodNameValue = foodName.value;
-	// let foodDescriptionValue = foodDescription.value;
-	// let foodAllergensValue = foodAllergens.value;
-	// let foodWeightValue = foodWeight.value;
+	let foodDescriptionValue = foodDescription.value;
+	let foodAllergensValue = foodAllergens.value;
+	let foodPriceValue = foodPrice.value;
+	let foodWeightValue = foodWeight.value;
 	// let foodVisibleValue = foodVisible.value;
-	// let foodPriceValue = foodPrice.value;
 	// {--  foodName --}
 	if (foodNameValue == "" || foodNameValue == null) {
 		setErrorFor(foodName, 'Inserisci il nome')
@@ -236,7 +242,6 @@ function validateFood() {
 		setSuccessFor(foodName);
 	}
 	// {--  foodImage --}
-	console.log(fileExists(foodImage));
 	if (fileExists(foodImage)) {
 		if (allowedExtension.includes(fileType(foodImage)) == false) {
 			setErrorFor(foodImage, 'Il file deve essere di tipo jpg, jpeg, png, svg');
@@ -249,14 +254,44 @@ function validateFood() {
 		}
 	}
 	// {--  foodDescription --}
-	// if (foodDescription !== 'undefined') {
-	// 	if (foodDescription.length > 255) {
-	// 		setErrorFor(foodImage, 'La descrizione accetta un massimo di 255 caratteri');
-	// 		return false;
-	// 	} else {
-	// 		setSuccessFor(foodImage);
-	// 	}
-	// }
-
+	if (foodDescriptionValue !== 'undefined') {
+		if (foodDescriptionValue.length > 255) {
+			setErrorFor(foodDescription, 'Questo campo accetta un massimo di 255 caratteri');
+			return false;
+		} else {
+			setSuccessFor(foodDescription);
+		}
+	}
+	// {--  foodAllergens --}
+	if (foodAllergensValue !== 'undefined') {
+		if (foodAllergensValue.length > 255) {
+			setErrorFor(foodAllergens, 'Questo campo accetta un massimo di 255 caratteri');
+			return false;
+		} else {
+			setSuccessFor(foodAllergens);
+		}
+	}
+	// {--  foodWeight --}
+	if (foodWeightValue !== 'undefined') {
+		if (foodWeightValue == "" || foodWeightValue == null) {
+			setErrorFor(foodWeight, 'Inserisci il prezzo')
+			return false;
+		} else if (foodWeightValue.match(/^[0-9,.]*$/) == null || foodWeightValue < 0 || !Number.isInteger(foodWeightValue)) {
+			setErrorFor(foodWeight, 'Il prezzo accetta solo numeri positivi interi')
+			return false;
+		}
+	} else {
+		setSuccessFor(foodWeight);
+	}
+	// {--  foodPrice --}
+	if (foodPriceValue == "" || foodPriceValue == null) {
+		setErrorFor(foodPrice, 'Inserisci il prezzo')
+		return false;
+	} else if (foodPriceValue.match(/^[0-9,.]*$/) == null || foodPriceValue < 0) {
+		setErrorFor(foodPrice, 'Il prezzo accetta solo numeri')
+		return false;
+	} else {
+		setSuccessFor(foodPrice);
+	}
 	return true
 }

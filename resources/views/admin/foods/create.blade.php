@@ -68,13 +68,13 @@
                       {{-- Prezzo --}}
                       <div class="form-group">
                         <label for="price">Inserisci il prezzo</label>
-                        <input lang="it" type="number" class="form-control @error('price') is-invalid @enderror" name="price" id="price" placeholder="Inserisci il prezzo" value="{{old("price")}}" required>
+                        <input lang="it" type="text" class="form-control @error('price') is-invalid @enderror" name="price" id="price" placeholder="Inserisci il prezzo" value="{{old("price")}}" required>
                         @error('price')
                           <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                         <small></small>
                       </div>
-                      <button type="submit" class="btn btn-primary">Crea</button>
+                      <button type="submit" class="btn btn-primary" id="btn-submit">Crea</button>
                     </form>
                 </div>
             </div>
