@@ -18,6 +18,27 @@ export default {
         Header,
         Footer,
 	},
+    data() {
+        return {
+            ristoranti: [], 
+            filtri: []
+        }
+    },
+    mounted() {
+
+        axios.get('/api/restaurants', {
+            params: {
+                name: 'Mario'
+            }
+        })
+        
+        .then(response => ( console.log(response)))
+        .then(console.log(this.ristoranti))
+        .catch( (error) => {
+                // handle error
+                console.log(error);
+            })
+    }
 }
 </script>
 
