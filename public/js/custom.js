@@ -276,7 +276,7 @@ function validateFood() {
 		if (foodWeightValue == "" || foodWeightValue == null) {
 			setErrorFor(foodWeight, 'Inserisci il prezzo')
 			return false;
-		} else if (foodWeightValue.match(/^[0-9,.]*$/) == null || foodWeightValue < 0 || !Number.isInteger(foodWeightValue)) {
+		} else if (foodWeightValue.match(/^[0-9]*$/) == null || foodWeightValue < 0) {
 			setErrorFor(foodWeight, 'Il prezzo accetta solo numeri positivi interi')
 			return false;
 		}
@@ -288,7 +288,7 @@ function validateFood() {
 		setErrorFor(foodPrice, 'Inserisci il prezzo')
 		return false;
 	} else if (foodPriceValue.match(/^[0-9,.]*$/) == null || foodPriceValue < 0) {
-		setErrorFor(foodPrice, 'Il prezzo accetta solo numeri')
+		setErrorFor(foodPrice, 'Il prezzo accetta solo numeri positivi')
 		return false;
 	} else {
 		setSuccessFor(foodPrice);
