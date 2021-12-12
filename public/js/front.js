@@ -1927,6 +1927,22 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     Header: _components_Header_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
     Footer: _components_Footer_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  data: function data() {
+    return {
+      restaurants: []
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get("/api/restaurants").then(function (response) {
+      _this.restaurants = response.data.data;
+      console.log(response);
+    })["catch"](function (error) {
+      // handle error
+      console.log(error);
+    });
   }
 });
 
@@ -4682,7 +4698,7 @@ var render = function () {
         _vm._l(_vm.cuisines, function (cuisine) {
           return _c("div", { key: cuisine.id, staticClass: "item" }, [
             _c("div", { staticClass: "card" }, [
-              _c("img", { attrs: { src: cuisine.image, alt: cuisine.name } }),
+              _c("img", { attrs: { src: "", alt: "" } }),
             ]),
             _vm._v(" "),
             _c("a", { attrs: { href: "#" } }, [

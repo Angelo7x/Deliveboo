@@ -3,8 +3,8 @@
     <vue-horizontal responsive>
         <div class="item" v-for="cuisine in cuisines" :key="cuisine.id">
             <div class="card">
-                <img :src="cuisine.image" :alt="cuisine.name">
-                <!-- <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg" alt=""> -->
+                <!-- <img :src="cuisine.image" :alt="cuisine.name"> -->
+                <img src="" alt="">
             </div>
             <a href="#"><h3>{{cuisine.name}}</h3></a>
         </div>

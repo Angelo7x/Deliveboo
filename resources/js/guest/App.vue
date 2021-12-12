@@ -18,7 +18,23 @@ export default {
         Header,
         Footer,
 	},
-    
+    data(){
+        return{
+            restaurants:[],
+        }
+    },
+    mounted(){
+         axios
+      .get("/api/restaurants")
+      .then((response) =>{
+        this.restaurants = response.data.data
+        console.log(response);
+      })
+      .catch((error) =>{
+        // handle error
+        console.log(error);
+      })
+    },
 }
 </script>
 
