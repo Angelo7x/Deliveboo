@@ -21,20 +21,14 @@ export default {
     data(){
         return{
             restaurants:[],
+            cart: []
         }
     },
-    mounted(){
-         axios
-      .get("/api/restaurants")
-      .then((response) =>{
-        this.restaurants = response.data.data
-        console.log(response);
-      })
-      .catch((error) =>{
-        // handle error
-        console.log(error);
-      })
-    },
+    methods: {
+        addToCart(food) {
+            this.cart.push(food);
+        },
+    }
 }
 </script>
 

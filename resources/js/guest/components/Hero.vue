@@ -1,7 +1,7 @@
 <template>
     <section class="hero">
         <div class="container">
-            <a class="CTA" href="/restaurants">Trova i ristoranti!</a>
+            <a class="CTA" href="/home">Trova i ristoranti!</a>
             <div class="logo-text">
                 <div class="logo-letter">D</div><div class="logo-letter">e</div><div class="logo-letter">l</div><div class="logo-letter">i</div><div class="logo-letter">v</div><div class="logo-letter">e</div><div class="logo-letter">b</div><div class="logo-letter">o</div><div class="logo-letter">o</div>
             </div>

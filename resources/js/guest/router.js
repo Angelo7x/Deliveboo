@@ -3,8 +3,9 @@ import VueRouter from 'vue-router';
 
 Vue.use(VueRouter)
 
-import Home from './pages/Home';
-import Restaurants from './pages/Restaurants.vue'
+import Welcome from './pages/Welcome';
+import Home from './pages/Home.vue'
+import MenuRestaurant from './pages/MenuRestaurant.vue'
 import NotFound from './pages/NotFound';
 
 const router = new VueRouter({
@@ -12,13 +13,18 @@ const router = new VueRouter({
     routes: [
         {
             path: '/',
+            name: 'welcome',
+            component: Welcome
+        },
+        {
+            path: '/home',
             name: 'home',
             component: Home
         },
         {
-            path: '/restaurants',
-            name: 'restaurants',
-            component: Restaurants
+            path: '/restaurants/:slug',
+            name: 'menu-restaurant',
+            component: MenuRestaurant
         },
         {
             path: '/*',
