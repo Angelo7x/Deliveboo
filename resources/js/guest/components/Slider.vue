@@ -1,11 +1,12 @@
 <template>
 <section class="container">
     <vue-horizontal responsive>
-        <div class="item" v-for="item in items" :key="item">
+        <div class="item" v-for="cuisine in cuisines" :key="cuisine.id">
             <div class="card">
-                <img src="../../../images/cuisines_images/pizza.jpg" alt="pizza">
+                <!-- <img :src="cuisine.image" :alt="cuisine.name"> -->
+                <img src="" alt="">
             </div>
-            <a href="#"><h3>Item {{ item }}</h3></a>
+            <a href="#"><h3>{{cuisine.name}}</h3></a>
         </div>
       </vue-horizontal>
 </section>
@@ -20,9 +21,10 @@ export default {
     {VueHorizontal},
     data() {
     return {
-      items:[1,2,3,4,5,6,7],
+     
     };
   },
+   props: ['cuisines'],
 }
 </script>
 
