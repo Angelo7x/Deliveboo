@@ -23,7 +23,7 @@
             <div class="form-group">
               <label for="image">Inserisci l'immagine</label>
               <div>
-                <img id="foodEditPreview" style="height: 100px;" src="{{null ?? asset('storage/' .  $food['image'])}}" class="mb-2" alt="{{$food['name']}}"/>
+                <img id="foodEditPreview" style="max-height: 100px;" src="{{$food['image'] != null ? asset('storage/' .  $food['image']) : null}}" class="mb-2" alt="{{$food['image'] != null ? $food['name'] : ''}}"/>
               </div>
               <input type="file" class="@error('image') is-invalid @enderror" name="image" id="image" placeholder="Inserisci l'url dell'immagine" value="{{old("image") ?? $food["image"]}}">
               @error('image')

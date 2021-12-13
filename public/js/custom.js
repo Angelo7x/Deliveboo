@@ -217,18 +217,18 @@ function validateRegister() {
 function validateFood() {
 		
 	let price = document.getElementById("price");
-	price.value = parseInt(price.value.replace(/,/g, '.'));
+	price.value = Number(price.value.replace(/,/g, '.')).toFixed(2);
 	// {-- input register --}
 	const foodName = document.getElementById("name");
 	const foodImage = document.getElementById("image");
 	const foodDescription = document.getElementById("description");
 	const foodAllergens = document.getElementById("allergens");
     const foodWeight = document.getElementById("weight");
-	let foodPrice = document.getElementById("price");
+	const foodPrice = document.getElementById("price");
 	let foodNameValue = foodName.value;
 	let foodDescriptionValue = foodDescription.value;
 	let foodAllergensValue = foodAllergens.value;
-	let foodPriceValue = foodPrice.value;
+	let foodPriceValue = price.value;
 	let foodWeightValue = foodWeight.value;
 	// let foodVisibleValue = foodVisible.value;
 	// {--  foodName --}
@@ -272,7 +272,7 @@ function validateFood() {
 		}
 	}
 	// {--  foodWeight --}
-	if (foodWeightValue !== 'undefined') {
+	if (foodWeightValue !== '') {
 		if (foodWeightValue == "" || foodWeightValue == null) {
 			setErrorFor(foodWeight, 'Inserisci il prezzo')
 			return false;
@@ -284,7 +284,7 @@ function validateFood() {
 		setSuccessFor(foodWeight);
 	}
 	// {--  foodPrice --}
-	if (foodPriceValue == "" || foodPriceValue == null) {
+	if (foodPriceValue == 0) {
 		setErrorFor(foodPrice, 'Inserisci il prezzo')
 		return false;
 	} else if (foodPriceValue.match(/^[0-9,.]*$/) == null || foodPriceValue < 0) {
