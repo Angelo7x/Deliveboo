@@ -60,11 +60,9 @@ deleteButtons.forEach(
 // Validazione form register
 //
 //
-// {-- validazione register --}
-var cuisinesError = registerForm.elements["cuisines_error"];
 // {-- form register --}
 var registerForm = document.forms["registerForm"];
-// {-- validazione confir password --}
+// {-- messaggio confir password live--}
 var password = registerForm.elements["userPassword"];
 var passwordConfirm = registerForm.elements["password-confirm"];
 passwordConfirm.addEventListener('input', function () {
@@ -74,6 +72,9 @@ passwordConfirm.addEventListener('input', function () {
 		setErrorFor(passwordConfirm, '')
 	}
 })
+// {-- cuisinesError --}
+var cuisinesError = document.getElementById("cuisines_error");
+// {-- validazione register --}
 function validateRegister() {
 	// {-- input register --}
 	const userName = registerForm.elements["name"];
@@ -84,7 +85,6 @@ function validateRegister() {
 	const business_logo = registerForm.elements["image"];
 	const business_cover = registerForm.elements["image1"];
 	const cuisines = document.getElementsByName("cuisines[]");
-
 	let userNameValue = userName.value;
 	let emailValue = email.value;
 	let passwordValue = password.value;
