@@ -2,7 +2,7 @@
   <div>
     <Header />
     <main>
-      <router-view @food="getFood"></router-view>
+      <router-view @food="getFood" :cart="cart"></router-view>
     </main>
     <Footer />
   </div>
@@ -23,7 +23,8 @@ export default {
       restaurants: [],
       cart: [],
       food: null,
-      cartAction: 0
+      cartAction: 0,
+      foodlist: []
     };
   },
   methods: {
@@ -41,35 +42,43 @@ export default {
     },
     getFood(e) {
       this.food = e;
-      this.cartAction++
+      this.cartAction++;
     },
+  },
+  mounted() {
+       if(localStorage.getItem('cart')) {
+      try {
+        this.cart = JSON.parse(localStorage.getItem('cart'));
+        // console.log(this.cart);
+      } catch(e) {
+        localStorage.removeItem('cart');
+      }
+    }
   },
   watch: {
     cartAction: function () {
-    //   if (this.e != null) {
-        
-    //   }
-        for (let i = 1; i <= this.cart.length; i++) {
-          if (this.cart[i].id == this.food.id) {
-            this.cart[i].quantity++;
-          } else {
-            this.cart.push({
-              'food': this.food,
-              'quantity': 1,
-            });
-          }
+      let inCart = false;
+      this.cart.forEach((e) => {
+        if (e.food.id == this.food.id) {
+          e.quantity++;
+          inCart = true;
         }
-        if (this.cart.length == 0) {
-            this.cart.push({
-              'food': this.food,
-              'quantity': 1,
-            });
-        }
+      });
+      if (this.cart.length == 0 || inCart == false) {
+        this.cart.push({
+          food: this.food,
+          quantity: 1,
+        });
+      }
+      inCart = false;
+    },
+    cart: function () {
+            localStorage.setItem('cart', JSON.stringify(this.cart));
+            // console.log(localStorage.getItem('cart'))
+        },
         
-    //   this.food = null;
-     },
-  },
-}
+  }
+};
 </script>
 
 <style lang="scss">

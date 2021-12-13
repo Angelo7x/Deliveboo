@@ -1,9 +1,7 @@
 <template>
   <div>
-      <div v-for="item in cart" :key="item.id">
-        {{item.name}}
-      </div>
-      <CartFood v-for="item in cart" :key="item.id" :quantity="quantity"/>
+    <CartFood v-for="item in cart" :key="item.food.id" :item="item"/>
+    <a href="/checkout">Vai alla cassa</a>
   </div>
 </template>
 
