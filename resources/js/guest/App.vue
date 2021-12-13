@@ -47,12 +47,10 @@ export default {
   },
   mounted() {
        if(localStorage.getItem('cart')) {
-      try {
+      
         this.cart = JSON.parse(localStorage.getItem('cart'));
-        // console.log(this.cart);
-      } catch(e) {
-        localStorage.removeItem('cart');
-      }
+        console.log(this.cart);
+      
     }
   },
   watch: {
@@ -71,12 +69,8 @@ export default {
         });
       }
       inCart = false;
-    },
-    cart: function () {
-            localStorage.setItem('cart', JSON.stringify(this.cart));
-            // console.log(localStorage.getItem('cart'))
-        },
-        
+      localStorage.setItem('cart', JSON.stringify(this.cart));
+    }
   }
 };
 </script>
