@@ -2,7 +2,7 @@
   <div>
       <h3>{{food.name}}</h3>
       <button type="button" 
-      @click="$emit('add-to-cart',food)">
+      @click="EmitFoodBy(food)">
         Aggiungi
       </button>
   </div>
@@ -11,7 +11,15 @@
 <script>
 export default {
     name: 'Food',
-    props: ['food']
+    props: ['food'],
+    methods: {
+        // addFood() {
+        //     this.$emit('addToCart');
+        // },
+        EmitFoodBy(food) {
+            this.$parent.$emit('food', food)
+        }
+    }
 }
 </script>
 

@@ -1,17 +1,27 @@
 <template>
   <section>
-        <Food v-for="food in menu.foods" :key="food.id" v-on:add-to-cart="addToCart(food)" :food="food"/>
+      <div>
+        <Food v-for="food in menu.foods" :key="food.id" :food="food"/>
+      </div>
+      <div>
+          <h3>Carrello</h3>
+        <Cart :cart="cart"/>
+      </div>
+
   </section>
 </template>
 
 <script>
 import Food from '../components/Food.vue'
+import Cart from '../components/Cart.vue'
 
 export default {
     name: 'MenuRestaurant',
     components: {
-        Food
+        Food,
+        Cart
     },
+    props: ['cart'],
     data() {
         return {
             menu: null
@@ -39,5 +49,8 @@ export default {
 </script>
 
 <style>
-
+section {
+    display: flex;
+    justify-content: space-around;
+}
 </style>
