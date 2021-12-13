@@ -1,10 +1,8 @@
 <template>
   <div>
       <h3>{{food.name}}</h3>
-      <button type="button" 
-      @click="EmitFoodBy(food)">
-        Aggiungi
-      </button>
+      <button type="button" @click="modifyCart(food, 'add')">+</button> 
+      <button type="button" @click="modifyCart(food, 'remove')">-</button> 
   </div>
 </template>
 
@@ -13,12 +11,9 @@ export default {
     name: 'Food',
     props: ['food'],
     methods: {
-        // addFood() {
-        //     this.$emit('addToCart');
-        // },
-        EmitFoodBy(food) {
-            this.$parent.$emit('food', food)
-        }
+        modifyCart(food, action) {
+            this.$parent.$emit('food', {item: food, action: action})
+        },
     }
 }
 </script>

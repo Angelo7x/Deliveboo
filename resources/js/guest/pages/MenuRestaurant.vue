@@ -6,6 +6,7 @@
       <div>
           <h3>Carrello</h3>
         <Cart :cart="cart"/>
+        <button @click="cart = []"> clear cart</button>
       </div>
 
   </section>

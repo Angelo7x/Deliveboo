@@ -2,7 +2,8 @@
   <div>
     <Header />
     <main>
-      <router-view @food="getFood" :cart="cart"></router-view>
+         <!-- @food="getFood" -->
+      <router-view :cart="cart" @food="getFood" @user_id="getUserId"></router-view>
     </main>
     <Footer />
   </div>
@@ -21,10 +22,15 @@ export default {
   data() {
     return {
       restaurants: [],
-      cart: [],
+      cart: {
+          'id': null, 
+          'items': []
+          },
       food: null,
       cartAction: 0,
-      foodlist: []
+      foodlist: [],
+      action: null,
+      id: null
     };
   },
   methods: {
@@ -41,35 +47,46 @@ export default {
       });
     },
     getFood(e) {
-      this.food = e;
+      this.food = e.item;
+      this.action = e.action;
       this.cartAction++;
     },
+    getUserId(e) {
+        this.id = e;
+    }
   },
   mounted() {
        if(localStorage.getItem('cart')) {
-      
-        this.cart = JSON.parse(localStorage.getItem('cart'));
-        console.log(this.cart);
-      
+        this.cart.items = JSON.parse(localStorage.getItem('cart'));
+        this.cart.id = this.id;
+        localStorage.clear();
     }
   },
   watch: {
     cartAction: function () {
       let inCart = false;
-      this.cart.forEach((e) => {
+      let cartItems = this.cart['items'];
+      cartItems.forEach((e, index) => {
         if (e.food.id == this.food.id) {
-          e.quantity++;
-          inCart = true;
+            if ( this.action == 'add' ) {
+                e.quantity++;
+                inCart = true;
+            } else if ( this.action == 'remove' ) {
+                e.quantity > 1 ? e.quantity-- : cartItems.splice(index, 1);
+                console.log(this.cart.items.length)
+            }
         }
       });
-      if (this.cart.length == 0 || inCart == false) {
-        this.cart.push({
+      if (cartItems.length == 0 || inCart == false && this.action == 'add') {
+        cartItems.push({
           food: this.food,
           quantity: 1,
         });
+      } else if ( cartItems.length == 0 && this.action == 'remove' ) {
+          alert('Niente da rimuovere.');
       }
       inCart = false;
-      localStorage.setItem('cart', JSON.stringify(this.cart));
+      localStorage.setItem('cart', JSON.stringify(cartItems));
     }
   }
 };

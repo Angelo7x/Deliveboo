@@ -1,6 +1,6 @@
 <template>
   <div>
-    <CartFood v-for="item in cart" :key="item.food.id" :item="item"/>
+    <CartFood v-for="item in cart.items" :key="item.food.id" :item="item"/>
     <a href="/checkout">Vai alla cassa</a>
   </div>
 </template>
