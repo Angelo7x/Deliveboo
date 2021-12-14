@@ -50,7 +50,6 @@ function fileExists(file) {
 // Generale
 //
 //
-const allowedExtension = ["jpg", "jpeg", "png", "svg"];
 const maxfilesize = 2000 * 2000;
 //
 //
@@ -89,7 +88,7 @@ passwordConfirm.addEventListener('input', function () {
 var cuisinesError = document.getElementById("cuisines_error");
 // {-- validazione register --}
 function validateRegister() {
-	allowedExtension;
+	let allowedExtension = ["jpg", "jpeg", "png", "svg"];
 	// {-- input register --}
 	const userName = registerForm.elements["name"];
 	const email = registerForm.elements["email"];
@@ -229,7 +228,7 @@ function validateRegister() {
 	// 	return validateFood()
 	// }
 function validateFood() {
-	allowedExtension;
+	let allowedExtension = ["jpg", "jpeg", "png", "svg"];
 	const maxfilesize = 2000 * 2000;
 	let price = document.getElementById("price");
 	price.value = Number(price.value.replace(/,/g, '.')).toFixed(2);
