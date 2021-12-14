@@ -51,7 +51,6 @@ deleteButtons.forEach(
 		elm.addEventListener("click", function () {
 			alert('delete')
 			inputDeleteID.value = this.getAttribute("data-id");
-
 		});
 	}
 );
