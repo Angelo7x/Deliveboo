@@ -26,18 +26,42 @@ export default {
       searchRestaurant: "",
     };
   },
-  mounted() {
-    axios
-      .get(`/api/restaurants/7`)
+  methods: {
+    getAll() {
+          axios
+      .get(`/api/restaurants`)
       .then((response) => {
         this.restaurants = response.data.data;
       })
       .catch((error) => {
-        // handle error
         console.log(error);
       });
+    },
+    getFiltered() {
+      axios
+        .get(`/api/restaurants/${this.cuisine}`)
+        .then((response) => {
+          this.restaurants = response.data.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      }
   },
-};
+  watch: {
+    cuisine: function() {
+      if(this.cuisine == null) {
+        this.getAll()
+        
+      } else {
+        this.getFiltered();
+      }
+    }
+  },
+  mounted() {
+    this.getAll()
+  }
+}
 </script>
 
 <style>

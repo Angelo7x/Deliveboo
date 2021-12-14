@@ -6,6 +6,9 @@
                   {{cuisine.name}}
               </button>
           </li>
+          <li><button @click="$emit('cuisine_id', null)">
+                  null
+              </button></li>
       </ul>
   </div>
 </template>
