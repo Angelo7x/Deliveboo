@@ -26,10 +26,10 @@ class OrderRequest extends FormRequest
     {
         return [
             'token' => 'required',
-            'food' => [
-                'required',
-                new ValidFood()
-            ]
+            // 'food' => [
+            //     'required',
+            //     new ValidFood()
+            // ]
         ];
     }
 }

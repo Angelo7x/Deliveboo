@@ -23,9 +23,9 @@ class OrderController extends Controller
 
  public function makePayment(OrderRequest $request,Gateway $gateway){
 
-    $food = Food::find($request->food);
+    // $food = Food::find($request->food);
     $result = $gateway->transaction()->sale([
-        'amount' => $food->price,
+        'amount' =>  $request->amount,
         'paymentMethodNonce' => $request->token,
         'options' => [
             'submitForSettlement' => true
