@@ -1971,7 +1971,6 @@ __webpack_require__.r(__webpack_exports__);
     if (localStorage.getItem('cart')) {
       this.cart.items = JSON.parse(localStorage.getItem('cart'));
       this.cart.id = this.id;
-      localStorage.clear();
     }
   },
   watch: {
@@ -1986,8 +1985,7 @@ __webpack_require__.r(__webpack_exports__);
             e.quantity++;
             inCart = true;
           } else if (_this2.action == 'remove') {
-            e.quantity > 1 ? e.quantity-- : cartItems.splice(index, 1);
-            console.log(_this2.cart.items.length);
+            e.quantity >= 1 ? e.quantity-- : cartItems.splice(index, 1);
           }
         }
       });
@@ -2513,7 +2511,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     totalPrice: function totalPrice() {
       var total = 0;
-      this.cart.forEach(function (e) {
+      this.cart.items.forEach(function (e) {
         total += e.food.price * e.quantity;
       });
       return total;
@@ -5408,30 +5406,6 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("section", [
-    _c("input", {
-      directives: [
-        {
-          name: "model",
-          rawName: "v-model",
-          value: _vm.searchRestaurant,
-          expression: "searchRestaurant",
-        },
-      ],
-      attrs: { type: "text" },
-      domProps: { value: _vm.searchRestaurant },
-      on: {
-        keyup: function ($event) {
-          return _vm.sortByName()
-        },
-        input: function ($event) {
-          if ($event.target.composing) {
-            return
-          }
-          _vm.searchRestaurant = $event.target.value
-        },
-      },
-    }),
-    _vm._v(" "),
     _c(
       "div",
       { staticClass: "restaurants" },
@@ -5606,7 +5580,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row" }, [
-      _c("label", { attrs: { for: "ui_name" } }),
+      _c("label", { attrs: { for: "ui_name" } }, [_vm._v("ui_name")]),
       _vm._v(" "),
       _c("input", { attrs: { type: "text", name: "ui_name", id: "ui_name" } }),
     ])
@@ -5616,7 +5590,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row" }, [
-      _c("label", { attrs: { for: "ui_email" } }),
+      _c("label", { attrs: { for: "ui_email" } }, [_vm._v("ui_email")]),
       _vm._v(" "),
       _c("input", {
         attrs: { type: "email", name: "ui_email", id: "ui_email" },
@@ -5628,7 +5602,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row" }, [
-      _c("label", { attrs: { for: "ui_delivery_address" } }),
+      _c("label", { attrs: { for: "ui_delivery_address" } }, [
+        _vm._v("ui_delivery_address"),
+      ]),
       _vm._v(" "),
       _c("input", {
         attrs: {
@@ -5644,7 +5620,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row" }, [
-      _c("label", { attrs: { for: "ui_phone" } }),
+      _c("label", { attrs: { for: "ui_phone" } }, [_vm._v("ui_phone")]),
       _vm._v(" "),
       _c("input", {
         attrs: { type: "text", name: "ui_phone", id: "ui_phone" },
@@ -5656,7 +5632,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row" }, [
-      _c("label", { attrs: { for: "ui_delivery_info" } }),
+      _c("label", { attrs: { for: "ui_delivery_info" } }, [
+        _vm._v("ui_delivery_info"),
+      ]),
       _vm._v(" "),
       _c("textarea", {
         attrs: {
@@ -22662,7 +22640,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     name: 'menu-restaurant',
     component: _pages_MenuRestaurant_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
   }, {
-    path: '/checkout/:slug',
+    path: '/checkout',
     name: 'checkout',
     component: _pages_Checkout_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
   }, {

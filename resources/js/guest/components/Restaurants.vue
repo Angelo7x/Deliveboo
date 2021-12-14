@@ -1,6 +1,6 @@
 <template>
   <section>
-    <input type="text" v-model="searchRestaurant" @keyup="sortByName()">
+    <!-- <input type="text" v-model="searchRestaurant" @keyup="sortByName()"> -->
     <div class="restaurants">
         <CardRestaurant v-for="restaurant in restaurants" :key="restaurant.id" :data="restaurant"/>
     </div>

@@ -8,23 +8,23 @@
             <button type="button" @click="modifyCart(food, 'remove')">-</button> 
         </div>
         <div class="row">
-            <label for="ui_name"></label>
+            <label for="ui_name">ui_name</label>
             <input type="text" name="ui_name" id="ui_name">
         </div>
         <div class="row">
-            <label for="ui_email"></label>
+            <label for="ui_email">ui_email</label>
             <input type="email" name="ui_email" id="ui_email">
         </div>
         <div class="row">
-            <label for="ui_delivery_address"></label>
+            <label for="ui_delivery_address">ui_delivery_address</label>
             <input type="text" name="ui_delivery_address" id="ui_delivery_address">
         </div>
         <div class="row">
-            <label for="ui_phone"></label>
+            <label for="ui_phone">ui_phone</label>
             <input type="text" name="ui_phone" id="ui_phone">
         </div>
         <div class="row">
-            <label for="ui_delivery_info"></label>
+            <label for="ui_delivery_info">ui_delivery_info</label>
             <textarea name="ui_delivery_info" id="ui_delivery_info" cols="30" rows="10"></textarea>
         </div>
         <div class="row">
@@ -46,7 +46,7 @@ export default {
         },
         totalPrice() {
             let total = 0;
-            this.cart.forEach(e => {
+            this.cart.items.forEach(e => {
                 total += e.food.price*e.quantity;
             });
             return total;
