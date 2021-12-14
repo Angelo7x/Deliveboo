@@ -89,6 +89,7 @@ passwordConfirm.addEventListener('input', function () {
 var cuisinesError = document.getElementById("cuisines_error");
 // {-- validazione register --}
 function validateRegister() {
+	const allowedExtension = ["jpg", "jpeg", "png", "svg"];
 	// {-- input register --}
 	const userName = registerForm.elements["name"];
 	const email = registerForm.elements["email"];
