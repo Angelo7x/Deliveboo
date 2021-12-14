@@ -10,13 +10,28 @@ class UserController extends Controller
 {  
     public function index() 
     {
-        $users = User::all();
+        $user = User::all();
+        
         return response()->json([
             'success' => true,
-            'data' => $users
+            'data' => $user
         ]);
     }
-
+    // public function filter($cuisineId)
+    // {
+    //     if ($cuisineId) {
+    //         $user = User::whereHas('cuisines', function($query) use ($cuisineId) {
+    //             $query->where('cuisine_id', $cuisineId);
+    //         })
+    //         ->get();
+    //     }
+    //     if($user) {
+    //         return response()->json([
+    //             'success' => true,
+    //             'data' => $user
+    //         ]);
+    //     }
+    // }   
     public function show($slug)
     {
         $user = User::where('slug', $slug)->with('foods')->first();

@@ -24,25 +24,7 @@ export default {
     AppDeliveboo,
     Slider,
   },
-  data(){
-      return{
-          cuisines:[],
-      }
-  },
-  mounted() {
-    // Make a request for a user with a given ID
-    axios
-      .get("/api/cuisines")
-      .then((response) =>{
-        this.cuisines = response.data.data
-        console.log(response);
-      })
-      .catch((error) =>{
-        // handle error
-        console.log(error);
-      })
-      
-  },
+  
 };
 </script>
 

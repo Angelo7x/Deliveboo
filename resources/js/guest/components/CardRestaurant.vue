@@ -11,7 +11,7 @@ export default {
     name: 'CardRestaurant',
     props: {
         data: Object
-    }
+    },
 }
 </script>
 

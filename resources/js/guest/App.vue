@@ -21,7 +21,6 @@ export default {
   },
   data() {
     return {
-      restaurants: [],
       cart: {
           'id': null, 
           'items': []
@@ -59,7 +58,6 @@ export default {
        if(localStorage.getItem('cart')) {
         this.cart.items = JSON.parse(localStorage.getItem('cart'));
         this.cart.id = this.id;
-        localStorage.clear();
     }
   },
   watch: {
@@ -72,8 +70,7 @@ export default {
                 e.quantity++;
                 inCart = true;
             } else if ( this.action == 'remove' ) {
-                e.quantity > 1 ? e.quantity-- : cartItems.splice(index, 1);
-                console.log(this.cart.items.length)
+                e.quantity >= 1 ? e.quantity-- : cartItems.splice(index, 1);
             }
         }
       });
