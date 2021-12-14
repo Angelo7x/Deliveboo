@@ -8,9 +8,12 @@ use App\User;
 
 class UserController extends Controller
 {  
-    public function index() 
+    public function index($cuisineId) 
     {
-        $users = User::all();
+        if (is_null($cuisineId)) {
+            $users = User::all()->cuisines()->wherePivot('cuisines', 1)->get();;
+        }
+        
         return response()->json([
             'success' => true,
             'data' => $users

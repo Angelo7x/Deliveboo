@@ -49,7 +49,6 @@ const inputDeleteID = document.getElementById("delete-id")
 deleteButtons.forEach(
 	(elm) => {
 		elm.addEventListener("click", function () {
-			alert('delete')
 			inputDeleteID.value = this.getAttribute("data-id");
 		});
 	}
