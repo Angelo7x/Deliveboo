@@ -2597,6 +2597,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+<<<<<<< HEAD
+  name: "Home",
+  components: {
+    Hero: _components_Hero_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+    AppDeliveboo: _components_AppDeliveboo_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    Slider: _components_Slider_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  mounted: function mounted() {
+    // Make a request for a user with a given ID
+    axios.get("/api/cuisines ").then(function (response) {
+      // handle success
+      console.log(response);
+=======
   name: 'MenuRestaurant',
   components: {
     Food: _components_Food_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -2622,6 +2635,7 @@ __webpack_require__.r(__webpack_exports__);
           name: 'not-fount'
         });
       }
+>>>>>>> 933c4d25d57e475f90cf0fa5d80c648dc11c6dd6
     })["catch"](function (error) {
       // handle error
       console.log(error);
@@ -21227,7 +21241,7 @@ module.exports = "/images/chessboard.png?f31a0a9ba8ec2cfcdd2c3373a753bdfc";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/facebook.svg?20caac44e56a1dea6bff143991397f98";
+module.exports = "/images/facebook.svg?c509a4c46008514b5a5084d2596c99e4";
 
 /***/ }),
 
@@ -21238,7 +21252,7 @@ module.exports = "/images/facebook.svg?20caac44e56a1dea6bff143991397f98";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/fame_sticker.svg?4d9c55b7a4f03fea6901c57aef2dee65";
+module.exports = "/images/fame_sticker.svg?d2ce4d81f7dc5bd5006b7bdf5c99e980";
 
 /***/ }),
 
@@ -21271,7 +21285,7 @@ module.exports = "/images/hero_bg.jpg?a18a8bf12f745674fa998ee1814d48f4";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/instagram.svg?c6a0f2413df9e03f4f22152a39df5c58";
+module.exports = "/images/instagram.svg?453685fbdc2f9491f26dd5ded0863c10";
 
 /***/ }),
 
@@ -21304,7 +21318,7 @@ module.exports = "/images/phone_test.png?cd42ca35d2d019d563fbc953802d514b";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/tweet.svg?bfb3b141dbbf46194e42c3c6cccde733";
+module.exports = "/images/tweet.svg?a57ea219084451288a1f02aabba16f1b";
 
 /***/ }),
 
