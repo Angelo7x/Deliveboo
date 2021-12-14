@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">Aggiungi il piatto</div>
                 <div class="card-body">
-					<form action="{{route("admin.foods.update", $food["id"])}}" method="POST" enctype="multipart/form-data">
+					<form action="{{route("admin.foods.update", $food["id"])}}" method="POST" enctype="multipart/form-data" onsubmit="return validateFood()">
 						@csrf
             @method("PUT")
             {{-- Inserisci il nome --}}
@@ -17,17 +17,19 @@
 						  @error('name')
 							<div class="alert alert-danger">{{ $message }}</div>
 						  @enderror
+              <small></small>
 						</div>
             {{-- Inserisci l'immagine --}}
             <div class="form-group">
               <label for="image">Inserisci l'immagine</label>
               <div>
-                <img id="foodEditPreview" style="height: 100px;" src="{{null ?? asset('storage/' .  $food['image'])}}" class="mb-2" alt="{{$food['name']}}"/>
+                <img id="foodEditPreview" style="max-height: 100px;" src="{{$food['image'] != null ? asset('storage/' .  $food['image']) : null}}" class="mb-2" alt="{{$food['image'] != null ? $food['name'] : ''}}"/>
               </div>
               <input type="file" class="@error('image') is-invalid @enderror" name="image" id="image" placeholder="Inserisci l'url dell'immagine" value="{{old("image") ?? $food["image"]}}">
               @error('image')
               <div class="alert alert-danger">{{ $message }}</div>
               @enderror
+              <small></small>
             </div>
             <div id="prova"></div>
             {{-- Inserisci la descrizione --}}
@@ -37,6 +39,7 @@
 							@error('description')
 								<div class="alert alert-danger">{{ $message }}</div>
 						    @enderror
+                <small></small>
 						</div>
             {{-- Allergeni --}}
 						<div class="form-group">
@@ -45,6 +48,7 @@
 							@error('allergens')
 								<div class="alert alert-danger">{{ $message }}</div>
 						    @enderror
+                <small></small>
 						</div>
             {{-- Peso --}}
             <div class="form-group">
@@ -53,6 +57,7 @@
                 @error('weight')
                   <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
+                <small></small>
             </div>
             {{-- Visibilità --}}
             <div class="form-group">
@@ -69,6 +74,7 @@
                 @error('price')
                   <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
+                <small></small>
             </div>
 
 						<button type="submit" class="btn btn-warning">Salva modifiche</button>

@@ -3,9 +3,9 @@
       <div class="container">
         <nav>
             <div class="nav-left">
-                <div class="logo">
+                <a href="/" class="logo">
                     <img src="../../../images/logo.png" alt="logo Deliveboo">
-                </div>
+                </a>
             </div>
             <div class="nav-right">
                 <ul>
@@ -59,6 +59,7 @@ header {
             .nav-left {
                 .logo {
                     width: 220px;
+                    display: block;
                     transform: translateY(6%);
                     img {
                         width: 100%;
