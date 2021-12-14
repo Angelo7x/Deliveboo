@@ -17,7 +17,6 @@ export default {
   },
   data() {
     return {
-      restaurants: [],
       searchRestaurant: "",
       cuisine: null
 

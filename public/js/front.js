@@ -1931,7 +1931,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      restaurants: [],
       cart: {
         'id': null,
         'items': []
@@ -2121,6 +2120,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
 //
 //
 //
@@ -2448,15 +2450,37 @@ __webpack_require__.r(__webpack_exports__);
       searchRestaurant: ""
     };
   },
-  mounted: function mounted() {
-    var _this = this;
+  methods: {
+    getAll: function getAll() {
+      var _this = this;
 
-    axios.get("/api/restaurants/7").then(function (response) {
-      _this.restaurants = response.data.data;
-    })["catch"](function (error) {
-      // handle error
-      console.log(error);
-    });
+      axios.get("/api/restaurants").then(function (response) {
+        _this.restaurants = response.data.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    getFiltered: function getFiltered() {
+      var _this2 = this;
+
+      axios.get("/api/restaurants/".concat(this.cuisine)).then(function (response) {
+        _this2.restaurants = response.data.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  },
+  watch: {
+    cuisine: function cuisine() {
+      if (this.cuisine == null) {
+        this.getAll();
+      } else {
+        this.getFiltered();
+      }
+    }
+  },
+  created: function created() {
+    this.getAll();
   }
 });
 
@@ -2601,7 +2625,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      restaurants: [],
       searchRestaurant: "",
       cuisine: null
     };
@@ -2672,7 +2695,7 @@ __webpack_require__.r(__webpack_exports__);
       // handle success
       if (response.data.success) {
         _this.menu = response.data.data;
-        console.log(_this.menu);
+        console.log(response);
       } else {
         // redirect 404
         _this.$router.push({
@@ -2878,7 +2901,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.checkout {\n    padding-top: 120px;\n}\n", ""]);
+exports.push([module.i, "\n.checkout {\r\n    padding-top: 120px;\n}\r\n", ""]);
 
 // exports
 
@@ -2897,7 +2920,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\nsection {\n  padding-top: 120px;\n}\n", ""]);
+exports.push([module.i, "\nsection {\r\n  padding-top: 120px;\n}\r\n", ""]);
 
 // exports
 
@@ -2916,7 +2939,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\nsection {\n    display: flex;\n    justify-content: space-around;\n}\n", ""]);
+exports.push([module.i, "\nsection {\r\n    display: flex;\r\n    justify-content: space-around;\n}\r\n", ""]);
 
 // exports
 
@@ -5044,26 +5067,42 @@ var render = function () {
   return _c("div", [
     _c(
       "ul",
-      _vm._l(_vm.cuisines, function (cuisine) {
-        return _c("li", { key: cuisine.id }, [
+      [
+        _vm._l(_vm.cuisines, function (cuisine) {
+          return _c("li", { key: cuisine.id }, [
+            _c(
+              "button",
+              {
+                on: {
+                  click: function ($event) {
+                    return _vm.$emit("cuisine_id", cuisine.id)
+                  },
+                },
+              },
+              [
+                _vm._v(
+                  "\n                " + _vm._s(cuisine.name) + "\n            "
+                ),
+              ]
+            ),
+          ])
+        }),
+        _vm._v(" "),
+        _c("li", [
           _c(
             "button",
             {
               on: {
                 click: function ($event) {
-                  return _vm.$emit("cuisine_id", cuisine.id)
+                  return _vm.$emit("cuisine_id", null)
                 },
               },
             },
-            [
-              _vm._v(
-                "\n                " + _vm._s(cuisine.name) + "\n            "
-              ),
-            ]
+            [_vm._v("\n                null\n            ")]
           ),
-        ])
-      }),
-      0
+        ]),
+      ],
+      2
     ),
   ])
 }
@@ -21323,7 +21362,7 @@ module.exports = "/images/chessboard.png?f31a0a9ba8ec2cfcdd2c3373a753bdfc";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/facebook.svg?20caac44e56a1dea6bff143991397f98";
+module.exports = "/images/facebook.svg?c509a4c46008514b5a5084d2596c99e4";
 
 /***/ }),
 
@@ -21334,7 +21373,7 @@ module.exports = "/images/facebook.svg?20caac44e56a1dea6bff143991397f98";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/fame_sticker.svg?4d9c55b7a4f03fea6901c57aef2dee65";
+module.exports = "/images/fame_sticker.svg?d2ce4d81f7dc5bd5006b7bdf5c99e980";
 
 /***/ }),
 
@@ -21367,7 +21406,7 @@ module.exports = "/images/hero_bg.jpg?a18a8bf12f745674fa998ee1814d48f4";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/instagram.svg?c6a0f2413df9e03f4f22152a39df5c58";
+module.exports = "/images/instagram.svg?453685fbdc2f9491f26dd5ded0863c10";
 
 /***/ }),
 
@@ -21400,7 +21439,7 @@ module.exports = "/images/phone_test.png?cd42ca35d2d019d563fbc953802d514b";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/tweet.svg?bfb3b141dbbf46194e42c3c6cccde733";
+module.exports = "/images/tweet.svg?a57ea219084451288a1f02aabba16f1b";
 
 /***/ }),
 
@@ -22779,7 +22818,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _pages_Welcome__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pages/Welcome */ "./resources/js/guest/pages/Welcome.vue");
 /* harmony import */ var _pages_Home_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pages/Home.vue */ "./resources/js/guest/pages/Home.vue");
-/* harmony import */ var _pages_MenuRestaurant_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pages/MenuRestaurant.vue */ "./resources/js/guest/pages/MenuRestaurant.vue");
+/* harmony import */ var _pages_MenuRestaurant_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./pages/MenuRestaurant.vue */ "./resources/js/guest/pages/MenuRestaurant.vue");
 /* harmony import */ var _pages_Checkout_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pages/Checkout.vue */ "./resources/js/guest/pages/Checkout.vue");
 /* harmony import */ var _pages_NotFound__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./pages/NotFound */ "./resources/js/guest/pages/NotFound.vue");
 
@@ -22803,7 +22842,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   }, {
     path: '/restaurants/:slug',
     name: 'menu-restaurant',
-    component: _pages_MenuRestaurant_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
+    component: _pages_MenuRestaurant_vue__WEBPACK_IMPORTED_MODULE_7__["default"]
   }, {
     path: '/checkout',
     name: 'checkout',
@@ -22825,7 +22864,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /opt/lampp/htdocs/p/Deliveboo/resources/js/guest/front.js */"./resources/js/guest/front.js");
+module.exports = __webpack_require__(/*! D:\boolean\Deliveboo\resources\js\guest\front.js */"./resources/js/guest/front.js");
 
 
 /***/ })

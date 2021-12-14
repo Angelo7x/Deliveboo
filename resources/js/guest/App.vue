@@ -21,7 +21,6 @@ export default {
   },
   data() {
     return {
-      restaurants: [],
       cart: {
           'id': null, 
           'items': []

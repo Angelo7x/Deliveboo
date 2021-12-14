@@ -34,7 +34,7 @@ export default {
             // handle success
             if( response.data.success ) {
                 this.menu = response.data.data;
-                console.log(this.menu);
+                console.log(response);
             } else {
                 // redirect 404
                 this.$router.push({name: 'not-fount'});
