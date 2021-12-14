@@ -89,6 +89,7 @@ passwordConfirm.addEventListener('input', function () {
 var cuisinesError = document.getElementById("cuisines_error");
 // {-- validazione register --}
 function validateRegister() {
+	allowedExtension;
 	// {-- input register --}
 	const userName = registerForm.elements["name"];
 	const email = registerForm.elements["email"];
@@ -228,7 +229,7 @@ function validateRegister() {
 	// 	return validateFood()
 	// }
 function validateFood() {
-	const allowedExtension = ["jpg", "jpeg", "png", "svg"];
+	allowedExtension;
 	const maxfilesize = 2000 * 2000;
 	let price = document.getElementById("price");
 	price.value = Number(price.value.replace(/,/g, '.')).toFixed(2);
