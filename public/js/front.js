@@ -1971,7 +1971,6 @@ __webpack_require__.r(__webpack_exports__);
     if (localStorage.getItem('cart')) {
       this.cart.items = JSON.parse(localStorage.getItem('cart'));
       this.cart.id = this.id;
-      localStorage.clear();
     }
   },
   watch: {
@@ -1986,8 +1985,7 @@ __webpack_require__.r(__webpack_exports__);
             e.quantity++;
             inCart = true;
           } else if (_this2.action == 'remove') {
-            e.quantity > 1 ? e.quantity-- : cartItems.splice(index, 1);
-            console.log(_this2.cart.items.length);
+            e.quantity >= 1 ? e.quantity-- : cartItems.splice(index, 1);
           }
         }
       });
@@ -2513,7 +2511,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     totalPrice: function totalPrice() {
       var total = 0;
-      this.cart.forEach(function (e) {
+      this.cart.items.forEach(function (e) {
         total += e.food.price * e.quantity;
       });
       return total;
@@ -5408,30 +5406,6 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("section", [
-    _c("input", {
-      directives: [
-        {
-          name: "model",
-          rawName: "v-model",
-          value: _vm.searchRestaurant,
-          expression: "searchRestaurant",
-        },
-      ],
-      attrs: { type: "text" },
-      domProps: { value: _vm.searchRestaurant },
-      on: {
-        keyup: function ($event) {
-          return _vm.sortByName()
-        },
-        input: function ($event) {
-          if ($event.target.composing) {
-            return
-          }
-          _vm.searchRestaurant = $event.target.value
-        },
-      },
-    }),
-    _vm._v(" "),
     _c(
       "div",
       { staticClass: "restaurants" },
@@ -5606,7 +5580,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row" }, [
-      _c("label", { attrs: { for: "ui_name" } }),
+      _c("label", { attrs: { for: "ui_name" } }, [_vm._v("ui_name")]),
       _vm._v(" "),
       _c("input", { attrs: { type: "text", name: "ui_name", id: "ui_name" } }),
     ])
@@ -5616,7 +5590,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row" }, [
-      _c("label", { attrs: { for: "ui_email" } }),
+      _c("label", { attrs: { for: "ui_email" } }, [_vm._v("ui_email")]),
       _vm._v(" "),
       _c("input", {
         attrs: { type: "email", name: "ui_email", id: "ui_email" },
@@ -5628,7 +5602,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row" }, [
-      _c("label", { attrs: { for: "ui_delivery_address" } }),
+      _c("label", { attrs: { for: "ui_delivery_address" } }, [
+        _vm._v("ui_delivery_address"),
+      ]),
       _vm._v(" "),
       _c("input", {
         attrs: {
@@ -5644,7 +5620,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row" }, [
-      _c("label", { attrs: { for: "ui_phone" } }),
+      _c("label", { attrs: { for: "ui_phone" } }, [_vm._v("ui_phone")]),
       _vm._v(" "),
       _c("input", {
         attrs: { type: "text", name: "ui_phone", id: "ui_phone" },
@@ -5656,7 +5632,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row" }, [
-      _c("label", { attrs: { for: "ui_delivery_info" } }),
+      _c("label", { attrs: { for: "ui_delivery_info" } }, [
+        _vm._v("ui_delivery_info"),
+      ]),
       _vm._v(" "),
       _c("textarea", {
         attrs: {
@@ -21249,7 +21227,7 @@ module.exports = "/images/chessboard.png?f31a0a9ba8ec2cfcdd2c3373a753bdfc";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/facebook.svg?20caac44e56a1dea6bff143991397f98";
+module.exports = "/images/facebook.svg?c509a4c46008514b5a5084d2596c99e4";
 
 /***/ }),
 
@@ -21260,7 +21238,7 @@ module.exports = "/images/facebook.svg?20caac44e56a1dea6bff143991397f98";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/fame_sticker.svg?4d9c55b7a4f03fea6901c57aef2dee65";
+module.exports = "/images/fame_sticker.svg?d2ce4d81f7dc5bd5006b7bdf5c99e980";
 
 /***/ }),
 
@@ -21293,7 +21271,7 @@ module.exports = "/images/hero_bg.jpg?a18a8bf12f745674fa998ee1814d48f4";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/instagram.svg?c6a0f2413df9e03f4f22152a39df5c58";
+module.exports = "/images/instagram.svg?453685fbdc2f9491f26dd5ded0863c10";
 
 /***/ }),
 
@@ -21326,7 +21304,7 @@ module.exports = "/images/phone_test.png?cd42ca35d2d019d563fbc953802d514b";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/tweet.svg?bfb3b141dbbf46194e42c3c6cccde733";
+module.exports = "/images/tweet.svg?a57ea219084451288a1f02aabba16f1b";
 
 /***/ }),
 
@@ -22662,7 +22640,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     name: 'menu-restaurant',
     component: _pages_MenuRestaurant_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
   }, {
-    path: '/checkout/:slug',
+    path: '/checkout',
     name: 'checkout',
     component: _pages_Checkout_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
   }, {

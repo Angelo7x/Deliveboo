@@ -28,7 +28,7 @@ const router = new VueRouter({
             component: MenuRestaurant
         },
         {
-            path: '/checkout/:slug',
+            path: '/checkout',
             name: 'checkout',
             component: Checkout
         },
