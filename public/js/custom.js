@@ -228,7 +228,8 @@ function validateRegister() {
 	// 	return validateFood()
 	// }
 function validateFood() {
-		
+	const allowedExtension = ["jpg", "jpeg", "png", "svg"];
+	const maxfilesize = 2000 * 2000;
 	let price = document.getElementById("price");
 	price.value = Number(price.value.replace(/,/g, '.')).toFixed(2);
 	// {-- input register --}
