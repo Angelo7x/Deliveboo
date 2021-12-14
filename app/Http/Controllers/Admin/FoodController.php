@@ -15,11 +15,11 @@ class FoodController extends Controller
 
     protected $validationRules = [
         'name' => 'string |required | max:50',
-        'image' => 'mimes:jpeg,png,jpg,gif,svg | max:1000 ',
-        'description' => 'string |nullable | max:255',
-        'allergens' => 'string |nullable | max:100',
-        'price' => 'required|regex:/^[0-9]{1,3}(.[0-9]{3})*(\,[0-9]+)*$/',
-        'weight' => 'string|numeric| nullable|max:999',
+        'image' => 'mimes:jpeg,png,jpg,gif,svg | nullable | max:1000 ',
+        'description' => 'string | nullable | max:255',
+        'allergens' => 'string | nullable | max:100',
+        'price' => 'required',
+        'weight' => 'string  |numeric| nullable| max:999',
         'visible' => 'required|boolean'
     ];
 

@@ -1,50 +1,40 @@
 <template>
-  <div>
-    <Hero/>
-    <Slider :cuisines="cuisines"
-    />
-    <AppDeliveboo/>
-    <!-- <ul>
-        <li v-for="cuisin in cuisines" :key="cuisin.id">
-            <h3> {{cuisin.name}}</h3>
-        </li>
-    </ul> -->
-  </div>
+  <section>
+    <Restaurants/>
+  </section>
 </template>
 
 <script>
-import Hero from "../components/Hero.vue";
-import Slider from "../components/Slider.vue";
-import AppDeliveboo from "../components/AppDeliveboo.vue";
+import Restaurants from '../components/Restaurants.vue'
 
 export default {
   name: "Home",
   components: {
-    Hero,
-    AppDeliveboo,
-    Slider,
+    Restaurants
+    
   },
   data(){
-      return{
-          cuisines:[],
-      }
-  },
-  mounted() {
-    // Make a request for a user with a given ID
-    axios
-      .get("/api/cuisines")
-      .then((response) =>{
-        this.cuisines = response.data.data
-        console.log(response);
-      })
-      .catch((error) =>{
-        // handle error
-        console.log(error);
-      })
-      
-  },
+        return{
+            restaurants:[],
+            searchRestaurant: ''
+        }
+    },
+    methods: {
+        sortByName(){
+                this.contacts.forEach(element => {
+                    if(element.name.toLowerCase().includes(this.search.toLowerCase())){
+                        element.visible = true
+                    }else{
+                        element.visible = false
+                    }
+                });
+            }
+    }
 };
 </script>
 
 <style>
+section {
+  padding-top: 120px;
+}
 </style>
