@@ -17,24 +17,24 @@ class UserController extends Controller
             'data' => $user
         ]);
     }
-    // public function filter($cuisineId)
-    // {
-    //     if ($cuisineId) {
-    //         $user = User::whereHas('cuisines', function($query) use ($cuisineId) {
-    //             $query->where('cuisine_id', $cuisineId);
-    //         })
-    //         ->get();
-    //     }
-    //     if($user) {
-    //         return response()->json([
-    //             'success' => true,
-    //             'data' => $user
-    //         ]);
-    //     }
-    // }   
-    public function show($slug)
+    public function filter($cuisineId)
     {
-        $user = User::where('slug', $slug)->with('foods')->first();
+        if ($cuisineId) {
+            $user = User::whereHas('cuisines', function($query) use ($cuisineId) {
+                $query->where('cuisine_id', $cuisineId);
+            })
+            ->get();
+        }
+        if($user) {
+            return response()->json([
+                'success' => true,
+                'data' => $user
+            ]);
+        }
+    }   
+    public function show($id)
+    {
+        $user = User::where('id', $id)->with('foods')->first();
 
         if( $user ) {
             return response()->json([
@@ -45,7 +45,7 @@ class UserController extends Controller
 
         return response()->json([
             'success' => false,
-            'data' => 'Nessun ristorante trovato.'
+            'data' => null
         ]);
     }
 }

@@ -29,12 +29,12 @@ export default {
         }
     },
     mounted() {
-        axios.get(`/api/restaurants/${this.$route.params.slug}`)
+        axios.get(`/api/restaurants/${this.$route.params.id}`)
         .then((response) => {
             // handle success
             if( response.data.success ) {
                 this.menu = response.data.data;
-                console.log(response);
+                console.log(response.data.data);
             } else {
                 // redirect 404
                 this.$router.push({name: 'not-fount'});

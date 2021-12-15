@@ -2465,6 +2465,7 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get("/api/restaurants/".concat(this.cuisine)).then(function (response) {
         _this2.restaurants = response.data.data;
+        alert("ciao");
       })["catch"](function (error) {
         console.log(error);
       });
@@ -2691,11 +2692,11 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    axios.get("/api/restaurants/".concat(this.$route.params.slug)).then(function (response) {
+    axios.get("/api/restaurants/".concat(this.$route.params.id)).then(function (response) {
       // handle success
       if (response.data.success) {
         _this.menu = response.data.data;
-        console.log(response);
+        console.log(response.data.data);
       } else {
         // redirect 404
         _this.$router.push({
@@ -4962,7 +4963,7 @@ var render = function () {
         "router-link",
         {
           attrs: {
-            to: { name: "menu-restaurant", params: { slug: _vm.data.slug } },
+            to: { name: "menu-restaurant", params: { id: _vm.data.id } },
           },
           on: {
             click: function ($event) {
@@ -22818,7 +22819,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _pages_Welcome__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pages/Welcome */ "./resources/js/guest/pages/Welcome.vue");
 /* harmony import */ var _pages_Home_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pages/Home.vue */ "./resources/js/guest/pages/Home.vue");
-/* harmony import */ var _pages_MenuRestaurant_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./pages/MenuRestaurant.vue */ "./resources/js/guest/pages/MenuRestaurant.vue");
+/* harmony import */ var _pages_MenuRestaurant_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pages/MenuRestaurant.vue */ "./resources/js/guest/pages/MenuRestaurant.vue");
 /* harmony import */ var _pages_Checkout_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pages/Checkout.vue */ "./resources/js/guest/pages/Checkout.vue");
 /* harmony import */ var _pages_NotFound__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./pages/NotFound */ "./resources/js/guest/pages/NotFound.vue");
 
@@ -22840,9 +22841,9 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     name: 'home',
     component: _pages_Home_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
   }, {
-    path: '/restaurants/:slug',
+    path: '/restaurants/:id',
     name: 'menu-restaurant',
-    component: _pages_MenuRestaurant_vue__WEBPACK_IMPORTED_MODULE_7__["default"]
+    component: _pages_MenuRestaurant_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
   }, {
     path: '/checkout',
     name: 'checkout',
@@ -22864,7 +22865,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\boolean\Deliveboo\resources\js\guest\front.js */"./resources/js/guest/front.js");
+module.exports = __webpack_require__(/*! C:\Users\Maria\Desktop\Boolean\Deliveboo\Deliveboo\resources\js\guest\front.js */"./resources/js/guest/front.js");
 
 
 /***/ })

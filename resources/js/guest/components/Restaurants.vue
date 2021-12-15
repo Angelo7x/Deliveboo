@@ -42,6 +42,7 @@ export default {
         .get(`/api/restaurants/${this.cuisine}`)
         .then((response) => {
           this.restaurants = response.data.data;
+          alert("ciao");
         })
         .catch((error) => {
           console.log(error);
