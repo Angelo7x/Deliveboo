@@ -33,7 +33,7 @@ class UserController extends Controller
             $cuisines = $user->cuisines;
             $user->cuisines = $cuisines;
         };
-        if($user) {
+        if($users) {
             return response()->json([
                 'success' => true,
                 'data' => $users,

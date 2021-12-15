@@ -18,9 +18,6 @@ export default {
         cuisineList: Array,
 
     },
-    mouted() {
-        console.log(data.slug)
-    }
 }
 </script>
 
