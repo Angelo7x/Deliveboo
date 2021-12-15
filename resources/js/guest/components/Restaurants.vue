@@ -27,21 +27,22 @@ export default {
     };
   },
   methods: {
-    getAll() {
-          axios
-      .get(`/api/restaurants`)
-      .then((response) => {
-        this.restaurants = response.data.data;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    },
+    // getAll() {
+    //       axios
+    //   .get(`/api/restaurants`)
+    //   .then((response) => {
+    //     this.restaurants = response.data.data;
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
+    // },
     getFiltered() {
       axios
         .get(`/api/restaurants/${this.cuisine}`)
         .then((response) => {
           this.restaurants = response.data.data;
+          console.log(this.restaurants)
         })
         .catch((error) => {
           console.log(error);
@@ -50,16 +51,16 @@ export default {
   },
   watch: {
     cuisine: function() {
-      if(this.cuisine == null) {
-        this.getAll()
+      // if(this.cuisine == null) {
+      //   this.getAll()
         
-      } else {
+      // } else {
+      //   }
         this.getFiltered();
-      }
     }
   },
   created() {
-    this.getAll()
+    this.getFiltered()
   }
 }
 </script>

@@ -17,7 +17,7 @@ import Food from '../components/Food.vue'
 import Cart from '../components/Cart.vue'
 
 export default {
-    name: 'MenuRestaurant',
+    name: 'Test',
     components: {
         Food,
         Cart
@@ -32,13 +32,13 @@ export default {
         axios.get(`/api/restaurants/${this.$route.params.slug}`)
         .then((response) => {
             // handle success
+            if( response.data.success ) {
                 this.menu = response.data.data;
-                console.log(this.menu);
-            // if( response.data.success ) {
-            // } else {
-            //     // redirect 404
-            //     this.$router.push({name: 'not-fount'});
-            // }
+                console.log(response);
+            } else {
+                // redirect 404
+                this.$router.push({name: 'not-fount'});
+            }
         })
         .catch( (error) => {
             // handle error

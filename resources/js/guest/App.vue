@@ -58,6 +58,7 @@ export default {
        if(localStorage.getItem('cart')) {
         this.cart.items = JSON.parse(localStorage.getItem('cart'));
         this.cart.id = this.id;
+        localStorage.clear();
     }
   },
   watch: {

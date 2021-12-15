@@ -5,32 +5,35 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
-
+use App\Cuisine;
 class UserController extends Controller
 {  
-    public function index() 
-    {
-        $user = User::all();
+    // public function index() 
+    // {
+    //     $user = User::all();
         
-        return response()->json([
-            'success' => true,
-            'data' => $user
-        ]);
-    }
-    public function filter($cuisineId)
+    //     if( $user ) {
+    //         return response()->json([
+    //             'success' => true,
+    //             'data' => $user
+    //         ]);
+    //     }
+    // }
+    public function index($cuisineId)
     {
-        if ($cuisineId) {
+        if ($cuisineId == 'all') {
+            $user = User::all();
+        } else {
             $user = User::whereHas('cuisines', function($query) use ($cuisineId) {
                 $query->where('cuisine_id', $cuisineId);
             })
             ->get();
         }
-        if($user) {
-            return response()->json([
-                'success' => true,
-                'data' => $user
-            ]);
-        }
+        return response()->json([
+            'success' => true,
+            'data' => $user,
+            // 'cuisines' => $user->cuisines
+        ]);
     }   
     public function show($slug)
     {
