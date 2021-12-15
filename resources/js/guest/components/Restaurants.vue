@@ -6,6 +6,7 @@
         v-for="restaurant in restaurants"
         :key="restaurant.id"
         :data="restaurant"
+        :cuisineList="cuisineList"
       />
     </div>
   </section>
@@ -19,7 +20,7 @@ export default {
   components: {
     CardRestaurant,
   },
-  props: ["cuisine"],
+  props: ["cuisine", "cuisineList"],
   data() {
     return {
       restaurants: [],
@@ -27,22 +28,22 @@ export default {
     };
   },
   methods: {
-    // getAll() {
-    //       axios
-    //   .get(`/api/restaurants`)
-    //   .then((response) => {
-    //     this.restaurants = response.data.data;
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
-    // },
+    getAll() {
+          axios
+      .get(`/api/restaurants`)
+      .then((response) => {
+        this.restaurants = response.data.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    },
     getFiltered() {
       axios
-        .get(`/api/restaurants/${this.cuisine}`)
+        .get(`/api/filter-by/${this.cuisine}`)
         .then((response) => {
           this.restaurants = response.data.data;
-          console.log(this.restaurants)
+          console.log(this.response.data)
         })
         .catch((error) => {
           console.log(error);
@@ -51,16 +52,15 @@ export default {
   },
   watch: {
     cuisine: function() {
-      // if(this.cuisine == null) {
-      //   this.getAll()
-        
-      // } else {
-      //   }
-        this.getFiltered();
+      if(this.cuisine == 'all') {
+        this.getAll()
+      } else {
+        this.getFiltered()
+        }
     }
   },
   created() {
-    this.getFiltered()
+    this.getAll()
   }
 }
 </script>

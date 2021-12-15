@@ -42,7 +42,7 @@ export default {
         })
         .catch( (error) => {
             // handle error
-            console.log(error);
+            console.log(error.response.data);
         })
     }
 }

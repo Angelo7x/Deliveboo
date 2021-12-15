@@ -1,25 +1,25 @@
 <template>
   <section>
-    <Cuisines @cuisine_id="getCuisine" />
-    <Restaurants :cuisine="cuisine"/>
+    <Cuisine @cuisine_id="getCuisine" v-for="cuisine in cuisines" :key="cuisine.id" :cuisine="cuisine"/>
+    <Restaurants :cuisine="cuisine" :cuisineList="cuisines"/>
   </section>
 </template>
 
 <script>
 import Restaurants from "../components/Restaurants.vue";
-import Cuisines from "../components/Cuisines.vue";
+import Cuisine from "../components/Cuisine.vue";
 
 export default {
   name: "Home",
   components: {
     Restaurants,
-    Cuisines,
+    Cuisine,
   },
   data() {
     return {
       searchRestaurant: "",
-      cuisine: 'all'
-
+      cuisine: 'all',
+      cuisines: [],
     };
   },
   methods: {
@@ -35,6 +35,19 @@ export default {
     getCuisine(e) {
       this.cuisine = e
     }
+  },
+    mounted() {
+    // Make a request for a user with a given ID
+    axios
+      .get("/api/cuisines")
+      .then((response) => {
+        this.cuisines = response.data.data;
+        console.log(response);
+      })
+      .catch((error) => {
+        // handle error
+        console.log(error);
+      });
   },
 };
 </script>

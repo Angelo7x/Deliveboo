@@ -41,7 +41,7 @@ class User extends Authenticatable
 
     public function cuisines ()
     {
-        return $this -> belongsToMany("App\Cuisine");
+        return $this -> belongsToMany("App\Cuisine", 'cuisine_user');
     }
 
     public function orders ()
