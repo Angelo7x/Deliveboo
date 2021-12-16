@@ -43,11 +43,7 @@ export default {
         .get(`/api/filter-by/${this.cuisine}`)
         .then((response) => {
           this.restaurants = response.data.data;
-<<<<<<< HEAD
-          alert("ciao");
-=======
           console.log(this.response.data)
->>>>>>> origin/main
         })
         .catch((error) => {
           console.log(error);

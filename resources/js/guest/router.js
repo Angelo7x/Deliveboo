@@ -23,7 +23,7 @@ const router = new VueRouter({
             component: Home
         },
         {
-            path: '/restaurants/:id',
+            path: '/restaurants/:slug',
             name: 'menu-restaurant',
             component: MenuRestaurant
         },

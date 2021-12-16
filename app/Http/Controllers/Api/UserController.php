@@ -20,31 +20,14 @@ class UserController extends Controller
     }
     public function filter($cuisineId)
     {
-<<<<<<< HEAD
-        if ($cuisineId) {
-            $user = User::whereHas('cuisines', function($query) use ($cuisineId) {
-=======
         if ($cuisineId == 'all') {
             $users = User::all();
         } else {
             $users = User::whereHas('cuisines', function($query) use ($cuisineId) {
->>>>>>> origin/main
                 $query->where('cuisine_id', $cuisineId);
             })
             ->get();
         }
-<<<<<<< HEAD
-        if($user) {
-            return response()->json([
-                'success' => true,
-                'data' => $user
-            ]);
-        }
-    }   
-    public function show($id)
-    {
-        $user = User::where('id', $id)->with('foods')->first();
-=======
         foreach ($users as $user) {
             $cuisines = [];
             $cuisines = $user->cuisines;
@@ -57,7 +40,6 @@ class UserController extends Controller
             ]);
         }
     }   
->>>>>>> origin/main
 
     public function show($slug)
     {
@@ -72,11 +54,7 @@ class UserController extends Controller
 
         return response()->json([
             'success' => false,
-<<<<<<< HEAD
-            'data' => null
-=======
             'data' => ''
->>>>>>> origin/main
         ]);
     }
 }

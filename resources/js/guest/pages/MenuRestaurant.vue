@@ -38,15 +38,11 @@ export default {
         }
     },
     mounted() {
-        axios.get(`/api/restaurants/${this.$route.params.id}`)
+        axios.get(`/api/restaurants/${this.$route.params.slug}`)
         .then((response) => {
             // handle success
             if( response.data.success ) {
                 this.menu = response.data.data;
-<<<<<<< HEAD
-                console.log(response.data.data);
-=======
->>>>>>> origin/main
             } else {
                 // redirect 404
                 this.$router.push({name: 'not-fount'});
