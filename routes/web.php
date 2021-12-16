@@ -28,3 +28,5 @@ Route::middleware('auth')->namespace('Admin')->name('admin.')->prefix('admin')->
 });
 
 Route::get('/{any}', 'PageController@index')->where('any', '.*');
+
+Route::get('/payment/make', 'PaymentsController@make')->name('payment.make');
