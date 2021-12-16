@@ -12,7 +12,7 @@ export default {
     props: ['food'],
     methods: {
         modifyCart(food, action) {
-            this.$parent.$emit('food', {item: food, action: action})
+            this.$parent.$emit('food', {item: food, action: action});
         },
     }
 }
