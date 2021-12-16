@@ -33,17 +33,11 @@ export default {
     };
   },
   methods: {
-    addToCart(food) {
-      this.cart.forEach((e) => {
-        if (e.id == food.id && this.cart.length > 0) {
-          e.quantity++;
-        } else {
-          this.cart.push({
-            food: food,
-            quantity: 1,
-          });
-        }
-      });
+    addToCart(e) {
+      this.cart.items.push({
+        food: e,
+        quantity: 1,
+      })
     },
     getFood(e) {
       this.food = e.item;
@@ -54,37 +48,51 @@ export default {
         this.id = e;
     }
   },
-  mounted() {
-       if(localStorage.getItem('cart')) {
-        this.cart.items = JSON.parse(localStorage.getItem('cart'));
-        this.cart.id = this.id;
-        localStorage.clear();
-    }
-  },
-  watch: {
+  // mounted() {
+  //      if(localStorage.getItem('cart')) {
+  //       this.cart.items = JSON.parse(localStorage.getItem('cart'));
+  //       this.cart.id = this.id;
+  //       localStorage.clear();
+  //   }
+  // },
+watch: {
     cartAction: function () {
       let inCart = false;
       let cartItems = this.cart['items'];
-      cartItems.forEach((e, index) => {
-        if (e.food.id == this.food.id) {
-            if ( this.action == 'add' ) {
-                e.quantity++;
-                inCart = true;
-            } else if ( this.action == 'remove' ) {
-                e.quantity >= 1 ? e.quantity-- : cartItems.splice(index, 1);
+      let newFood = this.food;
+      //aggiunta
+      if (this.action == 'add') {
+        if(cartItems.length <= 0) {
+          this.addToCart(newFood)
+        } else {
+          cartItems.forEach((e,index) => {
+            if(newFood.id == e.food.id) {
+              e.quantity++;
+              inCart = true;
             }
+          });
+          if(!inCart) {
+            this.addToCart(newFood);
+          }
+          inCart = false;
         }
-      });
-      if (cartItems.length == 0 || inCart == false && this.action == 'add') {
-        cartItems.push({
-          food: this.food,
-          quantity: 1,
-        });
-      } else if ( cartItems.length == 0 && this.action == 'remove' ) {
-          alert('Niente da rimuovere.');
+        //rimozione
+      } else {
+        if (cartItems.length == 1 && cartItems[0].quantity == 1) {
+          this.cart['items'] = []
+        } else {
+          cartItems.forEach((e,index) => {
+            if(newFood.id == e.food.id) {
+              if (e.quantity > 1) {
+                e.quantity--;
+              } else {
+                cartItems.splice(index, 1);
+              }
+            }
+          })
+        }
       }
-      inCart = false;
-      localStorage.setItem('cart', JSON.stringify(cartItems));
+      // localStorage.setItem('cart', JSON.stringify(this.cart));
     }
   }
 };
