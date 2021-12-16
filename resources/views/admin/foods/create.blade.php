@@ -11,7 +11,7 @@
                       @csrf
                       {{-- Inserisci il nome --}}
                       <div class="form-group">
-                        <label for="name">Nome</label>
+                        <label for="name">Nome*</label>
                         <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" placeholder="Inserisci il nome" value="{{old("name")}}" required>
                         @error('name')
                         <div class="alert alert-danger">{{ $message }}</div>
@@ -32,7 +32,7 @@
                       </div>
                       {{-- Inserisci la descrizione --}}
                       <div class="form-group">
-                        <label for="description">Descrizione </label>
+                        <label for="description">Descrizione</label>
                         <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description" cols="30" rows="10" placeholder="Inserisci il contenuto">{{old("description")}}</textarea>
                         @error('description')
                           <div class="alert alert-danger">{{ $message }}</div>
@@ -41,7 +41,7 @@
                       </div>
                       {{-- Allergeni --}}
                       <div class="form-group">
-                        <label for="allergens">Allergeni </label>
+                        <label for="allergens">Allergeni</label>
                         <textarea class="form-control @error('allergens') is-invalid @enderror" name="allergens" id="allergens" cols="30" rows="10" placeholder="Inserisci gli allergeni">{{old("allergens")}}</textarea>
                         @error('allergens')
                           <div class="alert alert-danger">{{ $message }}</div>
@@ -67,7 +67,7 @@
                       </div>
                       {{-- Prezzo --}}
                       <div class="form-group">
-                        <label for="price">Inserisci il prezzo</label>
+                        <label for="price">Inserisci il prezzo*</label>
                         <input lang="it" type="text" class="form-control @error('price') is-invalid @enderror" name="price" id="price" placeholder="Inserisci il prezzo" value="{{old("price")}}" required>
                         @error('price')
                           <div class="alert alert-danger">{{ $message }}</div>

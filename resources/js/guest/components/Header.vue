@@ -25,19 +25,19 @@
 <script>
 export default {
     name: 'Header',
-    data() {
-        return {
-            scrollPosition: null,
-        };
-    },
-    methods: {
-        updateScroll() {
-        this.scrollPosition = window.scrollY
-        }
-    },
-    mounted() {
-        window.addEventListener('scroll', this.updateScroll);
-    }
+    // data() {
+    //     return {
+    //         scrollPosition: null,
+    //     };
+    // },
+    // methods: {
+    //     updateScroll() {
+    //     this.scrollPosition = window.scrollY
+    //     }
+    // },
+    // mounted() {
+    //     window.addEventListener('scroll', this.updateScroll);
+    // }
 }
 </script>
 
@@ -51,6 +51,7 @@ header {
     top: 0;
     left:0;
     z-index: 1;
+    background-color: grey;
     @include align-center;
     .container {
         @include container-90;

@@ -12,7 +12,7 @@
             @method("PUT")
             {{-- Inserisci il nome --}}
 						<div class="form-group">
-						  <label for="name">Nome</label>
+						  <label for="name">Nome*</label>
 						  <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" placeholder="Inserisci il nome" value="{{old("name") ?? $food["name"]}}">
 						  @error('name')
 							<div class="alert alert-danger">{{ $message }}</div>
@@ -23,7 +23,7 @@
             <div class="form-group">
               <label for="image">Inserisci l'immagine</label>
               <div>
-                <img id="foodEditPreview" style="max-height: 100px;" src="{{$food['image'] != null ? asset('storage/' .  $food['image']) : null}}" class="mb-2" alt="{{$food['image'] != null ? $food['name'] : ''}}"/>
+                <img id="foodEditPreview" style="max-height: 100px;" src="{{$food['image'] != null ? url('storage/' .  $food['image']) : null}}" class="mb-2" alt="{{$food['image'] != null ? $food['name'] : ''}}"/>
               </div>
               <input type="file" class="@error('image') is-invalid @enderror" name="image" id="image" placeholder="Inserisci l'url dell'immagine" value="{{old("image") ?? $food["image"]}}">
               @error('image')
@@ -69,7 +69,7 @@
             </div>
             {{-- Prezzo --}}
 						<div class="form-group">
-                <label for="price">Inserisci il prezzo</label>
+                <label for="price">Inserisci il prezzo*</label>
                 <input type="text" class="form-control @error('price') is-invalid @enderror" name="price" id="price" placeholder="Inserisci il prezzo" value="{{old("price") ?? $food["price"]}}">
                 @error('price')
                   <div class="alert alert-danger">{{ $message }}</div>

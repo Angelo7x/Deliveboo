@@ -2,8 +2,12 @@
   <div>
     <Header />
     <main>
-         <!-- @food="getFood" -->
-      <router-view :cart="cart" @food="getFood" @user_id="getUserId"></router-view>
+      <router-view
+        :cart="cart"
+        @food="getFood"
+        :isModalVisible="isModalVisible"
+        @clearCart="clearCart"
+      ></router-view>
     </main>
     <Footer />
   </div>
@@ -22,71 +26,89 @@ export default {
   data() {
     return {
       cart: {
-          'id': null, 
-          'items': []
-          },
+        id: null,
+        items: [],
+      },
       food: null,
       cartAction: 0,
       foodlist: [],
       action: null,
-      id: null
+      lastId: null,
+      isModalVisible: null
     };
   },
   methods: {
-    addToCart(food) {
-      this.cart.forEach((e) => {
-        if (e.id == food.id && this.cart.length > 0) {
-          e.quantity++;
-        } else {
-          this.cart.push({
-            food: food,
-            quantity: 1,
-          });
-        }
+    addToCart(e) {
+      this.cart.items.push({
+        food: e,
+        quantity: 1,
       });
+    },
+    clearCart() {
+      localStorage.clear();
+      this.cart.items = [];
+      this.cart.id = null;
+      this.cartAction++;
     },
     getFood(e) {
       this.food = e.item;
       this.action = e.action;
+      // condizione cambio ristorante
+      if (this.cart.id !== null && this.cart.id !== e.item.user_id) {
+        this.isModalVisible = true;
+      } else {
+        this.cart.id = e.item.user_id;
+      }
       this.cartAction++;
     },
-    getUserId(e) {
-        this.id = e;
-    }
   },
   mounted() {
-       if(localStorage.getItem('cart')) {
-        this.cart.items = JSON.parse(localStorage.getItem('cart'));
-        this.cart.id = this.id;
-        localStorage.clear();
+    if (localStorage.getItem("cart")) {
+      this.cart = JSON.parse(localStorage.getItem("cart"));
+      // localStorage.clear();
     }
   },
   watch: {
     cartAction: function () {
       let inCart = false;
-      let cartItems = this.cart['items'];
-      cartItems.forEach((e, index) => {
-        if (e.food.id == this.food.id) {
-            if ( this.action == 'add' ) {
-                e.quantity++;
-                inCart = true;
-            } else if ( this.action == 'remove' ) {
-                e.quantity >= 1 ? e.quantity-- : cartItems.splice(index, 1);
+      let cartItems = this.cart["items"];
+      let newFood = this.food;
+      //aggiunta
+      if (this.action == "add") {
+        if (cartItems.length <= 0) {
+          this.addToCart(newFood);
+        } else {
+          cartItems.forEach((e, index) => {
+            if (newFood.id == e.food.id) {
+              e.quantity++;
+              inCart = true;
             }
+          });
+          if (!inCart) {
+            this.addToCart(newFood);
+          }
+          inCart = false;
         }
-      });
-      if (cartItems.length == 0 || inCart == false && this.action == 'add') {
-        cartItems.push({
-          food: this.food,
-          quantity: 1,
-        });
-      } else if ( cartItems.length == 0 && this.action == 'remove' ) {
-          alert('Niente da rimuovere.');
+        //rimozione
+      } else {
+        if (cartItems.length == 1 && cartItems[0].quantity == 1) {
+          this.cart["items"] = [];
+        } else {
+          cartItems.forEach((e, index) => {
+            if (newFood.id == e.food.id) {
+              if (e.quantity > 1) {
+                e.quantity--;
+              } else {
+                cartItems.splice(index, 1);
+              }
+            }
+          });
+        }
       }
-      inCart = false;
-      localStorage.setItem('cart', JSON.stringify(cartItems));
-    }
-  }
+      // salvataggio carrello
+      localStorage.setItem("cart", JSON.stringify(this.cart));
+    },
+  },
 };
 </script>
 
