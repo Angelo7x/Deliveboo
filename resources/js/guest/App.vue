@@ -48,13 +48,13 @@ export default {
         this.id = e;
     }
   },
-  // mounted() {
-  //      if(localStorage.getItem('cart')) {
-  //       this.cart.items = JSON.parse(localStorage.getItem('cart'));
-  //       this.cart.id = this.id;
-  //       localStorage.clear();
-  //   }
-  // },
+  mounted() {
+       if(localStorage.getItem('cart')) {
+        this.cart.items = JSON.parse(localStorage.getItem('cart'));
+        // this.cart.id = this.id;
+        localStorage.clear();
+    }
+  },
 watch: {
     cartAction: function () {
       let inCart = false;
@@ -92,7 +92,7 @@ watch: {
           })
         }
       }
-      // localStorage.setItem('cart', JSON.stringify(this.cart));
+      localStorage.setItem('cart', JSON.stringify(this.cart.items));
     }
   }
 };
