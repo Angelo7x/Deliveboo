@@ -1,5 +1,14 @@
 <template>
   <section>
+      <div class="restaurant">
+          <h2>Nome ristorante: {{menu.business_name}}</h2>
+          <ul class="restaurant__info">
+              <li>Indirizzo: {{menu.business_address}}</li>
+              <li>Partita Iva: {{menu.vat_numb}}</li>
+          </ul>
+        <img :src="menu.businesss__cover" :alt="`${menu.business_name}_cover`" v-if="menu.businesss__cover != null">
+        <img :src="menu.businesss__cover" :alt="`${menu.business_name}_cover`" v-if="menu.businesss__cover != null">
+      </div>
       <div>
         <Food v-for="food in menu.foods" :key="food.id" :food="food"/>
       </div>
@@ -32,13 +41,12 @@ export default {
         axios.get(`/api/restaurants/${this.$route.params.slug}`)
         .then((response) => {
             // handle success
+            if( response.data.success ) {
                 this.menu = response.data.data;
-                console.log(this.menu);
-            // if( response.data.success ) {
-            // } else {
-            //     // redirect 404
-            //     this.$router.push({name: 'not-fount'});
-            // }
+            } else {
+                // redirect 404
+                this.$router.push({name: 'not-fount'});
+            }
         })
         .catch( (error) => {
             // handle error
