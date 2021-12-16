@@ -47,7 +47,7 @@ export default {
     clearCart() {
       localStorage.clear();
       this.cart.items = [];
-      this.cart.id = null;
+      this.cart.id = this.food.user_id;
       this.cartAction++;
     },
     getFood(e) {
@@ -56,6 +56,8 @@ export default {
       // condizione cambio ristorante
       if (this.cart.id !== null && this.cart.id !== e.item.user_id) {
         this.isModalVisible = true;
+      } else if (this.cart.items.length == 1 && this.action == "remove") {
+        this.cart.id = null;
       } else {
         this.cart.id = e.item.user_id;
       }
@@ -65,7 +67,7 @@ export default {
   mounted() {
     if (localStorage.getItem("cart")) {
       this.cart = JSON.parse(localStorage.getItem("cart"));
-      // localStorage.clear();
+      localStorage.clear();
     }
   },
   watch: {
