@@ -81,3 +81,10 @@
 @mixin padding-top-bottom-20px {
     padding: 20px 0;
 }
+
+// box
+@mixin box--border {
+    padding: $gt_sm;
+    border: .0625rem solid $greyBorder;
+    border-radius: $br;
+}
