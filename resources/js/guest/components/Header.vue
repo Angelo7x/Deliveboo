@@ -1,5 +1,5 @@
 <template>
-  <header :class="{change_color: scrollPosition > 50}">
+  <header>
         <nav>
             <div class="nav-left">
                 <a href="/" class="logo">
@@ -9,7 +9,7 @@
             <div class="nav-right">
                 <ul>
                     <li>
-                        <a href="#" class="cart"><span>13</span><img src="/images/deliveboo/cart.svg" alt="cart_icon"></a>
+                        <a href="#" class="cart"><span>{{getCartAmount}}</span><img src="/images/deliveboo/cart.svg" alt="cart_icon"></a>
                     </li>
                     <li>
                         <ul class="admin">
@@ -26,6 +26,7 @@
 <script>
 export default {
     name: 'Header',
+    props: ['getCartAmount']
 }
 </script>
 

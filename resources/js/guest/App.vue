@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header />
+    <Header :getCartAmount="getAmount"/>
     <main>
       <router-view
         :cart="cart"
@@ -34,7 +34,8 @@ export default {
       foodlist: [],
       action: null,
       lastId: null,
-      isModalVisible: null
+      isModalVisible: null,
+      getAmount: null
     };
   },
   methods: {
@@ -63,11 +64,18 @@ export default {
       }
       this.cartAction++;
     },
+    getCartAmount() {
+      this.getAmount = 0;
+      this.cart.items.forEach((e)=> {
+        return this.getAmount += e.quantity;
+      })
+    }
   },
   mounted() {
     if (localStorage.getItem("cart")) {
       this.cart = JSON.parse(localStorage.getItem("cart"));
-      localStorage.clear();
+      // localStorage.clear();
+      this.getCartAmount()
     }
   },
   watch: {
@@ -109,6 +117,7 @@ export default {
       }
       // salvataggio carrello
       localStorage.setItem("cart", JSON.stringify(this.cart));
+          this.getCartAmount()
     },
   },
 };
@@ -119,5 +128,5 @@ export default {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
+}
 </style>
