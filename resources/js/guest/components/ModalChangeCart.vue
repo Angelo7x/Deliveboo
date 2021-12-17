@@ -34,7 +34,10 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+
+@import '../../../sass/guest/front.scss';
+
 .modal-backdrop {
   position: fixed;
   top: 0;
@@ -53,6 +56,7 @@ export default {
   overflow-x: auto;
   display: flex;
   flex-direction: column;
+  border-radius: $br;
 }
 
 .modal-header,

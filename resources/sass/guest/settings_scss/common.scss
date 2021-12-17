@@ -10,6 +10,13 @@ body, a, input, select, button {
     width: 100%;
     overflow-x: hidden;
 }
+
+.container--1000 {
+    max-width: 43.75rem;
+    margin: auto;
+    padding: $gt;
+}
+
 //
 //
 // txt
@@ -21,6 +28,22 @@ $txt: 1.3rem;
 $txt_md: 1.7rem;
 $txt_lg: 2.2rem;
 $txt_xl: 3rem;
+//txt color
+.color--grey {color:$greyBorder};
+//
+// title
+//
+//
+h2, h5 {
+    font-weight: normal;
+}
+
+
+h5 {
+    font-size: 1.2rem;
+    font-family: 'PolySans Neutral';
+
+}
 //
 //
 // links style
@@ -31,3 +54,12 @@ a {
 text-decoration: none;
 }
 
+button {
+    background-color: transparent;
+    margin: 0;
+    border: none;
+}
+
+button:hover, a:hover {
+    cursor: pointer;
+}

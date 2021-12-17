@@ -1,31 +1,53 @@
 <template>
   <section>
+    <!-- cover -->
+    <div class="cover-restaurant">
+      <!-- <img
+        :src="menu.business__cover"
+        :alt="`${menu.business_name}_cover`"
+        v-if="menu.business__cover != null"
+      /> -->
+      <img src="../../../images/hero_bg.jpg" alt="">
+    </div>
+    <!-- /cover -->
+    <!-- restaurant -->
     <div class="restaurant">
-      <h2>Nome ristorante: {{ menu.business_name }}</h2>
-      <ul class="restaurant__info">
-        <li>Indirizzo: {{ menu.business_address }}</li>
-        <li>Partita Iva: {{ menu.vat_numb }}</li>
-      </ul>
-      <img
-        :src="menu.businesss__cover"
-        :alt="`${menu.business_name}_cover`"
-        v-if="menu.businesss__cover != null"
-      />
-      <img
-        :src="menu.businesss__cover"
-        :alt="`${menu.business_name}_cover`"
-        v-if="menu.businesss__cover != null"
-      />
+      <!-- logo -->
+      <div class="restaurant-logo">
+        <img src="../../../images/bg_footer.jpg" alt="">
+        <!-- <img
+          :src="menu.business__logo"
+          :alt="`${menu.business_name}_logo`"
+          v-if="menu.business__logo != null"
+        /> -->
+      </div>
+      <!-- /logo -->
+      <!-- menu -->
+      <div class="restaurant-menu">
+        <h2>{{ menu.business_name }}</h2>
+        <!-- <ul class="restaurant__info">
+          <li>Indirizzo: {{ menu.business_address }}</li>
+          <li>Partita Iva: {{ menu.vat_numb }}</li>
+        </ul> -->
+        <div class="restaurants-menu-foods">
+          <Food v-for="food in menu.foods" :key="food.id" :food="food" />
+        </div>
+      </div>
+      <!-- /menu -->
+      <!-- cart -->
+      <div class="cart">
+        <h3>Carrello</h3>
+        <Cart :cart="cart" />
+      </div>
+      <!-- /cart -->
     </div>
-    <div>
-      <Food v-for="food in menu.foods" :key="food.id" :food="food" />
-    </div>
-    <div>
-      <h3>Carrello</h3>
-      <Cart :cart="cart" />
-      <button @click="cart = []">clear cart</button>
-    </div>
-    <ModalChangeCart v-show="isModalVisible" @close="closeModal"  @clearCart="clearCart"/>
+    <!-- /restaurant -->
+
+    <ModalChangeCart
+      v-show="isModalVisible"
+      @close="closeModal"
+      @clearCart="clearCart"
+    />
   </section>
 </template>
 
@@ -40,7 +62,7 @@ export default {
     Cart,
     ModalChangeCart,
   },
-  props: ["cart","isModalVisible"],
+  props: ["cart", "isModalVisible"],
   data() {
     return {
       menu: null,
@@ -53,7 +75,7 @@ export default {
     clearCart() {
       this.$emit("clearCart");
       this.closeModal();
-    }
+    },
   },
   mounted() {
     axios
@@ -72,6 +94,42 @@ export default {
 };
 </script>
 
-<style >
+<style lang="scss" scoped>
 
+@import '../../../sass/guest/front.scss';
+
+section {
+  padding-top: 100px;
+}
+.cover-restaurant {
+  height: 350px;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+.restaurant {
+  display: flex;
+  &-logo {
+    width: 200px;
+    text-align: right;
+    img {
+      width: 150px;
+      height: 150px;
+      border-radius: $br;
+      object-fit: cover;
+      border: 2px solid $mainColor;
+      margin-right: $gt;
+      transform: translateY(-38%);
+    }
+  }
+  &-menu {
+    width: 750px;
+    h2 {
+      font-size: $txt_xl;
+      margin: $gt_md 0 $gt_md;
+    }
+  }
+}
 </style>
