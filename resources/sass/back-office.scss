@@ -1,3 +1,52 @@
-small {
-    color: red;
+.wrapper {
+  width: 95%;
+  margin: auto;
+  .navbar-brand {
+    width: 11.25rem;
+    display: block;
+    transform: translateY(6%);
+    img {
+        width: 100%;
+    }
   }
+  .nav-item.dropdown {
+    font-size: 1.125rem;
+  }
+  .row.details {
+    height: 7.5rem;
+    align-items: center;
+    -webkit-box-shadow: 0rem 0rem .3125rem 0rem rgba(153,153,153,0.55);
+    -moz-box-shadow: 0rem 0rem .3125rem 0rem rgba(153,153,153,0.55);
+    box-shadow: 0rem 0rem .3125rem 0rem rgba(153,153,153,0.55);
+    border-radius: .625rem;
+    h4 {
+      padding-top: .3125rem;
+    }
+    .food_photo {
+      height: 100%;
+      border-radius: .9375rem;
+    }
+    .description {
+      height: 50%;
+      overflow: auto;
+    }
+  }
+}
+.row.details > * {
+  height: 80%;
+}
+.pointer {
+  cursor: pointer;
+}
+a {
+  color: $mainColor;
+}
+a:hover {
+  color: $mainColor;
+}
+.fa-trash-alt {
+  color: $secondColor;
+}
+.opacity_50 {
+  opacity: 0.5;
+}
