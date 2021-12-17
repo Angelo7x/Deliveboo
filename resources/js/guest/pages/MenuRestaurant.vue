@@ -72,9 +72,6 @@ export default {
 };
 </script>
 
-<style>
-section {
-  display: flex;
-  justify-content: space-around;
-}
+<style >
+
 </style>

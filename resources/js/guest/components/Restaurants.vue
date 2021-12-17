@@ -1,7 +1,7 @@
 <template>
-  <section>
+
     <!-- <input type="text" v-model="searchRestaurant" @keyup="sortByName()"> -->
-    <div class="restaurants">
+    <div class="grid_restaurants" >
       <CardRestaurant
         v-for="restaurant in restaurants"
         :key="restaurant.id"
@@ -9,7 +9,7 @@
         :cuisineList="cuisineList"
       />
     </div>
-  </section>
+
 </template>
 
 <script>
@@ -65,5 +65,28 @@ export default {
 }
 </script>
 
-<style>
+<style scoped lang="scss">
+@import "../../../sass/guest/front.scss";
+
+//Restaurant
+.grid_restaurants{
+  grid-template-columns: repeat(4, 1fr);
+  display: grid;
+  column-gap: 15px;
+  padding: $gt_md;
+}
+
+
+//Mediaqueri
+@media screen and (max-width: 850px) {
+  .grid_restaurants {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .grid_restaurants {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
 </style>
