@@ -6,6 +6,7 @@
     <div class="checkout__body container--1000">
         <form action="" @submit="submitOrder()">
             <div class="body__cart">
+                <!-- carrello -->
                 <h5 class="cart__title">Carrello</h5>
                 <div v-if="cart.items.length == 0" class="color--grey">Il carrello è vuoto 	(⌣_⌣”)</div>
                 <div v-for="food in cart.items" :key="food.food.id" class="cart__food-card">
@@ -38,31 +39,43 @@
                         </button> 
                     </div>
                 </div>
+                <!-- totale -->
+                <div class="cart__total">
+                    <label for="total_price"> Prezzo totale: {{totalPrice()}}€</label>
+                    <input type="text" hidden>
+                </div>
+                <!-- ui data -->
                 <h5 class="cart__title">I tuoi dati</h5>
-            </div>
-            <div class="row">
-                <label for="ui_name">ui_name</label>
-                <input type="text" name="ui_name" id="ui_name">
-            </div>
-            <div class="row">
-                <label for="ui_email">ui_email</label>
-                <input type="email" name="ui_email" id="ui_email">
-            </div>
-            <div class="row">
-                <label for="ui_delivery_address">ui_delivery_address</label>
-                <input type="text" name="ui_delivery_address" id="ui_delivery_address">
-            </div>
-            <div class="row">
-                <label for="ui_phone">ui_phone</label>
-                <input type="text" name="ui_phone" id="ui_phone">
-            </div>
-            <div class="row">
-                <label for="ui_delivery_info">ui_delivery_info</label>
-                <textarea name="ui_delivery_info" id="ui_delivery_info" cols="30" rows="10"></textarea>
-            </div>
-            <div class="row">
-                <label for="total_price"> Prezzo totale: {{totalPrice()}}€</label>
-                <input type="text" hidden>
+                <div class="ui">
+                    <div class="ui__row">
+                        <div class="ui__data">
+                            <label for="ui_name">Nome*</label>
+                            <input type="text" name="ui_name" id="ui_name">
+                        </div>
+                        <div class="ui__data">
+                            <label for="ui_email">Email*</label>
+                            <input type="email" name="ui_email" id="ui_email">
+                        </div>
+                    </div>
+                    <div class="ui__row">
+                        <div class="ui__data">
+                            <label for="ui_delivery_address">Indirizzo*</label>
+                            <input type="text" name="ui_delivery_address" id="ui_delivery_address">
+                        </div>
+                        <div class="ui__data">
+                            <label for="ui_phone">Numero di telefono</label>
+                            <input type="tel name" name="ui_phone" id="ui_phone">
+                        </div>
+                    </div>
+                    <div class="ui__row">
+                        <div class="ui__data">
+                            <label for="ui_delivery_info">Informazioni per la consegna</label>
+                            <textarea name="ui_delivery_info" id="ui_delivery_info" ui__datas="10"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <!-- pagamento -->
+                <h5 class="cart__title">Pagamento</h5>
             </div>
 
             <button type="submit">Checkout</button>
@@ -112,6 +125,12 @@ export default {
         padding: $gt_lg $gt_sm;
     }
 
+    .body__cart {        
+        &>div {
+            margin-bottom: $gt;
+        }
+    }
+
     .cart__title {
         padding: $gt 0;
     }
@@ -129,9 +148,7 @@ export default {
 
     .food-card__info {
         @include align-center;
-        padding: $gt_sm;
-        border: .0625rem solid $greyBorder;
-        border-radius: $br;
+        @include box--border;
         flex-grow: 1;
 
         &>*:not(.info__img) {
@@ -178,6 +195,38 @@ export default {
                 }
             }
         }
+    }
+
+    .ui__row {
+        margin-bottom: $gt_sm;
+
+        .ui__data {
+            display: flex;
+            flex-direction: column;
+            label {
+                padding-bottom: .5rem;
+            }
+        }
+
+        input, textarea {
+            @include box--border;
+        }
+
+        .ui__data:not(:last-child) {
+            margin-right: $gt_sm;
+        }
+    }
+
+    .ui__row:not(:last-child) {
+        display: flex;
+        &>* {
+            width: 50%;
+        }
+    }
+
+    .ui__row:last-child .ui__data {
+        display: flex;
+        flex-direction: column;
     }
 }
 
