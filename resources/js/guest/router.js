@@ -1,6 +1,12 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
+
+
+import vueBraintree from 'vueBraintree';
+
+Vue.use(vueBraintree)
+
 Vue.use(VueRouter)
 
 // import Welcome from './pages/Welcome';

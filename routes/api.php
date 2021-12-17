@@ -28,6 +28,6 @@ Route::namespace('Api')->name('api.')->group(function() {
 
     Route::get('orders/generate', 'Api\Orders\OrderController@generate');
     Route::post('orders/make/payment', 'Api\Orders\OrderController@makePayment');
-    Route::post('foods', 'Api/Foods/FoodController@index');
+    // Route::post('foods', 'Api/Foods/FoodController@index');
 
 
