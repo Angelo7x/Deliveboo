@@ -115,20 +115,9 @@ export default {
 </script>
 
 <style lang="scss">
-// reset
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-// typo
-body {
-  font-family: "Work Sans", sans-serif;
-  width: 100%;
-  overflow-x: hidden;
-}
-// links style
-a {
-  text-decoration: none;
-}
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 </style>

@@ -31,6 +31,7 @@
             <label for="total_price"> Prezzo totale: {{totalPrice()}}€</label>
             <input type="text" hidden>
         </div>
+
         <button type="submit">Checkout</button>
     </form>
   </div>
@@ -51,8 +52,8 @@ export default {
             });
             return total;
         },
-        submitOrder() {
-            axios.post
+        sendPrice() {
+            axios.post(`orders/make/payment/${this.totalPrice()}`)
         }
     }
 };

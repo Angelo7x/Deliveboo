@@ -1,0 +1,32 @@
+
+//
+//
+// common
+//
+//
+//
+body, a, input, select, button {
+    font-family: 'PolySans Slim';
+    width: 100%;
+    overflow-x: hidden;
+}
+//
+//
+// txt
+//
+//
+$txt_xs: .8rem;
+$txt_sm: 1rem;
+$txt: 1.3rem;
+$txt_md: 1.7rem;
+$txt_lg: 2.2rem;
+$txt_xl: 3rem;
+//
+//
+// links style
+//
+//
+// links style
+a {
+text-decoration: none;
+}

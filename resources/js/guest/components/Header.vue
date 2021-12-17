@@ -1,43 +1,31 @@
 <template>
   <header :class="{change_color: scrollPosition > 50}">
-      <div class="container">
         <nav>
             <div class="nav-left">
                 <a href="/" class="logo">
-                    <img src="../../../images/logo.png" alt="logo Deliveboo">
+                    <img src="images/deliveboo/logo_white.svg" alt="logo_deliveboo">
                 </a>
             </div>
             <div class="nav-right">
                 <ul>
-                    <li><a href="/login">Login</a></li>
-                    <li><a href="/register">Register</a></li>
                     <li>
-                        <a href="#" class="cart"><span>0,00$</span> <img src="../../../images/cart_icon_white.png" alt="cart icon"></a>
+                        <a href="#" class="cart"><span>13</span><img src="/images/deliveboo/cart.svg" alt="cart_icon"></a>
+                    </li>
+                    <li>
+                        <ul class="admin">
+                            <li><a href="/login">Login</a></li>
+                            <li><a href="/register">Registrazione</a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>
         </nav>
-      </div>
-      
   </header>
 </template>
 
 <script>
 export default {
     name: 'Header',
-    // data() {
-    //     return {
-    //         scrollPosition: null,
-    //     };
-    // },
-    // methods: {
-    //     updateScroll() {
-    //     this.scrollPosition = window.scrollY
-    //     }
-    // },
-    // mounted() {
-    //     window.addEventListener('scroll', this.updateScroll);
-    // }
 }
 </script>
 
@@ -45,57 +33,111 @@ export default {
 @import '../../../sass/guest/front.scss';
 
 header {
+    background-color: $secondColor;
     width:100%;
-    height: 100px;
     position: fixed;
     top: 0;
-    left:0;
     z-index: 1;
-    background-color: grey;
-    @include align-center;
-    .container {
-        @include container-90;
+    img {
+        height:100px;
+    }
         nav {
             @include align-center-between;
-            .nav-left {
-                .logo {
-                    width: 220px;
-                    display: block;
-                    transform: translateY(6%);
-                    img {
-                        width: 100%;
-                    }
-                }
-            }
+
             .nav-right {
                 ul {
-                    @include inline-block-list;
+                    display: flex;
+                    list-style: none;
+                    // flex-wrap: wrap;
                     li {
                         padding: 0 10px;
                         a {
                             text-transform: uppercase;
                             color: $lightColor;
-                            font-weight: 500;
-                            font-size: 20px;
+                            font-size: $txt;
+                            margin-bottom: auto;
+                            &:hover {
+                                text-decoration: underline;
+                            }
                         }
                         a.cart {
-                            @include btn($btnColor: $lightColor, $btnBG: transparent);
-                            font-size: 16px;
-                            padding: 12px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            margin-left: $gt_md;
+                                position: relative;
+
+                            span {
+                                position: absolute;
+                                top: 50%;
+                                transform: translateY(-50%);
+                            }
+                        }
+                        &:first-child {
+                            margin-right: auto;
+                        }
+                        .admin {
+                            flex-wrap: wrap;
+                        }
+                    }
+                }
+            }
+        }
+}
+
+@media screen and (max-width:850px) {
+    header {
+        img {
+            height:80px;
+        }
+        .admin {
+            flex-direction: column;
+        }
+    }
+    
+}
+
+@media screen and (max-width:768px) {
+    header {
+        img {
+            width: 100%;
+        }
+        .admin {
+            flex-direction: column;
+        }
+    }
+    
+}
+
+@media screen and (max-width:768px) {
+    header {
+        nav {
+            flex-direction: column;
+            align-items: inherit;
+            .nav-left {
+                a {
+                    height: 100px;
+                }
+                img {
+                    height: 100%;
+                }
+            }
+            .nav-right {
+                ul {
+                    li {
+                        a.cart {
+                            margin:0;
+                            margin-right: auto;
                             img {
-                                width: 30px;
-                                margin-left: 8px;
+                                height:80px;
                             }
                         }
                     }
                 }
             }
         }
-    }
 }
-.change_color {
-       background-color: $footerDarkColor;
-    }
+}
 
 
 </style>
