@@ -37275,11 +37275,11 @@ module.exports = function(module) {
 //         document.getElementById(idImage).src = src
 //     })   
 // }
-// // call della funzione uploadedImage
-// uploadedImage('image', 'foodEditPreview');
-// uploadedImage('image', 'foodCreatePreview');
-// uploadedImage('image', 'businessLogo');
-// uploadedImage('image1', 'businessCover');
+// call della funzione uploadedImage
+uploadedImage('image', 'foodEditPreview');
+uploadedImage('image', 'foodCreatePreview');
+uploadedImage('image', 'businessLogo');
+uploadedImage('image1', 'businessCover');
 
 /***/ }),
 

@@ -67,7 +67,7 @@ export default {
   mounted() {
     if (localStorage.getItem("cart")) {
       this.cart = JSON.parse(localStorage.getItem("cart"));
-      localStorage.clear();
+      // localStorage.clear();
     }
   },
   watch: {
