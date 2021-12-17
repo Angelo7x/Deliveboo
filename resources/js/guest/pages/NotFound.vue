@@ -1,5 +1,11 @@
 <template>
-	<h1>Errore 404: Pagina non trovata</h1>
+	<section>
+		<div class="page__404">
+			<div class="body__404 container--1000">
+				<h1>ERROR <span>404</span></h1>
+			</div>
+		</div>
+	</section>
 </template>
 
 <script>
@@ -7,3 +13,48 @@
 		name: 'NotFound'
 	}
 </script>
+
+
+<style lang="scss" scoped>
+
+@import '../../../sass/guest/front.scss';
+
+section {
+	padding-top: 100px;
+	.page__404 {
+		background-color: $secondColor;
+		.body__404 {
+			font-family: 'PolySans Neutral';
+			padding: $gt_lg $gt_sm;
+			background-image: url('../../../../public/images/deliveboo/404_boo.svg');
+			background-size: 42%;
+			background-repeat: no-repeat;
+			height: calc(100vh - 438.4px);
+			background-position: center;
+			display: flex;
+			h1 {
+				font-size: 40px;
+				color: $lightColor;
+				margin: auto;
+				span {
+					transform: rotate(180deg);
+					display: inline-block;
+				}
+			}
+
+		}
+	}
+
+}
+
+@media screen and (max-width: 850px) {
+
+}
+
+@media screen and (max-width: 768px) {
+
+}
+
+
+
+</style>
