@@ -52,8 +52,8 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 section {
-  padding-top: 120px;
+  padding-top: 100px;
 }
 </style>

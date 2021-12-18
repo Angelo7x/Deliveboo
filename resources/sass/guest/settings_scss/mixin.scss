@@ -39,7 +39,7 @@
     flex-direction: column;
     justify-content: center;
 }
-//centered X
+//centered Y
 @mixin align-center {
     display: flex;
     align-items: center;
@@ -87,4 +87,13 @@
     padding: $gt_sm;
     border: .0625rem solid $greyBorder;
     border-radius: $br;
+}
+
+// box-shadow
+@mixin box--box-shadow {
+    -webkit-box-shadow: 2px 2px 8px 0px $greyBorder;
+    -moz-box-shadow: 2px 2px 8px 0px $greyBorder;
+    box-shadow: 2px 2px 8px 0px $greyBorder;
+    border-radius: $br;
+    padding: $gt;
 }

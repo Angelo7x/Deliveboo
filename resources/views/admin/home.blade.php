@@ -44,7 +44,7 @@
                 </a>
                 <br>
                 {{-- delete button modale --}}
-                <i class="fas fa-trash-alt pointer" data-id="{{$food["id"]}}" data-toggle="modal" data-target="#deleteModal"></i>
+                <button type="submit" class="fas fa-trash-alt" data-id="{{$food["id"]}}" data-toggle="modal" data-target="#deleteModal"></button>
             </div>
             
             {{-- <form action="{{route('admin.foods.destroy', $food["id"])}}" method="POST">
