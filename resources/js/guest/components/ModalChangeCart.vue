@@ -1,10 +1,6 @@
 <template>
   <div class="modal-backdrop">
     <div class="modal">
-      <header class="modal-header">
-        <button type="button" class="btn-close" @click="close">x</button>
-      </header>
-
       <section class="modal-body">
         <slot name="body">
           Sei sicuro di voler eliminare il carrello corrente e <br />
@@ -13,8 +9,10 @@
       </section>
 
       <footer class="modal-footer">
-        <button type="button" class="btn-green" @click="clear">Procedi</button>
-        <button type="button" class="btn-green" @click="close">Annulla</button>
+        <div class="buttons__container">
+          <button type="button" class="btn btn-yellow" @click="clear">Procedi</button>
+          <button type="button" class="btn btn-white" @click="close">Annulla</button>
+        </div>
       </footer>
     </div>
   </div>
@@ -54,45 +52,39 @@ export default {
   background: #ffffff;
   box-shadow: 2px 2px 20px 1px;
   overflow-x: auto;
-  display: flex;
-  flex-direction: column;
   border-radius: $br;
 }
 
-.modal-header,
 .modal-footer {
   padding: 15px;
+  margin: auto;
   display: flex;
-}
-
-.modal-header {
-  position: relative;
-  color: #4aae9b;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 
 .modal-body {
-  position: relative;
-  padding: 20px 10px;
+  padding: $gt_md;
+  font-size: $txt_sm;
+}
+.buttons__container {
+  display: flex;
+}
+.btn {
+    color:#000;
+    display: inline-block;
+    text-align: center;
+    padding: 0.5rem 0.6rem;
+    font-size: $txt_sm;
+    border-radius: $br;
+  }
+
+.btn-yellow {
+  background-color: $mainColor;
+  margin-right: $gt;
 }
 
-.btn-close {
-  position: absolute;
-  top: 0;
-  right: 0;
-  border: none;
-  font-size: 20px;
-  padding: 10px;
-  cursor: pointer;
-  font-weight: bold;
-  color: #4aae9b;
-  background: transparent;
-}
-
-.btn-green {
-  color: white;
-  background: #4aae9b;
-  border: 1px solid #4aae9b;
-  border-radius: 2px;
+.btn-white {
+  border: 1px solid $mainColor;
+  background-color: $lightColor;
 }
 </style>
