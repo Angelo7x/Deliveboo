@@ -115,8 +115,8 @@ section {
     width: 200px;
     text-align: right;
     img {
-      width: 130px;
-      height: 130px;
+      width: 150px;
+      height: 150px;
       border-radius: $br;
       object-fit: cover;
       border: 2px solid $mainColor;
