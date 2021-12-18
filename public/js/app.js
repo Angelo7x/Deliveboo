@@ -37268,14 +37268,15 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// // mostra l'immagine caricata
-// const uploadedImage = function(idInput, idImage) {
-//     document.getElementById(idInput).addEventListener('change', function () {
-//         var src = URL.createObjectURL(this.files[0])
-//         document.getElementById(idImage).src = src
-//     })   
-// }
-// call della funzione uploadedImage
+// mostra l'immagine caricata
+var uploadedImage = function uploadedImage(idInput, idImage) {
+  document.getElementById(idInput).addEventListener('change', function () {
+    var src = URL.createObjectURL(this.files[0]);
+    document.getElementById(idImage).src = src;
+  });
+}; // call della funzione uploadedImage
+
+
 uploadedImage('image', 'foodEditPreview');
 uploadedImage('image', 'foodCreatePreview');
 uploadedImage('image', 'businessLogo');
@@ -37375,9 +37376,9 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /opt/lampp/htdocs/p/Deliveboo/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /opt/lampp/htdocs/p/Deliveboo/resources/sass/app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! /opt/lampp/htdocs/p/Deliveboo/resources/sass/guest/front.scss */"./resources/sass/guest/front.scss");
+__webpack_require__(/*! D:\boolean\Deliveboo\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! D:\boolean\Deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! D:\boolean\Deliveboo\resources\sass\guest\front.scss */"./resources/sass/guest/front.scss");
 
 
 /***/ })

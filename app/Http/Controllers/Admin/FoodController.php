@@ -142,14 +142,14 @@ class FoodController extends Controller
     public function destroy(Request $request)
     {
         $food = Food::find($request->id);
-        // if( $food->user_id != Auth::id() ) {
-        //     abort("403");
-        // }
+        if( $food->user_id != Auth::id() ) {
+            abort("403");
+        }
 
+        Storage::delete($food->image);
         if (!is_null($food)) {
             $food->delete();
         }
-
         return redirect()->route("admin.home");
         // ->with('success',"Il post {$post->id} è stato eliminato") da aggiungere 
     }
