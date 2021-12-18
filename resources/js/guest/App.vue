@@ -50,6 +50,7 @@ export default {
       this.cart.items = [];
       this.cart.id = this.food.user_id;
       this.cartAction++;
+      this.isModalVisible = false;
     },
     getFood(e) {
       this.food = e.item;

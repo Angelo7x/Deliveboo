@@ -30,12 +30,12 @@
       </div>
     </div>
     <div class="total" 
-    v-if="cart.length > 0">
+    v-if="cart.items.length > 0">
       <div>TOTALE</div>
       <div>{{totalPrice()}}€</div>
     </div>
     <a class="btn-checkout" href="/checkout"
-     v-if="cart.length > 0">
+     v-if="cart.items.length > 0">
       Vai al pagamento
      </a>
   </div>
