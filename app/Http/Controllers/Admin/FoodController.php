@@ -146,10 +146,10 @@ class FoodController extends Controller
         //     abort("403");
         // }
 
+        Storage::delete($food->image);
         if (!is_null($food)) {
             $food->delete();
         }
-
         return redirect()->route("admin.home");
         // ->with('success',"Il post {$post->id} è stato eliminato") da aggiungere 
     }

@@ -76,6 +76,7 @@
                 </div>
                 <!-- pagamento -->
                 <h5 class="cart__title">Pagamento</h5>
+                <PaymentCard/>  
             </div>
 
             <button type="submit">Checkout</button>
@@ -85,9 +86,13 @@
 </template>
 
 <script>
+import PaymentCard from '../components/PaymentCard.vue';
 export default {
   name: "Checkout",
   props: ['cart'],
+  components: {
+      PaymentCard
+  },
   methods: {
         modifyCart(food, action) {
             this.$emit('food', {item: food.food, action: action})

@@ -44,16 +44,15 @@
                 </a>
                 <br>
                 {{-- delete button modale --}}
-                <i class="fas fa-trash-alt pointer" data-id="{{$food["id"]}}" data-toggle="modal" data-target="#deleteModal"></i>
+                <form action="{{route('admin.foods.destroy', $food["id"])}}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger btn-delete"  data-id="{{$food["id"]}}" data-toggle="modal" data-target="#deleteModal">
+                        <i class="fas fa-trash-alt pointer"></i>
+                    </button>
+                </form>
             </div>
             
-            {{-- <form action="{{route('admin.foods.destroy', $food["id"])}}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-danger btn-delete">
-                    Delete
-                </button>
-            </form> --}}
             
             
         </div>
