@@ -18,23 +18,17 @@
         <Restaurants :cuisine="cuisine" :cuisineList="cuisines" />
       </div>
     </section>
-    <ModalOrder
-      v-show="isModalVisible"
-      @close="closeModal"
-    />
   </section>
 </template>
 
 <script>
 import Restaurants from "../components/Restaurants.vue";
 import Cuisine from "../components/Cuisine.vue";
-import ModalOrder from "../components/ModalOrder.vue";
 export default {
   name: "Home",
   components: {
     Restaurants,
-    Cuisine,
-    ModalOrder
+    Cuisine
   },
   data() {
     return {

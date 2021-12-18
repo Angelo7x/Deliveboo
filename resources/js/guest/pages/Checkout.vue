@@ -129,13 +129,11 @@
 
         <!-- <button type="submit">Checkout</button> -->
       </form>
-      <ModalOrder v-show="isModalVisible" @closeModal="closeModal" />
     </div>
   </div>
 </template>
 
 <script>
-import ModalOrder from "../components/ModalOrder.vue";
 import PaymentCard from "../components/PaymentCard.vue";
 export default {
   name: "Checkout",
@@ -146,8 +144,7 @@ export default {
     };
   },
   components: {
-    PaymentCard,
-    ModalOrder,
+    PaymentCard
   },
   methods: {
     closeModal() {
