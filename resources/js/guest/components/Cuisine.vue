@@ -1,10 +1,11 @@
 <template>
 
     <div class="cuisine_card" @click="$emit('cuisine_id', cuisine.id)">
-      <div class="yellow_box"></div>
+      <div class="yellow_box">
+        <img :src="cuisine.image" alt="">
+      </div>
         <h3>
-          Cucina
-           <!-- {{cuisine.name}} -->
+           {{cuisine.name}}
         </h3>
   </div>
 
@@ -31,6 +32,9 @@ export default {
   background-color: $mainColor;
   border-radius: $br;
   overflow: hidden;
+  img {
+    width: 100%;
+  }
 }
 
 .cuisine_card{

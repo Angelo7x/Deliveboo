@@ -5,7 +5,7 @@
       <div class="grid_cuisines">
         <Cuisine
           @cuisine_id="getCuisine"
-          v-for="cuisine in 7"
+          v-for="cuisine in cuisines"
           :key="cuisine.id"
           :cuisine="cuisine"
         />

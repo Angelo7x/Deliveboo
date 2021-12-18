@@ -73,11 +73,13 @@ export default {
         }
         &-description {
             font-size: 1.125rem;
-            height: 67px;
-            overflow: auto;
+            margin: $gt 0;
         }
         &-price {
            margin: auto 0 $gt-sm; 
+        }
+        &-allergens {
+            margin-bottom: $gt;
         }
     }
     &-buttons {
@@ -85,7 +87,10 @@ export default {
         flex-shrink: 0;
         display: flex;
         flex-direction: column;
-        justify-content: space-evenly;
+        justify-content: center;
+        button {
+            margin: 10px 0;
+        }
     }
 }
 svg {

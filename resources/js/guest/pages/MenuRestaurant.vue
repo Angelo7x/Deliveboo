@@ -2,31 +2,33 @@
   <section>
     <!-- cover -->
     <div class="cover-restaurant">
-      <!-- <img
-        :src="menu.business__cover"
-        :alt="`${menu.business_name}_cover`"
-        v-if="menu.business__cover != null"
-      /> -->
-      <img src="../../../images/hero_bg.jpg" alt="">
+      <img :src="`/storage/${munu.business_cover}`" 
+        :alt="`${menu.business_name} cover`" 
+        v-if="menu.business_cover"
+        :class="{ 'hide-element': displayElement }">
+      <img src="../../../images/hero_bg.jpg" alt="" 
+      v-else>
     </div>
     <!-- /cover -->
     <!-- restaurant -->
     <div class="restaurant">
       <!-- logo -->
       <div class="restaurant-logo">
-        <img :src="`/storage/${munu.image}`" 
+        <img :src="`/storage/${munu.business_logo}`" 
         :alt="`${menu.business_name} logo`" 
-        v-if="menu.image">
-        <img src="../../../images/bg_footer.jpg" alt="" v-else>
-        <!-- <img
-          :src="menu.business__logo"
-          :alt="`${menu.business_name}_logo`"
-          v-if="menu.business__logo != null"
-        /> -->
+        v-if="menu.business_logo"
+        :class="{ 'hide-element': displayElement }">
+        <img src="../../../images/bg_footer.jpg" alt="" 
+        v-else
+        :class="{ 'hide-element': displayElement }">
+        <button type="button" class="btn-checkout btn-show-cart"
+        @click="showCart()">
+          {{displayElement ? '&#8592; Torna indietro' : 'Mostra il carrello' }}
+        </button>
       </div>
       <!-- /logo -->
       <!-- menu -->
-      <div class="restaurant-menu">
+      <div class="restaurant-menu" :class="{ 'hide-element': displayElement }">
         <h2>{{ menu.business_name }}</h2>
         <!-- <ul class="restaurant__info">
           <li>Indirizzo: {{ menu.business_address }}</li>
@@ -38,7 +40,7 @@
       </div>
       <!-- /menu -->
       <!-- cart -->
-      <div class="cart">
+      <div id="cart" class="cart" :class="{ 'show-element': displayElement }">
         <Cart :cart="cart"/>
       </div>
       <!-- /cart -->
@@ -68,16 +70,20 @@ export default {
   data() {
     return {
       menu: null,
+      displayElement: false
     };
   },
   methods: {
+    showCart() {
+      this.displayElement = !this.displayElement;
+    },
     closeModal() {
       this.isModalVisible = false;
     },
     clearCart() {
       this.$emit("clearCart");
       this.closeModal();
-    },
+    }
   },
   mounted() {
     axios
@@ -116,6 +122,15 @@ section {
   &-logo {
     width: 200px;
     text-align: right;
+    .btn-checkout {
+      color: #000;
+      background-color: $mainColor;
+      text-align: center;
+      padding: $gt;
+      font-size: $txt;
+      border-radius: $br;
+      margin-top: $gt_sm;
+    }
     img {
       width: 150px;
       height: 150px;
@@ -140,4 +155,38 @@ section {
   }
 }
 
+
+// responsive
+@media screen and (max-width: 850px) {
+  .restaurant {
+    flex-direction: column;
+    &-logo {
+      width: 100%;
+      text-align: initial;
+      display: flex;
+      justify-content: space-between;
+      .btn-show-cart {
+        display: inline-block;
+        height: fit-content;
+        transform: translateY(-70%);
+      }
+    }
+    &-menu {
+      margin: -72px 20px 0;
+    }
+  }
+  .cart {
+    display: none;
+  }
+  .show-element {
+    display: block;
+  }
+  .hide-element {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  
+}
 </style>
