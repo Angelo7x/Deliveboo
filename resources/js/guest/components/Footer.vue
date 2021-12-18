@@ -78,20 +78,22 @@ footer {
 .footer_top {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  padding: $gt_lg;
+  padding: $gt;
   h2 {
     color: $mainColor;
-    padding: $gt 0;
+    padding: 0 0 $gt;
   }
   ul li {
       @include list-style-none;
       padding: 3px 0;
       color: white;
+      font-size: $txt;
   }
 
   ul.social{
-    @include align-justify-center;
-    @include inline-block-list;
+    display: flex;
+    align-items: center;
+    margin: $gt_md 0;
      li a img{
          width: 60px;
          margin-right: $gt;

@@ -8,7 +8,7 @@ import Home from './pages/Home.vue'
 import MenuRestaurant from './pages/MenuRestaurant.vue'
 import Checkout from './pages/Checkout.vue'
 import NotFound from './pages/NotFound';
-
+import OrderSuccess from './pages/OrderSuccess.vue';
 const router = new VueRouter({
     mode: 'history',
     routes: [
@@ -33,10 +33,15 @@ const router = new VueRouter({
             component: Checkout
         },
         {
+            path: '/order',
+            name: 'order',
+            component: OrderSuccess
+        },
+        {
             path: '/*',
             name: 'not-found',
             component: NotFound
-        }
+        },
     ],
 });
 

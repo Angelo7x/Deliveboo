@@ -70,7 +70,7 @@ export default {
       this.cart.items.forEach((e)=> {
         return this.getAmount += e.quantity;
       })
-    }
+    },
   },
   mounted() {
     if (localStorage.getItem("cart")) {

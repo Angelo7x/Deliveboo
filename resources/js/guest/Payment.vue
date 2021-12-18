@@ -1,7 +1,7 @@
 <template>
-  <div class="payment">
+  <div class="payment payment_card">
     <div ref="dropin"></div>
-    <button ref="submit" :class="btnClass">{{ btnText }}</button>
+    <button ref="submit" :class="btnClass" class="submit_button">{{ btnText }}</button>
   </div>
 </template>
 
@@ -15,11 +15,11 @@ export default {
     },
     locale: {
       type: String,
-      default: "en_US"
+      default: "it_IT"
     },
     btnText: {
       type: String,
-      default: "Pay"
+      default: "Procedi al pagamento"
     },
     btnClass: {
       type: String,
@@ -63,6 +63,11 @@ export default {
       instance: null, // The DropIn Instance
     };
   },
+  methods: {
+    redirect() {
+      window.location.href = '/order';
+    }
+  },
   mounted() {
     // Create config
     let config = {
@@ -98,7 +103,9 @@ export default {
             this.$emit("error", err);
             return;
           }
-          this.$emit("success", payload);
+          
+          this.$emit("success", payload, "message", true);
+          this.redirect();
         });
       });
       
@@ -106,3 +113,18 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+
+
+.payment, .dropin, .payment_card  {
+  font-family: 'PolySans Slim'; 
+}
+
+.submit_button {
+  background-color: rgb(235, 223, 0);
+  padding: 10px;
+  text-align: right;
+  border-radius: .3rem;
+}
+</style>

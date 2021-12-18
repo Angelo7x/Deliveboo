@@ -42,11 +42,11 @@ export default {
 @import "../../../sass/guest/front.scss";
 .card_restaurant {
   width: 100%;
-  box-shadow: 10px 6px 11px -9px rgba(0, 0, 0, 0.22);
+  box-shadow: 10px 6px 6px -9px rgba(0, 0, 0, 0.22);
   border-radius: $br_sm;
   overflow: hidden;
   margin: $gt_sm 0;
-  transition: all 0.8s ease;
+  transition: all 0.3s ease;
   ul {
     @include inline-block-list;
   }

@@ -9,7 +9,7 @@
             <div class="nav-right">
                 <ul>
                     <li>
-                        <a href="#" class="cart"><span>{{getCartAmount}}</span><img src="/images/deliveboo/cart.svg" alt="cart_icon"></a>
+                        <a href="/checkout" class="cart"><span>{{getCartAmount}}</span><img src="/images/deliveboo/cart.svg" alt="cart_icon"></a>
                     </li>
                     <li>
                         <ul class="admin">
@@ -38,7 +38,7 @@ header {
     width:100%;
     position: fixed;
     top: 0;
-    z-index: 1;
+    z-index: 10;
     img {
         height:100px;
     }

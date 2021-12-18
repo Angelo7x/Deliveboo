@@ -9,12 +9,6 @@
       @error="onError"
     ></v-braintree>
 
-    <br>
-
-    <button class="btn">
-      Clear Payment Selection
-    </button>
-    
   </div>
 </template>
 

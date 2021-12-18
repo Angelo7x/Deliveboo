@@ -27,9 +27,9 @@ section {
 			font-family: 'PolySans Neutral';
 			padding: $gt_lg $gt_sm;
 			background-image: url('../../../../public/images/deliveboo/404_boo.svg');
-			background-size: 42%;
+			background-size: contain;
 			background-repeat: no-repeat;
-			height: calc(100vh - 438.4px);
+			min-height: 90vh;
 			background-position: center;
 			display: flex;
 			h1 {

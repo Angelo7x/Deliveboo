@@ -36,7 +36,7 @@ export default {
 .cuisine_card{
   text-align: center;
   cursor: pointer;
-   transition: all 0.8s ease;
+   transition: all 0.3s ease;
 }
 
 .cuisine_card:hover{

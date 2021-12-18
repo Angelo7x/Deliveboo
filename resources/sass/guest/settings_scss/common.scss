@@ -7,7 +7,6 @@
 //
 body, a, input, select, button {
     font-family: 'PolySans Slim';
-    width: 100%;
     overflow-x: hidden;
 }
 
@@ -39,6 +38,9 @@ h2, h5 {
     font-weight: normal;
 }
 
+h2 {
+    font-size: 1.3rem;
+}
 
 h5 {
     font-size: 1.2rem;

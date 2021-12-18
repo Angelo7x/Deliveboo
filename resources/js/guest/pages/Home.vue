@@ -18,18 +18,23 @@
         <Restaurants :cuisine="cuisine" :cuisineList="cuisines" />
       </div>
     </section>
+    <ModalOrder
+      v-show="isModalVisible"
+      @close="closeModal"
+    />
   </section>
 </template>
 
 <script>
 import Restaurants from "../components/Restaurants.vue";
 import Cuisine from "../components/Cuisine.vue";
-
+import ModalOrder from "../components/ModalOrder.vue";
 export default {
   name: "Home",
   components: {
     Restaurants,
     Cuisine,
+    ModalOrder
   },
   data() {
     return {
@@ -38,7 +43,15 @@ export default {
       cuisines: [],
     };
   },
-  methods: {
+  props: ["isModalVisible"],
+  methods: {        
+    closeModal() {
+        this.isModalVisible = false;
+    },
+    clearCart() {
+        this.$emit("clearCart");
+        this.closeModal();
+    },
     sortByName() {
       this.contacts.forEach((element) => {
         if (element.name.toLowerCase().includes(this.search.toLowerCase())) {
