@@ -37279,7 +37279,7 @@ module.exports = function(module) {
 // uploadedImage('image', 'foodEditPreview');
 // uploadedImage('image', 'foodCreatePreview');
 // uploadedImage('image', 'businessLogo');
-// uploadedImage('image1', 'businessCover');ì
+// uploadedImage('image1', 'businessCover');
 
 /***/ }),
 
