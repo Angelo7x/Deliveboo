@@ -44,7 +44,6 @@
                 </a>
                 <br>
                 {{-- delete button modale --}}
-                
                 <form action="{{route('admin.foods.destroy', $food["id"])}}" method="POST">
                     @csrf
                     @method('DELETE')

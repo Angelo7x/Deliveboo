@@ -1,27 +1,144 @@
 <template>
-  <div>
-    <CartFood v-for="item in cart.items" :key="item.food.id" :item="item"/>
-    <a href="/checkout">Vai alla cassa</a>
+  <div class="cart">
+    <h3>Carrello</h3>
+    <div v-if="cart.items.length == 0" class="empty-cart">Il carrello è vuoto	  (⌣_⌣”)</div>
+    <div class="foods" 
+    v-for="item in cart.items" 
+    :key="item.food.id">
+      <div class="foods-name">
+        {{ item.food.name }}
+      </div>
+      <div class="foods-buttons">
+        <button type="button" @click="modifyCart(item.food, 'add')">
+            <svg viewBox="0 0 49.44 49.44" style="enable-background:new 0 0 49.44 49.44;">
+                <path class="st0" d="M43.62,20.33H29.11V5.82c0-1.22-0.99-2.22-2.22-2.22h-4.36c-1.22,0-2.22,0.99-2.22,2.22v14.51H5.82 c-1.22,0-2.22,0.99-2.22,2.22v4.36c0,1.22,0.99,2.22,2.22,2.22h14.51v14.51c0,1.22,0.99,2.22,2.22,2.22h4.36 c1.22,0,2.22-0.99,2.22-2.22V29.11h14.51c1.22,0,2.22-0.99,2.22-2.22v-4.36C45.84,21.32,44.84,20.33,43.62,20.33z"/>
+            </svg>
+        </button>
+        <button type="button" @click="modifyCart(item.food, 'remove')">
+            <svg viewBox="0 0 49.44 49.44">
+                    <path class="st0" d="M42.84,29.14H6.6c-1.66,0-3-1.34-3-3v-2.85c0-1.66,1.34-3,3-3h36.23c1.66,0,3,1.34,3,3v2.85 C45.84,27.8,44.49,29.14,42.84,29.14z"/>
+            </svg> 
+        </button> 
+      </div>
+      <div class="foods-quantity">
+        <span class="border">
+          x{{ item.quantity }}
+        </span>
+      </div>
+      <div class="foods-price">
+        {{ getFoodPrice(item.food.price, item.quantity) }}€
+      </div>
+    </div>
+    <div class="total" 
+    v-if="cart.length > 0">
+      <div>TOTALE</div>
+      <div>{{totalPrice()}}€</div>
+    </div>
+    <a class="btn-checkout" href="/checkout"
+     v-if="cart.length > 0">
+      Vai al pagamento
+     </a>
   </div>
 </template>
 
 <script>
-import CartFood from './CartFood.vue'
 
 export default {
   name: 'Cart',
-  components: {
-    CartFood
-  },
+  props: ["food"],
   props: ['cart'],
   data() {
     return {
       cartQuantity: [],
     }
+  },
+  methods: {
+    modifyCart(food, action) {
+      this.$parent.$emit("food", { item: food, action: action });
+    },
+    getFoodPrice(e, amount) {
+        return (e*amount).toFixed(2).replace('.',',')
+    },
+    totalPrice() {
+        let total = 0;
+        this.cart.items.forEach(e => {
+            total += e.food.price*e.quantity;
+        });
+        return total;
+    },
   }
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 
+@import '../../../sass/guest/front.scss';
+
+.cart {
+  margin: auto;
+  @include box--box-shadow;
+  h3 {
+    font-size: $txt_md;
+  }
+  .empty-cart {
+    margin: $gt 0;
+  }
+  .foods {
+    display: grid;
+    grid-template-columns: repeat(4, 25% 30% 25% 20%);
+    margin: $gt_md 0;
+    &-name {
+      font-size: $txt;
+    }
+    &-buttons {
+      display: flex;
+      justify-content: center;
+      button {
+        text-align: right;
+      }
+    }
+    &-quantity {
+      text-align: center;
+      @include align-justify-center;
+
+      .border {
+        border: 1px solid #000;
+        padding: 0.2rem 0.3rem;
+        border-radius: $br_sm;
+      }
+      
+    }
+    &-price {
+      text-align: center;
+    }
+  }
+  .total {
+    border-top: 1px solid #cccccca2;
+    padding: $gt_md 0;
+    @include justify-between;
+    div {
+      font-size: $txt;
+    }
+  }
+  .btn-checkout {
+    color:#000;
+    background-color: $mainColor;
+    display: block;
+    text-align: center;
+    padding: $gt;
+    font-size: $txt;
+    border-radius: $br;
+    margin-top: $gt_sm;
+  }
+}
+
+svg {
+    height: 1.7rem;
+}
+.st0 {
+    fill:#FFFFFF;stroke:#000;stroke-miterlimit:10;
+}
+button:hover .st0 {
+    fill:#CCCCCC;stroke:#000;stroke-miterlimit:10;
+}
 </style>

@@ -1,10 +1,24 @@
 <template>
-  <div class="food-card">
-      <div class="food-card-image">
-          <img src="../../../images/bg_footer.jpg" alt="">
+  <div class="food-card" v-if="food.visible">
+      <div class="food-card-image" v-if="food.image">
+          <img :src="`/storage/${food.image}`" :alt="`${food.name} logo`">
       </div>
       <div class="food-card-info">
-        <h3 class="food-card-name">{{ food.name }}</h3>
+        <h3 class="food-card-info-name">
+            {{ food.name }}
+        </h3>
+        <small class="food-card-info-weight" v-if="food.weight">
+            {{ food.weight }} gr
+        </small>
+        <p class="food-card-info-description">
+            {{ food.description }}
+        </p>
+        <small class="food-card-info-allergens" v-if="food.allergens">
+            Allergeni: {{ food.allergens }}
+        </small>
+        <div class="food-card-info-price">
+            {{ food.price }}€
+        </div>
       </div>
       <div class="food-card-buttons">
          <button type="button" @click="modifyCart(food, 'add')">
@@ -18,8 +32,6 @@
             </svg> 
         </button> 
       </div>
-    
-    
   </div>
 </template>
 
@@ -40,27 +52,44 @@ export default {
 .food-card {
     display: flex;
     margin-bottom: $gt;
-    height: 180px;
+    @include box--border;
     &-image {
-        background-color: rgb(168, 139, 196);
-        @include justify-center-column;
         img {
-            width: 160px;
-            height: 130px;
+            width: 150px;
+            height: 135px;
             border-radius: $br;
+            overflow: hidden;
             object-fit: cover;
         }
     }
     &-info {
-        background-color: rgb(122, 122, 139);
+        padding-left: $gt;
+        display: flex;
+        flex-direction: column;
         flex-grow: 1;
+        &-name {
+            font-size: $txt_md;
+            margin-bottom: $gt_sm;
+        }
+        &-description {
+            font-size: 1.125rem;
+            height: 67px;
+            overflow: auto;
+        }
+        &-price {
+           margin: auto 0 $gt-sm; 
+        }
     }
     &-buttons {
-        background-color: rgb(111, 168, 111);
+        width: 70px;
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
     }
 }
 svg {
-    height: 2rem;
+    height: 3rem;
 }
 .st0 {
     fill:#FFFFFF;stroke:#CCCCCC;stroke-miterlimit:10;

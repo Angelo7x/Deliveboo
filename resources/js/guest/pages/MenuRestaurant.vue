@@ -14,7 +14,10 @@
     <div class="restaurant">
       <!-- logo -->
       <div class="restaurant-logo">
-        <img src="../../../images/bg_footer.jpg" alt="">
+        <img :src="`/storage/${munu.image}`" 
+        :alt="`${menu.business_name} logo`" 
+        v-if="menu.image">
+        <img src="../../../images/bg_footer.jpg" alt="" v-else>
         <!-- <img
           :src="menu.business__logo"
           :alt="`${menu.business_name}_logo`"
@@ -36,8 +39,7 @@
       <!-- /menu -->
       <!-- cart -->
       <div class="cart">
-        <h3>Carrello</h3>
-        <Cart :cart="cart" />
+        <Cart :cart="cart"/>
       </div>
       <!-- /cart -->
     </div>
@@ -121,15 +123,21 @@ section {
       object-fit: cover;
       border: 2px solid $mainColor;
       margin-right: $gt;
-      transform: translateY(-38%);
+      transform: translateY(-42%);
     }
   }
   &-menu {
     width: 750px;
     h2 {
-      font-size: $txt_xl;
-      margin: $gt_md 0 $gt_md;
+      font-size: $txt_xxl;
+      margin: $gt 0 $gt_md;
     }
   }
+  .cart {
+    flex-grow: 1;
+    margin-top: $gt;
+    width: 450px;
+  }
 }
+
 </style>
