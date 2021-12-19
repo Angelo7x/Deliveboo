@@ -15,10 +15,10 @@
         />
       </div>
       <div class="description_restaurant">
-        <h3>{{ data.business_name }}</h3>
+        <h4>{{ data.business_name }}</h4>
         <ul>
-          <li v-for="(cuisine, i) in data.cuisines" :key="`cuisine_${i}`">
-            <p>{{ cuisine.name }}</p>
+          <li v-for="(cuisine, i) in data.cuisines" :key="`cuisine_${i}`" class="cuisine_category">
+            <small>{{ cuisine.name }}</small>
           </li>
         </ul>
       </div>
@@ -45,19 +45,23 @@ export default {
   box-shadow: 10px 6px 6px -9px rgba(0, 0, 0, 0.22);
   border-radius: $br_sm;
   overflow: hidden;
-  margin: $gt_sm 0;
   transition: all 0.3s ease;
   ul {
     @include inline-block-list;
   }
   
 }
+
+h4 {
+  font-weight: bold;
+  font-size: 1rem;
+}
 .card_restaurant:hover {
   transform: scale(1.02);
 }
 .box_img_restaurant {
   width: 100%;
-  height: 150px;
+  height: 50%;
   border-radius: $br_sm $br_sm 0px 0px;
   overflow: hidden;
   object-fit: contain;
@@ -67,7 +71,7 @@ export default {
   }
 }
 .description_restaurant {
-  padding: $gt;
+  padding: $gt_sm;
   color:black;
 }
 .logo_box_restaurant {
@@ -75,16 +79,27 @@ export default {
 }
 .logo_restaurant {
   z-index: 1;
-  left: 70%;
-  bottom: 70%;
+  right: 1rem;
   position: absolute;
+    top: -$gt_sm;
   width: 80px;
   height: 80px;
   border-radius: $gt_sm;
-  border: 3px solid $mainColor;
+  -webkit-box-shadow: 0px 0px 0px 3px $mainColor; 
+  box-shadow: 0px 0px 0px 3px $mainColor;
   overflow: hidden;
   img {
+    height: 100%;
     width: 100%;
+    object-fit: cover;
+    display: inline-block;
   }
+}
+.cuisine_category {
+  font-size: $txt_xs;
+}
+.cuisine_category:not(:last-child):after {
+  content: '\2022';
+  margin: $gt_sm;
 }
 </style>

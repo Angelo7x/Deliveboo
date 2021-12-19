@@ -55,6 +55,7 @@
     </div>
     <div class="footer_hero">
          <img src="../../../../public/images/deliveboo/logo_yellow.svg" alt="logo deliveboo">
+
     </div>
     <div class="copyright">
         <p>
@@ -72,8 +73,11 @@ export default {
 
 <style scoped lang="scss">
 @import "../../../sass/guest/front.scss";
+
 footer {
+  z-index: 20;
   background-color: rgb(18, 18, 36);
+  overflow: hidden;
 }
 .footer_top {
   display: grid;
@@ -102,16 +106,42 @@ footer {
 
 }
 
+.footer_hero {
+  animation: marquee 10s linear infinite;
+
+    img {
+    height: 300px;
+    flex-shrink: 0;
+  }
+
+}
+
 .copyright{
     padding: $gt;
     color: white;
     font-size: $txt_sm;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translate(100%, 0);
+  }
+  100% {
+    transform: translate(-120%, 0);
+  }
 }
   //Mediaqueri
 @media screen and (max-width: 850px) {
     .footer_top{
          grid-template-columns: repeat(2, 1fr);
     }
+      .footer_hero {
+
+  img {
+    height: 200px;
+    flex-shrink: 0;
+  }
+}
 }
 
 @media screen and (max-width: 768px) {

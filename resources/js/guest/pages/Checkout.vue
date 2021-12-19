@@ -124,7 +124,7 @@
           </div>
           <!-- pagamento -->
           <h5 class="cart__title">Pagamento</h5>
-          <PaymentCard @clearCart="clearCart" :success="clearCart()" />
+          <PaymentCard/>
         </div>
 
         <!-- <button type="submit">Checkout</button> -->
@@ -149,10 +149,6 @@ export default {
   methods: {
     closeModal() {
       this.isModalVisible = false;
-    },
-    clearCart() {
-      // this.$emit("clearCart");
-      // this.isModalVisible = true;
     },
     modifyCart(food, action) {
       this.$emit("food", { item: food.food, action: action });
@@ -185,7 +181,9 @@ export default {
     background-color: $secondColor;
     color: $lightColor;
     font-family: "PolySans Neutral";
-    font-size: 1.5rem;
+  }
+  h2 {
+      font-size: 3rem;
   }
 
   .checkout__body {
