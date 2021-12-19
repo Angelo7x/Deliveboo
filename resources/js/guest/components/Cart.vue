@@ -1,6 +1,6 @@
 <template>
   <div class="cart-component">
-    <br> Window Width: {{ windowWidth }} <br/>
+    <!-- <br> Window Width: {{ windowWidth }} <br/> -->
     {{ txt }}
     <h3>Carrello</h3>
     <div v-if="cart.items.length == 0" class="empty-cart">
@@ -103,7 +103,8 @@ export default {
   }
   .foods {
     display: grid;
-    grid-template-columns: repeat(4, 25% 30% 25% 20%);
+    align-items: center;
+    grid-template-columns: repeat(4, 50% 30% 10% 10%);
     margin: $gt_md 0;
     &-name {
       font-size: $txt;
@@ -149,7 +150,7 @@ export default {
   }
 }
 svg {
-  height: 1.7rem;
+  height: 19px;
 }
 .st0 {
   fill: #fff;
@@ -161,5 +162,41 @@ button:hover .st0 {
   stroke: #000000;
   stroke-miterlimit: 10;
 }
+
+@media screen and (max-width: 1180px) {
+  .cart-component .foods{
+  grid-template-columns: repeat(4, 50% 30% 10% 10%);
+  }
+}
+@media screen and (max-width: 1113px) {
+  .cart-component .foods{
+  grid-template-columns: repeat(4, 40% 30% 10% 10%);
+  }
+  .cart-component .foods-name{
+   font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 964px) {
+  .cart-component .foods{
+  grid-template-columns: repeat(4, 40% 30% 10% 10%);
+  }
+  .cart-component .foods-name{
+   font-size: 16px;
+  }
+}
+@media screen and (max-width: 500px) {
+ 
+  .cart-component .foods-name{
+   font-size: 15px;
+  }
+}
+@media screen and (max-width: 400px) {
+ 
+  .cart-component .foods-name{
+   font-size: 14px;
+  }
+}
+
 
 </style>
