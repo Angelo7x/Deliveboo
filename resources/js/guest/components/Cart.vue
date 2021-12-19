@@ -1,80 +1,98 @@
 <template>
-  <div class="cart">
+  <div class="cart-component">
+    <br> Window Width: {{ windowWidth }} <br/>
+    {{ txt }}
     <h3>Carrello</h3>
-    <div v-if="cart.items.length == 0" class="empty-cart">Il carrello è vuoto	  (⌣_⌣”)</div>
-    <div class="foods" 
-    v-for="item in cart.items" 
-    :key="item.food.id">
+    <div v-if="cart.items.length == 0" class="empty-cart">
+      Il carrello è vuoto (⌣_⌣”)
+    </div>
+    <div class="foods" v-for="item in cart.items" :key="item.food.id">
       <div class="foods-name">
         {{ item.food.name }}
       </div>
       <div class="foods-buttons">
         <button type="button" @click="modifyCart(item.food, 'add')">
-            <svg viewBox="0 0 49.44 49.44" style="enable-background:new 0 0 49.44 49.44;">
-                <path class="st0" d="M43.62,20.33H29.11V5.82c0-1.22-0.99-2.22-2.22-2.22h-4.36c-1.22,0-2.22,0.99-2.22,2.22v14.51H5.82 c-1.22,0-2.22,0.99-2.22,2.22v4.36c0,1.22,0.99,2.22,2.22,2.22h14.51v14.51c0,1.22,0.99,2.22,2.22,2.22h4.36 c1.22,0,2.22-0.99,2.22-2.22V29.11h14.51c1.22,0,2.22-0.99,2.22-2.22v-4.36C45.84,21.32,44.84,20.33,43.62,20.33z"/>
-            </svg>
+          <svg
+            viewBox="0 0 49.44 49.44"
+            style="enable-background: new 0 0 49.44 49.44"
+          >
+            <path
+              class="st0"
+              d="M43.62,20.33H29.11V5.82c0-1.22-0.99-2.22-2.22-2.22h-4.36c-1.22,0-2.22,0.99-2.22,2.22v14.51H5.82 c-1.22,0-2.22,0.99-2.22,2.22v4.36c0,1.22,0.99,2.22,2.22,2.22h14.51v14.51c0,1.22,0.99,2.22,2.22,2.22h4.36 c1.22,0,2.22-0.99,2.22-2.22V29.11h14.51c1.22,0,2.22-0.99,2.22-2.22v-4.36C45.84,21.32,44.84,20.33,43.62,20.33z"
+            />
+          </svg>
         </button>
         <button type="button" @click="modifyCart(item.food, 'remove')">
-            <svg viewBox="0 0 49.44 49.44">
-                    <path class="st0" d="M42.84,29.14H6.6c-1.66,0-3-1.34-3-3v-2.85c0-1.66,1.34-3,3-3h36.23c1.66,0,3,1.34,3,3v2.85 C45.84,27.8,44.49,29.14,42.84,29.14z"/>
-            </svg> 
-        </button> 
+          <svg viewBox="0 0 49.44 49.44">
+            <path
+              class="st0"
+              d="M42.84,29.14H6.6c-1.66,0-3-1.34-3-3v-2.85c0-1.66,1.34-3,3-3h36.23c1.66,0,3,1.34,3,3v2.85 C45.84,27.8,44.49,29.14,42.84,29.14z"
+            />
+          </svg>
+        </button>
       </div>
       <div class="foods-quantity">
-        <span class="border">
-          x{{ item.quantity }}
-        </span>
+        <span class="border"> x{{ item.quantity }} </span>
       </div>
       <div class="foods-price">
         {{ getFoodPrice(item.food.price, item.quantity) }}€
       </div>
     </div>
-    <div class="total" 
-    v-if="cart.items.length > 0">
+    <div class="total" v-if="cart.items.length > 0">
       <div>TOTALE</div>
-      <div>{{totalPrice()}}€</div>
+      <div>{{ totalPrice() }}€</div>
     </div>
-    <a class="btn-checkout" href="/checkout"
-     v-if="cart.items.length > 0">
+    <a class="btn-checkout" href="/checkout" v-if="cart.items.length > 0">
       Vai al pagamento
-     </a>
+    </a>
   </div>
 </template>
 
 <script>
-
 export default {
-  name: 'Cart',
+  name: "Cart",
   props: ["food"],
-  props: ['cart'],
+  props: ["cart"],
   data() {
     return {
       cartQuantity: [],
-    }
+      windowWidth: window.innerWidth,
+      txt: "",
+    };
+  },
+  mounted() {
+    this.$nextTick(() => {
+      window.addEventListener("resize", this.onResize);
+    });
+  },
+  beforeDestroy() {
+    window.removeEventListener("resize", this.onResize);
   },
   methods: {
     modifyCart(food, action) {
       this.$parent.$emit("food", { item: food, action: action });
     },
     getFoodPrice(e, amount) {
-        return (e*amount).toFixed(2).replace('.',',')
+      return (e * amount).toFixed(2).replace(".", ",");
     },
     totalPrice() {
-        let total = 0;
-        this.cart.items.forEach(e => {
-            total += e.food.price*e.quantity;
-        });
-        return total;
+      let total = 0;
+      this.cart.items.forEach((e) => {
+        total += e.food.price * e.quantity;
+      });
+      return total;
     },
-  }
-}
+    onResize() {
+      this.windowWidth = window.innerWidth;
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
+@import "../../../sass/guest/front.scss";
 
-@import '../../../sass/guest/front.scss';
-
-.cart {
+.cart-component {
   margin: auto;
   @include box--box-shadow;
   h3 {
@@ -92,9 +110,9 @@ export default {
     }
     &-buttons {
       display: flex;
-      justify-content: center;
+      justify-content: flex-end;
       button {
-        text-align: right;
+        margin: 0 $gt_sm;
       }
     }
     &-quantity {
@@ -106,7 +124,6 @@ export default {
         padding: 0.2rem 0.3rem;
         border-radius: $br_sm;
       }
-      
     }
     &-price {
       text-align: center;
@@ -121,7 +138,7 @@ export default {
     }
   }
   .btn-checkout {
-    color:#000;
+    color: #000;
     background-color: $mainColor;
     display: block;
     text-align: center;
@@ -131,14 +148,18 @@ export default {
     margin-top: $gt_sm;
   }
 }
-
 svg {
-    height: 1.7rem;
+  height: 1.7rem;
 }
 .st0 {
-    fill:#FFFFFF;stroke:#000;stroke-miterlimit:10;
+  fill: #fff;
+  stroke: #7e7e7e;
+  stroke-miterlimit: 10;
 }
 button:hover .st0 {
-    fill:#CCCCCC;stroke:#000;stroke-miterlimit:10;
+  fill: #fff;
+  stroke: #000000;
+  stroke-miterlimit: 10;
 }
+
 </style>

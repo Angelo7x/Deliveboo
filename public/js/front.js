@@ -1908,7 +1908,8 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_Footer_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/Footer.vue */ "./resources/js/guest/components/Footer.vue");
+/* harmony import */ var _components_Header_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/Header.vue */ "./resources/js/guest/components/Header.vue");
+/* harmony import */ var _components_Footer_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/Footer.vue */ "./resources/js/guest/components/Footer.vue");
 //
 //
 //
@@ -1924,13 +1925,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-// import Header from "./components/Header.vue";
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "App",
   components: {
-    // Header,
-    Footer: _components_Footer_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+    Header: _components_Header_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+    Footer: _components_Footer_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
     return {
@@ -1959,6 +1960,7 @@ __webpack_require__.r(__webpack_exports__);
       this.cart.items = [];
       this.cart.id = this.food.user_id;
       this.cartAction++;
+      this.isModalVisible = false;
     },
     getFood: function getFood(e) {
       this.food = e.item;
@@ -2144,13 +2146,30 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = (_name$props$props$dat = {
-  name: 'Cart',
+  name: "Cart",
   props: ["food"]
-}, _defineProperty(_name$props$props$dat, "props", ['cart']), _defineProperty(_name$props$props$dat, "data", function data() {
+}, _defineProperty(_name$props$props$dat, "props", ["cart"]), _defineProperty(_name$props$props$dat, "data", function data() {
   return {
-    cartQuantity: []
+    cartQuantity: [],
+    windowWidth: window.innerWidth,
+    txt: ""
   };
+}), _defineProperty(_name$props$props$dat, "mounted", function mounted() {
+  var _this = this;
+
+  this.$nextTick(function () {
+    window.addEventListener("resize", _this.onResize);
+  });
+}), _defineProperty(_name$props$props$dat, "beforeDestroy", function beforeDestroy() {
+  window.removeEventListener("resize", this.onResize);
 }), _defineProperty(_name$props$props$dat, "methods", {
   modifyCart: function modifyCart(food, action) {
     this.$parent.$emit("food", {
@@ -2159,7 +2178,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     });
   },
   getFoodPrice: function getFoodPrice(e, amount) {
-    return (e * amount).toFixed(2).replace('.', ',');
+    return (e * amount).toFixed(2).replace(".", ",");
   },
   totalPrice: function totalPrice() {
     var total = 0;
@@ -2167,6 +2186,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       total += e.food.price * e.quantity;
     });
     return total;
+  },
+  onResize: function onResize() {
+    this.windowWidth = window.innerWidth;
   }
 }), _name$props$props$dat);
 
@@ -2181,6 +2203,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -2347,6 +2370,47 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/guest/components/Header.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/guest/components/Header.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'Header',
+  props: ['getCartAmount']
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/guest/components/ModalChangeCart.vue?vue&type=script&lang=js&":
 /*!********************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/guest/components/ModalChangeCart.vue?vue&type=script&lang=js& ***!
@@ -2356,8 +2420,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
 //
 //
 //
@@ -2401,12 +2463,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2622,16 +2678,75 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Checkout",
-  props: ['cart'],
+  props: ["cart"],
+  data: function data() {
+    return {
+      isModalVisible: false
+    };
+  },
   components: {
     PaymentCard: _components_PaymentCard_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   methods: {
+    closeModal: function closeModal() {
+      this.isModalVisible = false;
+    },
+    clearCart: function clearCart() {// this.$emit("clearCart");
+      // this.isModalVisible = true;
+    },
     modifyCart: function modifyCart(food, action) {
-      this.$emit('food', {
+      this.$emit("food", {
         item: food.food,
         action: action
       });
@@ -2647,8 +2762,11 @@ __webpack_require__.r(__webpack_exports__);
       axios.post("orders/make/payment/".concat(this.totalPrice()));
     },
     getFoodPrice: function getFoodPrice(e, amount) {
-      return (e * amount).toFixed(2).replace('.', ',');
-    }
+      return (e * amount).toFixed(2).replace(".", ",");
+    } // submitOrder() {
+    //     this.$emit('ModalOrderVisible', true)
+    // }
+
   }
 });
 
@@ -2703,7 +2821,15 @@ __webpack_require__.r(__webpack_exports__);
       cuisines: []
     };
   },
+  props: ["isModalVisible"],
   methods: {
+    closeModal: function closeModal() {
+      this.isModalVisible = false;
+    },
+    clearCart: function clearCart() {
+      this.$emit("clearCart");
+      this.closeModal();
+    },
     sortByName: function sortByName() {
       var _this = this;
 
@@ -2802,6 +2928,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -2815,10 +2943,14 @@ __webpack_require__.r(__webpack_exports__);
   props: ["cart", "isModalVisible"],
   data: function data() {
     return {
-      menu: null
+      menu: null,
+      displayElement: false
     };
   },
   methods: {
+    showCart: function showCart() {
+      this.displayElement = !this.displayElement;
+    },
     closeModal: function closeModal() {
       this.isModalVisible = false;
     },
@@ -2871,6 +3003,31 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/guest/pages/OrderSuccess.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/guest/pages/OrderSuccess.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'OrderSuccess'
+});
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/guest/App.vue?vue&type=style&index=0&lang=scss&":
 /*!********************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/guest/App.vue?vue&type=style&index=0&lang=scss& ***!
@@ -2903,7 +3060,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;900&display=swap);", ""]);
 
 // module
-exports.push([module.i, "@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"PolySans Neutral\";\n  src: local(\"PolySans Neutral\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Neutral.otf */ "./resources/fonts/PolySans Neutral.otf")) + ");\n}\n@font-face {\n  font-family: \"PolySans Slim\";\n  src: local(\"PolySans Slim\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Slim.otf */ "./resources/fonts/PolySans Slim.otf")) + ");\n}\nbody[data-v-3099d5a1], a[data-v-3099d5a1], input[data-v-3099d5a1], select[data-v-3099d5a1], button[data-v-3099d5a1] {\n  font-family: \"PolySans Slim\";\n  width: 100%;\n  overflow-x: hidden;\n}\n.container--1000[data-v-3099d5a1] {\n  max-width: 43.75rem;\n  margin: auto;\n  padding: 1rem;\n}\n.color--grey[data-v-3099d5a1] {\n  color: #cccccc;\n}\nh2[data-v-3099d5a1], h5[data-v-3099d5a1] {\n  font-weight: normal;\n}\nh5[data-v-3099d5a1] {\n  font-size: 1.2rem;\n  font-family: \"PolySans Neutral\";\n}\na[data-v-3099d5a1] {\n  text-decoration: none;\n}\nbutton[data-v-3099d5a1] {\n  background-color: transparent;\n  margin: 0;\n  border: none;\n}\nbutton[data-v-3099d5a1]:hover, a[data-v-3099d5a1]:hover {\n  cursor: pointer;\n}\n.card_restaurant[data-v-3099d5a1] {\n  width: 100%;\n  box-shadow: 10px 6px 11px -9px rgba(0, 0, 0, 0.22);\n  border-radius: 0.3rem;\n  overflow: hidden;\n  margin: 0.5rem 0;\n  transition: all 0.8s ease;\n}\n.card_restaurant ul[data-v-3099d5a1] {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n  display: inline-block;\n}\n.card_restaurant ul li[data-v-3099d5a1] {\n  display: inline-block;\n}\n.card_restaurant[data-v-3099d5a1]:hover {\n  transform: scale(1.02);\n}\n.box_img_restaurant[data-v-3099d5a1] {\n  width: 100%;\n  height: 150px;\n  border-radius: 0.3rem 0.3rem 0px 0px;\n  overflow: hidden;\n  -o-object-fit: contain;\n     object-fit: contain;\n}\n.box_img_restaurant img[data-v-3099d5a1] {\n  width: 100%;\n}\n.description_restaurant[data-v-3099d5a1] {\n  padding: 1rem;\n  color: black;\n}\n.logo_box_restaurant[data-v-3099d5a1] {\n  position: relative;\n}\n.logo_restaurant[data-v-3099d5a1] {\n  z-index: 1;\n  left: 70%;\n  bottom: 70%;\n  position: absolute;\n  width: 80px;\n  height: 80px;\n  border-radius: 0.5rem;\n  border: 3px solid #ebdf00;\n  overflow: hidden;\n}\n.logo_restaurant img[data-v-3099d5a1] {\n  width: 100%;\n}", ""]);
+exports.push([module.i, "@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"PolySans Neutral\";\n  src: local(\"PolySans Neutral\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Neutral.otf */ "./resources/fonts/PolySans Neutral.otf")) + ");\n}\n@font-face {\n  font-family: \"PolySans Slim\";\n  src: local(\"PolySans Slim\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Slim.otf */ "./resources/fonts/PolySans Slim.otf")) + ");\n}\nbody[data-v-3099d5a1], a[data-v-3099d5a1], input[data-v-3099d5a1], select[data-v-3099d5a1], button[data-v-3099d5a1] {\n  font-family: \"PolySans Slim\";\n  overflow-x: hidden;\n}\n.container--1000[data-v-3099d5a1] {\n  max-width: 43.75rem;\n  margin: auto;\n  padding: 1rem;\n}\n.color--grey[data-v-3099d5a1] {\n  color: #cccccc;\n}\nh2[data-v-3099d5a1], h5[data-v-3099d5a1] {\n  font-weight: normal;\n}\nh2[data-v-3099d5a1] {\n  font-size: 1.3rem;\n}\nh5[data-v-3099d5a1] {\n  font-size: 1.2rem;\n  font-family: \"PolySans Neutral\";\n}\na[data-v-3099d5a1] {\n  text-decoration: none;\n}\nbutton[data-v-3099d5a1] {\n  background-color: transparent;\n  margin: 0;\n  border: none;\n}\nbutton[data-v-3099d5a1]:hover, a[data-v-3099d5a1]:hover {\n  cursor: pointer;\n}\n.card_restaurant[data-v-3099d5a1] {\n  width: 100%;\n  box-shadow: 10px 6px 6px -9px rgba(0, 0, 0, 0.22);\n  border-radius: 0.3rem;\n  overflow: hidden;\n  margin: 0.5rem 0;\n  transition: all 0.3s ease;\n}\n.card_restaurant ul[data-v-3099d5a1] {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n  display: inline-block;\n}\n.card_restaurant ul li[data-v-3099d5a1] {\n  display: inline-block;\n}\n.card_restaurant[data-v-3099d5a1]:hover {\n  transform: scale(1.02);\n}\n.box_img_restaurant[data-v-3099d5a1] {\n  width: 100%;\n  height: 150px;\n  border-radius: 0.3rem 0.3rem 0px 0px;\n  overflow: hidden;\n  -o-object-fit: contain;\n     object-fit: contain;\n}\n.box_img_restaurant img[data-v-3099d5a1] {\n  width: 100%;\n}\n.description_restaurant[data-v-3099d5a1] {\n  padding: 1rem;\n  color: black;\n}\n.logo_box_restaurant[data-v-3099d5a1] {\n  position: relative;\n}\n.logo_restaurant[data-v-3099d5a1] {\n  z-index: 1;\n  left: 70%;\n  bottom: 70%;\n  position: absolute;\n  width: 80px;\n  height: 80px;\n  border-radius: 0.5rem;\n  border: 3px solid #ebdf00;\n  overflow: hidden;\n}\n.logo_restaurant img[data-v-3099d5a1] {\n  width: 100%;\n}", ""]);
 
 // exports
 
@@ -2923,7 +3080,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;900&display=swap);", ""]);
 
 // module
-exports.push([module.i, "@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"PolySans Neutral\";\n  src: local(\"PolySans Neutral\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Neutral.otf */ "./resources/fonts/PolySans Neutral.otf")) + ");\n}\n@font-face {\n  font-family: \"PolySans Slim\";\n  src: local(\"PolySans Slim\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Slim.otf */ "./resources/fonts/PolySans Slim.otf")) + ");\n}\nbody[data-v-245eb858], a[data-v-245eb858], input[data-v-245eb858], select[data-v-245eb858], button[data-v-245eb858] {\n  font-family: \"PolySans Slim\";\n  width: 100%;\n  overflow-x: hidden;\n}\n.container--1000[data-v-245eb858] {\n  max-width: 43.75rem;\n  margin: auto;\n  padding: 1rem;\n}\n.color--grey[data-v-245eb858] {\n  color: #cccccc;\n}\nh2[data-v-245eb858], h5[data-v-245eb858] {\n  font-weight: normal;\n}\nh5[data-v-245eb858] {\n  font-size: 1.2rem;\n  font-family: \"PolySans Neutral\";\n}\na[data-v-245eb858] {\n  text-decoration: none;\n}\nbutton[data-v-245eb858] {\n  background-color: transparent;\n  margin: 0;\n  border: none;\n}\nbutton[data-v-245eb858]:hover, a[data-v-245eb858]:hover {\n  cursor: pointer;\n}\n.cart[data-v-245eb858] {\n  margin: auto;\n  box-shadow: 2px 2px 8px 0px #cccccc;\n  border-radius: 0.6rem;\n  padding: 1rem;\n}\n.cart h3[data-v-245eb858] {\n  font-size: 1.7rem;\n}\n.cart .empty-cart[data-v-245eb858] {\n  margin: 1rem 0;\n}\n.cart .foods[data-v-245eb858] {\n  display: grid;\n  grid-template-columns: repeat(4, 25% 30% 25% 20%);\n  margin: 1.7rem 0;\n}\n.cart .foods-name[data-v-245eb858] {\n  font-size: 1.3rem;\n}\n.cart .foods-buttons[data-v-245eb858] {\n  display: flex;\n  justify-content: center;\n}\n.cart .foods-buttons button[data-v-245eb858] {\n  text-align: right;\n}\n.cart .foods-quantity[data-v-245eb858] {\n  text-align: center;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.cart .foods-quantity .border[data-v-245eb858] {\n  border: 1px solid #000;\n  padding: 0.2rem 0.3rem;\n  border-radius: 0.3rem;\n}\n.cart .foods-price[data-v-245eb858] {\n  text-align: center;\n}\n.cart .total[data-v-245eb858] {\n  border-top: 1px solid #cccccca2;\n  padding: 1.7rem 0;\n  display: flex;\n  justify-content: space-between;\n}\n.cart .total div[data-v-245eb858] {\n  font-size: 1.3rem;\n}\n.cart .btn-checkout[data-v-245eb858] {\n  color: #000;\n  background-color: #ebdf00;\n  display: block;\n  text-align: center;\n  padding: 1rem;\n  font-size: 1.3rem;\n  border-radius: 0.6rem;\n  margin-top: 0.5rem;\n}\nsvg[data-v-245eb858] {\n  height: 1.7rem;\n}\n.st0[data-v-245eb858] {\n  fill: #FFFFFF;\n  stroke: #000;\n  stroke-miterlimit: 10;\n}\nbutton:hover .st0[data-v-245eb858] {\n  fill: #CCCCCC;\n  stroke: #000;\n  stroke-miterlimit: 10;\n}", ""]);
+exports.push([module.i, "@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"PolySans Neutral\";\n  src: local(\"PolySans Neutral\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Neutral.otf */ "./resources/fonts/PolySans Neutral.otf")) + ");\n}\n@font-face {\n  font-family: \"PolySans Slim\";\n  src: local(\"PolySans Slim\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Slim.otf */ "./resources/fonts/PolySans Slim.otf")) + ");\n}\nbody[data-v-245eb858], a[data-v-245eb858], input[data-v-245eb858], select[data-v-245eb858], button[data-v-245eb858] {\n  font-family: \"PolySans Slim\";\n  overflow-x: hidden;\n}\n.container--1000[data-v-245eb858] {\n  max-width: 43.75rem;\n  margin: auto;\n  padding: 1rem;\n}\n.color--grey[data-v-245eb858] {\n  color: #cccccc;\n}\nh2[data-v-245eb858], h5[data-v-245eb858] {\n  font-weight: normal;\n}\nh2[data-v-245eb858] {\n  font-size: 1.3rem;\n}\nh5[data-v-245eb858] {\n  font-size: 1.2rem;\n  font-family: \"PolySans Neutral\";\n}\na[data-v-245eb858] {\n  text-decoration: none;\n}\nbutton[data-v-245eb858] {\n  background-color: transparent;\n  margin: 0;\n  border: none;\n}\nbutton[data-v-245eb858]:hover, a[data-v-245eb858]:hover {\n  cursor: pointer;\n}\n.cart-component[data-v-245eb858] {\n  margin: auto;\n  box-shadow: 2px 2px 8px 0px #cccccc;\n  border-radius: 0.6rem;\n  padding: 1rem;\n}\n.cart-component h3[data-v-245eb858] {\n  font-size: 1.7rem;\n}\n.cart-component .empty-cart[data-v-245eb858] {\n  margin: 1rem 0;\n}\n.cart-component .foods[data-v-245eb858] {\n  display: grid;\n  grid-template-columns: repeat(4, 25% 30% 25% 20%);\n  margin: 1.7rem 0;\n}\n.cart-component .foods-name[data-v-245eb858] {\n  font-size: 1.3rem;\n}\n.cart-component .foods-buttons[data-v-245eb858] {\n  display: flex;\n  justify-content: flex-end;\n}\n.cart-component .foods-buttons button[data-v-245eb858] {\n  margin: 0 0.5rem;\n}\n.cart-component .foods-quantity[data-v-245eb858] {\n  text-align: center;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.cart-component .foods-quantity .border[data-v-245eb858] {\n  border: 1px solid #000;\n  padding: 0.2rem 0.3rem;\n  border-radius: 0.3rem;\n}\n.cart-component .foods-price[data-v-245eb858] {\n  text-align: center;\n}\n.cart-component .total[data-v-245eb858] {\n  border-top: 1px solid #cccccca2;\n  padding: 1.7rem 0;\n  display: flex;\n  justify-content: space-between;\n}\n.cart-component .total div[data-v-245eb858] {\n  font-size: 1.3rem;\n}\n.cart-component .btn-checkout[data-v-245eb858] {\n  color: #000;\n  background-color: #ebdf00;\n  display: block;\n  text-align: center;\n  padding: 1rem;\n  font-size: 1.3rem;\n  border-radius: 0.6rem;\n  margin-top: 0.5rem;\n}\nsvg[data-v-245eb858] {\n  height: 1.7rem;\n}\n.st0[data-v-245eb858] {\n  fill: #fff;\n  stroke: #7e7e7e;\n  stroke-miterlimit: 10;\n}\nbutton:hover .st0[data-v-245eb858] {\n  fill: #fff;\n  stroke: #000000;\n  stroke-miterlimit: 10;\n}", ""]);
 
 // exports
 
@@ -2943,7 +3100,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;900&display=swap);", ""]);
 
 // module
-exports.push([module.i, "@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"PolySans Neutral\";\n  src: local(\"PolySans Neutral\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Neutral.otf */ "./resources/fonts/PolySans Neutral.otf")) + ");\n}\n@font-face {\n  font-family: \"PolySans Slim\";\n  src: local(\"PolySans Slim\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Slim.otf */ "./resources/fonts/PolySans Slim.otf")) + ");\n}\nbody[data-v-648cd240], a[data-v-648cd240], input[data-v-648cd240], select[data-v-648cd240], button[data-v-648cd240] {\n  font-family: \"PolySans Slim\";\n  width: 100%;\n  overflow-x: hidden;\n}\n.container--1000[data-v-648cd240] {\n  max-width: 43.75rem;\n  margin: auto;\n  padding: 1rem;\n}\n.color--grey[data-v-648cd240] {\n  color: #cccccc;\n}\nh2[data-v-648cd240], h5[data-v-648cd240] {\n  font-weight: normal;\n}\nh5[data-v-648cd240] {\n  font-size: 1.2rem;\n  font-family: \"PolySans Neutral\";\n}\na[data-v-648cd240] {\n  text-decoration: none;\n}\nbutton[data-v-648cd240] {\n  background-color: transparent;\n  margin: 0;\n  border: none;\n}\nbutton[data-v-648cd240]:hover, a[data-v-648cd240]:hover {\n  cursor: pointer;\n}\n.yellow_box[data-v-648cd240] {\n  width: 100%;\n  height: 150px;\n  background-color: #ebdf00;\n  border-radius: 0.6rem;\n  overflow: hidden;\n}\n.cuisine_card[data-v-648cd240] {\n  text-align: center;\n  cursor: pointer;\n  transition: all 0.8s ease;\n}\n.cuisine_card[data-v-648cd240]:hover {\n  transform: scale(1.02);\n}", ""]);
+exports.push([module.i, "@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"PolySans Neutral\";\n  src: local(\"PolySans Neutral\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Neutral.otf */ "./resources/fonts/PolySans Neutral.otf")) + ");\n}\n@font-face {\n  font-family: \"PolySans Slim\";\n  src: local(\"PolySans Slim\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Slim.otf */ "./resources/fonts/PolySans Slim.otf")) + ");\n}\nbody[data-v-648cd240], a[data-v-648cd240], input[data-v-648cd240], select[data-v-648cd240], button[data-v-648cd240] {\n  font-family: \"PolySans Slim\";\n  overflow-x: hidden;\n}\n.container--1000[data-v-648cd240] {\n  max-width: 43.75rem;\n  margin: auto;\n  padding: 1rem;\n}\n.color--grey[data-v-648cd240] {\n  color: #cccccc;\n}\nh2[data-v-648cd240], h5[data-v-648cd240] {\n  font-weight: normal;\n}\nh2[data-v-648cd240] {\n  font-size: 1.3rem;\n}\nh5[data-v-648cd240] {\n  font-size: 1.2rem;\n  font-family: \"PolySans Neutral\";\n}\na[data-v-648cd240] {\n  text-decoration: none;\n}\nbutton[data-v-648cd240] {\n  background-color: transparent;\n  margin: 0;\n  border: none;\n}\nbutton[data-v-648cd240]:hover, a[data-v-648cd240]:hover {\n  cursor: pointer;\n}\n.yellow_box[data-v-648cd240] {\n  width: 100%;\n  height: 150px;\n  background-color: #ebdf00;\n  border-radius: 0.6rem;\n  overflow: hidden;\n}\n.yellow_box img[data-v-648cd240] {\n  width: 100%;\n}\n.cuisine_card[data-v-648cd240] {\n  text-align: center;\n  cursor: pointer;\n  transition: all 0.3s ease;\n}\n.cuisine_card[data-v-648cd240]:hover {\n  transform: scale(1.02);\n}", ""]);
 
 // exports
 
@@ -2963,7 +3120,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;900&display=swap);", ""]);
 
 // module
-exports.push([module.i, "@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"PolySans Neutral\";\n  src: local(\"PolySans Neutral\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Neutral.otf */ "./resources/fonts/PolySans Neutral.otf")) + ");\n}\n@font-face {\n  font-family: \"PolySans Slim\";\n  src: local(\"PolySans Slim\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Slim.otf */ "./resources/fonts/PolySans Slim.otf")) + ");\n}\nbody[data-v-040b6612], a[data-v-040b6612], input[data-v-040b6612], select[data-v-040b6612], button[data-v-040b6612] {\n  font-family: \"PolySans Slim\";\n  width: 100%;\n  overflow-x: hidden;\n}\n.container--1000[data-v-040b6612] {\n  max-width: 43.75rem;\n  margin: auto;\n  padding: 1rem;\n}\n.color--grey[data-v-040b6612] {\n  color: #cccccc;\n}\nh2[data-v-040b6612], h5[data-v-040b6612] {\n  font-weight: normal;\n}\nh5[data-v-040b6612] {\n  font-size: 1.2rem;\n  font-family: \"PolySans Neutral\";\n}\na[data-v-040b6612] {\n  text-decoration: none;\n}\nbutton[data-v-040b6612] {\n  background-color: transparent;\n  margin: 0;\n  border: none;\n}\nbutton[data-v-040b6612]:hover, a[data-v-040b6612]:hover {\n  cursor: pointer;\n}\n.food-card[data-v-040b6612] {\n  display: flex;\n  margin-bottom: 1rem;\n  padding: 0.5rem;\n  border: 0.0625rem solid #cccccc;\n  border-radius: 0.6rem;\n}\n.food-card-image img[data-v-040b6612] {\n  width: 150px;\n  height: 135px;\n  border-radius: 0.6rem;\n  overflow: hidden;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.food-card-info[data-v-040b6612] {\n  padding-left: 1rem;\n  display: flex;\n  flex-direction: column;\n  flex-grow: 1;\n}\n.food-card-info-name[data-v-040b6612] {\n  font-size: 1.7rem;\n  margin-bottom: 0.5rem;\n}\n.food-card-info-description[data-v-040b6612] {\n  font-size: 1.125rem;\n  height: 67px;\n  overflow: auto;\n}\n.food-card-info-price[data-v-040b6612] {\n  margin: auto 0 0.5rem;\n}\n.food-card-buttons[data-v-040b6612] {\n  width: 70px;\n  flex-shrink: 0;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-evenly;\n}\nsvg[data-v-040b6612] {\n  height: 3rem;\n}\n.st0[data-v-040b6612] {\n  fill: #FFFFFF;\n  stroke: #CCCCCC;\n  stroke-miterlimit: 10;\n}\nbutton:hover .st0[data-v-040b6612] {\n  fill: #FFFFFF;\n  stroke: #000;\n  stroke-miterlimit: 10;\n}", ""]);
+exports.push([module.i, "@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"PolySans Neutral\";\n  src: local(\"PolySans Neutral\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Neutral.otf */ "./resources/fonts/PolySans Neutral.otf")) + ");\n}\n@font-face {\n  font-family: \"PolySans Slim\";\n  src: local(\"PolySans Slim\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Slim.otf */ "./resources/fonts/PolySans Slim.otf")) + ");\n}\nbody[data-v-040b6612], a[data-v-040b6612], input[data-v-040b6612], select[data-v-040b6612], button[data-v-040b6612] {\n  font-family: \"PolySans Slim\";\n  overflow-x: hidden;\n}\n.container--1000[data-v-040b6612] {\n  max-width: 43.75rem;\n  margin: auto;\n  padding: 1rem;\n}\n.color--grey[data-v-040b6612] {\n  color: #cccccc;\n}\nh2[data-v-040b6612], h5[data-v-040b6612] {\n  font-weight: normal;\n}\nh2[data-v-040b6612] {\n  font-size: 1.3rem;\n}\nh5[data-v-040b6612] {\n  font-size: 1.2rem;\n  font-family: \"PolySans Neutral\";\n}\na[data-v-040b6612] {\n  text-decoration: none;\n}\nbutton[data-v-040b6612] {\n  background-color: transparent;\n  margin: 0;\n  border: none;\n}\nbutton[data-v-040b6612]:hover, a[data-v-040b6612]:hover {\n  cursor: pointer;\n}\n.food-card[data-v-040b6612] {\n  display: flex;\n  margin-bottom: 1rem;\n  padding: 0.5rem;\n  border: 0.0625rem solid #cccccc;\n  border-radius: 0.6rem;\n}\n.food-card-image img[data-v-040b6612] {\n  width: 150px;\n  height: 135px;\n  border-radius: 0.6rem;\n  overflow: hidden;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.food-card-info[data-v-040b6612] {\n  padding-left: 1rem;\n  display: flex;\n  flex-direction: column;\n  flex-grow: 1;\n}\n.food-card-info-name[data-v-040b6612] {\n  font-size: 1.7rem;\n  margin-bottom: 0.5rem;\n}\n.food-card-info-description[data-v-040b6612] {\n  font-size: 1.125rem;\n  margin: 1rem 0;\n}\n.food-card-info-price[data-v-040b6612] {\n  margin: auto 0 0.5rem;\n}\n.food-card-info-allergens[data-v-040b6612] {\n  margin-bottom: 1rem;\n}\n.food-card-buttons[data-v-040b6612] {\n  width: 70px;\n  flex-shrink: 0;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n}\n.food-card-buttons button[data-v-040b6612] {\n  margin: 10px 0;\n}\nsvg[data-v-040b6612] {\n  height: 3rem;\n}\n.st0[data-v-040b6612] {\n  fill: #FFFFFF;\n  stroke: #CCCCCC;\n  stroke-miterlimit: 10;\n}\nbutton:hover .st0[data-v-040b6612] {\n  fill: #FFFFFF;\n  stroke: #000;\n  stroke-miterlimit: 10;\n}", ""]);
 
 // exports
 
@@ -2983,7 +3140,27 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;900&display=swap);", ""]);
 
 // module
-exports.push([module.i, "@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"PolySans Neutral\";\n  src: local(\"PolySans Neutral\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Neutral.otf */ "./resources/fonts/PolySans Neutral.otf")) + ");\n}\n@font-face {\n  font-family: \"PolySans Slim\";\n  src: local(\"PolySans Slim\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Slim.otf */ "./resources/fonts/PolySans Slim.otf")) + ");\n}\nbody[data-v-4a9fdc62], a[data-v-4a9fdc62], input[data-v-4a9fdc62], select[data-v-4a9fdc62], button[data-v-4a9fdc62] {\n  font-family: \"PolySans Slim\";\n  width: 100%;\n  overflow-x: hidden;\n}\n.container--1000[data-v-4a9fdc62] {\n  max-width: 43.75rem;\n  margin: auto;\n  padding: 1rem;\n}\n.color--grey[data-v-4a9fdc62] {\n  color: #cccccc;\n}\nh2[data-v-4a9fdc62], h5[data-v-4a9fdc62] {\n  font-weight: normal;\n}\nh5[data-v-4a9fdc62] {\n  font-size: 1.2rem;\n  font-family: \"PolySans Neutral\";\n}\na[data-v-4a9fdc62] {\n  text-decoration: none;\n}\nbutton[data-v-4a9fdc62] {\n  background-color: transparent;\n  margin: 0;\n  border: none;\n}\nbutton[data-v-4a9fdc62]:hover, a[data-v-4a9fdc62]:hover {\n  cursor: pointer;\n}\nfooter[data-v-4a9fdc62] {\n  background-color: #121224;\n}\n.footer_top[data-v-4a9fdc62] {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  padding: 3rem;\n}\n.footer_top h2[data-v-4a9fdc62] {\n  color: #ebdf00;\n  padding: 1rem 0;\n}\n.footer_top ul li[data-v-4a9fdc62] {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n  padding: 3px 0;\n  color: white;\n}\n.footer_top ul.social[data-v-4a9fdc62] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  list-style: none;\n  margin: 0;\n  padding: 0;\n  display: inline-block;\n}\n.footer_top ul.social li[data-v-4a9fdc62] {\n  display: inline-block;\n}\n.footer_top ul.social li a img[data-v-4a9fdc62] {\n  width: 60px;\n  margin-right: 1rem;\n}\n.copyright[data-v-4a9fdc62] {\n  padding: 1rem;\n  color: white;\n  font-size: 1rem;\n}\n@media screen and (max-width: 850px) {\n.footer_top[data-v-4a9fdc62] {\n    grid-template-columns: repeat(2, 1fr);\n}\n}", ""]);
+exports.push([module.i, "@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"PolySans Neutral\";\n  src: local(\"PolySans Neutral\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Neutral.otf */ "./resources/fonts/PolySans Neutral.otf")) + ");\n}\n@font-face {\n  font-family: \"PolySans Slim\";\n  src: local(\"PolySans Slim\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Slim.otf */ "./resources/fonts/PolySans Slim.otf")) + ");\n}\nbody[data-v-4a9fdc62], a[data-v-4a9fdc62], input[data-v-4a9fdc62], select[data-v-4a9fdc62], button[data-v-4a9fdc62] {\n  font-family: \"PolySans Slim\";\n  overflow-x: hidden;\n}\n.container--1000[data-v-4a9fdc62] {\n  max-width: 43.75rem;\n  margin: auto;\n  padding: 1rem;\n}\n.color--grey[data-v-4a9fdc62] {\n  color: #cccccc;\n}\nh2[data-v-4a9fdc62], h5[data-v-4a9fdc62] {\n  font-weight: normal;\n}\nh2[data-v-4a9fdc62] {\n  font-size: 1.3rem;\n}\nh5[data-v-4a9fdc62] {\n  font-size: 1.2rem;\n  font-family: \"PolySans Neutral\";\n}\na[data-v-4a9fdc62] {\n  text-decoration: none;\n}\nbutton[data-v-4a9fdc62] {\n  background-color: transparent;\n  margin: 0;\n  border: none;\n}\nbutton[data-v-4a9fdc62]:hover, a[data-v-4a9fdc62]:hover {\n  cursor: pointer;\n}\nfooter[data-v-4a9fdc62] {\n  background-color: #121224;\n}\n.footer_top[data-v-4a9fdc62] {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  padding: 1rem;\n}\n.footer_top h2[data-v-4a9fdc62] {\n  color: #ebdf00;\n  padding: 0 0 1rem;\n}\n.footer_top ul li[data-v-4a9fdc62] {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n  padding: 3px 0;\n  color: white;\n  font-size: 1.3rem;\n}\n.footer_top ul.social[data-v-4a9fdc62] {\n  display: flex;\n  align-items: center;\n  margin: 1.7rem 0;\n}\n.footer_top ul.social li a img[data-v-4a9fdc62] {\n  width: 60px;\n  margin-right: 1rem;\n}\n.copyright[data-v-4a9fdc62] {\n  padding: 1rem;\n  color: white;\n  font-size: 1rem;\n}\n@media screen and (max-width: 850px) {\n.footer_top[data-v-4a9fdc62] {\n    grid-template-columns: repeat(2, 1fr);\n}\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/guest/components/Header.vue?vue&type=style&index=0&id=083b147e&scoped=true&lang=scss&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/guest/components/Header.vue?vue&type=style&index=0&id=083b147e&scoped=true&lang=scss& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var escape = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/url/escape.js */ "./node_modules/css-loader/lib/url/escape.js");
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;900&display=swap);", ""]);
+
+// module
+exports.push([module.i, "@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"PolySans Neutral\";\n  src: local(\"PolySans Neutral\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Neutral.otf */ "./resources/fonts/PolySans Neutral.otf")) + ");\n}\n@font-face {\n  font-family: \"PolySans Slim\";\n  src: local(\"PolySans Slim\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Slim.otf */ "./resources/fonts/PolySans Slim.otf")) + ");\n}\nbody[data-v-083b147e], a[data-v-083b147e], input[data-v-083b147e], select[data-v-083b147e], button[data-v-083b147e] {\n  font-family: \"PolySans Slim\";\n  overflow-x: hidden;\n}\n.container--1000[data-v-083b147e] {\n  max-width: 43.75rem;\n  margin: auto;\n  padding: 1rem;\n}\n.color--grey[data-v-083b147e] {\n  color: #cccccc;\n}\nh2[data-v-083b147e], h5[data-v-083b147e] {\n  font-weight: normal;\n}\nh2[data-v-083b147e] {\n  font-size: 1.3rem;\n}\nh5[data-v-083b147e] {\n  font-size: 1.2rem;\n  font-family: \"PolySans Neutral\";\n}\na[data-v-083b147e] {\n  text-decoration: none;\n}\nbutton[data-v-083b147e] {\n  background-color: transparent;\n  margin: 0;\n  border: none;\n}\nbutton[data-v-083b147e]:hover, a[data-v-083b147e]:hover {\n  cursor: pointer;\n}\nheader[data-v-083b147e] {\n  background-color: #e80800;\n  width: 100%;\n  position: fixed;\n  top: 0;\n  z-index: 10;\n}\nheader img[data-v-083b147e] {\n  height: 100px;\n}\nheader nav[data-v-083b147e] {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\nheader nav .nav-right ul[data-v-083b147e] {\n  display: flex;\n  list-style: none;\n}\nheader nav .nav-right ul li[data-v-083b147e] {\n  padding: 0 10px;\n}\nheader nav .nav-right ul li a[data-v-083b147e] {\n  text-transform: uppercase;\n  color: white;\n  font-size: 1.3rem;\n  margin-bottom: auto;\n}\nheader nav .nav-right ul li a[data-v-083b147e]:hover {\n  text-decoration: underline;\n}\nheader nav .nav-right ul li a.cart[data-v-083b147e] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  margin-left: 1.7rem;\n  position: relative;\n}\nheader nav .nav-right ul li a.cart span[data-v-083b147e] {\n  position: absolute;\n  top: 50%;\n  transform: translateY(-50%);\n}\nheader nav .nav-right ul li[data-v-083b147e]:first-child {\n  margin-right: auto;\n}\nheader nav .nav-right ul li .admin[data-v-083b147e] {\n  flex-wrap: wrap;\n}\n@media screen and (max-width: 850px) {\nheader img[data-v-083b147e] {\n    height: 80px;\n}\nheader .admin[data-v-083b147e] {\n    flex-direction: column;\n}\n}\n@media screen and (max-width: 768px) {\nheader img[data-v-083b147e] {\n    width: 100%;\n}\nheader .admin[data-v-083b147e] {\n    flex-direction: column;\n}\n}\n@media screen and (max-width: 768px) {\nheader nav[data-v-083b147e] {\n    flex-direction: column;\n    align-items: inherit;\n}\nheader nav .nav-left a[data-v-083b147e] {\n    height: 100px;\n}\nheader nav .nav-left img[data-v-083b147e] {\n    height: 100%;\n}\nheader nav .nav-right ul li a.cart[data-v-083b147e] {\n    margin: 0;\n    margin-right: auto;\n}\nheader nav .nav-right ul li a.cart img[data-v-083b147e] {\n    height: 80px;\n}\n}", ""]);
 
 // exports
 
@@ -3003,7 +3180,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;900&display=swap);", ""]);
 
 // module
-exports.push([module.i, "@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"PolySans Neutral\";\n  src: local(\"PolySans Neutral\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Neutral.otf */ "./resources/fonts/PolySans Neutral.otf")) + ");\n}\n@font-face {\n  font-family: \"PolySans Slim\";\n  src: local(\"PolySans Slim\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Slim.otf */ "./resources/fonts/PolySans Slim.otf")) + ");\n}\nbody[data-v-86bc6c0e], a[data-v-86bc6c0e], input[data-v-86bc6c0e], select[data-v-86bc6c0e], button[data-v-86bc6c0e] {\n  font-family: \"PolySans Slim\";\n  width: 100%;\n  overflow-x: hidden;\n}\n.container--1000[data-v-86bc6c0e] {\n  max-width: 43.75rem;\n  margin: auto;\n  padding: 1rem;\n}\n.color--grey[data-v-86bc6c0e] {\n  color: #cccccc;\n}\nh2[data-v-86bc6c0e], h5[data-v-86bc6c0e] {\n  font-weight: normal;\n}\nh5[data-v-86bc6c0e] {\n  font-size: 1.2rem;\n  font-family: \"PolySans Neutral\";\n}\na[data-v-86bc6c0e] {\n  text-decoration: none;\n}\nbutton[data-v-86bc6c0e] {\n  background-color: transparent;\n  margin: 0;\n  border: none;\n}\nbutton[data-v-86bc6c0e]:hover, a[data-v-86bc6c0e]:hover {\n  cursor: pointer;\n}\n.modal-backdrop[data-v-86bc6c0e] {\n  position: fixed;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  background-color: rgba(0, 0, 0, 0.3);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.modal[data-v-86bc6c0e] {\n  background: #ffffff;\n  box-shadow: 2px 2px 20px 1px;\n  overflow-x: auto;\n  display: flex;\n  flex-direction: column;\n  border-radius: 0.6rem;\n}\n.modal-header[data-v-86bc6c0e],\n.modal-footer[data-v-86bc6c0e] {\n  padding: 15px;\n  display: flex;\n}\n.modal-header[data-v-86bc6c0e] {\n  position: relative;\n  color: #4aae9b;\n  justify-content: space-between;\n}\n.modal-body[data-v-86bc6c0e] {\n  position: relative;\n  padding: 20px 10px;\n}\n.btn-close[data-v-86bc6c0e] {\n  position: absolute;\n  top: 0;\n  right: 0;\n  border: none;\n  font-size: 20px;\n  padding: 10px;\n  cursor: pointer;\n  font-weight: bold;\n  color: #4aae9b;\n  background: transparent;\n}\n.btn-green[data-v-86bc6c0e] {\n  color: white;\n  background: #4aae9b;\n  border: 1px solid #4aae9b;\n  border-radius: 2px;\n}", ""]);
+exports.push([module.i, "@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"PolySans Neutral\";\n  src: local(\"PolySans Neutral\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Neutral.otf */ "./resources/fonts/PolySans Neutral.otf")) + ");\n}\n@font-face {\n  font-family: \"PolySans Slim\";\n  src: local(\"PolySans Slim\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Slim.otf */ "./resources/fonts/PolySans Slim.otf")) + ");\n}\nbody[data-v-86bc6c0e], a[data-v-86bc6c0e], input[data-v-86bc6c0e], select[data-v-86bc6c0e], button[data-v-86bc6c0e] {\n  font-family: \"PolySans Slim\";\n  overflow-x: hidden;\n}\n.container--1000[data-v-86bc6c0e] {\n  max-width: 43.75rem;\n  margin: auto;\n  padding: 1rem;\n}\n.color--grey[data-v-86bc6c0e] {\n  color: #cccccc;\n}\nh2[data-v-86bc6c0e], h5[data-v-86bc6c0e] {\n  font-weight: normal;\n}\nh2[data-v-86bc6c0e] {\n  font-size: 1.3rem;\n}\nh5[data-v-86bc6c0e] {\n  font-size: 1.2rem;\n  font-family: \"PolySans Neutral\";\n}\na[data-v-86bc6c0e] {\n  text-decoration: none;\n}\nbutton[data-v-86bc6c0e] {\n  background-color: transparent;\n  margin: 0;\n  border: none;\n}\nbutton[data-v-86bc6c0e]:hover, a[data-v-86bc6c0e]:hover {\n  cursor: pointer;\n}\n.modal-backdrop[data-v-86bc6c0e] {\n  position: fixed;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  background-color: rgba(0, 0, 0, 0.3);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.modal[data-v-86bc6c0e] {\n  background: #ffffff;\n  box-shadow: 2px 2px 20px 1px;\n  overflow-x: auto;\n  border-radius: 0.6rem;\n}\n.modal-footer[data-v-86bc6c0e] {\n  padding: 15px;\n  margin: auto;\n  display: flex;\n  justify-content: flex-end;\n}\n.modal-body[data-v-86bc6c0e] {\n  padding: 1.7rem;\n  font-size: 1rem;\n}\n.buttons__container[data-v-86bc6c0e] {\n  display: flex;\n}\n.btn[data-v-86bc6c0e] {\n  color: #000;\n  display: inline-block;\n  text-align: center;\n  padding: 0.5rem 0.6rem;\n  font-size: 1rem;\n  border-radius: 0.6rem;\n}\n.btn-yellow[data-v-86bc6c0e] {\n  background-color: #ebdf00;\n  margin-right: 1rem;\n}\n.btn-white[data-v-86bc6c0e] {\n  border: 1px solid #ebdf00;\n  background-color: white;\n}", ""]);
 
 // exports
 
@@ -3042,7 +3219,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;900&display=swap);", ""]);
 
 // module
-exports.push([module.i, "@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"PolySans Neutral\";\n  src: local(\"PolySans Neutral\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Neutral.otf */ "./resources/fonts/PolySans Neutral.otf")) + ");\n}\n@font-face {\n  font-family: \"PolySans Slim\";\n  src: local(\"PolySans Slim\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Slim.otf */ "./resources/fonts/PolySans Slim.otf")) + ");\n}\nbody[data-v-2f60d25c], a[data-v-2f60d25c], input[data-v-2f60d25c], select[data-v-2f60d25c], button[data-v-2f60d25c] {\n  font-family: \"PolySans Slim\";\n  width: 100%;\n  overflow-x: hidden;\n}\n.container--1000[data-v-2f60d25c] {\n  max-width: 43.75rem;\n  margin: auto;\n  padding: 1rem;\n}\n.color--grey[data-v-2f60d25c] {\n  color: #cccccc;\n}\nh2[data-v-2f60d25c], h5[data-v-2f60d25c] {\n  font-weight: normal;\n}\nh5[data-v-2f60d25c] {\n  font-size: 1.2rem;\n  font-family: \"PolySans Neutral\";\n}\na[data-v-2f60d25c] {\n  text-decoration: none;\n}\nbutton[data-v-2f60d25c] {\n  background-color: transparent;\n  margin: 0;\n  border: none;\n}\nbutton[data-v-2f60d25c]:hover, a[data-v-2f60d25c]:hover {\n  cursor: pointer;\n}\n.grid_restaurants[data-v-2f60d25c] {\n  grid-template-columns: repeat(4, 1fr);\n  display: grid;\n  -moz-column-gap: 15px;\n       column-gap: 15px;\n  padding: 1.7rem;\n}\n@media screen and (max-width: 850px) {\n.grid_restaurants[data-v-2f60d25c] {\n    grid-template-columns: repeat(2, 1fr);\n}\n}\n@media screen and (max-width: 768px) {\n.grid_restaurants[data-v-2f60d25c] {\n    grid-template-columns: repeat(1, 1fr);\n}\n}", ""]);
+exports.push([module.i, "@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"PolySans Neutral\";\n  src: local(\"PolySans Neutral\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Neutral.otf */ "./resources/fonts/PolySans Neutral.otf")) + ");\n}\n@font-face {\n  font-family: \"PolySans Slim\";\n  src: local(\"PolySans Slim\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Slim.otf */ "./resources/fonts/PolySans Slim.otf")) + ");\n}\nbody[data-v-2f60d25c], a[data-v-2f60d25c], input[data-v-2f60d25c], select[data-v-2f60d25c], button[data-v-2f60d25c] {\n  font-family: \"PolySans Slim\";\n  overflow-x: hidden;\n}\n.container--1000[data-v-2f60d25c] {\n  max-width: 43.75rem;\n  margin: auto;\n  padding: 1rem;\n}\n.color--grey[data-v-2f60d25c] {\n  color: #cccccc;\n}\nh2[data-v-2f60d25c], h5[data-v-2f60d25c] {\n  font-weight: normal;\n}\nh2[data-v-2f60d25c] {\n  font-size: 1.3rem;\n}\nh5[data-v-2f60d25c] {\n  font-size: 1.2rem;\n  font-family: \"PolySans Neutral\";\n}\na[data-v-2f60d25c] {\n  text-decoration: none;\n}\nbutton[data-v-2f60d25c] {\n  background-color: transparent;\n  margin: 0;\n  border: none;\n}\nbutton[data-v-2f60d25c]:hover, a[data-v-2f60d25c]:hover {\n  cursor: pointer;\n}\n.grid_restaurants[data-v-2f60d25c] {\n  grid-template-columns: repeat(4, 1fr);\n  display: grid;\n  -moz-column-gap: 15px;\n       column-gap: 15px;\n  padding: 1.7rem;\n}\n@media screen and (max-width: 850px) {\n.grid_restaurants[data-v-2f60d25c] {\n    grid-template-columns: repeat(2, 1fr);\n}\n}\n@media screen and (max-width: 768px) {\n.grid_restaurants[data-v-2f60d25c] {\n    grid-template-columns: repeat(1, 1fr);\n}\n}", ""]);
 
 // exports
 
@@ -3062,7 +3239,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;900&display=swap);", ""]);
 
 // module
-exports.push([module.i, "@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"PolySans Neutral\";\n  src: local(\"PolySans Neutral\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Neutral.otf */ "./resources/fonts/PolySans Neutral.otf")) + ");\n}\n@font-face {\n  font-family: \"PolySans Slim\";\n  src: local(\"PolySans Slim\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Slim.otf */ "./resources/fonts/PolySans Slim.otf")) + ");\n}\nbody[data-v-a95bb434], a[data-v-a95bb434], input[data-v-a95bb434], select[data-v-a95bb434], button[data-v-a95bb434] {\n  font-family: \"PolySans Slim\";\n  width: 100%;\n  overflow-x: hidden;\n}\n.container--1000[data-v-a95bb434] {\n  max-width: 43.75rem;\n  margin: auto;\n  padding: 1rem;\n}\n.color--grey[data-v-a95bb434] {\n  color: #cccccc;\n}\nh2[data-v-a95bb434], h5[data-v-a95bb434] {\n  font-weight: normal;\n}\nh5[data-v-a95bb434] {\n  font-size: 1.2rem;\n  font-family: \"PolySans Neutral\";\n}\na[data-v-a95bb434] {\n  text-decoration: none;\n}\nbutton[data-v-a95bb434] {\n  background-color: transparent;\n  margin: 0;\n  border: none;\n}\nbutton[data-v-a95bb434]:hover, a[data-v-a95bb434]:hover {\n  cursor: pointer;\n}\n.checkout .checkout__header[data-v-a95bb434] {\n  background-color: #e80800;\n  color: white;\n  font-family: \"PolySans Neutral\";\n  font-size: 1.5rem;\n}\n.checkout .checkout__body[data-v-a95bb434] {\n  padding: 3rem 0.5rem;\n}\n.checkout .body__cart > div[data-v-a95bb434] {\n  margin-bottom: 1rem;\n}\n.checkout .cart__title[data-v-a95bb434] {\n  padding: 1rem 0;\n}\n.checkout .cart__food-card[data-v-a95bb434] {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n.checkout .cart__food-card > div[data-v-a95bb434] {\n  margin-bottom: 1.7rem;\n}\n.checkout form[data-v-a95bb434] {\n  font-size: 0.8rem;\n}\n.checkout .food-card__info[data-v-a95bb434] {\n  display: flex;\n  align-items: center;\n  padding: 0.5rem;\n  border: 0.0625rem solid #cccccc;\n  border-radius: 0.6rem;\n  flex-grow: 1;\n}\n.checkout .food-card__info > *[data-v-a95bb434]:not(.info__img) {\n  padding: 0.5rem;\n}\n.checkout .food-card__info ul[data-v-a95bb434] {\n  flex-grow: 1;\n  list-style: none;\n  margin: 0;\n  padding: 0;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n.checkout .food-card__info label[data-v-a95bb434] {\n  font-family: \"PolySans Neutral\";\n}\n.checkout .info__img[data-v-a95bb434] {\n  border-radius: 0.3rem;\n  height: 3rem;\n  width: 3rem;\n  overflow: hidden;\n}\n.checkout .info__img img[data-v-a95bb434] {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  -o-object-position: center;\n     object-position: center;\n}\n.checkout .food-card__btn[data-v-a95bb434] {\n  display: flex;\n}\n.checkout .food-card__btn button[data-v-a95bb434] {\n  margin: 0.5rem;\n  overflow-x: inherit;\n}\n.checkout .food-card__btn button svg[data-v-a95bb434] {\n  height: 2rem;\n  fill: white;\n  stroke: #cccccc;\n  stroke-miterlimit: 10;\n}\n.checkout .food-card__btn button svg[data-v-a95bb434]:hover {\n  stroke: #000;\n}\n.checkout .ui__row[data-v-a95bb434] {\n  margin-bottom: 0.5rem;\n}\n.checkout .ui__row .ui__data[data-v-a95bb434] {\n  display: flex;\n  flex-direction: column;\n}\n.checkout .ui__row .ui__data label[data-v-a95bb434] {\n  padding-bottom: 0.5rem;\n}\n.checkout .ui__row input[data-v-a95bb434], .checkout .ui__row textarea[data-v-a95bb434] {\n  padding: 0.5rem;\n  border: 0.0625rem solid #cccccc;\n  border-radius: 0.6rem;\n}\n.checkout .ui__row .ui__data[data-v-a95bb434]:not(:last-child) {\n  margin-right: 0.5rem;\n}\n.checkout .ui__row[data-v-a95bb434]:not(:last-child) {\n  display: flex;\n}\n.checkout .ui__row:not(:last-child) > *[data-v-a95bb434] {\n  width: 50%;\n}\n.checkout .ui__row:last-child .ui__data[data-v-a95bb434] {\n  display: flex;\n  flex-direction: column;\n}\n.checkout__header[data-v-a95bb434] {\n  padding-top: 100px;\n}\n@media screen and (max-width: 768px) {\n.checkout__header[data-v-a95bb434] {\n    padding-top: 200px;\n}\n}\n@media screen and (max-width: 425px) {\n.checkout__header[data-v-a95bb434] {\n    padding-top: 150px;\n}\n}", ""]);
+exports.push([module.i, "@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"PolySans Neutral\";\n  src: local(\"PolySans Neutral\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Neutral.otf */ "./resources/fonts/PolySans Neutral.otf")) + ");\n}\n@font-face {\n  font-family: \"PolySans Slim\";\n  src: local(\"PolySans Slim\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Slim.otf */ "./resources/fonts/PolySans Slim.otf")) + ");\n}\nbody[data-v-a95bb434], a[data-v-a95bb434], input[data-v-a95bb434], select[data-v-a95bb434], button[data-v-a95bb434] {\n  font-family: \"PolySans Slim\";\n  overflow-x: hidden;\n}\n.container--1000[data-v-a95bb434] {\n  max-width: 43.75rem;\n  margin: auto;\n  padding: 1rem;\n}\n.color--grey[data-v-a95bb434] {\n  color: #cccccc;\n}\nh2[data-v-a95bb434], h5[data-v-a95bb434] {\n  font-weight: normal;\n}\nh2[data-v-a95bb434] {\n  font-size: 1.3rem;\n}\nh5[data-v-a95bb434] {\n  font-size: 1.2rem;\n  font-family: \"PolySans Neutral\";\n}\na[data-v-a95bb434] {\n  text-decoration: none;\n}\nbutton[data-v-a95bb434] {\n  background-color: transparent;\n  margin: 0;\n  border: none;\n}\nbutton[data-v-a95bb434]:hover, a[data-v-a95bb434]:hover {\n  cursor: pointer;\n}\n.checkout .checkout__header[data-v-a95bb434] {\n  background-color: #e80800;\n  color: white;\n  font-family: \"PolySans Neutral\";\n  font-size: 1.5rem;\n}\n.checkout .checkout__body[data-v-a95bb434] {\n  padding: 3rem 0.5rem;\n}\n.checkout .body__cart > div[data-v-a95bb434] {\n  margin-bottom: 1rem;\n}\n.checkout .cart__title[data-v-a95bb434] {\n  padding: 1rem 0;\n}\n.checkout .cart__food-card[data-v-a95bb434] {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n.checkout .cart__food-card > div[data-v-a95bb434] {\n  margin-bottom: 1.7rem;\n}\n.checkout form[data-v-a95bb434] {\n  font-size: 1rem;\n}\n.checkout .food-card__info[data-v-a95bb434] {\n  display: flex;\n  align-items: center;\n  padding: 0.5rem;\n  border: 0.0625rem solid #cccccc;\n  border-radius: 0.6rem;\n  flex-grow: 1;\n}\n.checkout .food-card__info > *[data-v-a95bb434]:not(.info__img) {\n  padding: 0.5rem;\n}\n.checkout .food-card__info ul[data-v-a95bb434] {\n  flex-grow: 1;\n  list-style: none;\n  margin: 0;\n  padding: 0;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n.checkout .food-card__info label[data-v-a95bb434] {\n  font-family: \"PolySans Neutral\";\n}\n.checkout .info__img[data-v-a95bb434] {\n  border-radius: 0.3rem;\n  height: 3rem;\n  width: 3rem;\n  overflow: hidden;\n}\n.checkout .info__img img[data-v-a95bb434] {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  -o-object-position: center;\n     object-position: center;\n}\n.checkout .food-card__btn[data-v-a95bb434] {\n  display: flex;\n}\n.checkout .food-card__btn button[data-v-a95bb434] {\n  margin: 0.5rem;\n  overflow-x: inherit;\n}\n.checkout .food-card__btn button svg[data-v-a95bb434] {\n  height: 2rem;\n  fill: white;\n  stroke: #cccccc;\n  stroke-miterlimit: 10;\n}\n.checkout .food-card__btn button svg[data-v-a95bb434]:hover {\n  stroke: #000;\n}\n.checkout .ui__row[data-v-a95bb434] {\n  margin-bottom: 0.5rem;\n}\n.checkout .ui__row .ui__data[data-v-a95bb434] {\n  display: flex;\n  flex-direction: column;\n}\n.checkout .ui__row .ui__data label[data-v-a95bb434] {\n  padding-bottom: 0.5rem;\n}\n.checkout .ui__row input[data-v-a95bb434],\n.checkout .ui__row textarea[data-v-a95bb434] {\n  padding: 0.5rem;\n  border: 0.0625rem solid #cccccc;\n  border-radius: 0.6rem;\n}\n.checkout .ui__row .ui__data[data-v-a95bb434]:not(:last-child) {\n  margin-right: 0.5rem;\n}\n.checkout .ui__row[data-v-a95bb434]:not(:last-child) {\n  display: flex;\n}\n.checkout .ui__row:not(:last-child) > *[data-v-a95bb434] {\n  flex-grow: 1;\n}\n.checkout .ui__row:last-child .ui__data[data-v-a95bb434] {\n  display: flex;\n  flex-direction: column;\n}\n.checkout__header[data-v-a95bb434] {\n  padding-top: 100px;\n}\n@media screen and (max-width: 768px) {\n.checkout__header[data-v-a95bb434] {\n    padding-top: 200px;\n}\n}\n@media screen and (max-width: 425px) {\n.checkout .ui__row[data-v-a95bb434] {\n    display: flex;\n    flex-direction: column;\n}\n.checkout .ui__row .ui__data[data-v-a95bb434]:not(:last-child) {\n    margin-right: 0;\n}\n.checkout .checkout__header[data-v-a95bb434] {\n    padding-top: 150px;\n}\n}", ""]);
 
 // exports
 
@@ -3082,7 +3259,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;900&display=swap);", ""]);
 
 // module
-exports.push([module.i, "@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"PolySans Neutral\";\n  src: local(\"PolySans Neutral\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Neutral.otf */ "./resources/fonts/PolySans Neutral.otf")) + ");\n}\n@font-face {\n  font-family: \"PolySans Slim\";\n  src: local(\"PolySans Slim\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Slim.otf */ "./resources/fonts/PolySans Slim.otf")) + ");\n}\nbody[data-v-1403c602], a[data-v-1403c602], input[data-v-1403c602], select[data-v-1403c602], button[data-v-1403c602] {\n  font-family: \"PolySans Slim\";\n  width: 100%;\n  overflow-x: hidden;\n}\n.container--1000[data-v-1403c602] {\n  max-width: 43.75rem;\n  margin: auto;\n  padding: 1rem;\n}\n.color--grey[data-v-1403c602] {\n  color: #cccccc;\n}\nh2[data-v-1403c602], h5[data-v-1403c602] {\n  font-weight: normal;\n}\nh5[data-v-1403c602] {\n  font-size: 1.2rem;\n  font-family: \"PolySans Neutral\";\n}\na[data-v-1403c602] {\n  text-decoration: none;\n}\nbutton[data-v-1403c602] {\n  background-color: transparent;\n  margin: 0;\n  border: none;\n}\nbutton[data-v-1403c602]:hover, a[data-v-1403c602]:hover {\n  cursor: pointer;\n}\nsection#home .section_cuisines[data-v-1403c602] {\n  padding-top: 110px;\n  width: 100%;\n  background-color: #e80800;\n  color: white;\n  font-family: \"PolySans Neutra\";\n}\nsection#home .section_cuisines h2[data-v-1403c602] {\n  padding: 1rem;\n  font-size: 1.7rem;\n}\nsection#home .section_restaurants[data-v-1403c602] {\n  width: 100%;\n}\nsection#home .section_restaurants h2[data-v-1403c602] {\n  margin-top: 1rem;\n  padding: 1rem;\n  font-size: 2.2rem;\n}\n.grid_cuisines[data-v-1403c602] {\n  grid-template-columns: repeat(7, 1fr);\n  display: grid;\n  -moz-column-gap: 5px;\n       column-gap: 5px;\n  padding: 0.5rem;\n}\n@media screen and (max-width: 850px) {\n.grid_cuisines[data-v-1403c602] {\n    grid-template-columns: repeat(4, 1fr);\n}\n}\n@media screen and (max-width: 768px) {\n.grid_cuisines[data-v-1403c602] {\n    grid-template-columns: repeat(2, 1fr);\n}\n}", ""]);
+exports.push([module.i, "@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"PolySans Neutral\";\n  src: local(\"PolySans Neutral\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Neutral.otf */ "./resources/fonts/PolySans Neutral.otf")) + ");\n}\n@font-face {\n  font-family: \"PolySans Slim\";\n  src: local(\"PolySans Slim\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Slim.otf */ "./resources/fonts/PolySans Slim.otf")) + ");\n}\nbody[data-v-1403c602], a[data-v-1403c602], input[data-v-1403c602], select[data-v-1403c602], button[data-v-1403c602] {\n  font-family: \"PolySans Slim\";\n  overflow-x: hidden;\n}\n.container--1000[data-v-1403c602] {\n  max-width: 43.75rem;\n  margin: auto;\n  padding: 1rem;\n}\n.color--grey[data-v-1403c602] {\n  color: #cccccc;\n}\nh2[data-v-1403c602], h5[data-v-1403c602] {\n  font-weight: normal;\n}\nh2[data-v-1403c602] {\n  font-size: 1.3rem;\n}\nh5[data-v-1403c602] {\n  font-size: 1.2rem;\n  font-family: \"PolySans Neutral\";\n}\na[data-v-1403c602] {\n  text-decoration: none;\n}\nbutton[data-v-1403c602] {\n  background-color: transparent;\n  margin: 0;\n  border: none;\n}\nbutton[data-v-1403c602]:hover, a[data-v-1403c602]:hover {\n  cursor: pointer;\n}\nsection#home .section_cuisines[data-v-1403c602] {\n  padding-top: 110px;\n  width: 100%;\n  background-color: #e80800;\n  color: white;\n  font-family: \"PolySans Neutra\";\n}\nsection#home .section_cuisines h2[data-v-1403c602] {\n  padding: 1rem;\n  font-size: 1.7rem;\n}\nsection#home .section_restaurants[data-v-1403c602] {\n  width: 100%;\n}\nsection#home .section_restaurants h2[data-v-1403c602] {\n  margin-top: 1rem;\n  padding: 1rem;\n  font-size: 2.2rem;\n}\n.grid_cuisines[data-v-1403c602] {\n  grid-template-columns: repeat(7, 1fr);\n  display: grid;\n  -moz-column-gap: 5px;\n       column-gap: 5px;\n  padding: 0.5rem;\n}\n@media screen and (max-width: 850px) {\n.grid_cuisines[data-v-1403c602] {\n    grid-template-columns: repeat(4, 1fr);\n}\n}\n@media screen and (max-width: 768px) {\n.grid_cuisines[data-v-1403c602] {\n    grid-template-columns: repeat(2, 1fr);\n}\n}", ""]);
 
 // exports
 
@@ -3102,7 +3279,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;900&display=swap);", ""]);
 
 // module
-exports.push([module.i, "@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"PolySans Neutral\";\n  src: local(\"PolySans Neutral\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Neutral.otf */ "./resources/fonts/PolySans Neutral.otf")) + ");\n}\n@font-face {\n  font-family: \"PolySans Slim\";\n  src: local(\"PolySans Slim\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Slim.otf */ "./resources/fonts/PolySans Slim.otf")) + ");\n}\nbody[data-v-e6b80cc8], a[data-v-e6b80cc8], input[data-v-e6b80cc8], select[data-v-e6b80cc8], button[data-v-e6b80cc8] {\n  font-family: \"PolySans Slim\";\n  width: 100%;\n  overflow-x: hidden;\n}\n.container--1000[data-v-e6b80cc8] {\n  max-width: 43.75rem;\n  margin: auto;\n  padding: 1rem;\n}\n.color--grey[data-v-e6b80cc8] {\n  color: #cccccc;\n}\nh2[data-v-e6b80cc8], h5[data-v-e6b80cc8] {\n  font-weight: normal;\n}\nh5[data-v-e6b80cc8] {\n  font-size: 1.2rem;\n  font-family: \"PolySans Neutral\";\n}\na[data-v-e6b80cc8] {\n  text-decoration: none;\n}\nbutton[data-v-e6b80cc8] {\n  background-color: transparent;\n  margin: 0;\n  border: none;\n}\nbutton[data-v-e6b80cc8]:hover, a[data-v-e6b80cc8]:hover {\n  cursor: pointer;\n}\nsection[data-v-e6b80cc8] {\n  padding-top: 100px;\n}\n.cover-restaurant[data-v-e6b80cc8] {\n  height: 350px;\n}\n.cover-restaurant img[data-v-e6b80cc8] {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.restaurant[data-v-e6b80cc8] {\n  display: flex;\n}\n.restaurant-logo[data-v-e6b80cc8] {\n  width: 200px;\n  text-align: right;\n}\n.restaurant-logo img[data-v-e6b80cc8] {\n  width: 150px;\n  height: 150px;\n  border-radius: 0.6rem;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border: 2px solid #ebdf00;\n  margin-right: 1rem;\n  transform: translateY(-42%);\n}\n.restaurant-menu[data-v-e6b80cc8] {\n  width: 750px;\n}\n.restaurant-menu h2[data-v-e6b80cc8] {\n  font-size: 4rem;\n  margin: 1rem 0 1.7rem;\n}\n.restaurant .cart[data-v-e6b80cc8] {\n  flex-grow: 1;\n  margin-top: 1rem;\n  width: 450px;\n}", ""]);
+exports.push([module.i, "@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"PolySans Neutral\";\n  src: local(\"PolySans Neutral\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Neutral.otf */ "./resources/fonts/PolySans Neutral.otf")) + ");\n}\n@font-face {\n  font-family: \"PolySans Slim\";\n  src: local(\"PolySans Slim\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Slim.otf */ "./resources/fonts/PolySans Slim.otf")) + ");\n}\nbody[data-v-e6b80cc8], a[data-v-e6b80cc8], input[data-v-e6b80cc8], select[data-v-e6b80cc8], button[data-v-e6b80cc8] {\n  font-family: \"PolySans Slim\";\n  overflow-x: hidden;\n}\n.container--1000[data-v-e6b80cc8] {\n  max-width: 43.75rem;\n  margin: auto;\n  padding: 1rem;\n}\n.color--grey[data-v-e6b80cc8] {\n  color: #cccccc;\n}\nh2[data-v-e6b80cc8], h5[data-v-e6b80cc8] {\n  font-weight: normal;\n}\nh2[data-v-e6b80cc8] {\n  font-size: 1.3rem;\n}\nh5[data-v-e6b80cc8] {\n  font-size: 1.2rem;\n  font-family: \"PolySans Neutral\";\n}\na[data-v-e6b80cc8] {\n  text-decoration: none;\n}\nbutton[data-v-e6b80cc8] {\n  background-color: transparent;\n  margin: 0;\n  border: none;\n}\nbutton[data-v-e6b80cc8]:hover, a[data-v-e6b80cc8]:hover {\n  cursor: pointer;\n}\nsection[data-v-e6b80cc8] {\n  padding-top: 100px;\n}\n.cover-restaurant[data-v-e6b80cc8] {\n  height: 350px;\n}\n.cover-restaurant img[data-v-e6b80cc8] {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.restaurant[data-v-e6b80cc8] {\n  display: flex;\n}\n.restaurant-logo[data-v-e6b80cc8] {\n  width: 200px;\n  text-align: right;\n}\n.restaurant-logo .btn-checkout[data-v-e6b80cc8] {\n  color: #000;\n  background-color: #ebdf00;\n  text-align: center;\n  padding: 1rem;\n  font-size: 1.3rem;\n  border-radius: 0.6rem;\n  margin-top: 0.5rem;\n}\n.restaurant-logo img[data-v-e6b80cc8] {\n  width: 150px;\n  height: 150px;\n  border-radius: 0.6rem;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border: 2px solid #ebdf00;\n  margin-right: 1rem;\n  transform: translateY(-42%);\n}\n.restaurant-menu[data-v-e6b80cc8] {\n  width: 750px;\n}\n.restaurant-menu h2[data-v-e6b80cc8] {\n  font-size: 4rem;\n  margin: 1rem 0 1.7rem;\n}\n.restaurant .cart[data-v-e6b80cc8] {\n  flex-grow: 1;\n  margin-top: 1rem;\n  width: 450px;\n}\n@media screen and (max-width: 850px) {\n.restaurant[data-v-e6b80cc8] {\n    flex-direction: column;\n}\n.restaurant-logo[data-v-e6b80cc8] {\n    width: 100%;\n    text-align: initial;\n    display: flex;\n    justify-content: space-between;\n}\n.restaurant-logo .btn-show-cart[data-v-e6b80cc8] {\n    display: inline-block;\n    height: -webkit-fit-content;\n    height: -moz-fit-content;\n    height: fit-content;\n    transform: translateY(-70%);\n}\n.restaurant-menu[data-v-e6b80cc8] {\n    margin: -72px 20px 0;\n}\n.cart[data-v-e6b80cc8] {\n    display: none;\n}\n.show-element[data-v-e6b80cc8] {\n    display: block;\n}\n.hide-element[data-v-e6b80cc8] {\n    display: none;\n}\n}", ""]);
 
 // exports
 
@@ -3122,7 +3299,27 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;900&display=swap);", ""]);
 
 // module
-exports.push([module.i, "@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"PolySans Neutral\";\n  src: local(\"PolySans Neutral\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Neutral.otf */ "./resources/fonts/PolySans Neutral.otf")) + ");\n}\n@font-face {\n  font-family: \"PolySans Slim\";\n  src: local(\"PolySans Slim\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Slim.otf */ "./resources/fonts/PolySans Slim.otf")) + ");\n}\nbody[data-v-66d8e48f], a[data-v-66d8e48f], input[data-v-66d8e48f], select[data-v-66d8e48f], button[data-v-66d8e48f] {\n  font-family: \"PolySans Slim\";\n  width: 100%;\n  overflow-x: hidden;\n}\n.container--1000[data-v-66d8e48f] {\n  max-width: 43.75rem;\n  margin: auto;\n  padding: 1rem;\n}\n.color--grey[data-v-66d8e48f] {\n  color: #cccccc;\n}\nh2[data-v-66d8e48f], h5[data-v-66d8e48f] {\n  font-weight: normal;\n}\nh5[data-v-66d8e48f] {\n  font-size: 1.2rem;\n  font-family: \"PolySans Neutral\";\n}\na[data-v-66d8e48f] {\n  text-decoration: none;\n}\nbutton[data-v-66d8e48f] {\n  background-color: transparent;\n  margin: 0;\n  border: none;\n}\nbutton[data-v-66d8e48f]:hover, a[data-v-66d8e48f]:hover {\n  cursor: pointer;\n}\nsection[data-v-66d8e48f] {\n  padding-top: 100px;\n}\nsection .page__404[data-v-66d8e48f] {\n  background-color: #e80800;\n}\nsection .page__404 .body__404[data-v-66d8e48f] {\n  font-family: \"PolySans Neutral\";\n  padding: 3rem 0.5rem;\n  background-image: url(" + escape(__webpack_require__(/*! ../../../../public/images/deliveboo/404_boo.svg */ "./public/images/deliveboo/404_boo.svg")) + ");\n  background-size: 42%;\n  background-repeat: no-repeat;\n  height: calc(100vh - 438.4px);\n  background-position: center;\n  display: flex;\n}\nsection .page__404 .body__404 h1[data-v-66d8e48f] {\n  font-size: 40px;\n  color: white;\n  margin: auto;\n}\nsection .page__404 .body__404 h1 span[data-v-66d8e48f] {\n  transform: rotate(180deg);\n  display: inline-block;\n}", ""]);
+exports.push([module.i, "@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"PolySans Neutral\";\n  src: local(\"PolySans Neutral\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Neutral.otf */ "./resources/fonts/PolySans Neutral.otf")) + ");\n}\n@font-face {\n  font-family: \"PolySans Slim\";\n  src: local(\"PolySans Slim\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Slim.otf */ "./resources/fonts/PolySans Slim.otf")) + ");\n}\nbody[data-v-66d8e48f], a[data-v-66d8e48f], input[data-v-66d8e48f], select[data-v-66d8e48f], button[data-v-66d8e48f] {\n  font-family: \"PolySans Slim\";\n  overflow-x: hidden;\n}\n.container--1000[data-v-66d8e48f] {\n  max-width: 43.75rem;\n  margin: auto;\n  padding: 1rem;\n}\n.color--grey[data-v-66d8e48f] {\n  color: #cccccc;\n}\nh2[data-v-66d8e48f], h5[data-v-66d8e48f] {\n  font-weight: normal;\n}\nh2[data-v-66d8e48f] {\n  font-size: 1.3rem;\n}\nh5[data-v-66d8e48f] {\n  font-size: 1.2rem;\n  font-family: \"PolySans Neutral\";\n}\na[data-v-66d8e48f] {\n  text-decoration: none;\n}\nbutton[data-v-66d8e48f] {\n  background-color: transparent;\n  margin: 0;\n  border: none;\n}\nbutton[data-v-66d8e48f]:hover, a[data-v-66d8e48f]:hover {\n  cursor: pointer;\n}\nsection[data-v-66d8e48f] {\n  padding-top: 100px;\n}\nsection .page__404[data-v-66d8e48f] {\n  background-color: #e80800;\n}\nsection .page__404 .body__404[data-v-66d8e48f] {\n  font-family: \"PolySans Neutral\";\n  padding: 3rem 0.5rem;\n  background-image: url(" + escape(__webpack_require__(/*! ../../../../public/images/deliveboo/404_boo.svg */ "./public/images/deliveboo/404_boo.svg")) + ");\n  background-size: contain;\n  background-repeat: no-repeat;\n  min-height: 90vh;\n  background-position: center;\n  display: flex;\n}\nsection .page__404 .body__404 h1[data-v-66d8e48f] {\n  font-size: 40px;\n  color: white;\n  margin: auto;\n}\nsection .page__404 .body__404 h1 span[data-v-66d8e48f] {\n  transform: rotate(180deg);\n  display: inline-block;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/guest/pages/OrderSuccess.vue?vue&type=style&index=0&id=2df65c16&lang=scss&scoped=true&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/guest/pages/OrderSuccess.vue?vue&type=style&index=0&id=2df65c16&lang=scss&scoped=true& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var escape = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/url/escape.js */ "./node_modules/css-loader/lib/url/escape.js");
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;900&display=swap);", ""]);
+
+// module
+exports.push([module.i, "@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"Bogam Regular\";\n  src: local(\"Bogam Regular\"), url(" + escape(__webpack_require__(/*! ../../../fonts/Bogam.ttf */ "./resources/fonts/Bogam.ttf")) + ");\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: \"PolySans Neutral\";\n  src: local(\"PolySans Neutral\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Neutral.otf */ "./resources/fonts/PolySans Neutral.otf")) + ");\n}\n@font-face {\n  font-family: \"PolySans Slim\";\n  src: local(\"PolySans Slim\"), url(" + escape(__webpack_require__(/*! ../../../fonts/PolySans Slim.otf */ "./resources/fonts/PolySans Slim.otf")) + ");\n}\nbody[data-v-2df65c16], a[data-v-2df65c16], input[data-v-2df65c16], select[data-v-2df65c16], button[data-v-2df65c16] {\n  font-family: \"PolySans Slim\";\n  overflow-x: hidden;\n}\n.container--1000[data-v-2df65c16] {\n  max-width: 43.75rem;\n  margin: auto;\n  padding: 1rem;\n}\n.color--grey[data-v-2df65c16] {\n  color: #cccccc;\n}\nh2[data-v-2df65c16], h5[data-v-2df65c16] {\n  font-weight: normal;\n}\nh2[data-v-2df65c16] {\n  font-size: 1.3rem;\n}\nh5[data-v-2df65c16] {\n  font-size: 1.2rem;\n  font-family: \"PolySans Neutral\";\n}\na[data-v-2df65c16] {\n  text-decoration: none;\n}\nbutton[data-v-2df65c16] {\n  background-color: transparent;\n  margin: 0;\n  border: none;\n}\nbutton[data-v-2df65c16]:hover, a[data-v-2df65c16]:hover {\n  cursor: pointer;\n}\n.success[data-v-2df65c16] {\n  background-color: #e80800;\n  min-height: 100vh;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  color: #000;\n  font-size: 1.7rem;\n}\n.success .success__card[data-v-2df65c16] {\n  display: flex;\n  flex-direction: column;\n}\n.success a[data-v-2df65c16] {\n  color: #fff;\n  font-size: 1rem;\n  margin-left: auto;\n  padding: 0.5rem;\n}\n.success a[data-v-2df65c16]:hover {\n  text-decoration: underline;\n}", ""]);
 
 // exports
 
@@ -3816,6 +4013,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/guest/components/Header.vue?vue&type=style&index=0&id=083b147e&scoped=true&lang=scss&":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/guest/components/Header.vue?vue&type=style&index=0&id=083b147e&scoped=true&lang=scss& ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--8-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--8-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./Header.vue?vue&type=style&index=0&id=083b147e&scoped=true&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/guest/components/Header.vue?vue&type=style&index=0&id=083b147e&scoped=true&lang=scss&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/guest/components/ModalChangeCart.vue?vue&type=style&index=0&id=86bc6c0e&lang=scss&scoped=true&":
 /*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/guest/components/ModalChangeCart.vue?vue&type=style&index=0&id=86bc6c0e&lang=scss&scoped=true& ***!
@@ -4005,6 +4232,36 @@ if(false) {}
 
 
 var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--8-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--8-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./NotFound.vue?vue&type=style&index=0&id=66d8e48f&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/guest/pages/NotFound.vue?vue&type=style&index=0&id=66d8e48f&lang=scss&scoped=true&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/guest/pages/OrderSuccess.vue?vue&type=style&index=0&id=2df65c16&lang=scss&scoped=true&":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/guest/pages/OrderSuccess.vue?vue&type=style&index=0&id=2df65c16&lang=scss&scoped=true& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--8-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--8-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./OrderSuccess.vue?vue&type=style&index=0&id=2df65c16&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/guest/pages/OrderSuccess.vue?vue&type=style&index=0&id=2df65c16&lang=scss&scoped=true&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -4744,13 +5001,17 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "cart" },
+    { staticClass: "cart-component" },
     [
+      _c("br"),
+      _vm._v(" Window Width: " + _vm._s(_vm.windowWidth) + " "),
+      _c("br"),
+      _vm._v("\n  " + _vm._s(_vm.txt) + "\n  "),
       _c("h3", [_vm._v("Carrello")]),
       _vm._v(" "),
       _vm.cart.items.length == 0
         ? _c("div", { staticClass: "empty-cart" }, [
-            _vm._v("Il carrello è vuoto\t  (⌣_⌣”)"),
+            _vm._v("\n    Il carrello è vuoto (⌣_⌣”)\n  "),
           ])
         : _vm._e(),
       _vm._v(" "),
@@ -4815,7 +5076,7 @@ var render = function () {
           _vm._v(" "),
           _c("div", { staticClass: "foods-quantity" }, [
             _c("span", { staticClass: "border" }, [
-              _vm._v("\n        x" + _vm._s(item.quantity) + "\n      "),
+              _vm._v(" x" + _vm._s(item.quantity) + " "),
             ]),
           ]),
           _vm._v(" "),
@@ -4829,7 +5090,7 @@ var render = function () {
         ])
       }),
       _vm._v(" "),
-      _vm.cart.length > 0
+      _vm.cart.items.length > 0
         ? _c("div", { staticClass: "total" }, [
             _c("div", [_vm._v("TOTALE")]),
             _vm._v(" "),
@@ -4837,11 +5098,11 @@ var render = function () {
           ])
         : _vm._e(),
       _vm._v(" "),
-      _vm.cart.length > 0
+      _vm.cart.items.length > 0
         ? _c(
             "a",
             { staticClass: "btn-checkout", attrs: { href: "/checkout" } },
-            [_vm._v("\n    Vai al pagamento\n   ")]
+            [_vm._v("\n    Vai al pagamento\n  ")]
           )
         : _vm._e(),
     ],
@@ -4881,9 +5142,11 @@ var render = function () {
       },
     },
     [
-      _c("div", { staticClass: "yellow_box" }),
+      _c("div", { staticClass: "yellow_box" }, [
+        _c("img", { attrs: { src: _vm.cuisine.image, alt: "" } }),
+      ]),
       _vm._v(" "),
-      _c("h3", [_vm._v("\n        Cucina\n         ")]),
+      _c("h3", [_vm._v("\n         " + _vm._s(_vm.cuisine.name) + "\n      ")]),
     ]
   )
 }
@@ -5157,6 +5420,79 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/guest/components/Header.vue?vue&type=template&id=083b147e&scoped=true&":
+/*!***************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/guest/components/Header.vue?vue&type=template&id=083b147e&scoped=true& ***!
+  \***************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("header", [
+    _c("nav", [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "nav-right" }, [
+        _c("ul", [
+          _c("li", [
+            _c("a", { staticClass: "cart", attrs: { href: "/checkout" } }, [
+              _c("span", [_vm._v(_vm._s(_vm.getCartAmount))]),
+              _c("img", {
+                attrs: { src: "/images/deliveboo/cart.svg", alt: "cart_icon" },
+              }),
+            ]),
+          ]),
+          _vm._v(" "),
+          _vm._m(1),
+        ]),
+      ]),
+    ]),
+  ])
+}
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "nav-left" }, [
+      _c("a", { staticClass: "logo", attrs: { href: "/" } }, [
+        _c("img", {
+          attrs: {
+            src: "images/deliveboo/logo_white.svg",
+            alt: "logo_deliveboo",
+          },
+        }),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("ul", { staticClass: "admin" }, [
+        _c("li", [_c("a", { attrs: { href: "/login" } }, [_vm._v("Login")])]),
+        _vm._v(" "),
+        _c("li", [
+          _c("a", { attrs: { href: "/register" } }, [_vm._v("Registrazione")]),
+        ]),
+      ]),
+    ])
+  },
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/guest/components/ModalChangeCart.vue?vue&type=template&id=86bc6c0e&scoped=true&":
 /*!************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/guest/components/ModalChangeCart.vue?vue&type=template&id=86bc6c0e&scoped=true& ***!
@@ -5174,18 +5510,6 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "modal-backdrop" }, [
     _c("div", { staticClass: "modal" }, [
-      _c("header", { staticClass: "modal-header" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn-close",
-            attrs: { type: "button" },
-            on: { click: _vm.close },
-          },
-          [_vm._v("x")]
-        ),
-      ]),
-      _vm._v(" "),
       _c(
         "section",
         { staticClass: "modal-body" },
@@ -5204,25 +5528,27 @@ var render = function () {
       ),
       _vm._v(" "),
       _c("footer", { staticClass: "modal-footer" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn-green",
-            attrs: { type: "button" },
-            on: { click: _vm.clear },
-          },
-          [_vm._v("Procedi")]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn-green",
-            attrs: { type: "button" },
-            on: { click: _vm.close },
-          },
-          [_vm._v("Annulla")]
-        ),
+        _c("div", { staticClass: "buttons__container" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-yellow",
+              attrs: { type: "button" },
+              on: { click: _vm.clear },
+            },
+            [_vm._v("Procedi")]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-white",
+              attrs: { type: "button" },
+              on: { click: _vm.close },
+            },
+            [_vm._v("Annulla")]
+          ),
+        ]),
       ]),
     ]),
   ])
@@ -5265,12 +5591,6 @@ var render = function () {
           error: _vm.onError,
         },
       }),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("button", { staticClass: "btn" }, [
-        _vm._v("\n    Clear Payment Selection\n  "),
-      ]),
     ],
     1
   )
@@ -5335,184 +5655,174 @@ var render = function () {
     _vm._m(0),
     _vm._v(" "),
     _c("div", { staticClass: "checkout__body container--1000" }, [
-      _c(
-        "form",
-        {
-          attrs: { action: "" },
-          on: {
-            submit: function ($event) {
-              return _vm.submitOrder()
-            },
-          },
-        },
-        [
-          _c(
-            "div",
-            { staticClass: "body__cart" },
-            [
-              _c("h5", { staticClass: "cart__title" }, [_vm._v("Carrello")]),
-              _vm._v(" "),
-              _vm.cart.items.length == 0
-                ? _c("div", { staticClass: "color--grey" }, [
-                    _vm._v("Il carrello è vuoto \t(⌣_⌣”)"),
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
-              _vm._l(_vm.cart.items, function (food) {
-                return _c(
-                  "div",
-                  { key: food.food.id, staticClass: "cart__food-card" },
-                  [
-                    _c("div", { staticClass: "food-card__info" }, [
-                      _c("div", { staticClass: "info__img" }, [
-                        _c("img", {
-                          directives: [
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: food.food.image !== "",
-                              expression: "food.food.image !== ''",
-                            },
-                          ],
-                          attrs: {
-                            src: "storage/" + food.food.image,
-                            alt: food.food.name,
+      _c("form", { attrs: { action: "" } }, [
+        _c(
+          "div",
+          { staticClass: "body__cart" },
+          [
+            _c("h5", { staticClass: "cart__title" }, [_vm._v("Carrello")]),
+            _vm._v(" "),
+            _vm.cart.items.length == 0
+              ? _c("div", { staticClass: "color--grey" }, [
+                  _vm._v("\n          Il carrello è vuoto (๑◕︵◕๑)\n        "),
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm._l(_vm.cart.items, function (food) {
+              return _c(
+                "div",
+                { key: food.food.id, staticClass: "cart__food-card" },
+                [
+                  _c("div", { staticClass: "food-card__info" }, [
+                    _c("div", { staticClass: "info__img" }, [
+                      _c("img", {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: food.food.image !== "",
+                            expression: "food.food.image !== ''",
                           },
-                        }),
-                      ]),
-                      _vm._v(" "),
-                      _c("ul", [
-                        _c("li", [
-                          _c("label", { attrs: { for: food.food.id } }, [
-                            _vm._v(_vm._s(food.food.name)),
-                          ]),
-                        ]),
-                        _vm._v(" "),
-                        _c("li", [_vm._v("x" + _vm._s(food.quantity))]),
-                        _vm._v(" "),
-                        _c("li", [
-                          _vm._v(
-                            _vm._s(
-                              _vm.getFoodPrice(food.food.price, food.quantity)
-                            ) + "€"
-                          ),
-                        ]),
-                      ]),
-                      _vm._v(" "),
-                      _c("input", {
+                        ],
                         attrs: {
-                          type: "text",
-                          id: food.food.id,
-                          name: food.food.id,
-                          hidden: "",
+                          src: "storage/" + food.food.image,
+                          alt: food.food.name,
                         },
-                        domProps: { value: food },
                       }),
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "food-card__btn" }, [
-                      _c(
-                        "button",
-                        {
-                          attrs: { type: "button" },
-                          on: {
-                            click: function ($event) {
-                              return _vm.modifyCart(food, "add")
-                            },
-                          },
-                        },
-                        [
-                          _c(
-                            "svg",
-                            {
-                              staticStyle: {
-                                "enable-background": "new 0 0 49.44 49.44",
-                              },
-                              attrs: {
-                                xmlns: "http://www.w3.org/2000/svg",
-                                "xmlns:xlink": "http://www.w3.org/1999/xlink",
-                                x: "0px",
-                                y: "0px",
-                                viewBox: "0 0 49.44 49.44",
-                                "xml:space": "preserve",
-                              },
-                            },
-                            [
-                              _c("path", {
-                                staticClass: "st0",
-                                attrs: {
-                                  d: "M43.62,20.33H29.11V5.82c0-1.22-0.99-2.22-2.22-2.22h-4.36c-1.22,0-2.22,0.99-2.22,2.22v14.51H5.82\n                              c-1.22,0-2.22,0.99-2.22,2.22v4.36c0,1.22,0.99,2.22,2.22,2.22h14.51v14.51c0,1.22,0.99,2.22,2.22,2.22h4.36\n                              c1.22,0,2.22-0.99,2.22-2.22V29.11h14.51c1.22,0,2.22-0.99,2.22-2.22v-4.36C45.84,21.32,44.84,20.33,43.62,20.33z",
-                                },
-                              }),
-                            ]
-                          ),
-                        ]
-                      ),
+                    _c("ul", [
+                      _c("li", [
+                        _c("label", { attrs: { for: food.food.id } }, [
+                          _vm._v(_vm._s(food.food.name)),
+                        ]),
+                      ]),
                       _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          attrs: { type: "button" },
-                          on: {
-                            click: function ($event) {
-                              return _vm.modifyCart(food, "remove")
-                            },
+                      _c("li", [_vm._v("x" + _vm._s(food.quantity))]),
+                      _vm._v(" "),
+                      _c("li", [
+                        _vm._v(
+                          _vm._s(
+                            _vm.getFoodPrice(food.food.price, food.quantity)
+                          ) + "€"
+                        ),
+                      ]),
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      attrs: {
+                        type: "text",
+                        id: food.food.id,
+                        name: food.food.id,
+                        hidden: "",
+                      },
+                      domProps: { value: food },
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "food-card__btn" }, [
+                    _c(
+                      "button",
+                      {
+                        attrs: { type: "button" },
+                        on: {
+                          click: function ($event) {
+                            return _vm.modifyCart(food, "add")
                           },
                         },
-                        [
-                          _c(
-                            "svg",
-                            {
-                              staticStyle: {
-                                "enable-background": "new 0 0 49.44 49.44",
-                              },
-                              attrs: {
-                                xmlns: "http://www.w3.org/2000/svg",
-                                "xmlns:xlink": "http://www.w3.org/1999/xlink",
-                                x: "0px",
-                                y: "0px",
-                                viewBox: "0 0 49.44 49.44",
-                                "xml:space": "preserve",
-                              },
+                      },
+                      [
+                        _c(
+                          "svg",
+                          {
+                            staticStyle: {
+                              "enable-background": "new 0 0 49.44 49.44",
                             },
-                            [
-                              _c("path", {
-                                staticClass: "st0",
-                                attrs: {
-                                  d: "M42.84,29.14H6.6c-1.66,0-3-1.34-3-3v-2.85c0-1.66,1.34-3,3-3h36.23c1.66,0,3,1.34,3,3v2.85\n                              C45.84,27.8,44.49,29.14,42.84,29.14z",
-                                },
-                              }),
-                            ]
-                          ),
-                        ]
-                      ),
-                    ]),
-                  ]
-                )
-              }),
-              _vm._v(" "),
-              _c("div", { staticClass: "cart__total" }, [
-                _c("label", { attrs: { for: "total_price" } }, [
-                  _vm._v(" Prezzo totale: " + _vm._s(_vm.totalPrice()) + "€"),
-                ]),
-                _vm._v(" "),
-                _c("input", { attrs: { type: "text", hidden: "" } }),
+                            attrs: {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              "xmlns:xlink": "http://www.w3.org/1999/xlink",
+                              x: "0px",
+                              y: "0px",
+                              viewBox: "0 0 49.44 49.44",
+                              "xml:space": "preserve",
+                            },
+                          },
+                          [
+                            _c("path", {
+                              staticClass: "st0",
+                              attrs: {
+                                d: "M43.62,20.33H29.11V5.82c0-1.22-0.99-2.22-2.22-2.22h-4.36c-1.22,0-2.22,0.99-2.22,2.22v14.51H5.82\n                              c-1.22,0-2.22,0.99-2.22,2.22v4.36c0,1.22,0.99,2.22,2.22,2.22h14.51v14.51c0,1.22,0.99,2.22,2.22,2.22h4.36\n                              c1.22,0,2.22-0.99,2.22-2.22V29.11h14.51c1.22,0,2.22-0.99,2.22-2.22v-4.36C45.84,21.32,44.84,20.33,43.62,20.33z",
+                              },
+                            }),
+                          ]
+                        ),
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        attrs: { type: "button" },
+                        on: {
+                          click: function ($event) {
+                            return _vm.modifyCart(food, "remove")
+                          },
+                        },
+                      },
+                      [
+                        _c(
+                          "svg",
+                          {
+                            staticStyle: {
+                              "enable-background": "new 0 0 49.44 49.44",
+                            },
+                            attrs: {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              "xmlns:xlink": "http://www.w3.org/1999/xlink",
+                              x: "0px",
+                              y: "0px",
+                              viewBox: "0 0 49.44 49.44",
+                              "xml:space": "preserve",
+                            },
+                          },
+                          [
+                            _c("path", {
+                              staticClass: "st0",
+                              attrs: {
+                                d: "M42.84,29.14H6.6c-1.66,0-3-1.34-3-3v-2.85c0-1.66,1.34-3,3-3h36.23c1.66,0,3,1.34,3,3v2.85\n                              C45.84,27.8,44.49,29.14,42.84,29.14z",
+                              },
+                            }),
+                          ]
+                        ),
+                      ]
+                    ),
+                  ]),
+                ]
+              )
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "cart__total" }, [
+              _c("label", { attrs: { for: "total_price" } }, [
+                _vm._v(" Prezzo totale: " + _vm._s(_vm.totalPrice()) + "€"),
               ]),
               _vm._v(" "),
-              _c("h5", { staticClass: "cart__title" }, [_vm._v("I tuoi dati")]),
-              _vm._v(" "),
-              _vm._m(1),
-              _vm._v(" "),
-              _c("h5", { staticClass: "cart__title" }, [_vm._v("Pagamento")]),
-              _vm._v(" "),
-              _c("PaymentCard"),
-            ],
-            2
-          ),
-          _vm._v(" "),
-          _c("button", { attrs: { type: "submit" } }, [_vm._v("Checkout")]),
-        ]
-      ),
+              _c("input", { attrs: { type: "text", hidden: "" } }),
+            ]),
+            _vm._v(" "),
+            _c("h5", { staticClass: "cart__title" }, [_vm._v("I tuoi dati")]),
+            _vm._v(" "),
+            _vm._m(1),
+            _vm._v(" "),
+            _c("h5", { staticClass: "cart__title" }, [_vm._v("Pagamento")]),
+            _vm._v(" "),
+            _c("PaymentCard", {
+              attrs: { success: _vm.clearCart() },
+              on: { clearCart: _vm.clearCart },
+            }),
+          ],
+          2
+        ),
+      ]),
     ]),
   ])
 }
@@ -5620,7 +5930,7 @@ var render = function () {
       _c(
         "div",
         { staticClass: "grid_cuisines" },
-        _vm._l(7, function (cuisine) {
+        _vm._l(_vm.cuisines, function (cuisine) {
           return _c("Cuisine", {
             key: cuisine.id,
             attrs: { cuisine: cuisine },
@@ -5671,41 +5981,90 @@ var render = function () {
   return _c(
     "section",
     [
-      _vm._m(0),
+      _c("div", { staticClass: "cover-restaurant" }, [
+        _vm.menu.business_cover
+          ? _c("img", {
+              class: { "hide-element": _vm.displayElement },
+              attrs: {
+                src: "/storage/" + _vm.munu.business_cover,
+                alt: _vm.menu.business_name + " cover",
+              },
+            })
+          : _c("img", {
+              attrs: { src: __webpack_require__(/*! ../../../images/hero_bg.jpg */ "./resources/images/hero_bg.jpg"), alt: "" },
+            }),
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "restaurant" }, [
         _c("div", { staticClass: "restaurant-logo" }, [
-          _vm.menu.image
+          _vm.menu.business_logo
             ? _c("img", {
+                class: { "hide-element": _vm.displayElement },
                 attrs: {
-                  src: "/storage/" + _vm.munu.image,
+                  src: "/storage/" + _vm.munu.business_logo,
                   alt: _vm.menu.business_name + " logo",
                 },
               })
             : _c("img", {
+                class: { "hide-element": _vm.displayElement },
                 attrs: {
                   src: __webpack_require__(/*! ../../../images/bg_footer.jpg */ "./resources/images/bg_footer.jpg"),
                   alt: "",
                 },
               }),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "restaurant-menu" }, [
-          _c("h2", [_vm._v(_vm._s(_vm.menu.business_name))]),
           _vm._v(" "),
           _c(
-            "div",
-            { staticClass: "restaurants-menu-foods" },
-            _vm._l(_vm.menu.foods, function (food) {
-              return _c("Food", { key: food.id, attrs: { food: food } })
-            }),
-            1
+            "button",
+            {
+              staticClass: "btn-checkout btn-show-cart",
+              attrs: { type: "button" },
+              on: {
+                click: function ($event) {
+                  return _vm.showCart()
+                },
+              },
+            },
+            [
+              _vm._v(
+                "\n        " +
+                  _vm._s(
+                    _vm.displayElement
+                      ? "← Torna indietro"
+                      : "Mostra il carrello"
+                  ) +
+                  "\n      "
+              ),
+            ]
           ),
         ]),
         _vm._v(" "),
         _c(
           "div",
-          { staticClass: "cart" },
+          {
+            staticClass: "restaurant-menu",
+            class: { "hide-element": _vm.displayElement },
+          },
+          [
+            _c("h2", [_vm._v(_vm._s(_vm.menu.business_name))]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "restaurants-menu-foods" },
+              _vm._l(_vm.menu.foods, function (food) {
+                return _c("Food", { key: food.id, attrs: { food: food } })
+              }),
+              1
+            ),
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "cart",
+            class: { "show-element": _vm.displayElement },
+            attrs: { id: "cart" },
+          },
           [_c("Cart", { attrs: { cart: _vm.cart } })],
           1
         ),
@@ -5726,18 +6085,7 @@ var render = function () {
     1
   )
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "cover-restaurant" }, [
-      _c("img", {
-        attrs: { src: __webpack_require__(/*! ../../../images/hero_bg.jpg */ "./resources/images/hero_bg.jpg"), alt: "" },
-      }),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -5771,6 +6119,47 @@ var staticRenderFns = [
         _c("div", { staticClass: "body__404 container--1000" }, [
           _c("h1", [_vm._v("ERROR "), _c("span", [_vm._v("404")])]),
         ]),
+      ]),
+    ])
+  },
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/guest/pages/OrderSuccess.vue?vue&type=template&id=2df65c16&scoped=true&":
+/*!****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/guest/pages/OrderSuccess.vue?vue&type=template&id=2df65c16&scoped=true& ***!
+  \****************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("section", { staticClass: "success" }, [
+      _c("div", { staticClass: "success__card" }, [
+        _c("p", [
+          _vm._v("Transazione avvenuta con successo! "),
+          _c("br"),
+          _vm._v(" Il tuo ordine arriverà a breve"),
+        ]),
+        _vm._v(" "),
+        _c("a", { attrs: { href: "/" } }, [_vm._v("Torna alla Home")]),
       ]),
     ])
   },
@@ -21131,7 +21520,7 @@ module.exports = g;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/404_boo.svg?cef6a81bf27e9543038f6ecd8670559f";
+module.exports = "/images/404_boo.svg?a2ad2f58dad7dee613fc2623074f5b49";
 
 /***/ }),
 
@@ -21142,7 +21531,7 @@ module.exports = "/images/404_boo.svg?cef6a81bf27e9543038f6ecd8670559f";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/facebook.svg?1b4fdbe3598d291b155c910001112849";
+module.exports = "/images/facebook.svg?fb211ff5be2fd24bb8ff5849d5d2a384";
 
 /***/ }),
 
@@ -21153,7 +21542,7 @@ module.exports = "/images/facebook.svg?1b4fdbe3598d291b155c910001112849";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/instagram.svg?c5619019d30ca66db75c2023ebbf4a3e";
+module.exports = "/images/instagram.svg?5520df9b5f0b8ec3fb88bbad36e15f69";
 
 /***/ }),
 
@@ -21164,7 +21553,7 @@ module.exports = "/images/instagram.svg?c5619019d30ca66db75c2023ebbf4a3e";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/logo_yellow.svg?653d9624ad258841310b45254a802465";
+module.exports = "/images/logo_yellow.svg?aa236e9acb83551beac2193b7fc2c696";
 
 /***/ }),
 
@@ -21175,7 +21564,7 @@ module.exports = "/images/logo_yellow.svg?653d9624ad258841310b45254a802465";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/youtube.svg?be33ff31805b4efb29350dbe798d0d6c";
+module.exports = "/images/youtube.svg?c157395e46f9b0761f463fdcba6c3438";
 
 /***/ }),
 
@@ -21751,6 +22140,93 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Footer_vue_vue_type_template_id_4a9fdc62_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Footer_vue_vue_type_template_id_4a9fdc62_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/guest/components/Header.vue":
+/*!**************************************************!*\
+  !*** ./resources/js/guest/components/Header.vue ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Header_vue_vue_type_template_id_083b147e_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Header.vue?vue&type=template&id=083b147e&scoped=true& */ "./resources/js/guest/components/Header.vue?vue&type=template&id=083b147e&scoped=true&");
+/* harmony import */ var _Header_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Header.vue?vue&type=script&lang=js& */ "./resources/js/guest/components/Header.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _Header_vue_vue_type_style_index_0_id_083b147e_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Header.vue?vue&type=style&index=0&id=083b147e&scoped=true&lang=scss& */ "./resources/js/guest/components/Header.vue?vue&type=style&index=0&id=083b147e&scoped=true&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _Header_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Header_vue_vue_type_template_id_083b147e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Header_vue_vue_type_template_id_083b147e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "083b147e",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/guest/components/Header.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/guest/components/Header.vue?vue&type=script&lang=js&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/guest/components/Header.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Header_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Header.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/guest/components/Header.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Header_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/guest/components/Header.vue?vue&type=style&index=0&id=083b147e&scoped=true&lang=scss&":
+/*!************************************************************************************************************!*\
+  !*** ./resources/js/guest/components/Header.vue?vue&type=style&index=0&id=083b147e&scoped=true&lang=scss& ***!
+  \************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Header_vue_vue_type_style_index_0_id_083b147e_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--8-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--8-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./Header.vue?vue&type=style&index=0&id=083b147e&scoped=true&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/guest/components/Header.vue?vue&type=style&index=0&id=083b147e&scoped=true&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Header_vue_vue_type_style_index_0_id_083b147e_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Header_vue_vue_type_style_index_0_id_083b147e_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Header_vue_vue_type_style_index_0_id_083b147e_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Header_vue_vue_type_style_index_0_id_083b147e_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+
+
+/***/ }),
+
+/***/ "./resources/js/guest/components/Header.vue?vue&type=template&id=083b147e&scoped=true&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/guest/components/Header.vue?vue&type=template&id=083b147e&scoped=true& ***!
+  \*********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Header_vue_vue_type_template_id_083b147e_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Header.vue?vue&type=template&id=083b147e&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/guest/components/Header.vue?vue&type=template&id=083b147e&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Header_vue_vue_type_template_id_083b147e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Header_vue_vue_type_template_id_083b147e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -22391,6 +22867,93 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/guest/pages/OrderSuccess.vue":
+/*!***************************************************!*\
+  !*** ./resources/js/guest/pages/OrderSuccess.vue ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _OrderSuccess_vue_vue_type_template_id_2df65c16_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./OrderSuccess.vue?vue&type=template&id=2df65c16&scoped=true& */ "./resources/js/guest/pages/OrderSuccess.vue?vue&type=template&id=2df65c16&scoped=true&");
+/* harmony import */ var _OrderSuccess_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./OrderSuccess.vue?vue&type=script&lang=js& */ "./resources/js/guest/pages/OrderSuccess.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _OrderSuccess_vue_vue_type_style_index_0_id_2df65c16_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./OrderSuccess.vue?vue&type=style&index=0&id=2df65c16&lang=scss&scoped=true& */ "./resources/js/guest/pages/OrderSuccess.vue?vue&type=style&index=0&id=2df65c16&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _OrderSuccess_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _OrderSuccess_vue_vue_type_template_id_2df65c16_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _OrderSuccess_vue_vue_type_template_id_2df65c16_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "2df65c16",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/guest/pages/OrderSuccess.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/guest/pages/OrderSuccess.vue?vue&type=script&lang=js&":
+/*!****************************************************************************!*\
+  !*** ./resources/js/guest/pages/OrderSuccess.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_OrderSuccess_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./OrderSuccess.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/guest/pages/OrderSuccess.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_OrderSuccess_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/guest/pages/OrderSuccess.vue?vue&type=style&index=0&id=2df65c16&lang=scss&scoped=true&":
+/*!*************************************************************************************************************!*\
+  !*** ./resources/js/guest/pages/OrderSuccess.vue?vue&type=style&index=0&id=2df65c16&lang=scss&scoped=true& ***!
+  \*************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_OrderSuccess_vue_vue_type_style_index_0_id_2df65c16_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--8-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--8-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./OrderSuccess.vue?vue&type=style&index=0&id=2df65c16&lang=scss&scoped=true& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/guest/pages/OrderSuccess.vue?vue&type=style&index=0&id=2df65c16&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_OrderSuccess_vue_vue_type_style_index_0_id_2df65c16_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_OrderSuccess_vue_vue_type_style_index_0_id_2df65c16_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_OrderSuccess_vue_vue_type_style_index_0_id_2df65c16_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_OrderSuccess_vue_vue_type_style_index_0_id_2df65c16_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+
+
+/***/ }),
+
+/***/ "./resources/js/guest/pages/OrderSuccess.vue?vue&type=template&id=2df65c16&scoped=true&":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/guest/pages/OrderSuccess.vue?vue&type=template&id=2df65c16&scoped=true& ***!
+  \**********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_OrderSuccess_vue_vue_type_template_id_2df65c16_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./OrderSuccess.vue?vue&type=template&id=2df65c16&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/guest/pages/OrderSuccess.vue?vue&type=template&id=2df65c16&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_OrderSuccess_vue_vue_type_template_id_2df65c16_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_OrderSuccess_vue_vue_type_template_id_2df65c16_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/guest/router.js":
 /*!**************************************!*\
   !*** ./resources/js/guest/router.js ***!
@@ -22407,9 +22970,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_MenuRestaurant_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pages/MenuRestaurant.vue */ "./resources/js/guest/pages/MenuRestaurant.vue");
 /* harmony import */ var _pages_Checkout_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pages/Checkout.vue */ "./resources/js/guest/pages/Checkout.vue");
 /* harmony import */ var _pages_NotFound__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pages/NotFound */ "./resources/js/guest/pages/NotFound.vue");
+/* harmony import */ var _pages_OrderSuccess_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./pages/OrderSuccess.vue */ "./resources/js/guest/pages/OrderSuccess.vue");
 
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]); // import Welcome from './pages/Welcome';
+
 
 
 
@@ -22435,6 +23000,10 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     name: 'checkout',
     component: _pages_Checkout_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
   }, {
+    path: '/order',
+    name: 'order',
+    component: _pages_OrderSuccess_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
+  }, {
     path: '/*',
     name: 'not-found',
     component: _pages_NotFound__WEBPACK_IMPORTED_MODULE_5__["default"]
@@ -22451,7 +23020,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\boolean\Deliveboo\resources\js\guest\front.js */"./resources/js/guest/front.js");
+module.exports = __webpack_require__(/*! /opt/lampp/htdocs/p/Deliveboo/resources/js/guest/front.js */"./resources/js/guest/front.js");
 
 
 /***/ })
