@@ -4,7 +4,8 @@
       <h2 class="container--1000">Checkout</h2>
     </div>
     <div class="checkout__body container--1000">
-      <form action="">
+
+      <form action="" @submit="validateForm" name="orderForm" >
         <div class="body__cart">
           <!-- carrello -->
           <h5 class="cart__title">Carrello</h5>
@@ -80,7 +81,7 @@
           <!-- totale -->
           <div class="cart__total">
             <label for="total_price"> Prezzo totale: {{ totalPrice() }}€</label>
-            <input type="text" hidden />
+            <input type="text" hidden name="total_price" id="total_price" :value="totalPrice()"/>
           </div>
           <!-- ui data -->
           <h5 class="cart__title">I tuoi dati</h5>
@@ -88,11 +89,13 @@
             <div class="ui__row">
               <div class="ui__data">
                 <label for="ui_name">Nome*</label>
-                <input type="text" name="ui_name" id="ui_name" />
+                <input type="text" name="ui_name" id="ui_name" v-model="uiName"/>
+                <small class="error">{{nameError}}</small>
               </div>
               <div class="ui__data">
                 <label for="ui_email">Email*</label>
-                <input type="email" name="ui_email" id="ui_email" />
+                <input type="email" name="ui_email" id="ui_email" v-model="uiEmail" />
+                <small class="error">{{uiEmailError}}</small>
               </div>
             </div>
             <div class="ui__row">
@@ -102,11 +105,16 @@
                   type="text"
                   name="ui_delivery_address"
                   id="ui_delivery_address"
+                  v-model="uiDeliveryAddress"
+                  
                 />
+                <small class="error">{{uiDeliveryAddressError}}</small>
+
               </div>
               <div class="ui__data">
                 <label for="ui_phone">Numero di telefono</label>
-                <input type="tel name" name="ui_phone" id="ui_phone" />
+                <input type="tel name" name="ui_phone" id="ui_phone" v-model="uiPhone" />
+                <small class="error">{{uiPhoneError}}</small>
               </div>
             </div>
             <div class="ui__row">
@@ -118,16 +126,22 @@
                   name="ui_delivery_info"
                   id="ui_delivery_info"
                   ui__datas="10"
+                  v-model="uiDeliveryInfo"
+                  
                 ></textarea>
+                <small class="error">{{uiDeliveryInfoError}}</small>
               </div>
             </div>
           </div>
-          <!-- pagamento -->
-          <h5 class="cart__title">Pagamento</h5>
-          <PaymentCard/>
+          <button type="button" @click="formCheck()" class="btn-yellow" v-show="formValidated == false">Procedi con il pagamento</button>
+        </div>
+        <div v-show="formValidated">
+        <!-- pagamento -->
+        <h5 class="cart__title">Pagamento</h5>
+        <PaymentCard/>
         </div>
 
-        <!-- <button type="submit">Checkout</button> -->
+        <!-- <button type="submit" value="Submit">Checkout</button> -->
       </form>
     </div>
   </div>
@@ -141,12 +155,45 @@ export default {
   data() {
     return {
       isModalVisible: false,
+      uiName: null,
+      nameError: null,
+      uiEmail: null, 
+      uiEmailError: null,
+      uiDeliveryAddress: null,
+      uiDeliveryAddressError: null,
+      uiPhone: null,
+      uiPhoneError: null,
+      uiDeliveryInfo: null,
+      uiDeliveryInfoError: null,
+      formValidated: false,
     };
   },
   components: {
     PaymentCard
   },
+  watch: {
+      uiName : function() {
+        this.validateName();
+      },
+      uiEmail : function() {
+        this.validateEmail();
+      },
+      uiDeliveryAddress : function() {
+        this.validateuiDeliveryAddress();
+      },
+      uiPhone : function() {
+        this.validateuiPhone();
+      },
+      uiDeliveryInfo : function() {
+        this.validateuiDeliveryInfo();
+      },
+  },
   methods: {
+    formCheck() {
+    if(this.validateName() == true && this.validateEmail() == true && this.validateuiDeliveryAddress()== true && this.validateuiPhone() == true) {
+      this.formValidated = true;
+    }
+    },
     closeModal() {
       this.isModalVisible = false;
     },
@@ -166,15 +213,92 @@ export default {
     getFoodPrice(e, amount) {
       return (e * amount).toFixed(2).replace(".", ",");
     },
-    // submitOrder() {
-    //     this.$emit('ModalOrderVisible', true)
-    // }
+    validateName() {
+      if (!this.uiName) {
+      this.nameError = 'Inserire il nome';
+        return false;
+      } else if(this.uiName.length > 20) {
+        this.nameError ='Il nome non può superare 20 caratteri';
+        return false;
+      } else {
+        this.nameError = '';
+
+        return true
+      }
+    },
+    validateEmail() {
+      if (!this.uiEmail) {
+        this.uiEmailError='Inserire l\'email';
+        return false;
+      } else if(this.uiEmail.match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/) == null) {
+        this.uiEmailError='La formattazione della mail non è corretta';
+        return false;
+      } else {
+        this.uiEmailError='';
+        return true;
+      }
+    },
+    validateuiDeliveryAddress() {
+      if (!this.uiDeliveryAddress) {
+        this.uiDeliveryAddressError = 'Inserire l\'indirizzo di consegna';
+        return false;
+      } else if(this.uiDeliveryAddress.length > 1000) {
+        this.uiDeliveryAddressError = 'L\'indirizzo di consegna non può superare 20 caratteri';
+        return false;
+      } else {
+        this.uiDeliveryAddressError = '';
+        return true;
+      }
+    },
+    validateuiPhone() {
+      if (!this.uiPhone) {
+        this.uiPhoneError = 'Inserire il numero di telefono';
+        return false;
+      } else if(this.uiPhone.match(/^(\((00|\+)39\)|(00|\+)39)?(38[890]|34[7-90]|36[680]|33[3-90]|32[89])\d{7}$/) == null) {
+        this.uiPhoneError = 'Inserire il numero di telefono';
+        return false;
+      } else {
+        this.uiPhoneError = '';
+        return true;
+      }
+    },
+    validateuiDeliveryInfo() {
+      if(this.uiDeliveryInfo.length > 255 && this.uiDeliveryInfo != null) {
+        this.uiDeliveryInfoError = 'Le informazioni aggiuntive non possono superare 255 caratteri';
+        return false;
+      } 
+        this.uiDeliveryInfoError = '';
+        return true;
+    },
+    validateForm: function(e) {
+      if(this.validateName() == true && this.validateEmail() == true && this.validateuiDeliveryAddress()== true && this.validateuiPhone() == true && this.validateuiDeliveryInfo() == true) {
+        console.log('success')
+        return true;
+      }
+
+      e.preventDefault();
+    }
   },
 };
 </script>
 
 <style lang="scss" scoped>
 @import "../../../sass/guest/front.scss";
+.error {
+  // text-decoration: $secondColor underline;
+  color: $secondColor;
+  font-size: $txt_xs;
+  ul {
+    list-style: none;
+  display: flex;
+  }
+}
+
+.btn-yellow {
+  background-color: $mainColor;
+    padding: $gt;
+    border-radius: $br;
+}
 
 .checkout {
   .checkout__header {
@@ -299,6 +423,7 @@ export default {
 .checkout__header {
   padding-top: 100px;
 }
+
 
 @media screen and (max-width: 768px) {
   .checkout__header {
