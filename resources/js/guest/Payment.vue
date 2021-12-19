@@ -66,6 +66,7 @@ export default {
   methods: {
     redirect() {
       window.location.href = '/order';
+      localStorage.clear();
     }
   },
   mounted() {
