@@ -50,7 +50,7 @@ export default {
 
 .modal {
   background: #ffffff;
-  box-shadow: 2px 2px 20px 1px;
+  box-shadow: 10px 6px 6px -9px rgba(0, 0, 0, 0.22);
   overflow-x: auto;
   border-radius: $br;
 }
