@@ -1,7 +1,8 @@
 <template>
 
     <!-- <input type="text" v-model="searchRestaurant" @keyup="sortByName()"> -->
-    <div class="grid_restaurants" >
+    <transition name="slide-fade" mode="out-in">
+    <div class="grid_restaurants" :key="restaurants.length">
       <CardRestaurant
         v-for="restaurant in restaurants"
         :key="restaurant.id"
@@ -9,6 +10,7 @@
         :cuisineList="cuisineList"
       />
     </div>
+    </transition>
 
 </template>
 
@@ -25,6 +27,7 @@ export default {
     return {
       restaurants: [],
       searchRestaurant: "",
+      count: 0
     };
   },
   methods: {
@@ -33,6 +36,9 @@ export default {
       .get(`/api/restaurants`)
       .then((response) => {
         this.restaurants = response.data.data;
+        this.count = this.restaurants.length;
+        this.$emit('countRestaurant', this.count)
+        
       })
       .catch((error) => {
         console.log(error);
@@ -43,7 +49,9 @@ export default {
         .get(`/api/filter-by/${this.cuisine}`)
         .then((response) => {
           this.restaurants = response.data.data;
-          console.log(this.response.data)
+        this.count = this.restaurants.length;
+        this.$emit('countRestaurant', this.count);
+
         })
         .catch((error) => {
           console.log(error);
@@ -55,12 +63,13 @@ export default {
       if(this.cuisine == 'all') {
         this.getAll()
       } else {
-        this.getFiltered()
+        this.getFiltered();
         }
     }
   },
   created() {
-    this.getAll()
+        this.getAll()
+
   }
 }
 </script>
@@ -70,9 +79,10 @@ export default {
 
 //Restaurant
 .grid_restaurants{
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   display: grid;
   column-gap: 15px;
+  row-gap: 15px;
   padding: $gt_md;
 }
 
@@ -89,4 +99,6 @@ export default {
     grid-template-columns: repeat(1, 1fr);
   }
 }
+
+
 </style>

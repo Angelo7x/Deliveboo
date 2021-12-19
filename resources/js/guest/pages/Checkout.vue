@@ -185,7 +185,9 @@ export default {
     background-color: $secondColor;
     color: $lightColor;
     font-family: "PolySans Neutral";
-    font-size: 1.5rem;
+  }
+  h2 {
+      font-size: 3rem;
   }
 
   .checkout__body {

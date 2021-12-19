@@ -5,17 +5,21 @@
       <div class="grid_cuisines">
         <Cuisine
           @cuisine_id="getCuisine"
-          v-for="cuisine in 7"
+          v-for="cuisine in cuisines"
           :key="cuisine.id"
           :cuisine="cuisine"
+          :isActive="isSelected(cuisine)"
         />
       </div>
     </section>
 
-    <section class="section_restaurants">
-      <h2>55 ristoranti aperti ora!</h2>
+    <section class="section_restaurants container--1500">
+      <h2 v-if="countRestaurant>1">{{countRestaurant}} ristoranti aperti ora!</h2>
+      <h2 v-else-if="countRestaurant== null">I nostri ristoranti</h2>
+      <h2 v-else-if="countRestaurant== 1">Un ristorante aperto ora</h2>
+      <h2 v-else>Non ci sono ristoranti disponibili</h2>
       <div>
-        <Restaurants :cuisine="cuisine" :cuisineList="cuisines" />
+        <Restaurants :cuisine="cuisine" :cuisineList="cuisines" @countRestaurant="getcountRestaurant"/>
       </div>
     </section>
   </section>
@@ -35,6 +39,8 @@ export default {
       searchRestaurant: "",
       cuisine: "all",
       cuisines: [],
+      cuisineActive: null,
+      countRestaurant: null
     };
   },
   props: ["isModalVisible"],
@@ -57,7 +63,18 @@ export default {
     },
     getCuisine(e) {
       this.cuisine = e;
+      this.cuisineActive = e;
     },
+    isSelected(e) {
+      if(e.id == this.cuisineActive) {
+        return true;
+      } else  {
+        return false;
+      }
+    },
+    getcountRestaurant(e) {
+      this.countRestaurant = e
+    }
   },
   mounted() {
     // Make a request for a user with a given ID
@@ -71,7 +88,7 @@ export default {
         // handle error
         console.log(error);
       });
-  },
+  }
 };
 </script>
 
@@ -81,18 +98,18 @@ export default {
 section#home {
   //Cuisines
   .section_cuisines {
-    padding-top: 110px;
+    padding-top: 170px;
     width: 100%;
     background-color: $secondColor;
     color: white;
-    font-family: "PolySans Neutra";
+    font-family: 'PolySans Slim';
+
     h2 {
       padding: $gt;
       font-size: $txt_md;
     }
   }
   .section_restaurants {
-    width: 100%;
     h2 {
       margin-top:$gt;
       padding: $gt;
@@ -105,18 +122,31 @@ section#home {
 .grid_cuisines {
   grid-template-columns: repeat(7, 1fr);
   display: grid;
-  column-gap: 5px;
-  padding: $gt_sm;
+  column-gap: $gt_sm;
+  row-gap: $gt;
+  padding-bottom:$gt_md;
 }
 
 //Mediaquery
 @media screen and (max-width: 850px) {
+section#home {
+
+  .section_cuisines {
+        padding-top: 251px;
+  }
+} 
   .grid_cuisines {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
 @media screen and (max-width: 768px) {
+  .grid_cuisines {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 425) {
   .grid_cuisines {
     grid-template-columns: repeat(2, 1fr);
   }
