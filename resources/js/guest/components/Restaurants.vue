@@ -3,7 +3,7 @@
       <div class="btn_row">
         <div class="search_title">Cerca per nome</div>
         <input type="text" v-model="searchRestaurant" class="filter_btn">
-        <button @click="sortByName()" class="btn-filter">filter</button>
+        <button @click="sortByName()" class="btn-filter">Cerca</button>
       </div>
       <transition name="slide-fade" mode="out-in">
       <div class="grid_restaurants" :key="restaurants.length">
