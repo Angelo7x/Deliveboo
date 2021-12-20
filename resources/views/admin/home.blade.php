@@ -2,61 +2,119 @@
 
 @section('content')
 <div class="wrapper">
-    <div class="container-fluid">
-        <div class="row mb-5">
-            <div class="col">
-                <a href="{{route('admin.foods.create')}}" class="mt-10">
-                    <button type="button" class="btn btn-primary">Nuovo piatto</button>
-                </a>
+    <div class="container">
+        <h2 class="my-5">Ciao, <span>Nome utente</span>, benvenuto nella dashboard del ristorante 
+            <span>Nome Ristorante</span>!
+        </h2>
+    
+        <div class="foods_dashboard p-5">
+            <div class=" d-flex flex-wrap mb-5 justify-content-between align-items-center">
+                <div>
+                    <h1>I tuoi piatti</h1>
+                    <p class="dashbord-p mb-3">Aggiungi e modifica i piatti o visualizza la pagina del tuo ristorante com visitatore</p>
+                </div>
+                <div class="col d-flex flex-wrap justify-content-end">
+                    <a href="{{route('admin.foods.create')}}" class="mt-10 btn-link">
+                        <button type="button" class="btn btn-yellow"><span>Nuovo piatto</span>
+                           <i class="fas fa-pizza-slice"></i></button>
+                    </a>
+    
+                    <a href="{{route('admin.foods.create')}}" class="mt-10 btn-link">
+                        <button type="button" class="btn btn-trasparent "><span>Visualizza come visitatore</span>
+                            <i class="far fa-eye"></i></button>
+                    </a>
+                </div>
+                
             </div>
-        </div>
-        @foreach ($foods as $food)
-        <div class="row details mb-4 {{$food["visible"] ? '' : 'opacity_50'}}">
-            <div class="col-2 text-center">
-                {{-- test-image --}}
-                <img class="food_photo" src="{{  asset('storage/' .  $food['image'])}}" alt="">
-                {{-- /test-image --}}
+            <div class="row column-title px-4 ">
+               
+                <div class="col-img">
+                    {{-- test-image --}}
+                    <h6>Immagine</h6>
+                    {{-- /test-image --}}
+                </div>
+                <div class="col-2 ">
+                    <h6>Nome</h6>
+                
+                </div>
+                <div class="col-3">
+                    <h6 class="">Descrizione</h6>
+           
+                </div>
+                <div class="col-2 ">
+                    <h6>Allergeni</h6>
+               
+                </div>
+                <div class="col-1 ">
+                    <h6>Peso</h6>
+                  
+                </div>
+                <div class="col-1 ">
+                    <h6>Prezzo</h6>
+                    
+                </div>
+                <div class="col-1 ">
+                </div>
+                 
             </div>
-            <div class="col-2 text-center">
-                <h4>Nome Piatto</h4>
-                {{$food["name"]}}
-            </div>
-            <div class="col-3">
-                <h4 class="text-center">Descrizione</h4>
-                <p class="description">{{$food["description"]}}</p>
-            </div>
-            <div class="col-2 text-center">
-                <h4>Allergeni</h4>
-                {{$food["allergens"]}}
-            </div>
-            <div class="col-1 text-center">
-                <h4>Peso</h4>
-                {{$food["weight"]}}
-            </div>
-            <div class="col-1 text-center">
-                <h4>Prezzo</h4>
-                <div>{{$food["price"]}}€</div>
-            </div>
-            <div class="col-1 text-center">
-                {{-- <a href="{{route('admin.foods.show', $food["id"])}}"><button class="btn btn-primary">Visualizza</button></a> --}}
-                <a href="{{route('admin.foods.edit', $food["id"])}}">
-                    <i class="fas fa-edit"></i>
-                </a>
-                <br>
-                {{-- delete button modale --}}
-                <form action="{{route('admin.foods.destroy', $food["id"])}}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger btn-delete"  data-id="{{$food["id"]}}" data-toggle="modal" data-target="#deleteModal">
-                        <i class="fas fa-trash-alt pointer"></i>
+            @foreach ($foods as $food)
+    
+            <div class="dashbord-food-card row details align-items-start p-4 mb-4 {{$food["visible"] ? '' : 'opacity_50'}}">
+               
+                <div class="box-img">
+                    {{-- test-image --}}
+                    <img class="food_photo" src="{{  asset('storage/' .  $food['image'])}}" alt="">
+                    {{-- /test-image --}}
+                </div>
+                <div class="col-2 ">
+                    <p class="font-weight-bold"> {{$food["name"]}}</p>
+                </div>
+                <div class="col-3">
+                    <p class="description ">{{$food["description"]}}</p>
+                </div>
+                <div class="col-2 ">
+                   <i>
+                    {{$food["allergens"]}}
+                   </i>
+                 
+                </div>
+                <div class="col-1 ">
+                    <p>
+                        {{$food["weight"]}}g
+                    </p>
+    
+                </div>
+                <div class="col-1 ">
+               <p>
+                {{$food["price"]}}€
+               </p>
+                   
+                </div>
+                <div class="col-1 ">
+                    {{-- <a href="{{route('admin.foods.show', $food["id"])}}"><button class="btn btn-primary">Visualizza</button></a> --}}
+                   
+                    <button class="btn btn-edit">
+                        <a href="{{route('admin.foods.edit', $food["id"])}}">
+                            <i class="fas fa-edit"></i>
+                        </a>
                     </button>
-                </form>
+                  
+                    
+                
+                    {{-- delete button modale --}}
+                    <form action="{{route('admin.foods.destroy', $food["id"])}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-delete"  data-id="{{$food["id"]}}" data-toggle="modal" data-target="#deleteModal">
+                            <i class="fas fa-trash-alt pointer"></i>
+                        </button>
+                    </form>
+                </div>
+                 
             </div>
-            
-            
-            
+            @endforeach
         </div>
-        @endforeach
+        
     </div>
     
     <!-- Modal -->

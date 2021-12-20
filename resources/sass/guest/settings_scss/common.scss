@@ -5,9 +5,12 @@
 //
 //
 //
-body, a, input, select, button {
+html {
+    scroll-behavior: smooth;
+  }
+body, a, input, select, button, textarea {
     font-family: 'PolySans Slim';
-    overflow-x: hidden;
+    // overflow-x: hidden;
 }
 
 .body {

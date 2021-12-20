@@ -5,7 +5,11 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+
+                <div class="card-header">{{ __('Registrazione nuovo') }} <span>Ristoratore</span>
+                    <i class="fas fa-utensils"></i>
+                </div>
+             
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data" name="registerForm" onsubmit="return validateRegister()" id="registerForm">
@@ -163,10 +167,14 @@
                                 </div>
                         </div>
                         {{-- submit --}}
+                        <span class="camp text-right col-md-4">* campi obbligatori</span>
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                <button type="submit" class="btn btn-darkBlue">
+                                    <div>
+                                        {{ __('Register') }}
+                                    </div>
+                                   <i class="fas fa-angle-right"></i>
                                 </button>
                             </div>
                         </div>
