@@ -126,6 +126,7 @@ export default {
       @include align-justify-center;
 
       .border {
+        width: 40px;
         border: 1px solid #000;
         padding: 0.2rem 0.3rem;
         border-radius: $br_sm;
@@ -133,6 +134,7 @@ export default {
     }
     &-price {
       text-align: center;
+      width: 60px;
     }
   }
   .total {

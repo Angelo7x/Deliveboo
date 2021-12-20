@@ -1,6 +1,6 @@
 <template>
 	<section>
-		<div class="page__404">
+		<div class="page__404 padding-responsive">
 			<div class="body__404 container--1000">
 				<h1>ERROR <span>404</span></h1>
 			</div>
@@ -20,9 +20,8 @@
 @import '../../../sass/guest/front.scss';
 
 section {
-	padding-top: 100px;
-	.page__404 {
 		background-color: $secondColor;
+	.page__404 {
 		.body__404 {
 			font-family: 'PolySans Neutral';
 			padding: $gt_lg $gt_sm;

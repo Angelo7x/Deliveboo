@@ -1,5 +1,6 @@
 <template>
-  <div class="food-card" v-if="food.visible">
+
+  <div class="food-card" v-if="food.visible" :class="show ? 'expand' : null">
     <div class="food-card-image" v-if="food.image">
       <img :src="`/storage/${food.image}`" :alt="`${food.name} logo`" />
     </div>
@@ -15,22 +16,27 @@
           <h3 class="food-card-info-name">
             {{ food.name }}
           </h3>
-          <button type="button" @click="showInfo()" class="showInfo" v-if="food.description.length>0||food.allergens.length>0||food.weight.length>0">Informazioni</button>
-      </div>
-      <div class="info" v-show="show">
-        <div class="food-opacity">
-          <small class="food-card-info-weight" v-if="food.weight">
-            {{ food.weight }} gr
-          </small>
-          <small class="food-card-info-allergens" v-if="food.allergens">
-            Allergeni: {{ food.allergens }}
-          </small>
+          <button type="button" @click="showInfo()" class="showInfo" v-if="food.description.length>0||food.allergens.length>0||food.weight.length>0" v-show="!show">Informazioni</button>
+          <button type="button" @click="showInfo()" class="hideInfo" v-if="food.description.length>0||food.allergens.length>0||food.weight.length>0" v-show="show">Informazioni</button>
 
-        </div>
-        <p class="food-card-info-description">
-          {{ food.description }}
-        </p>
       </div>
+      <transition name="slide-fade" mode="out-in">
+
+        <div class="info" v-show="show">
+          <div class="food-opacity">
+            <small class="food-card-info-weight" v-if="food.weight">
+              {{ food.weight }} gr
+            </small>
+            <small class="food-card-info-allergens" v-if="food.allergens">
+              Allergeni: {{ food.allergens }}
+            </small>
+
+          </div>
+          <p class="food-card-info-description">
+            {{ food.description }}
+          </p>
+        </div>
+      </transition>
       <div class="food-card-info-price">{{ food.price }}€</div>
     </div>
     <div class="food-card-buttons">
@@ -87,6 +93,7 @@ export default {
   padding: $gt;
   h3 {
     font-weight: bold;
+    margin-right: $gt_md;
   }
   &-image {
     img {
@@ -101,6 +108,10 @@ export default {
     display: flex;
     justify-content: start;
     align-items: center;
+  }
+  .expand {
+    min-height: 200px;
+  }
 
     .showInfo {
       // border: 1.5px solid $mainColor;
@@ -108,10 +119,17 @@ export default {
       font-size: .6rem;
       border-radius: $br_sm;
       // color: $mainColor;
-      margin-left: $gt_md;
       background-color: $mainColor;
     }
-  }
+
+    .hideInfo {
+            padding: .2rem;
+      font-size: .6rem;
+      border-radius: $br_sm;
+      border: 1.5px solid $mainColor;
+      color: $mainColor;
+      background-color: transparent;
+    }
   &-info {
     padding-left: $gt;
     display: flex;
@@ -139,7 +157,9 @@ export default {
 .food-opacity{
   opacity: .5;
 }
-
+  .food-card-info {
+    flex-grow:1;
+  }
     .food-card-info-weight {
             font-size: .65rem;
       
