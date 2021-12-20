@@ -65,8 +65,9 @@ export default {
   },
   methods: {
     redirect() {
-      window.location.href = '/order';
+      document.getElementsByName('orderForm').submit();
       localStorage.clear();
+      window.location.href = '/order';
     }
   },
   mounted() {
