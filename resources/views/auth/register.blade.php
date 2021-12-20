@@ -6,8 +6,8 @@
         <div class="col-md-8">
             <div class="card">
 
-                <div class="card-header">{{ __('Registrazione nuovo') }} <span>Ristoratore</span>
-                    <i class="fas fa-utensils"></i>
+                <div class="card-header"> <i class="fas fa-utensils"></i>{{ __('Registrazione nuovo') }} ristoratore
+                   
                 </div>
              
 
