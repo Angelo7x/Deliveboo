@@ -261,7 +261,7 @@ header {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 2;
+  z-index: 10;
   padding: .3125rem 1rem;
   nav {
     @include align-center-between;

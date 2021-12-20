@@ -2,13 +2,13 @@
   <div class="container">
     <v-braintree 
       authorization="sandbox_w3vd56ks_83jhbmdrngdjyv8s"
-      :paypal="{flow: 'vault'}"
       @load="onLoad"
       @loadFail="onLoadFail"
       @success="onSuccess"
       @error="onError"
     ></v-braintree>
 
+      <!-- :paypal="{flow: 'vault'}" -->
   </div>
 </template>
 
@@ -45,6 +45,7 @@ export default {
 <style lang="scss" scoped>
 .container[data-v-07bf0f9c], .braintree-dropin {
     font-family: 'PolySans Slim';
+    z-index: -1;
 
 }
 </style>

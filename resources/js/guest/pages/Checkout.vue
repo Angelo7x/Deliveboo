@@ -84,8 +84,8 @@
             <input type="text" hidden name="total_price" id="total_price" :value="totalPrice()"/>
           </div>
           <!-- ui data -->
-          <h5 class="cart__title" v-if="cart.items.length > 0">I tuoi dati</h5>
-          <div class="ui" v-if="cart.items.length > 0">
+          <h5 class="cart__title" v-if="cart.items.length > 0"  v-show="formValidated == false">I tuoi dati</h5>
+          <div class="ui" v-show="formValidated == false && cart.items.length > 0">
             <div class="ui__row">
               <div class="ui__data">
                 <label for="ui_name">Nome*</label>
@@ -135,12 +135,14 @@
           </div>
           <button type="button" @click="formCheck()" class="btn-yellow" v-show="formValidated == false" >Procedi con il pagamento</button>
         </div>
+      <transition name="slide-fade" mode="out-in">
         <div v-show="formValidated">
         <!-- pagamento -->
+
         <h5 class="cart__title">Pagamento</h5>
         <PaymentCard/>
         </div>
-
+</transition>
         <!-- <button type="submit" value="Submit">Checkout</button> -->
       </form>
     </div>
@@ -166,6 +168,7 @@ export default {
       uiDeliveryInfo: null,
       uiDeliveryInfoError: null,
       formValidated: false,
+      showForm: true,
     };
   },
   components: {
@@ -273,6 +276,7 @@ export default {
     validateForm: function(e) {
       if(this.validateName() == true && this.validateEmail() == true && this.validateuiDeliveryAddress()== true && this.validateuiPhone() == true && this.validateuiDeliveryInfo() == true) {
         console.log('success')
+        this.showForm = true;
         return true;
       }
 
