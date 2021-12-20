@@ -1,5 +1,5 @@
 <template>
-  <div>
+<div >
     <Header :getCartAmount="getAmount"/>
     <main>
       <router-view
@@ -10,7 +10,7 @@
       ></router-view>
     </main>
     <Footer />
-  </div>
+</div>
 </template>
 
 <script>
@@ -120,7 +120,7 @@ export default {
       localStorage.setItem("cart", JSON.stringify(this.cart));
           this.getCartAmount()
     },
-  },
+  }
 };
 </script>
 
