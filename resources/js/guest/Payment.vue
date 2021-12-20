@@ -65,7 +65,6 @@ export default {
   },
   methods: {
     redirect() {
-      document.getElementsByName('orderForm').submit();
       localStorage.clear();
       window.location.href = '/order';
     }

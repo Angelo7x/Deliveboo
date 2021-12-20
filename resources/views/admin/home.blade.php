@@ -100,15 +100,17 @@
                     </button>
                   
                     
-                
                     {{-- delete button modale --}}
-                    <form action="{{route('admin.foods.destroy', $food["id"])}}" method="POST">
+                    <button type="button" class="btn btn-delete"  data-id="{{$food["id"]}}" data-toggle="modal" data-target="#deleteModal">
+                        <i class="fas fa-trash-alt pointer"></i>
+                    </button>
+                    {{-- <form action="{{route('admin.foods.destroy', $food["id"])}}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-delete"  data-id="{{$food["id"]}}" data-toggle="modal" data-target="#deleteModal">
                             <i class="fas fa-trash-alt pointer"></i>
                         </button>
-                    </form>
+                    </form> --}}
                 </div>
                  
             </div>

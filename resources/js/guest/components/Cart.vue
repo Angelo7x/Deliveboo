@@ -84,7 +84,7 @@ export default {
     },
     onResize() {
       this.windowWidth = window.innerWidth;
-    },
+    }
   },
 };
 </script>
@@ -96,18 +96,23 @@ export default {
   margin: auto;
   @include box--box-shadow;
   h3 {
-    font-size: $txt_md;
-  }
+    font-size: $txt;
+    font-weight: bold;
+}
   .empty-cart {
     margin: $gt 0;
   }
   .foods {
-    display: grid;
+    display: flex;
     align-items: center;
-    grid-template-columns: repeat(4, 50% 30% 10% 10%);
+  justify-content: space-between;
+    // grid-template-columns: repeat(4, 50% 30% 10% 10%);
     margin: $gt_md 0;
+    &>*:not(:last-child):not(:first-child) {
+      padding: $gt
+    }
     &-name {
-      font-size: $txt;
+      font-size: $txt_sm;
     }
     &-buttons {
       display: flex;
@@ -144,7 +149,7 @@ export default {
     display: block;
     text-align: center;
     padding: $gt;
-    font-size: $txt;
+    font-size: $txt_sm;
     border-radius: $br;
     margin-top: $gt_sm;
   }
@@ -165,12 +170,12 @@ button:hover .st0 {
 
 @media screen and (max-width: 1180px) {
   .cart-component .foods{
-  grid-template-columns: repeat(4, 50% 30% 10% 10%);
+  // grid-template-columns: repeat(4, 50% 30% 10% 10%);
   }
 }
 @media screen and (max-width: 1113px) {
   .cart-component .foods{
-  grid-template-columns: repeat(4, 40% 30% 10% 10%);
+  // grid-template-columns: repeat(4, 40% 30% 10% 10%);
   }
   .cart-component .foods-name{
    font-size: 16px;
@@ -179,7 +184,7 @@ button:hover .st0 {
 
 @media screen and (max-width: 964px) {
   .cart-component .foods{
-  grid-template-columns: repeat(4, 40% 30% 10% 10%);
+  // grid-template-columns: repeat(4, 40% 30% 10% 10%);
   }
   .cart-component .foods-name{
    font-size: 16px;

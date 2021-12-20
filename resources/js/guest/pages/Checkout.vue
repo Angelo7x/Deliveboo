@@ -1,6 +1,6 @@
 <template>
   <div class="checkout">
-    <div class="checkout__header">
+    <div class="checkout__header padding-responsive">
       <h2 class="container--1000">Checkout</h2>
     </div>
     <div class="checkout__body container--1000">
@@ -428,6 +428,9 @@ export default {
 @media screen and (max-width: 768px) {
   .checkout__header {
     padding-top: 200px;
+  }
+    h2 {
+      font-size: 1.5rem;
   }
 }
 

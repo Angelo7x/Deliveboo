@@ -9,20 +9,28 @@
         alt="food logo"
       />
     </div>
-
     <div class="food-card-info">
-      <h3 class="food-card-info-name">
-        {{ food.name }}
-      </h3>
-      <small class="food-card-info-weight" v-if="food.weight">
-        {{ food.weight }} gr
-      </small>
-      <p class="food-card-info-description">
-        {{ food.description }}
-      </p>
-      <small class="food-card-info-allergens" v-if="food.allergens">
-        Allergeni: {{ food.allergens }}
-      </small>
+      <div class="info__header">
+
+          <h3 class="food-card-info-name">
+            {{ food.name }}
+          </h3>
+          <button type="button" @click="showInfo()" class="showInfo" v-if="food.description.length>0||food.allergens.length>0||food.weight.length>0">Informazioni</button>
+      </div>
+      <div class="info" v-show="show">
+        <div class="food-opacity">
+          <small class="food-card-info-weight" v-if="food.weight">
+            {{ food.weight }} gr
+          </small>
+          <small class="food-card-info-allergens" v-if="food.allergens">
+            Allergeni: {{ food.allergens }}
+          </small>
+
+        </div>
+        <p class="food-card-info-description">
+          {{ food.description }}
+        </p>
+      </div>
       <div class="food-card-info-price">{{ food.price }}€</div>
     </div>
     <div class="food-card-buttons">
@@ -52,11 +60,19 @@
 <script>
 export default {
   name: "Food",
+  data() {
+    return {
+      show: false
+    }
+  },
   props: ["food"],
   methods: {
     modifyCart(food, action) {
       this.$parent.$emit("food", { item: food, action: action });
     },
+    showInfo() {
+      this.show = !this.show;
+    }
   },
 };
 </script>
@@ -67,15 +83,33 @@ export default {
   display: flex;
   margin-bottom: $gt;
   @include box--border;
-  @include box--box-shadow;
+  // @include box--box-shadow;
   padding: $gt;
+  h3 {
+    font-weight: bold;
+  }
   &-image {
     img {
-      width: 150px;
-      height: 135px;
+      width: 70px;
+      height: 70px;
       border-radius: $br;
       overflow: hidden;
       object-fit: cover;
+    }
+  }
+  .info__header {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+    .showInfo {
+      // border: 1.5px solid $mainColor;
+      padding: .2rem;
+      font-size: .6rem;
+      border-radius: $br_sm;
+      // color: $mainColor;
+      margin-left: $gt_md;
+      background-color: $mainColor;
     }
   }
   &-info {
@@ -84,19 +118,31 @@ export default {
     flex-direction: column;
     flex-grow: 1;
     &-name {
-      font-size: $txt_md;
+      font-size: $txt;
       margin-bottom: $gt_sm;
     }
     &-description {
+            font-size: .65rem;
       
-      font-size: 1rem;
-      margin: $gt 0;
+      // font-size: $txt_xs;
+      margin: .3rem 0;
     }
     &-price {
-      margin: auto 0 $gt-sm;
+      margin: auto 0 $txt_xs;
     }
     &-allergens {
       margin-bottom: $gt;
+            font-size: .65rem;
+
+      // color: rgb(170, 170, 170);
+    }
+.food-opacity{
+  opacity: .5;
+}
+
+    .food-card-info-weight {
+            font-size: .65rem;
+      
     }
   }
   &-buttons {
@@ -104,14 +150,14 @@ export default {
     // flex-shrink: 0;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    button {
-      margin: 10px 0;
-    }
+    // justify-content: center;
+    // button {
+    //   margin: 10px 0;
+    // }
   }
 }
 svg {
-  height: 3rem;
+  height: 2rem;
 }
 .st0 {
   fill: #ffffff;
@@ -124,25 +170,25 @@ button:hover .st0 {
   stroke-miterlimit: 10;
 }
 @media screen and (max-width: 1367px) {
-  .food-card {
-    width: 600px;
-  }
-}
-@media screen and (max-width: 1202px) {
-  .food-card {
-    width: 500px;
-  }
-}
-@media screen and (max-width: 1124px) {
-  .food-card {
-    width: 450px;
-  }
-}
+//   .food-card {
+//     width: 600px;
+//   }
+// }
+// @media screen and (max-width: 1202px) {
+//   .food-card {
+//     width: 500px;
+//   }
+// }
+// @media screen and (max-width: 1124px) {
+//   .food-card {
+//     width: 450px;
+//   }
+// }
 
-@media screen and (max-width: 967px) {
-  .food-card {
-    width: 350px;
-  }
+// @media screen and (max-width: 967px) {
+//   .food-card {
+//     width: 350px;
+//   }
 
   .food-card-buttons {
     button {
@@ -153,23 +199,23 @@ button:hover .st0 {
   }
 }
 
-@media screen and (max-width: 911px) {
-  .food-card {
-    width: 348px;
-  }
-}
+// @media screen and (max-width: 911px) {
+//   .food-card {
+//     width: 348px;
+//   }
+// }
 
-@media screen and (max-width: 850px) {
-  .food-card {
-    width: 700px;
-  }
-}
+// @media screen and (max-width: 850px) {
+//   .food-card {
+//     width: 700px;
+//   }
+// }
 
-@media screen and (max-width: 700px) {
-  .food-card {
-    width: 500px;
-  }
-}
+// @media screen and (max-width: 700px) {
+//   .food-card {
+//     width: 500px;
+//   }
+// }
 @media screen and (max-width: 600px) {
   .food-card-info-description {
     display: none;
@@ -188,10 +234,10 @@ button:hover .st0 {
 }
 
 @media screen and (max-width: 560px) {
-  .food-card {
-    width: 400px;
-  }
-  .food-card-info-description {
+  // .food-card {
+  //   width: 400px;
+  // }
+  .food-card-info-description, .showInfo {
     display: none;
   }
 
@@ -208,15 +254,15 @@ button:hover .st0 {
 }
 
 @media screen and (max-width: 420px) {
-  .food-card {
-    width: 350px;
-  }
+  // .food-card {
+  //   width: 350px;
+  // }
 }
 
 @media screen and (max-width: 360px) {
-  .food-card {
-    width: 300px;
-  }
+  // .food-card {
+  //   width: 300px;
+  // }
   .food-card-image {
     img {
       width: 90px;
