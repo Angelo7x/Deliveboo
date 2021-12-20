@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="menu">
     <!-- cover -->
     <div class="cover-restaurant">
       <div class="restaurant-logo">
@@ -10,7 +10,7 @@
           :class="{ 'hide-element': displayElement }"
         />
         <img
-          src="../../../images/bg_footer.jpg"
+          src="../../../images/placeholder_giallo.jpg"
           alt=""
           v-else
           :class="{ 'hide-element': displayElement }"
@@ -34,7 +34,7 @@
         v-if="menu.business_cover"
         :class="{ 'hide-element': displayElement }"
       />
-      <img src="../../../images/hero_bg.jpg" alt="" v-else />
+      <img src="../../../images/cover_place.jpg" alt="" v-else />
     </div>
     <!-- /cover -->
 
@@ -120,16 +120,15 @@ export default {
 <style lang="scss" scoped>
 @import "../../../sass/guest/front.scss";
 
-section {
-  padding-top: 100px;
-}
+
 .cover-restaurant {
-  height: 350px;
+  height: 300px;
   position: relative;
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: top center;
   }
 
   //  Logo rest and Buttons
@@ -141,13 +140,14 @@ section {
 
   .restaurant-logo {
     left: $gt;
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
     img {
       width: 100%;
       border-radius: $br;
       object-fit: cover;
-      border: 2px solid $mainColor;
+        -webkit-box-shadow: 0px 0px 0px 3px $mainColor; 
+  box-shadow: 0px 0px 0px 3px $mainColor;
     }
   }
   .btn-checkout {
@@ -164,24 +164,26 @@ section {
 .restaurant {
   margin: $gt_lg;
   display: flex;
-  align-items: flex-start;
+  align-items: start;
+  justify-content: space-between;
+
   &-menu {
     padding: 0 $gt_lg;
     width: 55%;
     h2 {
-      font-size: $txt_xxl;
+      font-size: $txt_lg;
       margin-bottom: $gt;
     }
   }
   .cart {
     padding: 0 $gt_lg;
-    width: 45%;
+    // width: 45%;
   }
 }
 
 //border card foods
 .restaurants-menu-foods {
-  width: fit-content;
+  max-width: 500px;
 }
 
 // responsive
@@ -232,7 +234,7 @@ section {
     width: 50%;
   }
   .restaurant-menu {
-     width: 50%;
+    //  width: 50%;
     h2 {
       font-size: $txt_lg;
     }
@@ -241,6 +243,7 @@ section {
     padding: 0;
   }
 }
+
 
 @media screen and (max-width:500px) {
   .restaurant{

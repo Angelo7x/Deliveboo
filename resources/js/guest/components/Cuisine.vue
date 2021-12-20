@@ -49,11 +49,11 @@ export default {
       height: 100%;
       transform: scale(1.2);
       object-fit: contain;
+    transition: transform 0.3s ease-out;
     }
   &:hover {
-      transform: scale(1);
-      img {
-      transition: transform 0.3s ease-out;
+    img {
+        transform: scale(1.3);
     }
   }
 }

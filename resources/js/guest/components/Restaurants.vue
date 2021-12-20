@@ -1,16 +1,21 @@
 <template>
-
-    <!-- <input type="text" v-model="searchRestaurant" @keyup="sortByName()"> -->
-    <transition name="slide-fade" mode="out-in">
-    <div class="grid_restaurants" :key="restaurants.length">
-      <CardRestaurant
-        v-for="restaurant in restaurants"
-        :key="restaurant.id"
-        :data="restaurant"
-        :cuisineList="cuisineList"
-      />
-    </div>
-    </transition>
+<div>
+      <div class="btn_row">
+        <div class="search_title">Cerca per nome</div>
+        <input type="text" v-model="searchRestaurant" class="filter_btn">
+        <button @click="sortByName()" class="btn-filter">Cerca</button>
+      </div>
+      <transition name="slide-fade" mode="out-in">
+      <div class="grid_restaurants" :key="restaurants.length">
+        <CardRestaurant
+          v-for="restaurant in restaurants"
+          :key="restaurant.id"
+          :data="restaurant"
+          :cuisineList="cuisineList"
+        />
+      </div>
+      </transition>
+</div>
 
 </template>
 
@@ -26,11 +31,21 @@ export default {
   data() {
     return {
       restaurants: [],
-      searchRestaurant: "",
-      count: 0
+      count: 0,
+      searchRestaurant: ''
     };
   },
   methods: {
+    sortByName() {
+      // this.getAll()
+      if(this.searchRestaurant=="") {
+        this.getAll()
+
+      } else {
+
+        this.restaurants =this.restaurants.filter(e=> e.business_name.includes(this.searchRestaurant))
+      }
+    },
     getAll() {
           axios
       .get(`/api/restaurants`)
@@ -65,6 +80,9 @@ export default {
       } else {
         this.getFiltered();
         }
+    },
+    searchRestaurant: function() {
+      this.sortByName();
     }
   },
   created() {
@@ -86,19 +104,47 @@ export default {
   padding: $gt_md;
 }
 
+.btn_row {
+  padding: .5rem $gt_md;
+  
+  input {
+    padding: .5rem;
+    border-radius: $br_sm;
+    border: 1.5px solid lightgray;
+    // width: 80%;
+  }
+
+  .search_title {
+    font-size: .8rem;
+    padding: .3rem 0;
+  }
+
+  .btn-filter {
+    background-color: $mainColor;
+        padding: .5rem;
+
+    border-radius: $br_sm;
+
+  }
+}
 
 //Mediaqueri
 @media screen and (max-width: 850px) {
   .grid_restaurants {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
 @media screen and (max-width: 768px) {
   .grid_restaurants {
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
+@media screen and (max-width: 425px) {
+  .grid_restaurants {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
 </style>

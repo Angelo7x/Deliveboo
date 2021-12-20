@@ -1,6 +1,6 @@
 <template>
   <section id="home">
-    <section class="section_cuisines">
+    <section class="section_cuisines padding-responsive">
       <h2>Le nostre cucine</h2>
       <div class="grid_cuisines">
         <Cuisine
@@ -14,12 +14,12 @@
     </section>
 
     <section class="section_restaurants container--1500">
-      <h2 v-if="countRestaurant>1">{{countRestaurant}} ristoranti aperti ora!</h2>
-      <h2 v-else-if="countRestaurant== null">I nostri ristoranti</h2>
-      <h2 v-else-if="countRestaurant== 1">Un ristorante aperto ora</h2>
-      <h2 v-else>Non ci sono ristoranti disponibili</h2>
+      <h2 v-if="countRestaurant>1" class="style--bold">{{countRestaurant}} ristoranti aperti ora!</h2>
+      <h2 v-else-if="countRestaurant== null" class="style--bold">I nostri ristoranti</h2>
+      <h2 v-else-if="countRestaurant== 1" class="style--bold">Un ristorante aperto ora</h2>
+      <h2 v-else class="style--bold">Non ci sono ristoranti disponibili</h2>
       <div>
-        <Restaurants :cuisine="cuisine" :cuisineList="cuisines" @countRestaurant="getcountRestaurant"/>
+        <Restaurants :cuisine="cuisine" :cuisineList="cuisines" @countRestaurant="getcountRestaurant" :searchRestaurant="searchRestaurant"/>
       </div>
     </section>
   </section>
@@ -32,7 +32,7 @@ export default {
   name: "Home",
   components: {
     Restaurants,
-    Cuisine
+    Cuisine,
   },
   data() {
     return {
@@ -40,7 +40,7 @@ export default {
       cuisine: "all",
       cuisines: [],
       cuisineActive: null,
-      countRestaurant: null
+      countRestaurant: null,
     };
   },
   props: ["isModalVisible"],
@@ -98,23 +98,24 @@ export default {
 section#home {
   //Cuisines
   .section_cuisines {
-    padding-top: 170px;
-    width: 100%;
     background-color: $secondColor;
-    color: white;
+    z-index: 1;
+    overflow: hidden;
+    width: 100%;
+    // padding-top: 96px;
+    // background-color: $secondColor;
+    color: #fff;
     font-family: 'PolySans Slim';
 
-    h2 {
-      padding: $gt;
-      font-size: $txt_md;
-    }
   }
-  .section_restaurants {
     h2 {
       margin-top:$gt;
       padding: $gt;
-      font-size: $txt_lg;
+      font-size: $txt;
+      // font-weight: bold;
     }
+  .section_restaurants {
+    h2 {}
   }
 }
 
@@ -129,12 +130,6 @@ section#home {
 
 //Mediaquery
 @media screen and (max-width: 850px) {
-section#home {
-
-  .section_cuisines {
-        padding-top: 251px;
-  }
-} 
   .grid_cuisines {
     grid-template-columns: repeat(4, 1fr);
   }
@@ -146,9 +141,12 @@ section#home {
   }
 }
 
-@media screen and (max-width: 425) {
+
+
+@media screen and (max-width: 425px) {
   .grid_cuisines {
     grid-template-columns: repeat(2, 1fr);
   }
+
 }
 </style>

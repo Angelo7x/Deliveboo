@@ -76,7 +76,7 @@ export default {
 
 footer {
   z-index: 20;
-  background-color: rgb(18, 18, 36);
+  background-color: $darkBlue;
   overflow: hidden;
 }
 .footer_top {
