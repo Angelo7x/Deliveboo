@@ -21,11 +21,12 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light  bg_red_secondColor shadow-sm">
             <div class="wrapper d-flex">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="../../images/logo.png" alt="logo deliveboo">
+                    <img src="../../../images/deliveboo/logo_yellow.svg" alt="logo deliveboo">
                 </a>
+               
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -74,7 +75,7 @@
                 </div>
             </div>
         </nav>
-        <main class="py-4">
+        <main class="py-4 contentMain" >
             @yield('content')
         </main>
     </div>

@@ -1,52 +1,276 @@
+// common
+body{
+  background-color: $darkBlue;
+  color: rgb(255, 255, 255);
+ 
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100vh;
+}
+
+//errors
+
+.error{
+  color: $mainColor;
+}
+
+.bg_red_secondColor{
+  background-color: $darkBlue;
+}
+
+.navbar.navbar-expand-md.navbar-light{
+  padding: 0;
+  .wrapper {
+    width: 100%;
+    margin: 0 $gt;
+  }
+}
+
+.navbar-light .navbar-nav .nav-link{
+text-transform: uppercase;
+color: white;
+font-size: 1.3rem;
+}
+
+.navbar-light .navbar-nav .nav-link:hover{
+  color: white;
+  text-decoration: underline;
+}
+
+//register
+
+.card-header{
+  color: $mainColor;;
+  font-size: 1.25rem;
+  span{
+    font-weight: bold;
+  }
+   i{
+     margin-left: .625rem;
+     color: white;
+   }
+}
+
+
+.card{
+  color: rgb(190, 190, 190);
+  background: #211f3f;
+  // background: linear-gradient(90deg, #121224 15%, #2323429d 70%, #706e538f 89%);
+  // background-size: cover;
+  // background-position: center;
+  // background-attachment: fixed;
+  -webkit-box-shadow: 4px 4px 6px -2px rgba(0,0,0,0.68); 
+  box-shadow: 4px 4px 6px -2px rgba(0,0,0,0.68);
+  border-radius: $br;
+ 
+  // -webkit-box-shadow: 2px 2px 8px 0px $greyBorder;
+  //   -moz-box-shadow: 2px 2px 8px 0px $greyBorder;
+  //   box-shadow: 2px 2px 8px 0px $greyBorder;
+  //   border-radius: $br;
+  //   padding: $gt;
+}
+
+.form-group{
+  font-size: 1.125rem;
+}
+
+
+
+.form-control, #email.form-control{
+  background-color:  $darkBlue;
+  color:white;
+  border: 0;
+}
+
+.form-control:focus, #email.form-control:focus, input:focus, textarea:focus{
+  color:white;
+  box-shadow:none;
+  border:1px solid rgb(78, 78, 80);
+  background-color: #222246;
+}
+
+
+//view
+.btn.btn-darkBlue{
+  display: flex;
+  align-items: center;
+  background-color: $darkBlue;
+  color: white;
+  font-size: 1.0625rem;
+    i {
+      padding: .3125rem .625rem;
+    }
+}
+
+.btn.btn-darkBlue:hover{
+  color: white;
+  background-color: rgba(52, 52, 88, 0.911);
+ 
+}
+
+
+.btn-yellow{
+  display: flex;
+  align-items: center;
+ justify-content: center;
+  margin: .3125rem;
+  background-color:$mainColor;
+  color: $darkBlue;
+  border-radius: $br;
+  padding: 0 .625rem;
+  font-size: 1.125rem;
+  padding: .6rem 1rem;
+  // -webkit-box-shadow: 4px 4px 6px -2px rgba(0,0,0,0.68); 
+  // box-shadow: 4px 4px 6px -2px rgba(0,0,0,0.68);
+    i {
+      padding-left: .625rem;
+    }
+}
+
+.btn-trasparent{
+  font-size: 1.125rem;
+  margin: .3125rem;
+  padding:.6rem 1rem;
+  background-color: transparent;
+  border: 2px solid rgba(52, 52, 88, 0.911);
+  color: white;
+  border-radius: $br;
+  transition: background-color .2s;
+  i {
+    padding-left: .625rem;
+  }
+  &:hover{
+    background-color:rgb(52, 52, 88) ;
+    color: white;
+  }
+}
+
+.btn.btn-lightBlue:hover{
+
+  display: flex;
+  align-items: center;
+  background-color:$mainColor;
+  color: white;
+  font-size: 1.0625rem;
+    i {
+      padding: .3125rem .625rem;
+    }
+}
+
+a.btn-link:hover{
+  text-decoration: none;
+}
+
+
+.dashbord-p{
+  font-size: .8rem;
+  color: rgb(195, 195, 195);
+}
+
+//Food cards
+
+.dashbord-food-card{
+  background: #211f3f;
+  color: white;
+  // -webkit-box-shadow: 4px 4px 6px -2px rgba(0,0,0,0.68); 
+  // box-shadow: 4px 4px 6px -2px rgba(0,0,0,0.68);
+  p,i{
+    font-size: 1rem;
+  }
+}
+
+.box-img{
+width: 80px;
+height: 80px;
+border-radius: $br_sm;
+overflow: hidden;
+
+  img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.col-img{
+  width: 80px;
+}
+
+.column-title{
+  color: rgb(190, 190, 190);
+
+}
+
+//Login
+
+.btn.btn-link{
+  color: rgb(255, 255, 255);
+  margin-top: 1.25rem;
+  padding: 0;
+}
+
+#email{
+  background-color: white;
+}
+
 .wrapper {
   width: 95%;
   margin: auto;
   .navbar-brand {
-    width: 11.25rem;
+    height: 70px;
     display: block;
     transform: translateY(6%);
     img {
-        width: 100%;
+      height: 100%;
     }
   }
   .nav-item.dropdown {
     font-size: 1.125rem;
   }
   .row.details {
-    height: 7.5rem;
     align-items: center;
-    -webkit-box-shadow: 0rem 0rem .3125rem 0rem rgba(153,153,153,0.55);
-    -moz-box-shadow: 0rem 0rem .3125rem 0rem rgba(153,153,153,0.55);
-    box-shadow: 0rem 0rem .3125rem 0rem rgba(153,153,153,0.55);
+   -webkit-box-shadow: 4px 4px 6px -2px rgba(0, 0, 0, 0.3 ); 
+  box-shadow: 4px 4px 6px -2px rgba(0, 0, 0, 0.3);
     border-radius: .625rem;
     h4 {
       padding-top: .3125rem;
     }
-    .food_photo {
-      height: 100%;
-      border-radius: .9375rem;
-    }
+   
     .description {
       height: 50%;
       overflow: auto;
     }
   }
 }
-.row.details > * {
-  height: 80%;
-}
+
 .pointer {
   cursor: pointer;
 }
-a {
-  color: $mainColor;
-}
-a:hover {
-  color: $mainColor;
-}
-.fa-trash-alt {
-  color: $secondColor;
+
+.fa-trash-alt, .fa-edit {
+  color: #48488ae1;
 }
 .opacity_50 {
   opacity: 0.5;
+}
+.btn.btn-edit{
+  i{
+    font-size: 1.125rem;
+  }
+}
+
+.btn.btn-delete{
+  i{
+    font-size: 1.125rem;
+  }
+}
+
+.btn.btn-edit:hover i, .btn.btn-delete:hover i{
+  color: $darkBlue;
+}
+
+.foods_dashboard{
+  background-color: #242247;
+  border-radius: $br;
 }
