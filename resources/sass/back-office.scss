@@ -10,7 +10,9 @@ body{
 }
 
 //errors
-
+small{
+  font-size: .7rem;
+}
 .error{
   color: $mainColor;
 }
@@ -43,11 +45,8 @@ font-size: 1.3rem;
 .card-header{
   color: $mainColor;;
   font-size: 1.25rem;
-  span{
-    font-weight: bold;
-  }
    i{
-     margin-left: .625rem;
+     margin-right: .625rem;
      color: white;
    }
 }
@@ -273,4 +272,66 @@ overflow: hidden;
 .foods_dashboard{
   background-color: #242247;
   border-radius: $br;
+}
+
+.name-risto{
+  color: $mainColor;
+}
+
+.navbar-light .navbar-nav .show > .nav-link{
+  color: white;
+}
+
+//Modal
+.modal-content{
+  color: white;
+  background-color:#211f3fe5;
+  -webkit-box-shadow: 4px 4px 6px -2px rgba(0, 0, 0, 0.3 ); 
+  box-shadow: 4px 4px 6px -2px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header{
+  border-bottom: 0;
+}
+
+.modal-footer{
+  border-top:1px solid rgba(202, 202, 202, 0.465);
+}
+
+.modal-body{
+  color: $mainColor;
+}
+.btn_modal{
+  font-size: .8rem;
+      // &.btn_yes{
+      //   background-color:$secondColor;
+      //   color: white;
+      // }
+      // &.btn_no{
+      //   background-color:$mainColor;
+
+      // }
+}
+
+
+.close{
+  color: rgb(199, 199, 199);
+}
+
+.close:hover{
+  color: rgb(255, 255, 255);
+}
+
+.btn-delete, .btn-edit{
+  svg{
+    height:35px;
+    fill: rgb(202, 202, 202);
+  }
+}
+
+
+.btn-delete:hover, .btn-edit:hover{
+  svg{
+    fill: $mainColor;
+  }
 }

@@ -74,7 +74,7 @@
                         @enderror
                         <small></small>
                       </div>
-                      <button type="submit" class="btn btn-primary" id="btn-submit">Crea</button>
+                      <button type="submit" class="btn btn-yellow" id="btn-submit">Crea</button>
                     </form>
                 </div>
             </div>

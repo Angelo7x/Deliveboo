@@ -16,6 +16,6 @@ class HomeController extends Controller
 
         $user = Auth::user();
         $foods = $user->foods;
-        return view('admin.home', compact('foods'));
+        return view('admin.home', compact('foods', 'user'));
     }
 }
