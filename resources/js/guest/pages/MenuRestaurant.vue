@@ -164,8 +164,7 @@ section {
 .restaurant {
   margin: $gt_lg;
   display: flex;
-  align-items: start;
-
+  align-items: flex-start;
   &-menu {
     padding: 0 $gt_lg;
     width: 55%;

@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="{{asset('css/front.css')}}">
         <title>Deliveboo</title>
     </head>
-    <body>
+    <body id="my-scrollbar">
         <div id="app">
             
         </div>
@@ -16,7 +16,6 @@
                 csrfToken: "{{ csrf_token() }}"
             }
         </script>
-
         <script src="{{asset('js/front.js')}}"></script>
     </body>
 </html>

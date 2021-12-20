@@ -26,9 +26,13 @@
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.15.4",
         "@mrjeffapp/vue-braintree-paypal-button": "^1.1.1",
+        "braintree": "^3.8.0",
         "braintree-web-drop-in": "^1.32.1",
+        "smooth-scrollbar": "^8.7.0",
         "vue-braintree": "^2.1.0",
         "vue-horizontal": "^0.8.12",
-        "vue-router": "^3.5.3"
+        "vue-router": "^3.5.3",
+        "vue-smooth-scrollbar": "^1.0.3",
+        "vue2-smooth-scroll": "^1.5.1"
     }
 }
