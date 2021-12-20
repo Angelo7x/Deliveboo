@@ -22,16 +22,16 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light  bg_red_secondColor shadow-sm">
-            <div class="wrapper d-flex">
+            <div class="wrapper d-flex justify-content-between ">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <img src="../../../images/deliveboo/logo_yellow.svg" alt="logo deliveboo">
                 </a>
                
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                {{-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="mobile_nav"><i class="fas fa-bars"></i></span>
+                </button> --}}
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="px-4" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
 
@@ -58,7 +58,10 @@
                                     {{ Auth::user()->name }}
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu dropdown-menu-right" style="
+                                position: absolute;
+                         
+                            " aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

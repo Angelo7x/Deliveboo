@@ -13,7 +13,7 @@
             <div class=" d-flex flex-wrap mb-5 justify-content-between align-items-center">
                 <div>
                     <h1>I tuoi piatti</h1>
-                    <p class="dashbord-p mb-3">Aggiungi e modifica i piatti o visualizza la pagina del tuo ristorante com visitatore</p>
+                    <p class="dashbord-p mb-3">Aggiungi e modifica i piatti o visualizza la pagina del tuo ristorante come visitatore</p>
                 </div>
                 <div class="col d-flex flex-wrap justify-content-end">
                     <a href="{{route('admin.foods.create')}}" class="mt-10 btn-link">
@@ -28,75 +28,73 @@
                 </div>
                 
             </div>
-            <div class="row column-title px-4 ">
+            <div class="flex-nowrap row column-title px-4 ">
                
-                <div class="col-img">
+                <div class="col-img display_mobile_mv_473">
                     {{-- test-image --}}
                     <h6>Immagine</h6>
                     {{-- /test-image --}}
                 </div>
-                <div class="col-2 ">
+                <div class="col-md-2 col-sm-4 col-5">
                     <h6>Nome</h6>
-                
                 </div>
-                <div class="col-3">
+                <div class="col-3 display_mobile">
                     <h6 class="">Descrizione</h6>
            
                 </div>
-                <div class="col-2 ">
+                <div class="col-sm-2 col-2 display_mobile">
                     <h6>Allergeni</h6>
                
                 </div>
-                <div class="col-1 ">
+                <div class="col-1 display_mobile">
                     <h6>Peso</h6>
                   
                 </div>
-                <div class="col-1 ">
-                    <h6>Prezzo</h6>
-                    
+                <div class="col-md-1 col-sm-2 col-2 display_mobile_mv_580">
+                    <h6 >Prezzo</h6>
                 </div>
-                <div class="col-1 ">
+                <div class="col col-sm-2 col-2 col-xs-6">
                     <h6>Gestione</h6>
                 </div>
                  
             </div>
             @foreach ($foods as $food)
     
-            <div class="dashbord-food-card row details align-items-start p-4 mb-4 {{$food["visible"] ? '' : 'opacity_50'}}">
+            <div class="flex-nowrap dashbord-food-card row details align-items-start p-4 mb-4 {{$food["visible"] ? '' : 'opacity_50'}}">
                
-                <div class="box-img">
+                <div class="box-img display_mobile_mv_473">
                     {{-- test-image --}}
                     <img class="food_photo" src="{{  asset('storage/' .  $food['image'])}}" alt="">
                     {{-- /test-image --}}
                 </div>
-                <div class="col-2 ">
+                <div class="col-md-2 col-sm-4 col-5">
                     <p class="font-weight-bold"> {{$food["name"]}}</p>
                 </div>
-                <div class="col-3">
+                <div class="col-3 display_mobile">
                     <p class="description ">{{$food["description"]}}</p>
                 </div>
-                <div class="col-2 ">
+                <div class="col-sm-2 col-2 display_mobile">
                    <i>
                     {{$food["allergens"]}}
                    </i>
                  
                 </div>
-                <div class="col-1 ">
+                <div class="col-1 display_mobile">
                     <p>
                         {{$food["weight"]}}g
                     </p>
     
                 </div>
-                <div class="col-1 ">
+                <div class="col-md-1 col-sm-2 col-2 display_mobile_mv_580">
                <p>
                 {{$food["price"]}}€
                </p>
                    
                 </div>
-                <div class="col d-flex">
+                <div class="col col-sm-2 col-2">
                     {{-- <a href="{{route('admin.foods.show', $food["id"])}}"><button class="btn btn-primary">Visualizza</button></a> --}}
-                   
-                    <button class="btn-edit data-toggle="tooltip" data-html="true" title="Modifica il">
+                   <div class="buttons_mobile">
+                    <button class="btn-edit" data-toggle="tooltip" data-html="true" title="Modifica il piatto">
                         <a href="{{route('admin.foods.edit', $food["id"])}}">
                             <svg   version="1.1" id="Livello_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                             viewBox="0 0 700 700" style="enable-background:new 0 0 700 700;" xml:space="preserve" > 
@@ -145,7 +143,18 @@
                             <path d="M515.2,465.5h-268c-5.7,0-10.3-4.6-10.3-10.3s4.6-10.3,10.3-10.3h268c5.7,0,10.3,4.6,10.3,10.3S520.8,465.5,515.2,465.5z"/>
                         </svg>
                     </button>
+                    <button  class = "show_food" data-toggle="tooltip" data-html="true" title="Visualizza il piatto">
+                        <a href="{{route("admin.foods.show", $food["id"])}}">
+                            <svg id="Livello_1" data-name="Livello 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 543.09 340.59">
+                                <path d="M605.48,240.38C558.56,191.59,462.85,109.72,350,109.72S141.53,191.6,94.52,240.39a57,57,0,0,0,0,79.25c47,48.79,142.71,130.67,255.48,130.67h.25c112.76-.17,208.3-81.88,255.22-130.67a56.82,56.82,0,0,0,0-79.25Zm-255,175.89H350c-75.09,0-136.18-61.09-136.18-136.27s61.09-136.18,136.27-136.18S486.36,204.91,486.36,280s-61,136.1-135.92,136.27ZM119,296a23.15,23.15,0,0,1,0-32.16c20-20.78,49.55-48,85.36-71.27a168.68,168.68,0,0,0-.17,174.62C168.43,344,138.9,316.83,119,296Zm462.09,0c-19.94,20.7-49.47,47.86-85.19,71.19a168.68,168.68,0,0,0-.17-174.62c35.8,23.33,65.33,50.57,85.36,71.27a23,23,0,0,1,0,32.16Z" transform="translate(-78.48 -109.72)"/>
+                                <path d="M350,167.66A112.43,112.43,0,1,0,462.43,280.08,112.52,112.52,0,0,0,350,167.66Zm0,190.91a78.49,78.49,0,1,1,78.48-78.48A78.57,78.57,0,0,1,350,358.57Z" transform="translate(-78.48 -109.72)"/>
+                                <path d="M350,217.72a62.5,62.5,0,0,0-62.45,62.45,17,17,0,0,0,33.94,0A28.52,28.52,0,0,1,350,251.66a17,17,0,1,0,0-33.94Z" transform="translate(-78.48 -109.72)"/>
+                              </svg>
+                        </a>
+                    </button>
                   
+                   </div>
+                   
                     
                 </div>
                  
@@ -157,7 +166,7 @@
     
     <!-- Modal -->
     <div class="modal fade" id="deleteModal">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
             <div class="modal-content">
             <div class="modal-header">
                 {{-- <h5 class="modal-title" id="exampleModalLabel">Conferma cancellazione Piatto</h5> --}}

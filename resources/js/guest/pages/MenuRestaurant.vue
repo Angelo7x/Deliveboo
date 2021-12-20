@@ -4,7 +4,7 @@
     <div class="cover-restaurant">
       <div class="restaurant-logo">
         <img
-          :src="`/storage/${munu.business_logo}`"
+          :src="`/storage/${menu.business_logo}`"
           :alt="`${menu.business_name} logo`"
           v-if="menu.business_logo"
           :class="{ 'hide-element': displayElement }"
@@ -29,7 +29,7 @@
       <!-- /Visible only mobile -->
 
       <img
-        :src="`/storage/${munu.business_cover}`"
+        :src="`/storage/${menu.business_cover}`"
         :alt="`${menu.business_name} cover`"
         v-if="menu.business_cover"
         :class="{ 'hide-element': displayElement }"
