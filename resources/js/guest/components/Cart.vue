@@ -101,6 +101,7 @@ export default {
 }
   .empty-cart {
     margin: $gt 0;
+    min-width: 300px;
   }
   .foods {
     display: flex;
