@@ -3,10 +3,11 @@
     <nav>
       <div class="nav-left">
         <a href="/" class="logo">
-          <!-- <img src="images/deliveboo/logo_white.svg" alt="logo_deliveboo" />
-           -->
+          <img src="../../../images/newlogo.svg" alt="logo_deliveboo" />
+          
+          
 <!-- Generator: Adobe Illustrator 25.3.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+<!-- <svg version="1.1"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 1920 369.19" style="enable-background:new 0 0 1920 369.19;" xml:space="preserve">
 <g>
 	<g>
@@ -209,7 +210,7 @@
 			C1678.66,201.18,1675.45,199.22,1673.82,200.96z"/>
 	</g>
 </g>
-</svg>
+</svg> -->
 
         </a>
       </div>
@@ -272,8 +273,8 @@ header {
         display: inline-block;
       }
 
-      svg {
-       min-height: 80px;
+      svg, img {
+       height: 50px;
        fill: #fff;
       }
     }
@@ -304,9 +305,9 @@ header {
             justify-content: center;
             align-items: center;
             position: relative;
-            svg {
-              min-height: 60px;
-              fill:none;stroke:#FFFFFF;stroke-width:2;stroke-miterlimit:10;
+            svg, img {
+              height: 70px;
+              fill:none;stroke:#FFFFFF;stroke-width:3;stroke-miterlimit:10;
             }
 
             span {
@@ -329,7 +330,7 @@ header {
 
 @media screen and (max-width: 850px) {
   header {
-    svg {
+    svg, img {
       height: 60px;
     }
     .admin {

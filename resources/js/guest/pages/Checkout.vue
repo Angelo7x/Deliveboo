@@ -84,8 +84,8 @@
             <input type="text" hidden name="total_price" id="total_price" :value="totalPrice()"/>
           </div>
           <!-- ui data -->
-          <h5 class="cart__title">I tuoi dati</h5>
-          <div class="ui">
+          <h5 class="cart__title" v-if="cart.items.length > 0">I tuoi dati</h5>
+          <div class="ui" v-if="cart.items.length > 0">
             <div class="ui__row">
               <div class="ui__data">
                 <label for="ui_name">Nome*</label>
@@ -133,7 +133,7 @@
               </div>
             </div>
           </div>
-          <button type="button" @click="formCheck()" class="btn-yellow" v-show="formValidated == false">Procedi con il pagamento</button>
+          <button type="button" @click="formCheck()" class="btn-yellow" v-show="formValidated == false" >Procedi con il pagamento</button>
         </div>
         <div v-show="formValidated">
         <!-- pagamento -->
@@ -326,9 +326,6 @@ export default {
 
   .cart__food-card {
     @include align-center-between;
-    & > div {
-      margin-bottom: $gt_md;
-    }
   }
 
   form {

@@ -15,7 +15,13 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+    <link rel="apple-touch-icon" sizes="180x180" href="{{asset('images/favicon/apple-touch-icon.png')}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{asset('images/favicon/favicon-32x32.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('images/favicon/favicon-16x16.png')}}">
+    <link rel="manifest" href="{{asset('images/favicon/site.webmanifest')}}">
+    <link rel="mask-icon" href="{{asset('images/favicon/safari-pinned-tab.svg" color="#5bbad5')}}">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -24,7 +30,7 @@
         <nav class="navbar navbar-expand-md navbar-light  bg_red_secondColor shadow-sm">
             <div class="wrapper d-flex">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="../../../images/deliveboo/logo_yellow.svg" alt="logo deliveboo">
+                    <img src="../../../images/newlogo_yellow.svg" alt="logo deliveboo">
                 </a>
                
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
