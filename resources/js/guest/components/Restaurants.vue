@@ -43,7 +43,7 @@ export default {
 
       } else {
 
-        this.restaurants =this.restaurants.filter(e=> e.business_name.includes(this.searchRestaurant))
+        this.restaurants =this.restaurants.filter(e=> e.business_name.toLowerCase().includes(this.searchRestaurant.toLowerCase()))
       }
     },
     getAll() {
