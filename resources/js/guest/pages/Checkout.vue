@@ -8,8 +8,8 @@
       <form action="" @submit="validateForm" name="orderForm" >
         <div class="body__cart">
           <!-- carrello -->
-          <h5 class="cart__title">Carrello</h5>
-          <div v-if="cart.items.length == 0" class="color--grey">
+          <h5 class="cart__title" v-show="formValidated == false">Carrello</h5>
+          <div v-if="cart.items.length == 0" class="color--grey" v-show="formValidated == false">
             Il carrello è vuoto (๑◕︵◕๑)
           </div>
           <div
