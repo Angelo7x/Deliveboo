@@ -45,6 +45,11 @@
       <!-- menu -->
       <div class="restaurant-menu" :class="{ 'hide-element': displayElement }">
         <h2>{{ menu.business_name }}</h2>
+        <div class="info_restaurant">
+        <p clas>Indirizzo: <strong> {{ menu.business_address }}</strong></p>
+        <p clas>Partita iva: <strong>{{ menu.vat_numb }}</strong></p>
+        </div>
+
         <!-- <ul class="restaurant__info">
           <li>Indirizzo: {{ menu.business_address }}</li>
           <li>Partita Iva: {{ menu.vat_numb }}</li>
@@ -119,9 +124,13 @@ export default {
 
 <style lang="scss" scoped>
 @import "../../../sass/guest/front.scss";
-
+  .info_restaurant {
+    padding-bottom: 1rem;
+  }
 
 .cover-restaurant {
+
+
   height: 300px;
   position: relative;
   img {
