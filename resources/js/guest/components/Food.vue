@@ -181,7 +181,7 @@ svg {
 }
 .st0 {
   fill: #ffffff;
-  stroke: #cccccc;
+  stroke: #afafaf;
   stroke-miterlimit: 10;
 }
 button:hover .st0 {

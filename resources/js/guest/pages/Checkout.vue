@@ -16,6 +16,7 @@
             v-for="food in cart.items"
             :key="food.food.id"
             class="cart__food-card"
+            v-show="formValidated == false"
           >
             <div class="food-card__info">
               <div class="info__img">
@@ -80,7 +81,7 @@
           </div>
           <!-- totale -->
           <div class="cart__total">
-            <label for="total_price"> Prezzo totale: {{ totalPrice() }}€</label>
+            <label for="total_price" v-show="formValidated == false"> Prezzo totale: {{ totalPrice() }}€</label>
             <input type="text" hidden name="total_price" id="total_price" :value="totalPrice()"/>
           </div>
           <!-- ui data -->
@@ -257,7 +258,7 @@ export default {
       if (!this.uiPhone) {
         this.uiPhoneError = 'Inserire il numero di telefono';
         return false;
-      } else if(this.uiPhone.match(/^(\((00|\+)39\)|(00|\+)39)?(38[890]|34[7-90]|36[680]|33[3-90]|32[89])\d{7}$/) == null) {
+      } else if(this.uiPhone.match(/^[+0-9()-]+$/) == null) {
         this.uiPhoneError = 'Inserire il numero di telefono';
         return false;
       } else {
@@ -377,7 +378,7 @@ export default {
       svg {
         height: 2rem;
         fill: $lightColor;
-        stroke: $greyBorder;
+  stroke: #afafaf;
         stroke-miterlimit: 10;
 
         &:hover {
