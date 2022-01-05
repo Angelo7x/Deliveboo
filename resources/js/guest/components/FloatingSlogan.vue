@@ -43,7 +43,6 @@ export default {
     .slogan.stroke {
         -webkit-text-stroke-width: 3px;
         -webkit-text-stroke-color: $secondColor;
-        // text-shadow: 2px 0 0 $secondColor, -2px 0 0 $secondColor, 0 2px 0 $secondColor, 0 -2px 0 $secondColor, 2px 2px $secondColor, -2px -2px 0 $secondColor, 2px -2px 0 $secondColor, -2px 2px 0 $secondColor;
         color: #fff;
         animation: floatTextRight 10s infinite;
         animation-timing-function: linear;

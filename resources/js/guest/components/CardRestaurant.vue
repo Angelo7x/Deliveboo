@@ -36,7 +36,6 @@
   </div>
 </template>
 
-      <!-- @click="$parent.$emit('user_id', data.id)" -->
 <script>
 export default {
   name: "CardRestaurant",
