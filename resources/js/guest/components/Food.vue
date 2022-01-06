@@ -89,7 +89,6 @@ export default {
   display: flex;
   margin-bottom: $gt;
   @include box--border;
-  // @include box--box-shadow;
   padding: $gt;
   h3 {
     font-weight: bold;
@@ -114,11 +113,9 @@ export default {
   }
 
     .showInfo {
-      // border: 1.5px solid $mainColor;
       padding: .2rem;
       font-size: .6rem;
       border-radius: $br_sm;
-      // color: $mainColor;
       background-color: $mainColor;
     }
 
@@ -152,7 +149,6 @@ export default {
       margin-bottom: $gt;
             font-size: .65rem;
 
-      // color: rgb(170, 170, 170);
     }
 .food-opacity{
   opacity: .5;
@@ -166,14 +162,8 @@ export default {
     }
   }
   &-buttons {
-    // width: 70px;
-    // flex-shrink: 0;
     display: flex;
     flex-direction: column;
-    // justify-content: center;
-    // button {
-    //   margin: 10px 0;
-    // }
   }
 }
 svg {
@@ -190,25 +180,6 @@ button:hover .st0 {
   stroke-miterlimit: 10;
 }
 @media screen and (max-width: 1367px) {
-//   .food-card {
-//     width: 600px;
-//   }
-// }
-// @media screen and (max-width: 1202px) {
-//   .food-card {
-//     width: 500px;
-//   }
-// }
-// @media screen and (max-width: 1124px) {
-//   .food-card {
-//     width: 450px;
-//   }
-// }
-
-// @media screen and (max-width: 967px) {
-//   .food-card {
-//     width: 350px;
-//   }
 
   .food-card-buttons {
     button {
@@ -219,23 +190,6 @@ button:hover .st0 {
   }
 }
 
-// @media screen and (max-width: 911px) {
-//   .food-card {
-//     width: 348px;
-//   }
-// }
-
-// @media screen and (max-width: 850px) {
-//   .food-card {
-//     width: 700px;
-//   }
-// }
-
-// @media screen and (max-width: 700px) {
-//   .food-card {
-//     width: 500px;
-//   }
-// }
 @media screen and (max-width: 600px) {
   .food-card-info-description {
     display: none;
@@ -254,9 +208,6 @@ button:hover .st0 {
 }
 
 @media screen and (max-width: 560px) {
-  // .food-card {
-  //   width: 400px;
-  // }
   .food-card-info-description, .showInfo {
     display: none;
   }
@@ -273,16 +224,8 @@ button:hover .st0 {
   }
 }
 
-@media screen and (max-width: 420px) {
-  // .food-card {
-  //   width: 350px;
-  // }
-}
-
 @media screen and (max-width: 360px) {
-  // .food-card {
-  //   width: 300px;
-  // }
+
   .food-card-image {
     img {
       width: 90px;

@@ -32,7 +32,7 @@
         :src="`/storage/${menu.business_cover}`"
         :alt="`${menu.business_name} cover`"
         v-if="menu.business_cover"
-        :class="{ 'hide-element': displayElement }"
+        
       />
       <img src="../../../images/cover_place.jpg" alt="" v-else />
     </div>
@@ -49,11 +49,6 @@
         <p clas>Indirizzo: <strong> {{ menu.business_address }}</strong></p>
         <p clas>Partita iva: <strong>{{ menu.vat_numb }}</strong></p>
         </div>
-
-        <!-- <ul class="restaurant__info">
-          <li>Indirizzo: {{ menu.business_address }}</li>
-          <li>Partita Iva: {{ menu.vat_numb }}</li>
-        </ul> -->
         <div class="restaurants-menu-foods">
           <Food v-for="food in menu.foods" :key="food.id" :food="food" />
         </div>

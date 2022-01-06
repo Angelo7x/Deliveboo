@@ -4,7 +4,7 @@
     {{ txt }}
     <h3>Carrello</h3>
     <div v-if="cart.items.length == 0" class="empty-cart">
-      Il carrello è vuoto (⌣_⌣”)
+      Il carrello è vuoto (∩︵∩)
     </div>
     <div class="foods" v-for="item in cart.items" :key="item.food.id">
       <div class="foods-name">

@@ -111,7 +111,6 @@ export default {
     padding: .5rem;
     border-radius: $br_sm;
     border: 1.5px solid lightgray;
-    // width: 80%;
   }
 
   .search_title {
