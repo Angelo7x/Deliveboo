@@ -180,6 +180,7 @@ a.btn-link:hover{
 .box-img{
 width: 80px;
 height: 80px;
+border:0;
 border-radius: $br_sm;
 overflow: hidden;
 
@@ -313,9 +314,9 @@ overflow: hidden;
 }
 
 .buttons_mobile{
-  display: flex;
-  align-items: center;
-  height: 100%;
+  // display: flex;
+  // align-items: center;
+
 }
 
 .btn-delete, .btn-edit, .show_food{

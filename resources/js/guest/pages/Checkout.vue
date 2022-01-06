@@ -27,8 +27,8 @@
                 />
               </div>
               <ul>
-                <li>
-                  <label :for="food.food.id">{{ food.food.name }}</label>
+                <li class="food-cart-name">
+                  <label  :for="food.food.id">{{ food.food.name }}</label>
                 </li>
                 <li>x{{ food.quantity }}</li>
                 <li>{{ getFoodPrice(food.food.price, food.quantity) }}€</li>
@@ -426,6 +426,9 @@ export default {
   padding-top: 100px;
 }
 
+.food-cart-name{
+  width: 150px;
+}
 
 @media screen and (max-width: 768px) {
   .checkout__header {

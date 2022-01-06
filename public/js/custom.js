@@ -290,10 +290,10 @@ function validateFood() {
 	// {--  foodWeight --}
 	if (foodWeightValue !== '') {
 		if (foodWeightValue == "" || foodWeightValue == null) {
-			setErrorFor(foodWeight, 'Inserisci il prezzo')
+			setErrorFor(foodWeight, 'Inserisci il peso')
 			return false;
 		} else if (foodWeightValue.match(/^[0-9]*$/) == null || foodWeightValue < 0) {
-			setErrorFor(foodWeight, 'Il prezzo accetta solo numeri positivi interi')
+			setErrorFor(foodWeight, 'Il peso accetta solo numeri positivi interi')
 			return false;
 		}
 	} else {

@@ -8,7 +8,7 @@
 html {
     scroll-behavior: smooth;
   }
-body, a, input, select, button, textarea {
+body, a, input, select, button, textarea, option {
     font-family: 'PolySans Slim';
     overflow-x: hidden;
 }
@@ -77,9 +77,12 @@ button {
     border: none;
 }
 
-button:hover, a:hover {
+button:hover, a:hover, .btn .btn-yellow:hover, .btn-trasparent:hover, .btn-checkout:hover{
     cursor: pointer;
+    
 }
+
+
 //
 //
 // animation

@@ -4,12 +4,12 @@
 <div class="wrapper">
     <div class="container">
         <h2 class="my-5">Ciao <span class="name-risto">{{$user["name"]}}</span>,
-             benvenuto nella dashboard
+             benvenut* nella dashboard
              <br> 
              del tuo ristorante <span class="name-risto">{{$user["business_name"]}}</span>!
         </h2>
     
-        <div class="foods_dashboard p-5">
+        <div class="foods_dashboard p-3">
             <div class=" d-flex flex-wrap mb-5 justify-content-between align-items-center">
                 <div>
                     <h1>I tuoi piatti</h1>
@@ -87,7 +87,8 @@
                 </div>
                 <div class="col-md-1 col-sm-2 col-2 display_mobile_mv_580">
                <p>
-                {{$food["price"]}}€
+                {{number_format($food['price'], 2, ',', ' ')}}€
+               
                </p>
                    
                 </div>

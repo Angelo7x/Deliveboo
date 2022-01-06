@@ -80,7 +80,7 @@ export default {
       this.cart.items.forEach((e) => {
         total += e.food.price * e.quantity;
       });
-      return total;
+      return total.toFixed(2).replace(".", ",");
     },
     onResize() {
       this.windowWidth = window.innerWidth;
@@ -113,6 +113,7 @@ export default {
       padding: $gt
     }
     &-name {
+      width: 12.5rem  ;
       font-size: $txt_sm;
     }
     &-buttons {
